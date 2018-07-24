@@ -1,0 +1,81 @@
+<style>
+        .tr_fo_word{width: 200px;overflow: hidden;height: 24px;overflow: hidden;
+-o-text-overflow: ellipsis;
+text-overflow: ellipsis;
+text-align: left;
+word-break: break-all;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp:1;}
+    </style>
+
+<!-----------------------------------内容 开始-------------------------------------->
+    <div class="treasure">
+        <div class="jajfbs">
+            <form class="tr_form">
+                <div class="tr_fo_input">
+                    <input class="tr_fo_kkkk"  type="text" id="kssss"  placeholder="输入关键词"/>
+                </div>
+
+
+                <p class="tr_fo_word">
+<?php
+					$hhyy=explode("\r\n",$config_info['gz_headeryjhhyy']);
+					foreach($hhyy as $hk=>$hv){
+						echo '<a href="/index.php/Home/TrendsSearch/index/k/'.$hv.'">'.$hv.'</a>';
+					}
+				?>
+                </p>
+            </form>
+              <button class="tr_fo_button" onclick="ksss();"></button>
+        </div>
+		
+		
+		
+    <script>
+    
+    //搜索
+function ksss(){
+	var k=$('#kssss').val();
+	if(!k){
+		alert('请输入关键词搜索');
+		document.getElementById('kssss').focus();
+		return false;
+	}else{
+		location.href = '/index.php/Home/TrendsSearch/index/k/'+k;
+	}
+}
+</script>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+        <div class="tr_list"><foreach name="lanmu" item="r" key="k" >
+            <div class="er_li_each">
+                    <div class="tr_li_ea_img" style="background: url({$r.columnimg}) no-repeat top center; background-size:cover;">
+                        <div class="tr_li_ea_word">
+                            <p class="tr_li_ea_title">{$r.name}</p>
+								<?php
+									foreach($r['listcon'] as $lk=>$lv){
+										echo '<a href="/index.php/Home/Newsshow/index/cid/'.$r['id'].'/c/'.$cid.'/id/'.$lv['id'].'.html"><p class="tr_li_ea_p"><span class="tr_li_ea_span"></span>'.$lv['title'].'</p></a>';
+									}
+								?>
+                           
+                        </div>
+                    </div>
+                    <div class="tr_li_ea_more"><a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html"><img src="/m/images/treasure_r9_c10.png"/></a></div>
+            </div></foreach>
+            
+            
+        </div>
+    </div>
+   
+<!-----------------------------------内容 结束-------------------------------------->
+	
+
+

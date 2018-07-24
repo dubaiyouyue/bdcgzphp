@@ -1,0 +1,254 @@
+
+
+    
+    <div class="register">
+        <div class="re_buttom">
+            <span class="re_bu_span re_budq"><a href="/index.php/Home/Sjrelogin/index/cid/486/lg/codes.html">登 录</a></span>
+            <span class="re_bu_span"><a href="/index.php/Home/Sjrelogin/index/cid/486.html">注 册</a></span>
+        </div>
+       
+        
+       <!--------------------------登入 开始----------------------> 
+       
+      
+        <style>.reg_immediate_entry{font-size:18px;}
+        .si_hhhhh{color:#fff; text-align: center; margin-top:8px; background: #FFC03B }
+    .si_tt_message{display: inline-block; padding:5px 10px;margin: 0px 10px;cursor:pointer; border-bottom: 2px transparent solid; }
+    .si_tt_message:hover{ box-sizing: border-box; background:#e09800}
+        .reg_immediate_entry {
+    width: 100%;
+    height: 48px;
+    border-radius: 5px;
+    background: #FFC03B;
+    border: none;
+    margin: auto;
+    margin-top: 20px;
+    display: inherit;
+    color: #fff;
+}
+        </style>
+        
+        
+        
+        <form onsubmit="passlogin();return false;" id="myformrelogin">
+			<div class="re_input">
+				<div class="re_list">
+					<span class="re_li_nena">手机：</span>
+					<input class="das"  type="text" name="smstel" id="smstel" />
+				</div>
+				<input id="recodeluopassloginsms" type="hidden" name="recodeluopassloginsms">
+				<div style="width: 90%;margin: auto;margin-top: 20px;"><div class="l-captcha" data-callback="getResponserepassloginsms" data-site-key="<?php echo LUOSIMAO_SITE_KEY;?>" data-width="100%"></div></div>
+				<div class="re_list">
+					<span class="re_li_nena">验证码：</span>
+					<input class="iunbh" type="text" name="smscode" id="smscode" />
+					<div class="mmkjh si_ver_buttom" onclick="getdxyzmlogin();" style="display: inline-block;">获取验证码</div>
+				</div>
+				
+				<div class="re_list" style="border: none;margin-bottom: 80px;">
+					<button class="reg_immediate_entry" style="cursor: pointer;">立即登入</button>
+					<div style="text-align:right;"><a href="/index.php/Home/Sjrelogin/index/cid/486/lg/lg.html" style="margin-top: 12px;color: #aaa;padding-right: 15px;">网站密码登录</a></div>
+				</div>
+				
+			</div>
+		</form>
+       <!--------------------------登入 结束----------------------> 
+        
+        
+        
+        
+        
+ 
+    </div>
+    
+<!-----------------------------------内容 结束-------------------------------------->
+	
+	
+	
+<script>function getResponserepassloginsms(resp){
+     //短信登录
+	 $('#recodeluopassloginsms').val(resp);
+}
+function passlogin(){
+	//密码登录
+	var mimadenglu=$('#mmmmsssddllmm').css('display');
+	
+		//短信验证码登录
+			var smstel=$('#smstel').val();
+			if(!smstel || (smstel.length!=7 && smstel.length!=11) || isNaN(smstel)){
+				alert('请填写正确手机号');
+				document.getElementById('smstel').focus();
+				return false;
+			}
+			var luotest_response = $('#recodeluopassloginsms').val();
+			if(!luotest_response){
+				alert('请点击人机识别验证');
+				return false;
+			}
+			var smscode=$('#smscode').val();
+			if(!smscode){
+				alert('请输入验证码');
+				document.getElementById('smscode').focus();
+				return false;
+			}
+			
+			$('.reg_immediate_entry').text('正在登录..');
+			$.ajax({
+				type: "POST",
+				url:'/index.php/Home/Usermember/loginc/lm/smslogin.html',
+				data:$('#myformrelogin').serialize(),
+				error: function(request) {
+					alert('服务器繁忙');
+					location.reload();
+					return false;
+				
+				
+					//alert("提交失败");
+				},
+				success: function(data) {
+					if(data=='addok'){
+						alert('登录成功');
+						location.href = '/index.php/Home/Memberuser/index';
+						return false;
+						
+					}if(data=='3'){
+						alert('短信验证码错误');
+						LUOCAPTCHA.reset();
+						$('#recodeluopassloginsms').val('');
+						$('.reg_immediate_entry').text('立即登入');
+						return false;
+					}if(data=='4'){
+						alert('短信验证码过期');
+						LUOCAPTCHA.reset();
+						$('#recodeluopassloginsms').val('');
+						$('.reg_immediate_entry').text('立即登入');
+						return false;
+					}else{
+						alert('服务器繁忙');
+						location.reload();
+						return false;
+					
+					}//alert("提交失败");
+					
+				}
+			});
+
+	
+}
+
+function getdxyzmlogin(){
+	var smstel=$('#smstel').val();
+	if(!smstel || (smstel.length!=7 && smstel.length!=11) || isNaN(smstel)){
+		alert('请填写正确手机号');
+		document.getElementById('smstel').focus();
+		return false;
+	}
+	var luotest_response = $('#recodeluopassloginsms').val();
+	if(!luotest_response){
+		alert('请点击人机识别验证');
+		return false;
+	}
+			//$('.fi_fr_button').unbind();
+			$('.si_ver_buttom').removeAttr('onclick');
+			$('.si_ver_buttom').text('正在发送');
+			
+			//发送短信
+				$.ajax({
+					type: "POST",
+					url:'/index.php/Home/Alismsm/loginsms.html',
+					data:$('#myformrelogin').serialize(),
+					error: function(request) {
+						alert('服务器繁忙');
+						location.reload();
+						return false;
+					
+					
+						//alert("提交失败");
+					},
+					success: function(data) {
+						if(data=='1'){
+							alert('信息填写不完整');
+							location.reload();
+							return false;
+						}else if(data=='2'){
+							alert('人机验证错误');
+							LUOCAPTCHA.reset();
+							location.reload();
+							$('#recodeluopassloginsms').val('');
+							return false;
+						}else if(data=='3'){
+							alert('手机号未注册');
+							LUOCAPTCHA.reset();
+							$('#recodeluopassloginsms').val('');
+							location.reload();
+							return false;
+						}
+						if(data=='OK'){
+							//$('.fi_fr_apply').toggle();//alert('留言提交成功！');
+							//$('.fi_fr_button').text('已发送');
+							var samss='秒重新发送';
+							var samss_t=99;
+							var ssstttt=setInterval(function(){
+								$('.si_ver_buttom').text(samss_t+samss);
+								samss_t=samss_t-1;
+								if(samss_t<1){
+									LUOCAPTCHA.reset();
+									$('#recodeluopassloginsms').val('');
+									$('.si_ver_buttom').text('获取验证码');
+									$('.si_ver_buttom').attr("onclick","getdxyzmlogin();");
+									clearInterval(ssstttt);
+								}
+								//setTimeout(ssstttt, 1000);
+							}, 1000);
+							
+							
+							
+						}else{
+							alert('发送失败：'+data);
+							location.reload();
+							return false;
+						
+						}//alert("提交失败");
+						
+					}
+				});
+			
+			//end
+			
+}
+
+
+
+
+
+
+
+
+</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+

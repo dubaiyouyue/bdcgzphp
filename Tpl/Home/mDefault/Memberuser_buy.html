@@ -1,0 +1,78 @@
+
+<!-----------------------------------会员列表页 开始-------------------------------------->
+    
+    
+        <style>
+            .member_pa{width: 98%; margin: auto;}
+            .mi_pa_ti_p{font-size: 18px; color: #1F2C31; margin-top: 3px; display:block;font-weight: bold;text-align: center; margin-top: 20px;}
+        
+        .pa_buy_list{margin: 0px 10px;}
+        .pa_buy_li_each{margin-top: 20px;border-bottom: 1px solid #DCD9D9;padding-bottom: 10px;}
+        .pa_buy_li_ea_img{width: 1.30rem; height:0.95rem; display: inline-block;vertical-align: top;}
+        .pa_buy_li_ea_word{ display: inline-block; vertical-align: top;width: 1.94rem; margin-left:7px;}
+        .pa_buy_li_ea_title{font-size:14px; color: #444444; height: 48px; line-height: 24px;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        text-align: left;
+        word-break: break-all;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;}
+        .pa_buy_li_ea_deta{margin-left: -10px;}
+        .pa_buy_li_ea_span{font-size: 12px; color:#C1C1C1; border-left: 1px solid #E3E3E3;padding: 0 10px;}
+        .pa_buy_li_ea_span:first-child{ border-left:none}
+        .pa_buy_li_ea_pr1{color:#FA4D1B; font-size:18px;}
+        .pa_buy_li_ea_pr2{color:#FA4D1B; font-size:14px}
+        .pa_buy_li_address{float: right;}
+            
+            .pa_more{width: 122px; height: 29px; margin: auto; background: none; border: none; display: block; margin-top: 20px; margin-bottom: 20px;}
+        
+        </style>
+    
+    
+    <div class="member_pa">
+        <div class="me_pa_title">
+           
+            <p class="mi_pa_ti_p">{$loidlisttoname}</p>
+        </div>
+        
+        <div class="mem_pa_list">
+				<?php
+					if(empty($loidlist)) echo '<div class="me_ri_each">暂无</di>';
+				?>
+<foreach name="loidlist" item="r" key="k" >
+            <div class="pa_buy_li_each">
+                <a href="/index.php/Home/Productcshow/index/cid/{$r.class1}/c/{$r.class1}/id/{$r.id}.html">
+                    <div class="pa_buy_li_ea_img" style="background:url({$r.imgurl}) no-repeat center center;background-size: cover;"></div>
+					<div class="pa_buy_li_ea_word">
+						<p class="pa_buy_li_ea_title">{$r.title}</p>
+						<div class="pa_buy_li_ea_deta">
+							<span class="pa_buy_li_ea_span"><?php 
+							if($r['jiagessf']) echo $r['shangsyear'];
+							else echo $r['sppsjj'];
+							?>年</span>
+							<span class="pa_buy_li_ea_span">{$r.licuser}万公里</span>
+						</div>
+                        <div class="pa_buy_li_ea_price">
+                            <span class="pa_buy_li_ea_pr1"><?php 
+							if($r['jiagessf']) echo $r['jiages'];
+							else echo $r['jiageold'];
+							?>万</span>
+                            <?php if($r['jiagessf']) echo '<span class="pa_buy_li_ea_pr2">首付'.$r['jiagessf'].'万</span>';?>
+                            <span class="pa_buy_li_address">{$r.gz_headeryjhhyy}</span>
+                        </div>
+					</div>
+                </a>
+            </div>
+            </foreach>
+            
+            
+            <button class="pa_more" style="display:none;"><img src="/m/images/sell2.png"/></button>
+        
+        </div>
+    </div>
+    
+<!-----------------------------------会员列表页 结束-------------------------------------->
+    
+    

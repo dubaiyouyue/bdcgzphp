@@ -1,0 +1,103 @@
+
+
+
+<!--------------------底部开始--------------------->
+<div class="bottom">
+	<div class="middle">
+	
+	
+		<div class="logo">
+			<a href="/"><img class="img" src="{$config_info.gz_logo}"></a>
+		</div>
+		
+		<div class="contact">
+			<ul>
+				<li>
+					<img src="/images/index6.jpg"/>
+					<p>企业地址：{$config_info.gz_headeryj}</p>
+				</li>
+				<li>
+					<img src="/images/index4.jpg"/>
+					<p>企业邮箱：{$config_info.gz_foottel}</p>
+				</li>
+				<li>
+					<img src="/images/index5.jpg"/>
+					<p>联系传真：{$config_info.gz_foottelqq}</p>
+				</li>
+				
+			</ul>
+			
+		</div>
+		
+		
+		<div class="code">
+			<img class="img" src="/images/index3.jpg"/>
+			<div class="phone">
+				<img src="/images/index7.png"/>
+				<p>联系电话：{$config_info.gz_footteldianhua}</p>
+			</div>
+		</div>
+		
+	</div>
+	<div class="clear"></div>
+</div>
+
+
+
+<div class="copyright">
+	<div class="middle">
+		<p>{$config_info.gz_footright}</p>
+		<p>技术支持：<a href="http://www.resonance.com.cn" target="_blank" style="display: inline-block;color: #fff;">共振创意</a></p>
+	</div>
+</div>
+<!--------------------底部结束--------------------->
+
+
+
+<script>  /*异步加载 - 在线交流 - 站长统计 */
+  var gz_weburl='/';
+  var lang='cn';
+  var classnow='{$cid}';
+  var id='<?php echo $_GET['id'];?>';
+  
+  var url=gz_weburl+'include/interface/uidata.php?lang='+lang,h = '<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>';
+  
+  if(h.indexOf("preview=1")!=-1)url = url + '&theme_preview=1';
+  $.ajax({
+    type: "POST",
+    url: url,
+    dataType:"json",
+    success: function(msg){
+      var c = msg.config;
+      
+      if(c.gz_stat==1){       //站长统计
+        var navurl=classnow==10001?'':'../';
+        var stat_d=classnow+'-'+id+'-'+lang;
+        var url = gz_weburl+'include/stat/stat.php?type=para&u='+navurl+'&d='+stat_d;
+        $.getScript(url);
+      }
+    }
+  });
+    //var metClicks = $(".metClicks");//点击次数
+    var ClicksListnow='<?php echo $_GET['id'];?>';
+    var weburl='/';
+    if(ClicksListnow){
+      //var DataClicks = metClicks.data("metclicks");
+      //ClicksStr=DataClicks.split("|"); 
+      var ClicksModule = 'news';//ClicksStr[0],ClicksListnow = ClicksStr[1];
+      var urlw = weburl+'include/hits.php?type='+ClicksModule+'&id='+ClicksListnow;
+      $.ajax({
+        type: "POST",
+        url: urlw,
+        dataType:"text",
+        success: function(msg){
+          //var t = msg.split('"');
+          //metClicks.html(t[1]);
+        }
+      });
+    }
+</script>
+
+
+</body>
+</html>

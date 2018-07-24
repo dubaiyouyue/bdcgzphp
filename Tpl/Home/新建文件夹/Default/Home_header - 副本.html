@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+<title>{$seo_title}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+
+
+
+<meta name="keywords" content="{$seo_title}">
+<meta name="description" content="{$seo_title}">
+
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<link type="text/css" rel="stylesheet" href="/css/Public1.css?13"/><!--公共样式-->
+<link type="text/css" rel="stylesheet" href="/css/style.css"/>
+
+<link type="text/css" rel="stylesheet" href="/css/swiper.min.css"/><!--bannerCSS-->
+
+
+<script src="/js/nav.js"></script><!--导航的JS-->
+
+
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">  
+<script>   
+(function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if(clientWidth>=640){
+                    docEl.style.fontSize = '100px';
+                }else{
+                    docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+                }
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script> 
+	
+	
+</head>
+
+<body>
+<!----------------------------------头部 开始--------------------------------------->
+<!--新头部-->
+<div style="
+    height:  65px;
+    background:#272C3F;
+	font-size:12px; padding-left:10px;
+">
+	<div style=" float:left;" class="newtopleft"><a style=" height: 65px;margin-top: -7px;" href="/"><img style="width:185px; margin-top:15px;" src='{$config_info.gz_logo}'></a></div>
+	<div class="right" style="float: right; margin-top: -3px;"><button class="right"></button></div>
+</div>
+<!--end-->
+<style>
+.menu li:last-child .xian
+{ 
+display:none;
+}
+</style>
+<div class="bgDiv"></div>
+	<div class="rightNav">
+		
+		<div class="ppptcdiv" id="scroll-1"><!--滚动条div 父级rightNav要加上 overflow:auto;-->
+		<div class="xian"></div>
+		<ul class="menu">
+
+		
+<li><a href="/">网站首页</a><div class="xian"></div></li>
+				<foreach name="new_column_list_top" item="r" key="k" >
+               <li><a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html">{$r.name}</a><div class="xian"></div></li>
+			    </foreach>
+		  
+		  
+		  
+		  
+		  </div>
+		  
+		</ul>
+	</div>
+
+
+
+<!--滚动条颜色--><style>
+	#scroll-1{overflow: auto;}
+    #scroll-1::-webkit-scrollbar {
+        width:2px;    }
+    #scroll-1::-webkit-scrollbar-track     {
+        background:#fff;
+    }
+    #scroll-1::-webkit-scrollbar-thumb{
+        background:#fff;
+        border-radius:3px;
+    }
+</style><!--end-->
+
+<!--js--> 
+    <script>
+$(document).ready(function() {
+  
+    $('#open').click(function() {
+		
+		//修改滚动条
+			$('body').css('overflow','hidden');
+		//end
+		
+        $('.ppptcdiv').animate({right:'0px'},800);
+    $('#ppptcdiv-ddd').css('display','block');
+    });
+});
+function cloos(){
+	
+			//修改滚动条
+				$('body').css('overflow','');
+			//end
+	
+  $('.ppptcdiv').animate({right:'-225px'},800);
+  $('#ppptcdiv-ddd').css('display','none');
+}
+</script> 
+
+
+
+<!-------------------------------导航 结束----------------------------------->
+
+<!----------------------------------头部 结束--------------------------------------->
+
+
+
+
+
+<!------------------------------------banner 开始 ----------------------------------------->
+
+<div class="banner">
+	<img style=" width: 100%;" src="{$blist.img_path}"/>
+</div>
+
+<!------------------------------------banner 结束 ----------------------------------------->
+
+
+<div style="background:url(/images/index1.jpg) repeat top; height:20px; width:100%;"></div>
+
+
+
+
+
+
+
+<div class="bj" style="background:url(/images/jg.jpg); width:100%; overflow: hidden;">

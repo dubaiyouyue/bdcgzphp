@@ -1,0 +1,440 @@
+{__NOLAYOUT__}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$seo_title}</title>
+<link type="text/css" rel="stylesheet" href="css/public.css"/>
+<link type="text/css" rel="stylesheet" href="css/style.css?1"/>
+<link rel="stylesheet" href="css/swiper.min.css">
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+
+</head>
+
+<body style="overflow-x: hidden;">
+<!--------------------头部开始--------------------->
+
+<div class="head">
+	<div class="middle">
+		<div class="logo" style="background: url({$config_info.gz_logo}) no-repeat center;"><a href="/"></a></div>
+		<ul class="list">
+			<li class="current"><a href="/">首页</a></li>
+<foreach name="new_column_list_top" item="r" key="k" >
+               <li class="<?php
+        if($foldername==$r['foldername']) echo 'current';
+
+      ?>" ><a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html"">{$r.name}</a></li>
+			    </foreach>
+		</ul>
+	</div>
+</div>
+
+<!--------------------头部结束--------------------->
+
+<!-- 轮播 styles -->
+  <style>
+    html, body {
+      position: relative;
+    }
+    body {
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color:#000;
+      margin: 0;
+      padding: 0;
+    }
+    .swiper-container {
+      width: 100%;
+      height:100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+	  
+	  
+	  /*幻灯片点点*/
+	  .swiper-pagination-bullet{
+			width: 42px;
+			height: 5px;
+			display: block;
+			background-color: #0a705b;
+			margin-left: 18px;
+			display: inline-block;
+		  	border-radius: 0px;
+	  }
+	  .swiper-pagination-bullet-active{
+			opacity: 1;
+			background: #0a705b;
+			width: 42px;
+			height: 5px;
+			display: block;
+    		display: inline-block;
+	  }
+  </style>
+
+
+<!-----banner 开始------>
+
+
+
+
+ <!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+     
+
+     
+   		<foreach name="blist" item="r" key="k" >
+			 
+            	 <div class="swiper-slide" ><img src="{$r.img_path}" style="width: 100%; "></div>
+				
+				</foreach>
+    </div>
+    
+    <div class="swiper-pagination"></div>
+    
+    <!-- 左右箭头 -->
+    <!--
+    <div  style="    
+    width: 1200px;
+    height: 60px;
+   position: absolute;
+    top:79%;
+    left: 50%;
+    margin-left: -600px;
+    overflow: hidden;
+   
+    z-index: 9;">
+     
+     <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    </div>-->
+  </div>
+
+
+
+
+<!-- Swiper JS -->
+  <script src="js/swiper.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+		
+		autoplay: {
+    delay: 5000,
+    stopOnLastSlide: false,
+    disableOnInteraction: true,
+    },
+		/*全屏参数 width: window.innerWidth,*/
+		/*左右箭头
+      navigation: {
+        nextEl: '.swiper-button-next',width: window.innerWidth,
+        prevEl: '.swiper-button-prev',
+      },*/
+      
+    
+      loop: true,
+      loopFillGroupWithBlank: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      }
+    });
+  </script>
+
+
+
+
+
+
+<!-----banner 结束------>
+
+
+<style>
+/*利用:after伪元素*/  
+.clearUl:after {  
+content:"";
+display: block;  
+clear: both;  
+}  
+
+
+.in_about .middle .pic .single .cover{cursor: pointer;}
+</style>  
+
+
+<!---------------------关于我们 开始--------------------->
+<div class="in_about">
+	<div class="middle clearUl">
+		<div class="title">
+			<p class="numder">01</p>
+			<div class="name">
+				<div class="decorate"></div>
+				<p>ABOUT</p>
+			</div>
+		</div>
+		<?php
+			//dump($whlmmmm);
+		?>
+		<div class="pic">
+		
+		
+			<foreach name="whlmmmm" item="r" key="k" >
+		
+			<div class="single" onclick="wsssoc('{$r.id}');" style="background:url({$r.columnimg}) no-repeat center;">
+				<div class="cover"></div>
+				<div class="name">
+					<p class="c_title">{$r.name}</p>
+					<p class="e_title">/ {$r.enname}</p>
+				</div>
+			</div>
+			
+			<div id="wwwddss{$r.id}" style="display:none;">			<a href="/index.php/Home/About/index/cid/{$r.id}.html">
+				<p class="c_title">{$r.name}</p>
+				<p class="e_title">{$r.enname}</p>
+				<p class="content">{$r.description}</p>
+				<div class="more">
+					<p class="words">查看更多</p>
+				</div>
+				
+			</a></div>
+			</foreach>
+			
+		</div>
+		
+		<div class="content" id="ssscontent">
+			<a href="/index.php/Home/About/index/cid/{$whlmmmm.0.id}.html">
+				<p class="c_title">{$whlmmmm.0.name}</p>
+				<p class="e_title">{$whlmmmm.0.enname}</p>
+				<p class="content">{$whlmmmm.0.description}</p>
+				<div class="more">
+					<p class="words">查看更多</p>
+				</div>
+				
+			</a>
+		</div>
+		
+		
+	</div>
+</div>
+<!---------------------关于我们 结束--------------------->
+
+<script>
+function wsssoc(n){
+	var h=$('#wwwddss'+n).html();
+	$('#ssscontent').html(h);
+}
+</script>
+
+<!---------------------产品展示 开始--------------------->
+<div class="in_product">
+	<div class="in_pr_middle">
+		<div class="in_pr_title">
+			<img style="width:130px; height: 67px;" src="images/index2.jpg"/>
+			<p class="in_pr_c">产品展示</p>
+			<p class="in_pr_e">PRODUCT DISPLAY</p>
+		</div>
+		
+		<div class="in_pr_numder">
+			<p class="num">02</p>
+			<div class="in_name">
+				<p class="in_na">PRODUCT</p>
+				<span class="in_x"></span>
+			</div>
+		</div>
+		
+		<div class="pr_list">
+		<foreach name="whlmmmmccc" item="r" key="k" >
+			<div class="pr_single">
+				<a href="/index.php/Home/Newsshow/index/cid/461/c/461/id/{$r.id}.html">
+					<div class="pr_title">
+						<p class="pr_c">{$r.title}</p>
+						<p class="pr_e">{$r.ctitle}</p>
+					</div>
+					<div class="pr_img" style="background: url({$r.imgurl}) no-repeat center;background-size: cover;"></div>
+				</a>
+			</div>
+			
+	</foreach>
+			
+		</div>
+		
+	</div>
+</div>
+<!---------------------产品展示 结束--------------------->
+
+
+
+<!---------------------新闻中心 开始--------------------->
+
+<div class="in_news">
+	<div class="in_ne_middle">
+		
+		<div class="in_ne_title">
+			<p class="in_ne_c">新闻中心</p>
+			<p class="in_ne_e">NEWS CENTER</p>
+		</div>
+		
+		<div class="in_ne_numder">
+			<p class="num">03</p>
+			<div class="in_ne_name">
+				<span class="in_ne_x"></span>
+				<p class="in_ne_na">NEWS</p>
+				
+			</div>
+		</div>
+		
+		<div class="in_ne_list">
+		<foreach name="newssalgg" item="r" key="k" >
+			<?php
+				$nnnttimm=explode(' ',$r['updatetime']);
+				$r['updatetime']=$nnnttimm['0'];
+			?>
+			<div class="in_ne_single">
+				<a href="/index.php/Home/Newsshow/index/cid/459/c/140/id/{$r.id}.html">
+					<div class="in_si_img" style="background:url({$r.imgurl}) no-repeat center; background-size: cover;"></div>
+					<div class="in_si_content">
+						<p class="in_si_p">{$r.title}</p>
+						<span class="in_si_r">{$r.updatetime}</span>
+					</div>
+				</a>
+			</div>
+			
+			</foreach>
+			
+			
+		</div>
+		
+		<div class="in_ne_more">
+			<a href="http://rhpc.com/index.php/Home/Trends/index/cid/140.html">
+			查看更多
+			</a>	
+		</div>
+			
+	</div>
+</div>
+
+
+
+<!---------------------新闻中心 结束--------------------->
+
+
+
+<!--------------------底部开始--------------------->
+<div class="bottom">
+	<div class="middle">
+	
+	
+		<div class="logo">
+			<a href="/"><img class="img" src="{$config_info.gz_logo}"></a>
+		</div>
+		
+		<div class="contact">
+			<ul>
+				<li>
+					<img src="/images/index6.jpg"/>
+					<p>企业地址：{$config_info.gz_headeryj}</p>
+				</li>
+				<li>
+					<img src="/images/index4.jpg"/>
+					<p>企业邮箱：{$config_info.gz_foottel}</p>
+				</li>
+				<li>
+					<img src="/images/index5.jpg"/>
+					<p>联系传真：{$config_info.gz_foottelqq}</p>
+				</li>
+				
+			</ul>
+			
+		</div>
+		
+		
+		<div class="code">
+			<img class="img" src="/images/index3.jpg"/>
+			<div class="phone">
+				<img src="/images/index7.png"/>
+				<p>联系电话：{$config_info.gz_footteldianhua}</p>
+			</div>
+		</div>
+		
+	</div>
+	<div class="clear"></div>
+</div>
+
+
+
+<div class="copyright">
+	<div class="middle">
+		<p>{$config_info.gz_footright}</p>
+		<p>技术支持：<a href="http://www.resonance.com.cn" target="_blank" style="display: inline-block;color: #fff;">共振创意</a></p>
+	</div>
+</div>
+<!--------------------底部结束--------------------->
+
+
+
+<script>  /*异步加载 - 在线交流 - 站长统计 */
+  var gz_weburl='/';
+  var lang='cn';
+  var classnow='{$cid}';
+  var id='<?php echo $_GET['id'];?>';
+  
+  var url=gz_weburl+'include/interface/uidata.php?lang='+lang,h = '<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>';
+  
+  if(h.indexOf("preview=1")!=-1)url = url + '&theme_preview=1';
+  $.ajax({
+    type: "POST",
+    url: url,
+    dataType:"json",
+    success: function(msg){
+      var c = msg.config;
+      
+      if(c.gz_stat==1){       //站长统计
+        var navurl=classnow==10001?'':'../';
+        var stat_d=classnow+'-'+id+'-'+lang;
+        var url = gz_weburl+'include/stat/stat.php?type=para&u='+navurl+'&d='+stat_d;
+        $.getScript(url);
+      }
+    }
+  });
+    //var metClicks = $(".metClicks");//点击次数
+    var ClicksListnow='<?php echo $_GET['id'];?>';
+    var weburl='/';
+    if(ClicksListnow){
+      //var DataClicks = metClicks.data("metclicks");
+      //ClicksStr=DataClicks.split("|"); 
+      var ClicksModule = 'news';//ClicksStr[0],ClicksListnow = ClicksStr[1];
+      var urlw = weburl+'include/hits.php?type='+ClicksModule+'&id='+ClicksListnow;
+      $.ajax({
+        type: "POST",
+        url: urlw,
+        dataType:"text",
+        success: function(msg){
+          //var t = msg.split('"');
+          //metClicks.html(t[1]);
+        }
+      });
+    }
+</script>
+
+
+</body>
+</html>

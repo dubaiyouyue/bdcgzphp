@@ -1,0 +1,396 @@
+<style>
+.se_banner{height: 194px;}.ve_inf_each,.ve_inf_title{margin-top: 20px!important;margin-bottom: 0px!important;}
+</style>     <!--------------------------------免费咨询 开始---------------------------------------->
+      <style>
+        .free{width: 100%; height: 100%; background: url(/images/background.png) repeat;position:fixed;top: 0px;left: 0px;z-index: 9999}
+        .fr_box{width: 500px; height:300px; margin: auto;top:50%;margin-top:-150px;left:50%;margin-left:-250px;background: #fff; position: relative; border: 4px #E5E5E5 solid;text-align: center;}
+        .fr_button{width:48px; height:48px; border: none; background: none; position: absolute; top:10px; right: 10px; cursor: pointer;}
+        .fr_button img{max-width: 100%; width: 100%;}
+        .fr_title{font-size:24px; color: #3B3B3B;vertical-align: top; display: inline-block; margin-left: 15px; margin-top: 30px; display: inline-block; vertical-align: top; }
+        .fr_input{width: 300px; height: 30px; border: 1px solid #E3E3E3;margin: auto;margin-top:69px;}
+        .fr_input input{width: 200px; height: 24px; background:none;}
+        .fr_in_button{width:80px; height: 30px; background: none; border: none; color:#FF8011; cursor: pointer;}
+        .app_p1{text-align:right; color: #E1E1E1; margin-top:5px;margin-right: 101px;}
+        .fr_tell{margin-top: 45px;margin-left: -21px;}
+        .fr_tell img{width: 34px; height: 31px; margin-right: 10px;}
+        .fr_tell_span{font-size:26px; font-weight: bold; color:#CBCBCB; display: inline-block;vertical-align: top;margin-top:2px;}
+    </style>
+    <div class="free" style="display: none">
+        <div class="fr_box">
+            <button class="fr_button" onclick="$('.free').toggle();"><img src="/images/sign_in_r1_c3.jpg"/></button>
+            <p class="fr_title">免费咨询</p>
+            
+                <div class="fr_input">
+                    <input type="text" placeholder="请输入手机号码" id="yykkccciddd"/>
+                    <button class="fr_in_button" onclick="yueyuekkccc('1');">提交号码</button>
+                </div>
+            
+            <p class="app_p1">*工作人员会尽快与您联系，请留意手机</p>
+            <div class="fr_tell">
+                <img src="/images/car_selling_r2_c24.png"/>
+                <span class="fr_tell_span">{$config_info.gz_footteldianhua2}</span>
+            </div>
+        </div>
+    </div>
+    
+  
+    <!--------------------------------免费咨询 结束---------------------------------------->
+	
+    <!--------------------------------预约看车 开始---------------------------------------->
+    <style>
+        .appointment{width: 100%; height: 100%; background: url(/images/background.png) repeat;position:fixed;top: 0px;left: 0px;z-index: 9999}
+        .app_box{width: 500px; height:300px; margin: auto;top:50%;margin-top:-150px;left:50%;margin-left:-250px; background: #fff; position: relative; border: 4px #E5E5E5 solid;}
+        .app_button{width:48px; height:48px; border: none; background: none; position: absolute; top:10px; right: 10px; cursor: pointer;}
+        .app_button img{max-width: 100%; width: 100%;}
+        .app_bo_successful{text-align: center; margin-top:80px;}
+        .app_bo_successful img{margin-left: -25px;vertical-align: top;}
+        .app_span{font-size:30px; color: #3B3B3B; font-weight: bold; margin-top: 10px;vertical-align: top; display: inline-block; margin-left: 15px;}
+        .app_p{text-align: center; color: #E1E1E1; margin-top: 20px;}
+    </style>
+    
+    
+    <div class="appointment" style="display: none">
+        <div class="app_box">
+            <button class="app_button" onclick="$('.appointment').toggle();"><img src="/images/sign_in_r1_c3.jpg"/></button>
+            <p class="app_bo_successful">
+                <img src="/images/details1_03.png"/>
+                <span class="app_span">提交成功</span>
+            </p>
+            <p class="app_p">*工作人员会尽快与您联系，请留意手机</p>
+        </div>
+    </div>
+    
+    
+    <!--------------------------------预约看车 结束---------------------------------------->
+	
+	
+    <!-------------------------------内容 开始-------------------------------------->
+    
+        
+    <div class="details">
+        <div class="de_middle">
+            <div class="de_basic">
+                <div class="de_ba_img" style="background:url({$list.imgurl}) no-repeat center center; background-size: cover;"></div>
+                
+                <div class="de_ba_word">
+                    <div class="de_ba_wo_title">{$list.title}</div>
+                    <div class="ba_ba_wo_one">
+						<?php
+							if($cid==461){
+						?>
+                        <span class="de_ba_wo_price">￥{$list.jiageold}万</span>
+                        <span class="de_ba_wo_off">新车指导价{$list.jiages}万</span>
+						<?php 
+							}else{
+						?>
+                        <span class="de_ba_wo_price">￥{$list.jiages}万</span>
+						<?php  }?>
+						
+						
+                        <span class="de_ba_wo_inquiry"onclick="$('.free').toggle();" >询底价</span>
+                    </div>
+                    
+                    <div class="de_ba_wo_situation">
+					<?php
+						if(file_exists('carico/300/'.$list['ajax_get_pp'].'.jpg')) $logosrc='/carico/300/'.$list['ajax_get_pp'].'.jpg';
+						else if(file_exists('carico/300/'.$list['ajax_get_pp'].'.png')) $logosrc='/carico/300/'.$list['ajax_get_pp'].'.png';
+					?>
+                        <img class="de_ba_wo_img" src="{$logosrc}" height="51" />
+                        <span class="de_ba_state">车源状态</span>
+                        <span class="de_ba_st_h">
+                            <i class="de_ba_st_i">{$list.jiageoldzttt}</i>
+                            <img class="de_ba_st_img" src="/images/details_r7_c14.png"/>
+                        </span>
+                        <!--<button class="de_ba_wo_more">了解更多></button>-->
+                    </div>
+                    
+                    <div class="de_ba_service">
+                        <span class="de_ba_se_title">服务费：</span>
+						<?php
+							$fujgge=($list['jiageold']+0)*10000*(($config_info['gz_fwffl']+0)/100);
+							if($cid==481) $fujgge=($list['jiages']+0)*10000*(($config_info['gz_fwffl']+0)/100);
+							if($fujgge<$config_info['gz_fwfflzd']) $fujgge=$config_info['gz_fwfflzd'];
+						?>
+                        <span class="de_ba_se_pri">{$fujgge}<i class="de_ba_kk">（车价 x {$config_info.gz_fwffl}%  最低{$config_info.gz_fwfflzd}）</i></span>
+                    </div>
+                    
+                    <div class="de_ba_project">
+                        <span class="de_ba_pro_title">服务项：</span>
+						
+								<?php
+									
+									$lismmmm=explode('@#@',$list['gz_remenppfw']);
+									foreach($lismmmm as $mmk=>$mmv){
+										if($mmv) echo '<div class="de_ba_pro_each"><img src="/images/details_r10_c22.png" />'.$mmv.'</div>';
+										
+									}
+								?>
+						
+                    </div>
+                    <?php
+						$sptime=strtotime($list['sppsjj']);
+						$sptimess=time()-$sptime;
+						$spye=floor($sptimess/31536000)+0;
+						$spyem=floor(($sptimess-($spye*31536000))/2592000);
+						if($spyem>11){
+							$spye++;
+							$spyem=0;
+						}
+					?>
+                    <div class="de_ba_deta">
+						<?php
+							if($cid==461){
+						?>
+                        <div class="de_ba_de_each" style="border:none;">
+                            <p class="de_ba_ea1">{$spye}年{$spyem}个月</p>
+                            <p class="de_ba_ea2">上牌时间</p>
+                        </div>
+						<?php 
+							}else{
+							$list['licuser']=0;
+						?>
+						<script>
+						
+						</script>
+                        <div class="de_ba_de_each" style="border:none;">
+                            <p class="de_ba_ea1">{$list.shangsyear}年</p>
+                            <p class="de_ba_ea2">上市时间</p>
+                        </div>
+						<?php  }?>
+                        <div class="de_ba_de_each">
+                            <p class="de_ba_ea1">{$list.licuser}万公里</p>
+                            <p class="de_ba_ea2">表显里程</p>
+                        </div>
+                        <div class="de_ba_de_each">
+                            <p class="de_ba_ea1">{$list.displacement}L</p>
+                            <p class="de_ba_ea2">排量</p>
+                        </div>
+                        <div class="de_ba_de_each">
+                            <p class="de_ba_ea1">{$config_info.gz_footrighttcc}天</p>
+                            <p class="de_ba_ea2">提车时间</p>
+                        </div>
+                    </div>
+                    
+                    <div class="de_ba_button">
+                        <button class="ba_ba_bu_watch" style="background: url(/images/details1_r1_c1.png) no-repeat center center; background-size: 100%;" onclick="<?php
+							if($user_tel){
+								echo 'yueyuekkccc();';
+							}else{
+								echo 'denglusss();';
+							}?>"></button>
+                        <button class="ba_ba_bu_information" style="background: url(/images/details1_r1_c5.png) no-repeat center center; background-size: 100%;" onclick="$('.free').toggle();"></button>
+                    </div>
+                </div>
+            </div>
+            
+<script>
+	//预约看车
+	function yueyuekkccc(m){
+		var url='/index.php/Home/Productcshow/xdjyykc/id/{$id}';
+		if(m){
+			var telephone=$('#yykkccciddd').val();
+			if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+				$.edbox({
+					html:'<div class="example-html">请正确填写手机号</div>',
+					//animateOpen:'animated tada',
+					//animateClose:'animated flipOutX',
+					afterClose:function(){
+						//location.reload();
+						$('#yykkccciddd').focus();
+					}
+				});
+				return false;
+			}
+			url='/index.php/Home/Productcshow/xdjyykc/id/{$id}/tel/'+telephone;
+		}
+		$.ajax({
+			type: "POST",
+			url:url,
+			data:$('#myform').serialize(),
+			error: function(request) {
+			
+				$.edbox({
+					html:'<div class="example-html">服务器繁忙</div>',
+					//animateOpen:'animated tada',
+					//animateClose:'animated flipOutX',
+					afterClose:function(){
+						location.reload();
+					}
+				});
+				return false;
+			
+			
+				//alert("提交失败");
+			},
+			success: function(data) {
+				if(data=='OK'){
+					$('.appointment').toggle();
+					$('.free').hide();
+				}else{
+					$.edbox({
+						html:'<div class="example-html">'+data+'</div>',
+						//animateOpen:'animated tada',
+						//animateClose:'animated flipOutX',
+						afterClose:function(){
+							location.reload();
+						}
+					});
+					return false;
+				
+				}//alert("提交失败");
+				
+			}
+		});
+	}
+</script>
+            
+            
+            <!--信息 开始-->
+            <div class="vehicle_information vehicle_kkkkk ">
+                <div class="ve_in_title">
+                    <div class="ve_ti_line"></div>
+                    <span class="ve_ti_w">车辆信息</span>
+                </div>
+                
+                {$list.contentcarinfo}
+                
+            </div>
+            
+            <button class="ve_inf_button">查看更多</button>
+            <!--信息 结束-->
+            
+            <?php 
+			if($cid==461){
+			?>
+            <div class="de_te_title">
+                    <div class="de_te_ti_line"></div>
+                    <span class="ve_te_ti_w">{$list.fctitlejjccc}项检测</span>
+                </div>
+            <div class="de_testing">
+                
+                
+                <div class="de_ts_word">
+                    <div class="de_ta_worker">
+                        <div class="de_ta_wo_portrait" style="background: url({$jiancesrr.user_tx}) no-repeat center center;background-size: cover;"></div>
+                        <p class="de_ta_wo_nems">{$jiancesrr.username}</p>
+                        <p class="de_ta_wo_call">{$config_info.gz_fwftxxxxm}</p>
+                        <button class="de_ta_wo_button" onclick="$('.free').toggle();"></button>
+                    </div>
+                    
+                    <div class="de_ts_line"></div>
+                    
+                    <div class="de_ta_rigth">
+					
+					
+					
+					
+                        {$list.contentcarjiance}
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <?php }
+			?>
+            
+            
+            
+            
+            
+            <!---->
+            <div class="de_car_img">
+                <div class="de_ing_title">
+                    <div class="de_img_line"></div>
+                    <span class="de_img_wo">车辆图片</span>
+                </div>
+                
+                <div class="de_car_nav">
+                    <div class="de_ca_na_aech de_ca_na_dq" onclick="getsswwww(1,this);">
+                        <span class="de_ca_na_span">
+                            <span class="de_ca_ne_ooo">汽车外观</span>
+                            <img class="de_ca_span_img" src="/images/details_r7_c14.png"/>
+                        </span>
+                    </div>
+                    <div class="de_ca_na_aech" onclick="getsswwww(2,this);">
+                        <span class="de_ca_na_span">
+                            <span class="de_ca_ne_ooo">中控方向盘</span>
+                            <img class="de_ca_span_img" src="/images/details_r7_c14.png"/>
+                        </span>
+                    </div>
+                    <div class="de_ca_na_aech" onclick="getsswwww(3,this);">
+                        <span class="de_ca_na_span">
+                            <span class="de_ca_ne_ooo">车厢座椅</span>
+                            <img class="de_ca_span_img" src="/images/details_r7_c14.png"/>
+                        </span>
+                    </div>
+                    <div class="de_ca_na_aech" onclick="getsswwww(4,this);">
+                        <span class="de_ca_na_span">
+                            <span class="de_ca_ne_ooo">其他外观</span>
+                            <img class="de_ca_span_img" src="/images/details_r7_c14.png"/>
+                        </span>
+                    </div>
+                </div>
+                <style>/*利用:after伪元素*/  
+.clearUl:after {  
+content:"";
+display: block;  
+clear: both;  
+}  
+				.de_ca_img_box img{
+					    display: inline-block;
+						width: 50%;
+						float: left;padding: 3px;
+    box-sizing: border-box;
+				}
+				</style>
+                <div class="de_ca_img_box clearUl" id="de_ca_img_boxde_ca_img_box">
+                {$list.contentcarwg}
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    
+
+	<div id="c1" style="display:none;">{$list.contentcarwg}</div>
+	<div id="c2" style="display:none;">{$list.contentcarzgfs}</div>
+	<div id="c3" style="display:none;">{$list.contentcarzxzy}</div>
+	<div id="c4" style="display:none;">{$list.contentcarother}</div>
+	
+	
+	
+    <!-------------------------------内容 结束-------------------------------------->
+    <script>
+	
+	function getsswwww(n,that){
+		var cn=$('#c'+n).html();
+		$('.de_ca_na_aech').removeClass('de_ca_na_dq');
+		$('#de_ca_img_boxde_ca_img_box').html(cn);
+		$(that).addClass('de_ca_na_dq');
+	}
+	
+	
+	
+	
+    $(".ve_inf_button").click(function(){
+	gedddxxxiii();
+}); 
+<?php if($cid==481) echo 'gedddxxxiii();';?>
+function  gedddxxxiii(){
+	var vhei=$(".vehicle_information").height();
+	
+	//alert(vhei);
+	if(vhei<'480'){
+		$(".vehicle_information").animate({height:'922px'});
+		$('.ve_inf_button').text('收起信息');
+	}
+	else{
+		$(".vehicle_kkkkk").animate({height:'461px'});
+		$('.ve_inf_button').text('查看更多');
+	}}
+    
+    
+    </script>

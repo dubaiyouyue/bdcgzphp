@@ -1,0 +1,248 @@
+
+    
+    <div class="register">
+        <div class="re_buttom">
+            <span class="re_bu_span"><a href="/index.php/Home/Sjrelogin/index/cid/486/lg/lg.html">登 录</a></span>
+            <span class="re_bu_span re_budq"><a href="/index.php/Home/Sjrelogin/index/cid/486.html">注 册</a></span>
+        </div>
+
+       
+       <div class="si_hhhhh" style="display:none;">
+            <div class="si_tt_message" onClick="$('#mmmmsssddll').show();$('#mmmmsssddllmm').hide();">
+            短信随机码登录
+            </div>
+            <div class="si_tt_message" onClick="$('#mmmmsssddll').hide();$('#mmmmsssddllmm').show();">
+            网站密码登录
+            </div>
+        </div>
+        
+        <style>.reg_immediate_entry{font-size:18px;}
+        .si_hhhhh{color:#fff; text-align: center; margin-top:8px; background: #FFC03B }
+    .si_tt_message{display: inline-block; padding:5px 10px;margin: 0px 10px;cursor:pointer; border-bottom: 2px transparent solid; }
+    .si_tt_message:hover{ box-sizing: border-box; background:#e09800}
+        .ssdfsdfsymmzmm{line-height: 41px;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    width: 110px;
+    right: 1px;cursor: pointer;background: #fff;}.reg_immediate_entry {
+    width: 100%;
+    height: 48px;
+    border-radius: 5px;
+    background: #FFC03B;
+    border: none;
+    margin: auto;
+    margin-top: 20px;
+    display: inherit;
+    color: #fff;
+}
+        </style>
+        <form onsubmit="rezc();return false;" id="myformre">
+			<div class="dx_input">
+				<div class="dx_list">
+					<span class="dx_li_nena">手机：</span>
+					<input class="kjk" type="text" name="retel" id="retel" />
+				</div>
+				<div class="dx_list">
+					<span class="dx_li_nena">密码：</span>
+					<input class="kjk" type="text" name="repass" id="repass" />
+				</div>
+				<div style="width: 90%;margin: auto;margin-top: 20px;">
+				<div class="l-captcha" data-callback="getResponsere" data-width="100%" data-site-key="<?php echo LUOSIMAO_SITE_KEY;?>"></div></div>
+				<div class="dx_list">
+					<span class="dx_li_nena">验证码：</span>
+					<input class="kjk" type="text" name="recode" id="recode" />
+					<span class="reg_ver_buttom ssdfsdfsymmzmm" onclick="getdxyzmre();">获取验证码</span>
+						<input type="hidden" name="recodeluo" id="recodeluo" />
+						<input type="hidden" name="sms_code" id="sms_code" value="0" />
+				</div>
+				<div class="dx_list" style="border: none;">
+					<button class="reg_immediate_entry" style="cursor: pointer;margin-top: 40px;">立即注册</button>
+				</div>
+			</div>
+        </form> 
+        
+
+       <!--------------------------登入 结束----------------------> 
+        
+        
+        
+        
+        
+       
+    </div>
+    
+	<script>
+function getResponsere(resp){
+     //注册
+	 $('#recodeluo').val(resp);
+}
+	
+	//注册获取验证码
+function getdxyzmre(){
+	var telephone=$('#retel').val();
+	if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+		alert('请填写正确手机号');
+		document.getElementById('retel').focus();
+		return false;
+	}
+	var luotest_response = $('#recodeluo').val();
+	if(!luotest_response){
+		alert('请点击人机识别验证');
+		return false;
+	}
+			//$('.fi_fr_button').unbind();
+			$('.reg_ver_buttom').removeAttr('onclick');
+			$('.reg_ver_buttom').text('正在发送');
+			
+			
+			//发送短信
+				$.ajax({
+					type: "POST",
+					url:'/index.php/Home/Alismsm/index.html',
+					data:$('#myformre').serialize(),
+					error: function(request) {
+						alert('服务器繁忙');
+						location.reload();
+						return false;
+					
+					
+						//alert("提交失败");
+					},
+					success: function(data) {
+						if(data=='1'){
+							alert('信息填写不完整');
+							location.reload();
+							return false;
+						}else if(data=='2'){
+							alert('人机验证错误');
+							location.reload();
+							return false;
+						}
+						if(data=='OK'){
+							//$('.fi_fr_apply').toggle();//alert('留言提交成功！');
+							//$('.fi_fr_button').text('已发送');
+							var samss='秒重新发送';
+							var samss_t=99;
+							var ssstttt=setInterval(function(){
+								$('.reg_ver_buttom').text(samss_t+samss);
+								samss_t=samss_t-1;
+								if(samss_t<1){
+									LUOCAPTCHA.reset();
+									$('#recodeluo').val('');
+									$('.reg_ver_buttom').text('获取验证码');
+									$('.reg_ver_buttom').attr("onclick","getdxyzmre();");
+									clearInterval(ssstttt);
+								}
+								//setTimeout(ssstttt, 1000);
+							}, 1000);
+							
+							
+							
+						}else{
+							alert('发送失败：'+data);
+							location.reload();
+							return false;
+						
+						}//alert("提交失败");
+						
+					}
+				});
+			
+			//end		
+}
+function rezc(){
+		//LUOCAPTCHA.reset();
+		
+		//var luotest_response = $("input[name='luotest_response']").val();
+		//if(!luotest_response){
+		//alert($('.registered').css('display'))
+		
+		var telephone=$('#retel').val();
+		if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+			alert('请填写正确手机号');
+			document.getElementById('retel').focus();
+			return false;
+		}
+		var repass=$('#repass').val();
+		if(!repass){
+			alert('请填写密码');
+			document.getElementById('repass').focus();
+			return false;
+		}
+		
+		var luotest_response = $('#recodeluo').val();
+		if(!luotest_response){
+			alert('请点击人机识别验证');
+			return false;
+		}
+		var recode=$('#recode').val();
+		if(!recode){
+			alert('请填写手机验证码');
+			document.getElementById('recode').focus();
+			return false;
+		}
+		
+
+		
+		
+		
+			//$('.fi_fr_buttonkksa').removeAttr('onclick');
+			$('.reg_immediate_entry').text('正在注册..');
+			$.ajax({
+				type: "POST",
+				url:'/index.php/Home/Usermember/re.html',
+				data:$('#myformre').serialize(),
+				error: function(request) {
+					alert('服务器繁忙');
+					location.reload();
+					return false;
+				
+				
+					//alert("提交失败");
+				},
+				success: function(data) {
+					if(data=='1'){
+						alert('信息填写不完整');
+						location.reload();
+						return false;
+					}else if(data=='3'){
+						LUOCAPTCHA.reset();
+						$('#recodeluo').val('');
+						alert('手机验证码错误');
+						$('.reg_immediate_entry').text('立即注册');
+						return false;
+					}else if(data=='4'){
+						alert('手机验证码已过期');
+						location.reload();
+						return false;
+					}
+					if(data=='addok'){
+						alert('注册成功');
+						location.href = '/index.php/Home/Memberuser/index';
+						//location.reload();
+						return false;
+						
+					}else{
+						alert('服务器繁忙');
+						location.reload();
+						return false;
+					
+					}//alert("提交失败");
+					
+				}
+			});
+		
+		
+		
+		
+		
+}
+</script>
+	
+	
+	
+	
+<!-----------------------------------内容 结束-------------------------------------->
+	

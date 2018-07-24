@@ -1,0 +1,70 @@
+
+
+<!--------------------------------内容 开始------------------------------->
+
+<div class="ne_content">
+	<div class="title">
+		<div class="title_top">
+			<div class="ti_left"><span></span></div>
+			<div class="ti_word">
+				<p class="ti_c">{$lan.name}</p>
+			</div>
+			<div class="ti_rigth"><span></span></div>
+		</div>
+		<p class="ti_e">{$lan.enname}</p>
+	</div>
+	
+	<div class="br_content">
+	
+		<div class="br_co_list">
+			<foreach name="list" item="r" key="k" >
+			<?php
+					if(($k%2)){
+				?>
+			<div class="br_li_aech">
+				<a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/462/id/{$r.id}.html">
+					<div class="br_ae_img" style="background: url({$r.imgurl}) no-repeat center; background-size:cover;"></div>
+					<div class="br_ae_word">
+						<p class="br_ae_title">{$r.title}</p>
+						<div class="br_ae_line"></div>
+						<p class="br_ae_p">{$r.description}</p>
+					</div>
+				</a>
+			</div>
+	<?php
+						}else{
+						?>
+			<div class="br_li_aech">
+				<a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/462/id/{$r.id}.html">
+					<div class="br_ae_word">
+						<p class="br_ae_title">{$r.title}</p>
+						<div class="br_ae_line"></div>
+						<p class="br_ae_p">{$r.description}</p>
+					</div>
+					<div class="br_ae_img" style="background: url({$r.imgurl}) no-repeat center; background-size:cover;"></div>
+					
+				</a>
+			</div>
+	
+
+	<?php
+						}
+					?>
+	
+	</foreach>
+	
+	
+		</div>
+	
+	</div>
+	
+	
+	
+	
+</div>
+
+<!--------------------------------内容 结束------------------------------->
+
+	
+	
+	

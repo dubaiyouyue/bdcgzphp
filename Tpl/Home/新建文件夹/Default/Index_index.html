@@ -1,0 +1,2334 @@
+{__NOLAYOUT__}<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$seo_title}</title>
+<style>
+.swiper-container{display:none;}
+</style>
+<link rel="stylesheet" href="css/css.css">
+<link rel="stylesheet" href="css/style.css">
+
+     
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<script src="layer/layer.js"></script><!--弹框-->
+    
+<link rel="stylesheet" href="css/idangerous.swiper.css"><!--bannerCSS-->
+	<!--弹框-->
+		<link rel="stylesheet" href="/edbox/app.css?1">
+		<script src="/edbox/app.js"></script>
+	<!--end-->
+    
+</head>
+
+<body>
+    <!--------------------------------------头部 开始--------------------------------->
+    <div id="top" class="wb pr">
+        <!------背景左右50%-------->
+        <div class="wb100 h150 pa zi-10">
+            <div class="wb50 h150 bcFFC13C fl"></div>
+            <div class="top_ba_rigth wb50 h150 fl"></div>
+        </div>
+        <!------------头部LOGO，导航----------------->
+        <div class="top_middle wmm1200 bcred h150">
+            
+            <!--logo-->
+            <div class="top_logo bcFFC13C h150 w290 fl">
+                <a href="/"><img class="pt15 pl20" src="{$config_info.gz_logo}"/></a>
+            </div>
+            
+            <!---------电话--------->
+            <div class="fr mt10">
+                <img class="w33 h33 fl" src="images/index_r3_c2.png"/>
+                <p class="fwb fs24 fcfff di ml20 mt5">{$config_info.gz_footteldianhua}</p>
+            </div>
+            
+            <!--导航  开始-->
+            <div class="top_nav b1t w700 di ml60">
+                <ul class="top_ul mt45 tac">
+                    <li class="dq">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                   <foreach name="new_column_list_top" item="r" key="k" >
+               <li class="in_nav_li"><div class="on <?php
+        if($foldername==$r['foldername']) echo 'zzzzz';
+
+      ?>"></div><a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html"">{$r.name}</a></li>
+			    </foreach>
+                </ul>
+            </div>
+            <!--导航  结束-->
+            
+            
+			<?php
+				if($user_tel){
+				?><style>
+                #name a{overflow: hidden;-o-text-overflow: ellipsis;text-overflow: ellipsis;text-align: left;word-break: break-all;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp:1;}
+            
+            </style>
+            <div class="w130 h25 bl2s di b1t ml15" style="display:inline-block;vertical-align:top;margin-top:50px;">
+                <img class="ml35 mt5 di vea" src="/images/top2.png"/>
+                <p class="ml10" id="name"><a href="/index.php/Home/Memberuser/index">{$user_tel}</a></p>
+            </div>
+				
+				<?php
+					
+				}else{
+				?>
+            <div class="w130 h25 bl2s di b1t ml15" style="display:inline-block;vertical-align:top;margin-top:50px;">
+                <img class="ml35 mt5 di vea" src="/images/top2.png"/>
+                <div class="di cp" onclick="$('.sign_in').toggle();LUOCAPTCHA.reset();">登录</div>
+                <div class="di">/</div>
+                <div class="di cp" onclick="$('.registered').toggle();LUOCAPTCHA.reset();">注册</div>
+            </div>
+				
+				<?php
+				}
+			?>
+			
+			
+            <!--登录、注册-->
+            
+            
+        </div>
+    </div>
+    <!--------------------------------------头部 结束--------------------------------->
+    
+    
+    
+    
+    <!-----banner 开始------>
+
+
+ <style>
+
+.device {width: 100%;height: 100%;background: #111; position: relative;}
+	 /*------------------左右按钮-----------------*/
+	 .buttom{width:100%; margin: auto; position:absolute; top:51%; margin-top:-22.5px; z-index: 999}
+.device .arrow-left {background:url(images/anniu_05.png) no-repeat center center;position: absolute;left:60px; width:70px; height: 45px; z-index: 999}
+.device .arrow-right {background:url(images/anniu_03.png )no-repeat center center;position: absolute; right:60px;width: 70px; height:45px; z-index: 999}
+	 
+	 
+.swiper-container {width: 100%;height: 100%;}
+.content-slide {padding: 20px;color: #fff;}
+.title {font-size: 25px;margin-bottom: 10px;}
+.pagination {position: absolute;z-index: 20;bottom:17px;width: 100%;text-align: center;}
+	 
+	 /*------------轮播点---------*/
+/*.swiper-pagination-switch {display: inline-block;width:8px;height: 8px; border-radius: 8px;background-color:#ffd17d;margin: 0 5px;opacity: 0.8;cursor: pointer;display: block;margin-left: 18px;display: inline-block;border-radius:25px;-moz-border-radius:25px;}
+.swiper-active-switch {background:transparent;border: 1px solid #ffd17d;opacity: 1;width:10px;height:10px;display: block;display: inline-block;border-radius:25px;-moz-border-radius:25px;margin-bottom:-1px;}*/
+.bj>.in_news>.neih>.xinw>a>.meige>.ner>p{height:38px;}
+
+
+.swiper-wrapper img{display:block;}
+
+  </style>
+
+<div class="device">
+   <div class=" buttom">
+    <a class="arrow-left" style="cursor: pointer;"></a> 
+    <a class="arrow-right" style="cursor: pointer;"></a>
+    </div>
+	<div id="sdafasdfdsimgmmm"><img src="{$blist.0.img_path}" width="100%" /></div>
+    <div class="swiper-container">
+     
+      <div class="swiper-wrapper">
+        <foreach name="blist" item="r" key="k" >
+			 
+            	 <div class="swiper-slide" ><img src="{$r.img_path}" style="width: 100%; "></div>
+				
+				</foreach>
+	  </div>
+   
+    </div>
+    
+    <div class="pagination"></div>
+</div>
+
+
+<script src="js/idangerous.swiper.min.js"></script>
+  <script>
+  $(document).ready(function(){
+		var mySwiper = new Swiper('.swiper-container',{
+		autoplay : 5000,//可选选项，自动滑动
+		loop : true,//可选选项，开启循环
+		calculateHeight : true,
+		pagination : '.pagination',
+		paginationClickable :true,
+		roundLengths : true,slidesPerView : 1,autoResize : true,
+		resizeReInit : true,
+		/*
+prevButton:'.arrow-left',
+nextButton:'.arrow-right',*/
+		
+	
+		})
+	$('#sdafasdfdsimgmmm').hide();
+    $(".swiper-slide img").each(function(){
+    $(this).show();
+  });
+  
+$('.arrow-left').click(function(){
+mySwiper.swipePrev(); 
+})
+  $('.arrow-right').click(function(){
+mySwiper.swipeNext(); 
+})
+  
+});
+ 
+</script>
+    
+
+	
+<!-----banner 结束------>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <!--------------------------首页搜索栏 开始------------------------------->
+    <div id=""  class="pr">
+        
+        <div id="in_search" class="wmm1200 clearUl ">
+
+            <!--我要买车 开始-->
+            <div id="in_buy" class="fl mt23 ml100 w650 mb100">
+                <div class="di fs25 fwb fcE100 vea mt5">我要买车<img class="ml10" src="images/index2.png"/></div>
+                
+                <form class="di" onsubmit="return false;">
+                    <div id="in_search_box" class="ml195 vea">
+                        <input class="ml10 h25 bsn w240 mt2 fl" type="text" id="sckeyword" placeholder="搜索你想要的车"/>
+                        <button class="bobt mt6 fl ml5" type="submit" onclick="secars();" style="cursor: pointer;"><img src="images/index1_r5_c6.png"/></button>
+                    </div>
+                </form>
+            <script>
+				function secars(){
+					var sckeyword=$('#sckeyword').val();
+					if(!sckeyword){
+						$.edbox({
+							html:'<div class="example-html">请填写搜索关键词</div>',
+							////animateOpen:'animated tada',
+							//animateClose:'animated flipOutX',
+							afterClose:function(){
+								document.getElementById('sckeyword').focus();
+							}
+						});
+						return false;
+					}
+					var url='/index.php/Home/Productcs/index/cid/461/sckeyword/'+sckeyword;
+					location.href = url;
+				}
+			</script>
+                
+                <div id="mmahesssauto" class="mt25" style="height:  95px;overflow: hidden;">
+                    <div id="in_vehicle" class="wb100 in_vehiclewb100" style="height:  22px;line-height:  22px;overflow:  hidden;position:relative;">
+                        
+						<?php
+							$hhyy=explode("\r\n",$config_info['gz_remenpp']);
+							foreach($hhyy as $hk=>$hv){
+								$nhv=explode('|',$hv);
+								echo '<span><a href="/index.php/Home/Productcs/index/cid/461/oneid/'.$nhv['1'].'.html">'.$nhv['0'].'</a></span>';
+							}
+						?>
+						
+						
+                        <span><a href="javascript:;" style="position: absolute;top: 0px;right: 0px;background: #fff;padding-left: 15px;" onclick="$('.in_vehiclewb100').css('height','auto');$(this).hide();$('#mmahesssauto').css('overflow','auto');">更多<img class="ml10 vea mt10" src="images/index1_r7_c4.png"/></a></span>
+                        
+                    </div>
+                    
+                    
+                    <div id="in_vehicle" class="wb100" style="height:  22px;line-height:  22px;overflow:  hidden;position:relative;">
+                        
+
+				<?php
+							$cssjiage=$_GET['maxjiage'];
+							
+					$hhyy=explode("\r\n",$config_info['gz_jgqj']);
+					foreach($hhyy as $hk=>$hv){
+						$nhv=explode('-',$hv);
+
+						if(!$hk){
+							$cminjiage=0;
+							$cmaxjiage=$nhv['0']+0; //第一个一下价格
+						}else if($hk==count($hhyy)){
+							$cminjiage=$nhv['1']+0;
+							$cmaxjiage=0; //最后一个以上价格
+						}else{
+							$cminjiage=$nhv['0']+0;
+							$cmaxjiage=$nhv['1']+0;
+						}
+						
+						
+						echo '<span><a href="/index.php/Home/Productcs/index/cid/461/minjiage/'.$cminjiage.'/maxjiage/'.$cmaxjiage.'">'.$hv.'</a></span>';
+					}
+					?>
+						
+						
+                    </div>
+                    
+                    <div id="in_vehicle" class="wb100" style="height:  22px;line-height:  22px;overflow:  hidden;position:relative;">
+                       
+						<?php
+							$hhyy=explode("\r\n",$config_info['gz_remenppress']);
+							foreach($hhyy as $hk=>$hv){
+								$nhv=explode('|',$hv);
+								echo '<span><a style="';
+								if($nhv['1']) echo 'color:'.$nhv['1'].';';
+								echo '" href="/index.php/Home/Productcs/index/cid/461/sckeyword/'.$nhv['0'].'">'.$nhv['0'].'</a></span>';
+							}
+						?>
+                    </div>
+            
+                </div>
+            
+            
+            </div>
+         
+            
+            
+            
+            <!--我要买车 结束-->
+
+
+
+
+            <!--我要卖车 开始-->
+            <div id="in_sell" class="fl ml85 mt23">
+                <div class="di fs25 fwb fc202E vea mt3 di vea">我要卖车<img class="ml10" src="images/index3.png"/></div>
+                <div class="fc202E di vea ml10 fs12">已有 <span class="fcfff fs25 fwb"><?php echo ($config_info['gz_headFaxess']+$cjlistccnum);?></span>  人成功卖车</div>
+                <form name="myform" id="myform" method="POST" action="">
+                    <div id="in_se_input" class="w268 h39 mt20">
+                        <input class="w250 h35 bobt ml10 mt2" type="text" name="tel" id="teltelteltel" placeholder="输入您手机号码"/>
+						
+                        <input name="message" type="hidden" value="2"/>
+						<div class="l-captcha" data-site-key="<?php echo LUOSIMAO_SITE_KEY;?>" data-width="290" style="display:none;"></div>
+						
+                    </div>
+                  
+                </form>
+                
+                <button class="in_se_buttom1"><a href="javascript:;" onclick="xxpd();">免费卖车</a></button>
+                <button class="in_se_buttom2" onclick="$('.in_valuation_bu').toggle();"><a href="javascript:;">帮我估价</a></button>
+                
+            </div>
+            
+            <script>
+
+				function  xxpd(){
+						
+						var telephone=$('#teltelteltel').val();
+						//var company=$('#company').val();
+						//var message=$('#message').val();
+						
+						/*
+						if(!name){
+							alert('请填写姓名');
+							document.getElementById('name').focus();
+							return false;
+						}
+				*/
+						if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+								$.edbox({
+									html:'<div class="example-html">请填写正确手机号</div>',
+									//animateOpen:'animated tada',
+									//animateClose:'animated flipOutX',
+									afterClose:function(){
+										document.getElementById('teltelteltel').focus();
+									}
+								});
+								return false;
+						}
+
+						
+						if($('#teltelteltel').css('display')=='inline-block'){
+							$('#teltelteltel').hide();
+							$('.l-captcha').show();
+							return false;
+						}
+						
+							var luotest_response = $("input[name='luotest_response']").val();
+							if(!luotest_response){
+								$.edbox({
+									html:'<div class="example-html">请点击人机识别验证</div>',
+									//animateOpen:'animated tada',
+									//animateClose:'animated flipOutX'
+									/*,afterClose:function(){
+										document.getElementById('tel').focus();
+									}*/
+								});
+								return false;
+							}
+						
+						/*
+						if(!youxiang('email') || !email){
+							alert('请填写正确邮箱');
+							document.getElementById('email').focus();
+							return false;
+						}
+						*/
+						/*if(!company){
+							alert('请填写公司');
+							document.getElementById('company').focus();
+							return false;
+						}*/
+						/*
+						if(!message){
+							alert('请填写留言');
+							document.getElementById('message').focus();
+							return false;
+						}
+						*/
+							
+							$('.in_se_buttom1').removeAttr('onclick');
+							$('.in_se_buttom1').text('正在提交..');
+							$.ajax({
+								type: "POST",
+								url:'/index.php?g=User&m=Post&a=Message&ajax=ajax',
+								data:$('#myform').serialize(),
+								error: function(request) {
+									$.edbox({
+										html:'<div class="example-html">服务器繁忙</div>',
+										//animateOpen:'animated tada',
+										//animateClose:'animated flipOutX',
+										afterClose:function(){
+											location.reload();
+										}
+									});
+									return false;
+								},
+								success: function(data) {
+									if(data=='addok'){
+										$('.free_selling_cars').toggle();//alert('留言提交成功！');
+									}else if(data=='2'){
+										LUOCAPTCHA.reset();
+										$.edbox({
+											html:'<div class="example-html">人机验证错误</div>',
+											//animateOpen:'animated tada',
+											//animateClose:'animated flipOutX',
+											afterClose:function(){
+												location.reload();
+											}
+										});
+										return false;
+									}else{
+										$.edbox({
+											html:'<div class="example-html">服务器繁忙</div>',
+											//animateOpen:'animated tada',
+											//animateClose:'animated flipOutX',
+											afterClose:function(){
+												location.reload();
+											}
+										});
+										return false;
+									}
+									
+								}
+							});
+					}
+			</script>
+            
+            
+            <!--------------------------------免费卖车按钮 开始---------------------------------------->
+    <style>
+        .free_selling_cars{width: 100%; height: 100%; background: url(images/background.png) repeat;position:fixed;top: 0px;left: 0px;z-index: 9999}
+        .sel_ca_box{width: 500px; height:300px; margin: auto;top:50%;margin-top:-150px;left:50%;margin-left:-250px; background: #fff; position: relative; border: 4px #E5E5E5 solid;}
+        .sel_ca_button{width:48px; height:48px; border: none; background: none; position: absolute; top:10px; right: 10px; cursor: pointer;}
+        .sel_ca_button img{max-width: 100%; width: 100%;}
+        .sel_ca_bo_successful{text-align: center; margin-top:80px;}
+        .sel_ca_bo_successful img{margin-left: -25px;vertical-align: top;}
+        .sel_ca_span{font-size:30px; color: #3B3B3B; font-weight: bold; margin-top: 10px;vertical-align: top; display: inline-block; margin-left: 15px;}
+        .sel_ca_p{text-align: center; color: #E1E1E1; margin-top:60px;}
+    </style>
+    <div class="free_selling_cars" style="display: none">
+        <div class="sel_ca_box">
+            <button class="sel_ca_button" onclick="$('.free_selling_cars').toggle();location.reload();"><img src="images/sign_in_r1_c3.jpg"/></button>
+            <p class="sel_ca_bo_successful">
+                <img src="images/details1_03.png"/>
+                <span class="sel_ca_span">提交成功</span>
+            </p>
+            <p class="sel_ca_p">*工作人员会尽快与您联系，请留意手机</p>
+        </div>
+    </div>
+    
+    
+    <!--------------------------------免费卖车按钮 结束---------------------------------------->
+            
+            
+            
+            
+    <!---------------------------------免费估价 开始--------------------------------->
+            
+            
+       <style>
+        .in_valuation_bu{width: 100%; height: 100%; background: url(images/background.png) repeat;position:fixed;top: 0px;left: 0px;z-index: 99999999}
+        .in_va_box{width:720px; height:480px; margin: auto;top:50%;margin-top:-240px;left:50%;margin-left:-360px; background: #fff; position: relative; border: 4px #E5E5E5 solid;}
+          .in_va_button{width:48px; height:48px; border: none; background: none; position: absolute; top:10px; right: 10px; cursor: pointer;}
+        .in_va_button img{max-width: 100%; width: 100%;} 
+       .in_va_word{width: 563px;margin:auto;}
+
+       .in_va_p{text-align: center;color: #505050;font-size: 19px;margin-top: 30px; margin-bottom: 40px;}
+       .in_va_location{margin-bottom: 15px;}
+       .in_va_title{width: 102px;display: inline-block;vertical-align: top;margin-top:8px; font-size: 16px;}
+       .in_va_lo1{width: 224px; height: 38px; border: #E1E1E1 1px solid; display: inline-block;vertical-align: top;border-radius:5px;position: relative}
+       .in_va_se{width:224px; height:38px; border: none;outline:none;border-radius:5px;
+           }
+           select::-ms-expand { display: none; }
+       .in_va_lo1:after{content: "";width:38px;height:38px;background: url(images/2_03.png) no-repeat center;position: absolute;right:0px;top:0;pointer-events: none;cursor: pointer;}
+           .in_va_se option{height: 32px;line-height: 32px;padding: 0px 5px;cursor: pointer;appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;} 
+           
+           
+           
+           
+           .in_va_lo2{width: 109px; height: 38px; border: #E1E1E1 1px solid; display: inline-block;vertical-align: top;border-radius:5px;position: relative}
+           .in_va_se2{width: 109px; height: 38px; border: none;outline:none;border-radius:5px}
+           .in_va_lo2:after{content: "";width:38px;height:38px;background: url(images/2_03.png) no-repeat center;position: absolute;right:0px;top:0;pointer-events: none;cursor: pointer;}
+           
+           .in_va_lo3{width: 224px; height: 38px; border: #E1E1E1 1px solid; display: inline-block;vertical-align: top;border-radius:5px;position: relative}
+           .in_va_se3{width: 224px; height: 38px; border: none;outline:none;border-radius:5px}
+           .in_va_lo3:after{content: "";width:38px;height:38px;background: url(images/2_03.png) no-repeat center;position: absolute;right:0px;top:0;pointer-events: none;cursor: pointer;}
+           
+           
+           .in_va_lo4{width: 224px; height: 38px; border: #E1E1E1 1px solid; display: inline-block;vertical-align: top;border-radius:5px;position: relative}
+       .in_va_se4{width:224px; height:38px; border: none;outline:none;border-radius:5px}
+       .in_va_lo4:after{content: "";width:38px;height:38px;background: url(images/2_03.png) no-repeat center;position: absolute;right:0px;top:0;pointer-events: none;cursor: pointer;}
+           
+          /*--------行驶里程 开始-------*/ 
+           .in_va_lc{width: 454px; height: 38px; border: #E1E1E1 1px solid; display: inline-block;vertical-align: top;border-radius:5px;position: relative}
+           .in_va_lc input{width: 390px; height: 30px; margin-left: 10px; margin-top: 4px;}
+          /*--------行驶里程 结束-------*/ 
+           
+           
+         /*-----------接收手机 开始---------------*/
+        .in_va_tell{width: 454px; height: 38px; border: #E1E1E1 1px solid; display: inline-block;vertical-align: top;border-radius:5px;position: relative}
+           .in_va_tell input{width: 390px; height: 30px; margin-left: 10px; margin-top: 4px;}
+         /*-----------接收手机 结束---------------*/
+           .in_va_p_tell{font-size: 14px; color: #FFC13C; text-align: right;}
+           .in_va_button22{cursor: pointer;width: 339px; height: 35px; background: #FFC13C; margin-left:107px; border: none; margin-top: 20px;color: #fff;}
+           
+           
+    </style>
+    <div class="in_valuation_bu" style="display: none">
+        <div class="in_va_box">
+        <button class="in_va_button" onclick="$('.in_valuation_bu').toggle();"><img src="images/sign_in_r1_c3.jpg"/></button>  
+            
+        <div class="in_va_word">
+            <p class="in_va_p">先估计在卖车，心里呗有底</p>
+            
+            <form name="myformggjjj" id="myformggjjj" method="POST" action="">
+            
+
+                <div class="in_va_location">
+                    <span class="in_va_title">卖车地点</span>
+                    <div class="in_va_lc">
+                        <input  type="text" name="mcdd" id="gjmcdd" placeholder=""/>
+                    </div>
+                </div>
+                
+                
+                <div class="in_va_location">
+                    <span class="in_va_title">车型</span>
+                    <div class="in_va_lc">
+                        <input  type="text" name="mccx" id="gjmccx" placeholder=""/>
+                    </div>
+                </div>
+                
+                 <div class="in_va_location">
+                    <span class="in_va_title">上牌时间</span>
+                    <div class="in_va_lc">
+                        <input  type="text" name="mcspsj" id="gjmcspsj" placeholder=""/>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="in_va_location">
+                    <span class="in_va_title">行驶里程</span>
+                    <div class="in_va_lc">
+                        <input  type="text" name="mcxslc" id="gjmcxslc" placeholder=""/>
+                        <span class="in_va_lc_span">万公里</span><input name="message" type="hidden" value="5"/>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="in_va_location">
+                    <span class="in_va_title">接收手机</span>
+                    <div class="in_va_tell">
+                        <input type="text" name="tel" id="ggjjctel" placeholder="请输入手机号码"/>
+                       
+                    </div>
+                </div>
+                
+                <p class="in_va_p_tell">咨询电话：{$config_info.gz_footteldianhua2}</p>
+            
+            </form>
+            
+            <button class="in_va_button22" onclick="xxpdgjj();">提交信息</button>
+            
+            
+            
+            <script>
+					//$('.in_valuation_bu').toggle();
+				function  xxpdgjj(){
+						var gjmcdd=$('#gjmcdd').val();
+						var gjmccx=$('#gjmccx').val();
+						var gjmcspsj=$('#gjmcspsj').val();
+						var gjmcxslc=$('#gjmcxslc').val();
+						var telephone=$('#ggjjctel').val();
+						//var company=$('#company').val();
+						//var message=$('#message').val();
+						
+						/*
+						if(!name){
+							alert('请填写姓名');
+							document.getElementById('name').focus();
+							return false;
+						}
+				*/
+						if(!gjmcdd){
+								$.edbox({
+									html:'<div class="example-html">请填写卖车地点</div>',
+									//animateOpen:'animated tada',
+									//animateClose:'animated flipOutX',
+									afterClose:function(){
+										document.getElementById('gjmcdd').focus();
+									}
+								});
+								return false;
+						}
+						if(!gjmccx){
+								$.edbox({
+									html:'<div class="example-html">请填写车型</div>',
+									//animateOpen:'animated tada',
+									//animateClose:'animated flipOutX',
+									afterClose:function(){
+										document.getElementById('gjmccx').focus();
+									}
+								});
+								return false;
+						}
+						if(!gjmcspsj){
+								$.edbox({
+									html:'<div class="example-html">请填写上牌时间</div>',
+									//animateOpen:'animated tada',
+									//animateClose:'animated flipOutX',
+									afterClose:function(){
+										document.getElementById('gjmcspsj').focus();
+									}
+								});
+								return false;
+						}
+						if(!gjmcxslc){
+								$.edbox({
+									html:'<div class="example-html">请填写行驶里程</div>',
+									//animateOpen:'animated tada',
+									//animateClose:'animated flipOutX',
+									afterClose:function(){
+										document.getElementById('gjmcxslc').focus();
+									}
+								});
+								return false;
+						}
+						if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+								$.edbox({
+									html:'<div class="example-html">请填写正确手机号</div>',
+									//animateOpen:'animated tada',
+									//animateClose:'animated flipOutX',
+									afterClose:function(){
+										document.getElementById('ggjjctel').focus();
+									}
+								});
+								return false;
+						}
+						
+						/*
+						if(!youxiang('email') || !email){
+							alert('请填写正确邮箱');
+							document.getElementById('email').focus();
+							return false;
+						}
+						*/
+						/*if(!company){
+							alert('请填写公司');
+							document.getElementById('company').focus();
+							return false;
+						}*/
+						/*
+						if(!message){
+							alert('请填写留言');
+							document.getElementById('message').focus();
+							return false;
+						}
+						*/
+							
+							$('.in_va_button22').removeAttr('onclick');
+							$('.in_va_button22').text('正在提交..');
+							$.ajax({
+								type: "POST",
+								url:'/index.php?g=User&m=Post&a=Message&ajax=ajax',
+								data:$('#myformggjjj').serialize(),
+								error: function(request) {
+									$.edbox({
+										html:'<div class="example-html">服务器繁忙</div>',
+										//animateOpen:'animated tada',
+										//animateClose:'animated flipOutX',
+										afterClose:function(){
+											location.reload();
+										}
+									});
+									return false;
+								},
+								success: function(data) {
+									if(data=='addok'){
+										$.edbox({
+											html:'<div class="example-html">提交成功</div>',
+											//animateOpen:'animated tada',
+											//animateClose:'animated flipOutX',
+											afterClose:function(){
+												location.reload();
+											}
+										});
+										return false;
+										
+									}else if(data=='2'){
+										LUOCAPTCHA.reset();
+										$.edbox({
+											html:'<div class="example-html">人机验证错误</div>',
+											//animateOpen:'animated tada',
+											//animateClose:'animated flipOutX',
+											afterClose:function(){
+												location.reload();
+											}
+										});
+										return false;
+									}else{
+										$.edbox({
+											html:'<div class="example-html">服务器繁忙</div>',
+											//animateOpen:'animated tada',
+											//animateClose:'animated flipOutX',
+											afterClose:function(){
+												location.reload();
+											}
+										});
+										return false;
+									}
+									
+								}
+							});
+					}
+			</script>
+			
+			
+			
+            <!--------------------------------估价提示 开始---------------------------------------->
+    <style>
+        .in_va_cars{width: 100%; height: 100%; background: url(images/background.png) repeat;position:fixed;top: 0px;left: 0px;z-index: 9999}
+        .in_va_cabox{width: 500px; height:300px; margin: auto;top:50%;margin-top:-150px;left:50%;margin-left:-250px; background: #fff; position: relative; border: 4px #E5E5E5 solid;}
+        .in_va_ca_button{width:48px; height:48px; border: none; background: none; position: absolute; top:10px; right: 10px; cursor: pointer;}
+        .in_va_ca_button img{max-width: 100%; width: 100%;}
+        .in_va_ca_bo_successful{text-align: center; margin-top:80px;}
+        .in_va_ca_bo_successful img{margin-left: -25px;vertical-align: top;}
+        .in_va_ca_span{font-size:30px; color: #3B3B3B; font-weight: bold; margin-top: 10px;vertical-align: top; display: inline-block; margin-left: 15px;}
+        .in_va_ca_p{text-align: center; color: #E1E1E1; margin-top:60px;}
+    </style>
+    <div class="in_va_cars" style="display: none">
+        <div class="in_va_cabox">
+            <button class="in_va_ca_button" onclick="$('.in_valuation_bu').toggle();"><img src="images/sign_in_r1_c3.jpg"/></button>
+            <p class="in_va_ca_bo_successful">
+                <img src="images/details1_03.png"/>
+                <span class="in_va_ca_span">提交成功</span>
+            </p>
+            <p class="in_va_ca_p">*工作人员会尽快与您联系，请留意手机</p>
+        </div>
+    </div>
+    
+    
+    <!--------------------------------估价提示 结束---------------------------------------->
+            
+            
+            
+        </div>
+            
+            
+        </div>
+    </div>     
+            
+            
+            
+    <!---------------------------------免费估价 结束--------------------------------->
+            
+            
+            
+            
+            
+            
+            
+            
+            <!--我要卖车 结束-->
+
+
+
+        </div>
+
+     </div>   
+        <!--------------------------首页搜索栏 结束------------------------------->   
+    
+    <div class="in_service">
+    
+        <div class="in_se_middle">
+            <!--标题-->
+            <div class="in_se_title" style="font-size:0">
+                <p class="in_se_ti_chinese">服务保障</p>
+                <p class="in_se_ti_english">SERVICE GUARANTEE</p>
+                <img class="in_se_ti_img" src="images/index_r16_c47.png"/>
+            </div>
+            
+            <!--列表 开始-->
+            
+            <div class="in_se_list">
+			
+			
+			<!--开始-->
+			<div class="swiper-containerssss" style="width: 1166px;overflow: hidden;">
+				 
+				  <div class="swiper-wrapper" style="height: 333px;overflow:hidden;">
+			
+            <foreach name="fwbzlist" item="r" key="k" >
+				<div class="swiper-slide">
+                <div class="in_se_each">
+                    <a href="/index.php/Home/Newsshow/index/cid/482/c/482/id/{$r.id}.html">
+                        <div class="in_ea_background" style=" background:url({$r.imgurl}) no-repeat top center; background-size:100%;">
+                            <div class="in_ea_word">
+                                <div class="in_ea_wo_title"><span class="in_se_ti_line"></span><span class="in_se_kakjfb">{$r.title}</span></div>
+                                <span class="in_wo_span">{$r.description}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div></div>
+            </foreach></div></div>
+			
+
+			
+			
+                <!--end-->
+    
+    
+            </div>
+            <!--列表结束-->
+            
+            <!--左右按钮 开始-->
+            <div class="in_li_botton">
+                <button class="in_se_li_left"></button>
+                <button class="in_se_li_rigth"></button>
+            </div>
+            <!--左右按钮 结束-->
+
+	<script> 
+		var mySwfwwwiper = new Swiper('.swiper-containerssss',{
+		slidesPerView : 3,
+		slidesPerGroup : 3,loop : true,
+		//pagination : '.in_li_botton',
+		//paginationClickable :true,//createPagination :false,
+		})
+		
+$('.in_se_li_left').click(function(){
+mySwfwwwiper.swipePrev(); 
+})
+  $('.in_se_li_rigth').click(function(){
+mySwfwwwiper.swipeNext(); 
+})
+		
+	</script>
+			
+			
+			
+			
+        </div>
+    
+    </div>
+    
+    
+
+
+<!---------------------金融+买车 开始------------------------->
+<div class="in_financ">
+
+{$config_info.gz_footother}
+
+    <!-----------买车 开始------------>
+    <div class="in_fi_box">
+        <div class="in_fi_left">
+		
+		
+		<foreach name="necliissfq" item="r" key="k" >
+            <div class="in_fi_le_li">
+                <a href="{$r.fctitleflj}">
+                    <div class="in_fi_le_word">
+                        <p class="in_fi_le_p">{$r.title}</p>
+                        <span class="in_fi_le_span">{$r.fctitleo}</span>
+                    </div>
+                    <div class="in_fi_le_img" style=" background:url({$r.imgurl})no-repeat center center; background-size: cover;"></div>
+                </a>
+            </div>
+        </foreach>  
+            
+        </div>
+        
+        
+        
+        <div class="in_fi_rigth" style="background: url({$necliissfqright.0.imgurl}) top center;">
+            <a href="{$necliissfqright.0.fctitleflj}">
+                <div class="in_fi_ti_word" style="height:274px;">
+                    <span class="in_fi_ti_line"></span>
+                    <div class="in_fi_wo_p">
+                        <p class="in_fi_ri_title">{$necliissfqright.0.title}</p>
+                        <p class="in_fi_ri_p">{$necliissfqright.0.fctitleo}</p>
+                        <span class="in_fi_ri_span">{$necliissfqright.0.fctitlef}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+    </div>
+    <!-----------买车 结束------------>
+
+
+</div>
+<!---------------------金融+买车 结束------------------------->  
+
+
+
+<style>.in_es_ti_slogan{margin-top:10px;}
+.in_es_ti_p{line-height:30px;}
+</style>
+<!-------------------------卖车 开始--------------------------->
+<div class="in_sell">
+    
+    <div class="in_se_background">
+        <div class="in_se_ba_left"></div>
+        <div class="in_se_ba_rigth"></div>
+    </div>
+    <div class="in_sel_middle" style="overflow: hidden;">
+        
+        <div class="in_es_title">
+            <span class="in_se_ti_c">保卖车</span>
+            <div class="in_es_ti_slogan clearUl">
+                <img src="images/index8_r1_c1.png"/>
+                <p class="in_es_ti_p" style="line-height: 29px;">限时出售 |  性价比高</p>
+                <img src="images/index8_r1_c3.png"/>
+            </div>
+        </div>
+        
+        <div class="in_se_mi_con" style="position:relative;">
+		
+		
+		
+						<!--开始-->
+				<div class="swiper-contssst" style="width: 449px;overflow: hidden;float: left;">
+					 
+					  <div class="swiper-wrapper">
+		<foreach name="bmmccc" item="r" key="k" ><div class="swiper-slide">
+            <a href="/index.php/Home/Productcshow/index/cid/461/c/461/id/{$r.id}.html" ><div class="in_se_mi_left">
+                <div class="in_se_lf_img" style="background: url({$r.imgurl}) no-repeat center center; background-size: cover;">
+                    <p>{$r.title}</p>
+                </div>
+                
+            </div></a>
+            </div>
+		</foreach>
+</div></div><!--end--><img src="images/index_r44_c20.png" class="in_se_li_rigthsssfsdafasd" />
+				<style>.in_se_li_rigthsssfsdafasd{
+    position: absolute;
+    left: 50%;
+    top: 66px;
+    margin-left: -151px;cursor:pointer;}.insdfdbbzhisscc{position: absolute;
+    top: 169px;
+    left: 50%;
+    margin-left: 23px;cursor: pointer;}
+				</style>
+			<script> 
+				var mySwssiper = new Swiper('.swiper-contssst',{
+				slidesPerView : 1,
+				slidesPerGroup : 1,loop : true,
+				//pagination : '.haohhccttt',
+				/*paginationVisibleClass : 'pa_esch',
+				paginationActiveClass : 'pa_eschpa_dq',*/
+				paginationClickable :true,//createPagination :false,
+				})
+  $('.in_se_li_rigthsssfsdafasd').click(function(){
+mySwssiper.swipeNext(); 
+})
+				
+			</script>
+				
+				
+					<!--end-->
+			
+			
+			
+			
+            <div class="in_se_mi_rigth" style="float: right;">
+
+                
+						<!--开始-->
+				<div class="swiper-conzzzsc" style="width: 527px;overflow: hidden;float: right;">
+					 
+					  <div class="swiper-wrapper">
+		<foreach name="bmmccczz" item="r" key="k" ><div class="swiper-slide">
+                <a href="/index.php/Home/Productcshow/index/cid/461/c/461/id/{$r.id}.html" ><div class="in_se_ri_each">
+                    <div class="in_se_ri_img" style="background:url({$r.imgurl}) no-repeat center center; background-size:100%;"></div>
+                    <div class="in_se_ri_word">
+                        <span class="in_se_ri_span1">{$r.title}</span>
+                        <span class="in_se_ri_span2">{$r.jiageoldzttt}</span>
+                    </div>
+                </div></a>
+                </div>
+</foreach></div></div><!--end-->
+                
+
+            </div><img src="images/index_r47_c23.png" class="insdfdbbzhisscc" />
+        </div>
+        
+    </div>
+
+</div>
+
+
+			<script> 
+				var mySwcczziper = new Swiper('.swiper-conzzzsc',{
+				slidesPerView : 2,
+				slidesPerGroup : 2,loop : true,roundLengths : true,
+				//pagination : '.haohhccttt',
+				/*paginationVisibleClass : 'pa_esch',
+				paginationActiveClass : 'pa_eschpa_dq',*/
+				paginationClickable :true,//createPagination :false,
+				})
+  $('.insdfdbbzhisscc').click(function(){
+mySwcczziper.swipeNext(); 
+})
+				
+			</script>
+
+
+
+
+<!-------------------------卖车 结束--------------------------->
+
+
+<!-------------------------好车推荐 开始------------------------------->
+
+<div class="in_recommend">
+    
+    <div class="in_re_middle">
+        
+        <div class="in_re_title">
+            <p class="in_re_ti_p">好车推荐</p>
+            <span class="in_re_ti_span">RECOMMENDATION</span>
+            <img src="images/index_r16_c47.png"/>
+        </div>
+        
+        
+        <div class="in_re_nav">
+            <ul>
+         
+               
+
+				
+						<?php
+							$hhyy=explode("\r\n",$config_info['gz_remenppresshc']);
+							foreach($hhyy as $hk=>$hv){
+								$nhv=explode('|',$hv);
+								if(!$hk) $haocoon=$nhv['0'];
+								echo '<li class="in_re_li ';
+								if(!$hk) echo ' in_re_dq ';
+								echo '" onclick="gethaocess(\''.$nhv['0'].'\',this);"><a href="javascript:;">'.$nhv['0'].'</a></li>';
+							}
+						?>
+				
+				
+            </ul>
+        </div>
+        
+        <div id="haochetuijjjj" style="height:497px;padding-top: 53px;"></div>
+		
+		
+		
+    </div>
+
+</div>
+<style>.thsdfsdccjjss{background: url(/5-121204193956-50.gif);
+    background-repeat: no-repeat;
+    background-position: center center;}</style>
+<script>
+gethaocess('{$haocoon}');
+function gethaocess(sckeyword,that){
+	$('#haochetuijjjj').html('');
+	$('#haochetuijjjj').addClass('thsdfsdccjjss');
+	if(that) $('.in_re_li').removeClass('in_re_dq');
+	//var that=this;
+	$.ajax({
+		type: "POST",
+		url:'/index.php/Home/Index/hcttjjjss/sckeyword/'+sckeyword,
+		data:$('#myform').serialize(),
+		error: function(request) {
+			//alert("提交失败");
+		},
+		success: function(data) {
+			if(!data) data='<span style="margin-top: 213px;display: inline-block;margin-left: 553px;">暂无数据</span>';
+			$('#haochetuijjjj').removeClass('thsdfsdccjjss');
+			$('#haochetuijjjj').html(data);
+			$(that).addClass('in_re_dq');
+		}
+	});
+}
+</script>
+
+<!-------------------------好车推荐 结束------------------------------->
+
+<style>
+.in_in_each{height:280px;}
+.in_in_word{top:-2px;}.in_er_wo_title{width:295px!important;}
+</style>
+<!---------------------------车辆介绍 开始------------------------------------------->
+<div class="in_introduce">
+    <div class="in_in_img">
+        <img src="images/index_r48_c27.png"/>
+    </div>
+    <div class="in_in_middle">
+        <div class="in_in_list">
+		
+								<!--开始-->
+				<div class="swiper-contabbbt" style="width: 1158px;overflow: hidden;">
+					 
+					  <div class="swiper-wrapper" style="height: 285px;overflow:hidden;">
+            <foreach name="necliiss" item="r" key="k" ><div class="swiper-slide">
+            <div class="in_in_each" style="background:url({$r.imgurl}) center left; background-size:cover;">
+                <a href="/index.php/Home/Productcshow/index/cid/481/c/481/id/{$r.id}.html">
+                   <div class="in_in_word">
+                        <p class="in_in_wo_title">{$r.title}</p>
+                       <p class="in_in_wo_date">Date : <?php
+							$dtttt=strtotime($r['addtime']);
+							echo date('Y.m.d',$dtttt);
+					   ?></p>
+                       <p class="in_in_wo_p">{$r.description}</p>
+                       <img class="in_in_wo_more" src="images/index_r11_c62.png"/>
+                    </div> 
+                </a>
+            </div></div>
+            </foreach>
+           </div></div>
+				
+
+				
+				
+					<!--end-->
+            
+        </div>
+        <style>
+		.in_se_li_leftsss {
+    width: 51px;
+    height: 29px;
+    background: url(/images/index_r7_c63.png) no-repeat center center;
+    border: none;
+    background-size: 100%;
+    cursor: pointer;
+}.in_se_li_rigthssss {
+    width: 51px;
+    height: 29px;
+    background: url(/images/index_r7_c67.png) no-repeat center center;
+    border: none;
+    background-size: 100%;
+    cursor: pointer;
+}
+		</style>
+        <!--左右按钮 开始-->
+        <div class="in_li_botton">
+            <button class="in_se_li_leftsss"></button>
+            <button class="in_se_li_rigthssss"></button>
+        </div>
+        <!--左右按钮 结束-->
+        
+		
+			<script> 
+				var mySwipersss = new Swiper('.swiper-contabbbt',{
+				slidesPerView : 2,
+				slidesPerGroup : 2,loop : true,
+				//pagination : '.haohhccttt',
+				/*paginationVisibleClass : 'pa_esch',
+				paginationActiveClass : 'pa_eschpa_dq',*/
+				//paginationClickable :true,//createPagination :false,
+				})
+$('.in_se_li_leftsss').click(function(){
+
+mySwipersss.swipePrev(); 
+})
+  $('.in_se_li_rigthssss').click(function(){
+mySwipersss.swipeNext(); 
+})
+				
+			</script>
+		
+		
+		
+		
+    </div>
+</div>
+
+<!-------------------------------车辆介绍 结束--------------------------------------->
+
+
+<script src="//captcha.luosimao.com/static/dist/api.js"></script>
+<style>
+.edbox{z-index: 2147483646;}button{cursor:pointer;}
+</style>
+ <!----------------------------------登录 开始----------------------------------------> 
+<div class="sign_in" style="display: none;">
+    <div class="si_box " style="height: 496px;">
+        <div class="si_ti clearUl">
+            <div class="si_title">登录</div>
+            <button class="si_button" onclick="$('.sign_in').toggle();"><img src="/images/sign_in_r1_c3.jpg"/></button>
+        </div>
+        <div class="si_line1"></div>
+        <div class="si_line2"></div>
+        <style>
+		.gggdengludangqian{color: #FFC03B;
+    border-bottom: 2px #FFC03B solid;
+    box-sizing: border-box;}
+		</style>
+        
+        <div class="si_hhhhh">
+            <div class="si_tt_message" id="wangjimmmm" onClick="$('.si_tt_message').removeClass('gggdengludangqian');$('#mmmmsssddll').show();$('#mmmmsssddllmm').hide();$(this).addClass('gggdengludangqian');LUOCAPTCHA.reset();">
+            短信随机码登录
+            </div>
+            <div class="si_tt_message gggdengludangqian" onClick="$('.si_tt_message').removeClass('gggdengludangqian');$('#mmmmsssddll').hide();$('#mmmmsssddllmm').show();$(this).addClass('gggdengludangqian');LUOCAPTCHA.reset();">
+            网站密码登录
+            </div>
+        </div>
+        
+        <form onsubmit="passlogin();return false;" id="myformrelogin">
+           <div class="si_mess" style="display:none;" id="mmmmsssddll">
+                <div class="si_iphone"><input type="text" name="smstel" id="smstel" placeholder="请输入手机号"/></div>
+				
+				<div><div class="l-captcha" data-callback="getResponserepassloginsms" data-site-key="<?php echo LUOSIMAO_SITE_KEY;?>" data-width="283" style="width: 283px;margin: auto;margin-top: 23px;"></div></div>
+				
+                <div class="si_verifi"><input type="text" name="smscode" id="smscode" placeholder="请输入验证码"/></div>
+                <div class="si_ver_buttom" style="line-height:  37px;text-align: center;cursor:pointer;" onclick="getdxyzmlogin();">获取验证码</div>
+				
+				<input id="recodeluopassloginsms" type="hidden" name="recodeluopassloginsms">
+                <button class="immediate_entry">立即登入</button>
+            </div>
+            
+            <div class="si_password" style="" id="mmmmsssddllmm">
+                <div class="si_iphone"><input type="text" name="passtel" id="passtel" placeholder="请输入手机号"/></div>
+                <div class="si_verifi2"><input type="text" name="lpass" id="lpass" placeholder="请输入密码"/></div>
+				<div><div class="l-captcha" data-callback="getResponserepasslogin" data-site-key="<?php echo LUOSIMAO_SITE_KEY;?>" data-width="283" style="width: 283px;margin: auto;margin-top: 23px;"></div></div>
+				<input id="recodeluopasslogin" type="hidden" name="recodeluopasslogin">
+                <button class="immediate_entry">立即登入</button>
+            </div>
+            
+            <div class="si_button1" style="line-height: 40px;">
+            	<span class="si_bu_bu" onClick="$('.si_tt_message').removeClass('gggdengludangqian');$('.registered').hide();$('#mmmmsssddll').show();$('#mmmmsssddllmm').hide();LUOCAPTCHA.reset();$('#wangjimmmm').addClass('gggdengludangqian');">忘记密码</span>
+            	<span class="si_bu_bu" onclick="$('.registered').toggle();$('.sign_in').toggle();LUOCAPTCHA.reset();">立即注册</span>
+            </div>
+            <!--<div class="box1" style="width: 100px; height: 100px; background: red;display:none;" id="mmmmsssddll">
+                <div class="si_mess">
+                    <div class="si_iphone"><input type="text" name="firstname" placeholder="请输入手机号"/></div>
+                    <div class="si_verifi"><input type="text" name="firstname"/></div>
+                    <button class="si_ver_buttom">获取验证码</button>
+                    <button class="immediate_entry">立即登入</button>
+                </div>
+
+                <div class="si_password">
+                    <div class="si_iphone"><input type="text" name="firstname"/></div>
+                    <div class="si_verifi"><input type="text" name="firstname"/></div>
+                    <button class="immediate_entry">立即登入</button>
+                </div>
+            </div>
+            
+            <div class="box2" style="width: 100px; height: 100px;background: #000000;" id="mmmmsssddllmm">密码登录</div>-->
+            
+        </form>
+    </div>
+</div>
+
+<script>
+function passlogin(){
+	//密码登录
+	var mimadenglu=$('#mmmmsssddllmm').css('display');
+	if(mimadenglu=='block'){
+			var passtel=$('#passtel').val();
+			if(!passtel || (passtel.length!=7 && passtel.length!=11) || isNaN(passtel)){
+				$.edbox({
+					html:'<div class="example-html">请填写正确手机号</div>',
+					////animateOpen:'animated tada',
+					////animateClose:'animated flipOutX',
+					afterClose:function(){
+						document.getElementById('passtel').focus();
+					}
+				});
+				return false;
+			}
+			var lpass=$('#lpass').val();
+			if(!lpass){
+				$.edbox({
+					html:'<div class="example-html">请输入密码</div>',
+					////animateOpen:'animated tada',
+					////animateClose:'animated flipOutX',
+					afterClose:function(){
+						document.getElementById('lpass').focus();
+					}
+				});
+				return false;
+			}
+			var luotest_response = $('#recodeluopasslogin').val();
+			if(!luotest_response){
+				$.edbox({
+					html:'<div class="example-html">请点击人机识别验证</div>',
+					////animateOpen:'animated tada',
+					////animateClose:'animated flipOutX'
+					/*,afterClose:function(){
+						document.getElementById('tel').focus();
+					}*/
+				});
+				return false;
+			}
+			
+			$('.immediate_entry').text('正在登录..');
+			$.ajax({
+				type: "POST",
+				url:'/index.php/Home/Usermember/loginc/lm/pass.html',
+				data:$('#myformrelogin').serialize(),
+				error: function(request) {
+				
+					$.edbox({
+						html:'<div class="example-html">服务器繁忙</div>',
+						////animateOpen:'animated tada',
+						////animateClose:'animated flipOutX',
+						afterClose:function(){
+							location.reload();
+						}
+					});
+					return false;
+				
+				
+					//alert("提交失败");
+				},
+				success: function(data) {
+					if(data=='addok'){
+						$.edbox({
+							html:'<div class="example-html">登录成功</div>',
+							////animateOpen:'animated tada',
+							////animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+						
+					}else{
+						$.edbox({
+							html:'<div class="example-html">'+data+'</div>',
+							////animateOpen:'animated tada',
+							////animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+					
+					}//alert("提交失败");
+					
+				}
+			});
+			
+	}else{
+		//短信验证码登录
+			var smstel=$('#smstel').val();
+			if(!smstel || (smstel.length!=7 && smstel.length!=11) || isNaN(smstel)){
+				$.edbox({
+					html:'<div class="example-html">请填写正确手机号</div>',
+					////animateOpen:'animated tada',
+					////animateClose:'animated flipOutX',
+					afterClose:function(){
+						document.getElementById('smstel').focus();
+					}
+				});
+				return false;
+			}
+			var luotest_response = $('#recodeluopassloginsms').val();
+			if(!luotest_response){
+				$.edbox({
+					html:'<div class="example-html">请点击人机识别验证</div>',
+					////animateOpen:'animated tada',
+					//animateClose:'animated flipOutX'
+					/*,afterClose:function(){
+						document.getElementById('tel').focus();
+					}*/
+				});
+				return false;
+			}
+			var smscode=$('#smscode').val();
+			if(!smscode){
+				$.edbox({
+					html:'<div class="example-html">请输入验证码</div>',
+					////animateOpen:'animated tada',
+					////animateClose:'animated flipOutX',
+					afterClose:function(){
+						document.getElementById('smscode').focus();
+					}
+				});
+				return false;
+			}
+			
+			$('.immediate_entry').text('正在登录..');
+			$.ajax({
+				type: "POST",
+				url:'/index.php/Home/Usermember/loginc/lm/smslogin.html',
+				data:$('#myformrelogin').serialize(),
+				error: function(request) {
+				
+					$.edbox({
+						html:'<div class="example-html">服务器繁忙</div>',
+						////animateOpen:'animated tada',
+						////animateClose:'animated flipOutX',
+						afterClose:function(){
+							location.reload();
+						}
+					});
+					return false;
+				
+				
+					//alert("提交失败");
+				},
+				success: function(data) {
+					if(data=='addok'){
+						$.edbox({
+							html:'<div class="example-html">登录成功</div>',
+							////animateOpen:'animated tada',
+							////animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+						
+					}if(data=='3'){
+							$.edbox({
+								html:'<div class="example-html">短信验证码错误</div>',
+								////animateOpen:'animated tada',
+								////animateClose:'animated flipOutX',
+								afterClose:function(){
+									//location.reload();
+									LUOCAPTCHA.reset();
+									$('.immediate_entry').text('立即登入');
+								}
+							});
+							return false;
+					}if(data=='4'){
+							$.edbox({
+								html:'<div class="example-html">短信验证码过期</div>',
+								////animateOpen:'animated tada',
+								////animateClose:'animated flipOutX',
+								afterClose:function(){
+									//location.reload();
+									LUOCAPTCHA.reset();
+									$('.immediate_entry').text('立即登入');
+								}
+							});
+							return false;
+					}else{
+						$.edbox({
+							html:'<div class="example-html">服务器繁忙</div>',
+							////animateOpen:'animated tada',
+							////animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+					
+					}//alert("提交失败");
+					
+				}
+			});
+
+	}
+}
+function getdxyzmlogin(){
+	var smstel=$('#smstel').val();
+	if(!smstel || (smstel.length!=7 && smstel.length!=11) || isNaN(smstel)){
+		$.edbox({
+			html:'<div class="example-html">请填写正确手机号</div>',
+			////animateOpen:'animated tada',
+			////animateClose:'animated flipOutX',
+			afterClose:function(){
+				document.getElementById('smstel').focus();
+			}
+		});
+		return false;
+	}
+	var luotest_response = $('#recodeluopassloginsms').val();
+	if(!luotest_response){
+		$.edbox({
+			html:'<div class="example-html">请点击人机识别验证</div>',
+			////animateOpen:'animated tada',
+			//animateClose:'animated flipOutX'
+			/*,afterClose:function(){
+				document.getElementById('tel').focus();
+			}*/
+		});
+		return false;
+	}
+			//$('.fi_fr_button').unbind();
+			$('.si_ver_buttom').removeAttr('onclick');
+			$('.si_ver_buttom').text('正在发送');
+			
+			//发送短信
+				$.ajax({
+					type: "POST",
+					url:'/index.php/Home/Alismsm/loginsms.html',
+					data:$('#myformrelogin').serialize(),
+					error: function(request) {
+					
+						$.edbox({
+							html:'<div class="example-html">服务器繁忙</div>',
+							////animateOpen:'animated tada',
+							////animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+					
+					
+						//alert("提交失败");
+					},
+					success: function(data) {
+						if(data=='1'){
+							$.edbox({
+								html:'<div class="example-html">信息填写不完整</div>',
+								////animateOpen:'animated tada',
+								////animateClose:'animated flipOutX',
+								afterClose:function(){
+									location.reload();
+								}
+							});
+							return false;
+						}else if(data=='2'){
+							$.edbox({
+								html:'<div class="example-html">人机验证错误</div>',
+								////animateOpen:'animated tada',
+								////animateClose:'animated flipOutX',
+								afterClose:function(){
+									LUOCAPTCHA.reset();
+									//location.reload();
+								}
+							});
+							return false;
+						}else if(data=='3'){
+							$.edbox({
+								html:'<div class="example-html">手机号未注册</div>',
+								////animateOpen:'animated tada',
+								////animateClose:'animated flipOutX',
+								afterClose:function(){
+									LUOCAPTCHA.reset();
+									//location.reload();
+								}
+							});
+							return false;
+						}
+						if(data=='OK'){
+							//$('.fi_fr_apply').toggle();//alert('留言提交成功！');
+							//$('.fi_fr_button').text('已发送');
+							var samss='秒重新发送';
+							var samss_t=99;
+							var ssstttt=setInterval(function(){
+								$('.si_ver_buttom').text(samss_t+samss);
+								samss_t=samss_t-1;
+								if(samss_t<1){
+									LUOCAPTCHA.reset();
+									$('.si_ver_buttom').text('获取验证码');
+									$('.si_ver_buttom').attr("onclick","getdxyzmlogin();");
+									clearInterval(ssstttt);
+								}
+								//setTimeout(ssstttt, 1000);
+							}, 1000);
+							
+							
+							
+						}else{
+							$.edbox({
+								html:'<div class="example-html">发送失败<br>'+data+'</div>',
+								////animateOpen:'animated tada',
+								////animateClose:'animated flipOutX',
+								afterClose:function(){
+									location.reload();
+								}
+							});
+							return false;
+						
+						}//alert("提交失败");
+						
+					}
+				});
+			
+			//end
+			
+}
+</script>
+
+
+
+
+
+<style>
+    
+</style>
+
+
+ <!----------------------------------登录 结束----------------------------------------> 
+
+
+<!----------------------------------注册 开始---------------------------------------->
+<div class="registered" style="display: none">
+    <div class="reg_box ">
+        <div class="reg_ti clearUl">
+            <div class="reg_title">注册</div>
+            <button class="reg_button" onclick="$('.registered').toggle();LUOCAPTCHA.reset();"><img src="/images/sign_in_r1_c3.jpg"/></button>
+        </div>
+        <div class="reg_line1"></div>
+        <div class="reg_line2"></div>
+       
+       
+       
+        <form onsubmit="rezc();return false;" id="myformre">
+           <div class="reg_mess">
+                <div class="reg_iphone"><input type="text" name="retel" id="retel" placeholder="请输入手机号"/></div>
+                <div class="reg_validation1111">
+				<div class="l-captcha" data-callback="getResponsere" data-site-key="<?php echo LUOSIMAO_SITE_KEY;?>" data-width="283" style="width: 283px;margin: auto;margin-top: 23px;"></div>
+                	<!--<div class="reg_validation">
+						<input type="text" name="firstname" placeholder="请输入图片码"/>
+					</div>
+					<div class="reg_img"></div>-->
+                </div>
+                <div  class="reg_verifi111">
+                	<div class="reg_verifi">
+						<input type="text" name="recode" id="recode" placeholder="请输入验证码"/>
+						<input type="hidden" name="recodeluo" id="recodeluo" />
+						<input type="hidden" name="sms_code" id="sms_code" value="0" />
+					</div>
+					<span class="reg_ver_buttom" onclick="getdxyzmre();" style="line-height: 37px;text-align: center;cursor: pointer;">获取验证码</span>
+                </div>
+               
+                <div class="reg_password">
+                	<input type="text" name="repass" id="repass" placeholder="请输密码"/>
+                </div>
+               
+                <button class="reg_immediate_entry" style="cursor: pointer;">立即注册</button>
+            </div>
+           
+           
+            <div class="reg_button1" style="line-height: 40px;">
+            	<span class="reg_bu_bu" onClick="$('.si_tt_message').removeClass('gggdengludangqian');$('.registered').hide();$('#mmmmsssddll').show();$('#mmmmsssddllmm').hide();$('.sign_in').toggle();LUOCAPTCHA.reset();$('#wangjimmmm').addClass('gggdengludangqian');">忘记密码</span>
+            	<span class="reg_bu_bu" onclick="$('.sign_in').toggle();$('.registered').toggle();LUOCAPTCHA.reset();">直接登入</span>
+            </div>
+           
+           
+        </form>
+    </div>
+</div>
+<script>
+function getResponsere(resp){
+     //注册
+	 $('#recodeluo').val(resp);
+}
+function getResponserepassloginsms(resp){
+     //短信登录
+	 $('#recodeluopassloginsms').val(resp);
+}
+function getResponserepasslogin(resp){
+     //密码登录
+	 $('#recodeluopasslogin').val(resp);
+}
+//注册获取验证码
+function getdxyzmre(){
+	var telephone=$('#retel').val();
+	if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+		$.edbox({
+			html:'<div class="example-html">请填写正确手机号</div>',
+			////animateOpen:'animated tada',
+			////animateClose:'animated flipOutX',
+			afterClose:function(){
+				document.getElementById('retel').focus();
+			}
+		});
+		return false;
+	}
+	var luotest_response = $('#recodeluo').val();
+	if(!luotest_response){
+		$.edbox({
+			html:'<div class="example-html">请点击人机识别验证</div>',
+			////animateOpen:'animated tada',
+			//animateClose:'animated flipOutX'
+			/*,afterClose:function(){
+				document.getElementById('tel').focus();
+			}*/
+		});
+		return false;
+	}
+			//$('.fi_fr_button').unbind();
+			$('.reg_ver_buttom').removeAttr('onclick');
+			$('.reg_ver_buttom').text('正在发送');
+			
+			
+			//发送短信
+				$.ajax({
+					type: "POST",
+					url:'/index.php/Home/Alismsm/index.html',
+					data:$('#myformre').serialize(),
+					error: function(request) {
+					
+						$.edbox({
+							html:'<div class="example-html">服务器繁忙</div>',
+							////animateOpen:'animated tada',
+							////animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+					
+					
+						//alert("提交失败");
+					},
+					success: function(data) {
+						if(data=='1'){
+							$.edbox({
+								html:'<div class="example-html">信息填写不完整</div>',
+								////animateOpen:'animated tada',
+								////animateClose:'animated flipOutX',
+								afterClose:function(){
+									location.reload();
+								}
+							});
+							return false;
+						}else if(data=='2'){
+							$.edbox({
+								html:'<div class="example-html">人机验证错误</div>',
+								////animateOpen:'animated tada',
+								////animateClose:'animated flipOutX',
+								afterClose:function(){
+									location.reload();
+								}
+							});
+							return false;
+						}
+						if(data=='OK'){
+							//$('.fi_fr_apply').toggle();//alert('留言提交成功！');
+							//$('.fi_fr_button').text('已发送');
+							var samss='秒重新发送';
+							var samss_t=99;
+							var ssstttt=setInterval(function(){
+								$('.reg_ver_buttom').text(samss_t+samss);
+								samss_t=samss_t-1;
+								if(samss_t<1){
+									LUOCAPTCHA.reset();
+									$('.reg_ver_buttom').text('获取验证码');
+									$('.reg_ver_buttom').attr("onclick","getdxyzmre();");
+									clearInterval(ssstttt);
+								}
+								//setTimeout(ssstttt, 1000);
+							}, 1000);
+							
+							
+							
+						}else{
+							$.edbox({
+								html:'<div class="example-html">发送失败<br>'+data+'</div>',
+								////animateOpen:'animated tada',
+								////animateClose:'animated flipOutX',
+								afterClose:function(){
+									location.reload();
+								}
+							});
+							return false;
+						
+						}//alert("提交失败");
+						
+					}
+				});
+			
+			//end
+			
+			
+			
+			
+			
+			
+			
+			
+}
+	//end
+function rezc(){
+		//LUOCAPTCHA.reset();
+		
+		//var luotest_response = $("input[name='luotest_response']").val();
+		//if(!luotest_response){
+		//alert($('.registered').css('display'))
+		
+		var telephone=$('#retel').val();
+		if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+			$.edbox({
+				html:'<div class="example-html">请填写正确手机号</div>',
+				////animateOpen:'animated tada',
+				////animateClose:'animated flipOutX',
+				afterClose:function(){
+					document.getElementById('retel').focus();
+				}
+			});
+			return false;
+		}
+		var luotest_response = $('#recodeluo').val();
+		if(!luotest_response){
+			$.edbox({
+				html:'<div class="example-html">请点击人机识别验证</div>',
+				////animateOpen:'animated tada',
+				//animateClose:'animated flipOutX'
+				/*,afterClose:function(){
+					document.getElementById('tel').focus();
+				}*/
+			});
+			return false;
+		}
+		var recode=$('#recode').val();
+		if(!recode){
+			$.edbox({
+				html:'<div class="example-html">请填写手机验证码</div>',
+				////animateOpen:'animated tada',
+				////animateClose:'animated flipOutX',
+				afterClose:function(){
+					document.getElementById('recode').focus();
+				}
+			});
+			return false;
+		}
+		var recode=$('#repass').val();
+		if(!recode){
+			$.edbox({
+				html:'<div class="example-html">请填写密码</div>',
+				////animateOpen:'animated tada',
+				////animateClose:'animated flipOutX',
+				afterClose:function(){
+					document.getElementById('repass').focus();
+				}
+			});
+			return false;
+		}
+		
+		
+		
+			//$('.fi_fr_buttonkksa').removeAttr('onclick');
+			$('.reg_immediate_entry').text('正在注册..');
+			$.ajax({
+				type: "POST",
+				url:'/index.php/Home/Usermember/re.html',
+				data:$('#myformre').serialize(),
+				error: function(request) {
+				
+					$.edbox({
+						html:'<div class="example-html">服务器繁忙</div>',
+						////animateOpen:'animated tada',
+						////animateClose:'animated flipOutX',
+						afterClose:function(){
+							location.reload();
+						}
+					});
+					return false;
+				
+				
+					//alert("提交失败");
+				},
+				success: function(data) {
+					if(data=='1'){
+						$.edbox({
+							html:'<div class="example-html">信息填写不完整</div>',
+							////animateOpen:'animated tada',
+							////animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+					}else if(data=='3'){
+						LUOCAPTCHA.reset();
+						$.edbox({
+							html:'<div class="example-html">手机验证码错误</div>',
+							////animateOpen:'animated tada',
+							////animateClose:'animated flipOutX',
+							afterClose:function(){
+								$('.reg_immediate_entry').text('立即注册');
+							}
+						});
+						return false;
+					}else if(data=='4'){
+						$.edbox({
+							html:'<div class="example-html">手机验证码已过期</div>',
+							////animateOpen:'animated tada',
+							////animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+					}
+					if(data=='addok'){
+						$.edbox({
+							html:'<div class="example-html">注册成功</div>',
+							////animateOpen:'animated tada',
+							////animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+						
+					}else{
+						$.edbox({
+							html:'<div class="example-html">服务器繁忙</div>',
+							////animateOpen:'animated tada',
+							////animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+					
+					}//alert("提交失败");
+					
+				}
+			});
+		
+		
+		
+		
+		
+}
+</script>
+
+ <!----------------------------------注册 结束---------------------------------------->
+
+
+
+<!----------------------------------意见反馈 开始---------------------------------------->
+<div class="feedback" style="display: none;">
+    <div class="opi_box ">
+        <div class="opi_ti clearUl">
+            <div class="opi_title">意见反馈</div>
+            <div class="opi_button" onclick="$('.feedback').toggle();"><img src="/images/sign_in_r1_c3.jpg"/></div>
+        </div>
+        <div class="opi_line1"></div>
+        <div class="opi_line2"></div>
+        <p class="opi_p">*您好！感谢您给我们提成宝贵意见</p>
+       
+       
+       
+        <form id="myformyjjjkk">
+           
+            <div class="marquee" style="text-align: center;">
+			<span class="mysssss"><input name="my" type="radio" value="非常满意" id="male1" /><label for="male1">非常满意</label></span>
+			<span class="mysssss"><input name="my" type="radio" value="满意" id="male2" /><label for="male2">满意</label></span>
+			<span class="mysssss"><input name="my" type="radio" value="一般" id="male3" /><label for="male3">一般</label></span>
+			<span class="mysssss"><input name="my" type="radio" value="良好" id="male4" /><label for="male4">良好</label></span>
+			
+			</div>
+            
+            
+            <div class="text">
+                <textarea data-role="none" class="feedbackcontent" id="feedbackcontent" name="feedbackcontent" placeholder="请输入您的意见和反馈(必填)"></textarea>
+            </div>
+            
+            <div class="me_dd">
+                <input class="me_dd_inout" type="text" name="yijktel" placeholder="请输入手机号"/>
+                <input type="hidden" name="company" value="99"/>
+            </div>
+            <div class="me_button" style="line-height: 40px;cursor: pointer;" onclick="tjyjjffgkk();">提交意见</div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+
+
+
+
+function tjyjjffgkk(){
+	var feedbackcontent=$('#feedbackcontent').val();
+	if(!feedbackcontent){
+		$.edbox({
+			html:'<div class="example-html">请填写意见内容</div>',
+			////animateOpen:'animated tada',
+			//animateClose:'animated flipOutX',
+			afterClose:function(){
+				document.getElementById('feedbackcontent').focus();
+			}
+		});
+		return false;
+	}
+			//$('#tafdasfdsa').removeAttr('onclick');
+			$('.me_button').text('正在提交..');
+			$.ajax({
+				type: "POST",
+				url:'/index.php?g=User&m=Post&a=Message&ajax=ajax&yj=fk',
+				data:$('#myformyjjjkk').serialize(),
+				error: function(request) {
+					$.edbox({
+						html:'<div class="example-html">服务器繁忙</div>',
+						////animateOpen:'animated tada',
+						////animateClose:'animated flipOutX',
+						afterClose:function(){
+							location.reload();
+						}
+					});
+					return false;
+				},
+				success: function(data) {
+					if(data=='addok'){
+						$.edbox({
+							html:'<div class="example-html">留言提交成功</div>',
+							////animateOpen:'animated tada',
+							////animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+					}else{
+						$.edbox({
+							html:'<div class="example-html">服务器繁忙</div>',
+							////animateOpen:'animated tada',
+							////animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+					};
+					
+				}
+			});
+}
+
+</script>
+
+
+
+<style>.marquee .mysssss{margin-right:30px;}label{cursor: pointer;}
+    .marquee{width: 100%; height:35px; /*background: red;*/margin-top:38px;}
+    .text{width: 650px; height:170px; border: 1px #ECECEC solid;border-radius:5px; margin: auto; margin-top: 10px;}
+    .feedbackcontent{width:620px; height:150px; margin-top:7px; margin-left: 10px;resize:none; color: #909090; border: none;}
+    #feedbackcontent::-webkit-input-placeholder{color:#909090;}
+    .me_dd{width: 650px; height:40px; border: 1px #ECECEC solid;border-radius:5px; margin: auto; margin-top: 10px;}
+    .me_dd_inout{width:620px; height:30px; margin-top:4px; margin-left: 10px;resize:none; color: #909090; border: none;}
+    .me_button{width: 293px; height: 40px; background: #FFC13C; color: #fff; text-align: center; border: none;border-radius:10px;    margin-left: 181px;margin-top: 20px;}
+</style>
+
+ <!----------------------------------意见反馈 结束---------------------------------------->
+
+
+
+
+
+<!------------------------------------------------------------------------------------>
+
+
+    
+    
+    
+    
+<script>
+function tank(){
+	//页面层
+	layer.open({
+	  type: 1,
+	  skin: 'layui-layer-rim', //加上边框
+	  area: ['420px', '240px'], //宽高
+	  content: '<div style="display:block" class="sign_in"></div>'
+	});
+}
+</script>
+    
+    
+    
+    <!---------------------------------右边悬浮按钮 开始-------------------------------->
+<style type="text/css">
+
+.cf:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.cf{*zoom:1;}
+
+/*** guide ***/
+.guide{width:60px;right: 0px;position:fixed;bottom:134px;_position:absolute;_top:expression(documentElement.scrollTop+documentElement.clientHeight - this.clientHeight - 134+'px');display:block;z-index: 9999}
+.guide a{display:block;width:60px;height:50px;background:url(/images/sprite_v2.png) no-repeat;margin-top:10px;text-decoration:none;font:16px/50px "Microsoft YaHei";text-align:center;color:#fff;border-radius:2px;}
+.guide a span{display:none;text-align:center;}
+.guide a:hover{text-decoration:none;background-color:#FFC13C;color:#fff;}
+.guide a:hover span{display:block;width:60px;background:#FFC13C}
+.guide .find{background-position:-84px -236px;}
+.guide .report{background-position:-146px -236px;}
+.guide .edit{background-position:-83px -185px;}
+.guide .top{background-position:-145px -185px;}
+</style>
+
+<!--<script src="/demos/googlegg.js"></script>-->
+<div class="guide">
+	<div class="guide-wrap">
+		<a href="javascript:;" class="report" title="反馈" onclick="$('.feedback').toggle();"><span>反馈</span></a>
+		<a href="javascript:window.scrollTo(0,0)" class="top" title="回顶部"><span>回顶部</span></a>
+	</div>
+</div>
+<!---------------------------------右边悬浮按钮 开始-------------------------------->
+    
+    
+    
+    
+    
+    <!---------------------------------------底部 开始----------------------------------------------->
+    
+    <div class="wb100 bcFFC13C mt128">
+        
+        
+        
+        <!-------电话信息-------->
+        <div class="bottom_middle wmm1200 pr">
+            <div class="bo_information wmm1200 h129 pa vea">
+                
+                <img class="w508 h73 mt30 ml100 di" src="{$config_info.gz_ewmdh}"/>
+                
+                <div class="w70 di ml70 tac">
+                    <img class=" h70 w70" src="{$config_info.gz_ewm}"/>
+                    <p class="mt-5 fw600 fcfff">手机版</p>
+                </div>
+                
+                <div class="di ml45 w310 vea">
+                    <div class="w1 h28 di bc3146 mt50 fl"></div>
+                    <div class="fl mt11 ml57">
+                        <p class="fcFFC1 fwb mb5">免费资讯热线：</p>
+                        <p class=" fcFFC1 fwb fs34">{$config_info.gz_footteldianhua2}</p>
+                        <div class="di mt10 tac lh35">
+                            <div id="bo_bottom" class="bcFAAA0B mr3"><a class="w118 h35 db fcfff" href="/index.php/Home/Finance/index/cid/473.html">我要买车</a></div>
+                            <div id="bo_bottom" class="bcFFC13C"><a class="w118 h35 db fcfff" href="/index.php/Home/Carselling/index/cid/474.html">我要卖车</a></div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <!-------底部LOGO 友情链接-------->
+        
+        <div class="w1130 ma clearUl">
+            
+            <div class="fl w200 mt147 mb50">
+                <img src="{$config_info.gz_ewmdhzbtp}"/>
+                <p class="fcfff mt10 fs12 lh18">咨询电话：{$config_info.gz_footteldianhua2}</p>
+                <p class="fcfff fs12 lh18">服务监督热线： {$config_info.gz_footteldianhua2lyy}</p>
+            </div>
+            
+            
+            
+            
+            <div class="fl w870 mt147 ml60">
+                
+                <div class="">
+                    <div id="bo_nav" class="">
+                        <span><a href="/index.php/Home/About/index/cid/318.html">关于我们</a></span>
+                        <span><a href="/index.php/Home/Contact/index/cid/401.html">联系我们</a></span>
+                        <span><a href="/index.php/Home/Recruits/index/cid/469.html">加入我们</a></span>
+                        <span><a href="/index.php/Home/Servics/index/cid/464.html">服务保障</a></span>
+                        <span><a href="/index.php/Home/About/index/cid/479.html">隐私声明</a></span>
+                        <span><a href="/index.php/Home/About/index/cid/480.html">服务条款</a></span>
+                    </div>
+                    <style>
+					.dddbubusfdss{position:  absolute;
+    top: 0px;
+    right: 0px;}.dfsonomoreee{height: 23px;line-height: 23px;overflow: hidden;position: relative;padding-right: 20px;}
+					</style>
+                    <div id="bo_list" class="mt10">
+                        <div id="bo_li_each" class="dfsonomoreee">
+                            <div id="bo_li_title" style="margin-left:0px;">热门品牌：</div>
+						<?php
+							$cid=461;
+							$hhyy=explode("\r\n",$config_info['gz_remenpp']);
+							foreach($hhyy as $hk=>$hv){
+								$nhv=explode('|',$hv);
+								echo '<span><a href="/index.php/Home/Productcs/index/cid/'.$cid.'/oneid/'.$nhv['1'].'.html">'.$nhv['0'].'</a></span>';
+							}
+					
+							?>
+							
+                            <button id="bo_li_bottom" class="dddbubusfdss" onclick="$(this).parent().css('height','auto');$(this).hide();"></button>
+                        </div>
+                        
+                        <div id="bo_li_each" class="dfsonomoreee">
+                            <div id="bo_li_title" style="margin-left:0px;">热门车系：</div>
+<?php
+	$hhyy=explode("\r\n",$config_info['gz_deffcx']);
+	foreach($hhyy as $hk=>$hv){
+		$nhv=explode('|',$hv);
+		echo '<span><a href="/index.php/Home/Productcs/index/cid/'.$cid.'/freid/'.$nhv['1'].'">'.$nhv['0'].'</a></span>';
+	}
+?>
+                            <button id="bo_li_bottom" class="dddbubusfdss" onclick="$(this).parent().css('height','auto');$(this).hide();"></button>
+                        </div>
+                        
+                        <div id="bo_li_each" class="dfsonomoreee">
+                            <div id="bo_li_title" style="margin-left:0px;">友情链接：</div>
+                            <foreach name="youqinglianjielist" item="r" key="k" >
+                            <span><a href="{$r.weburl}" target="_blank">{$r.webname}</a></span></foreach>
+                            <button id="bo_li_bottom" class="dddbubusfdss" onclick="$(this).parent().css('height','auto');$(this).hide();"></button>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <script>
+			$(document).ready(function(){
+			  $(".dfsonomoreee").each(function(){
+					$(this).css('display','inline-block');
+					var w=$(this).width();
+					if(w<849) $(this).find('button').hide();
+					$(this).css('display','');
+			  });
+			});
+		</script>
+        
+        <!--版权 开始-->
+        <div id="bo_copyright" class="wb100 h54 bc202E31">
+            <p>Copyright © <span>本地二手车网</span> All Rights Reserved 版权所有</p>
+            <p>{$config_info.gz_foottel}</p>
+            <p>邮箱：<span>{$config_info.gz_foottel}</span></p>
+            <p>电话：<span>{$config_info.gz_footteldianhua}</span></p>
+            <a href="http://www.resonance.com.cn/" target="_blank">技术支持：<span>共振创意</span></a>
+        </div>
+        <!--版权 结束-->
+        
+        
+    </div>
+    
+    <!---------------------------------------底部 结束----------------------------------------------->
+<style>
+.swiper-container{display:block;}
+</style>
+<script>
+	//调用，description为class名
+	
+	wordlimit('ne_li_span', 65);
+	
+//多余显示省略号
+function wordlimit(cname, wordlength) {
+    var cname = document.getElementsByClassName(cname);
+    for (var i = 0; i < cname.length; i++) {　　　　　　
+        var nowLength = cname[i].innerHTML.length;
+        if (nowLength > wordlength) {
+            cname[i].innerHTML = cname[i].innerHTML.substr(0, wordlength) + '...';
+        }　　　　　　
+    }　
+};</script>
+
+            <script>
+			function denglusss(){
+				$.edbox({
+					html:'<div class="example-html">请先登录</div>',
+					//animateOpen:'animated tada',
+					//animateClose:'animated flipOutX'
+					afterClose:function(){
+						$('.sign_in').toggle();LUOCAPTCHA.reset();
+					}
+				});
+				return false;
+			}
+			</script>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+<script>  /*异步加载 - 在线交流 - 站长统计 */
+  var gz_weburl='/';
+  var lang='cn';
+  var classnow='{$cid}';
+  var id='<?php echo $_GET['id'];?>';
+  
+  var url=gz_weburl+'include/interface/uidata.php?lang='+lang,h = '<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>';
+  
+  if(h.indexOf("preview=1")!=-1)url = url + '&theme_preview=1';
+  $.ajax({
+    type: "POST",
+    url: url,
+    dataType:"json",
+    success: function(msg){
+      var c = msg.config;
+      
+      if(c.gz_stat==1){       //站长统计
+        var navurl=classnow==10001?'':'../';
+        var stat_d=classnow+'-'+id+'-'+lang;
+        var url = gz_weburl+'include/stat/stat.php?type=para&u='+navurl+'&d='+stat_d;
+        $.getScript(url);
+      }
+    }
+  });
+    //var metClicks = $(".metClicks");//点击次数
+    var ClicksListnow='<?php echo $_GET['id'];?>';
+    var weburl='/';
+    if(ClicksListnow){
+      //var DataClicks = metClicks.data("metclicks");
+      //ClicksStr=DataClicks.split("|"); 
+      var ClicksModule = 'news';//ClicksStr[0],ClicksListnow = ClicksStr[1];
+      var urlw = weburl+'include/hits.php?type='+ClicksModule+'&id='+ClicksListnow;
+      $.ajax({
+        type: "POST",
+        url: urlw,
+        dataType:"text",
+        success: function(msg){
+          //var t = msg.split('"');
+          //metClicks.html(t[1]);
+        }
+      });
+    }
+</script>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+</body>
+</html>

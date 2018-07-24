@@ -1,0 +1,71 @@
+
+<!------------------------内容 开始----------------------------->
+
+<div class="internal_backgrund" style="width:100%; position:relative;"><img style="max-width: 100%; position: absolute; z-index: -1" src="/images/ba.png"/></div>
+
+
+<div class="internal_title">
+	<div class="internal_ti_p">招贤纳士</div>
+	<div class="internal_line"></div>
+</div>
+
+
+<div class="recruit">
+	<div class="re_list" id="ctneetaasjsxjj"><foreach name="list" item="r" key="k" >
+		<div class="re_li_each">
+			<a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/469/id/{$r.id}.html">
+				<div class="re_li_ea_title">
+					<span class="re_li_ti_span">{$r.title}</span>
+					<div class="re_li_ea_img"></div>
+				</div>
+				<i class="re_li_ea_demand">岗位要求</i>
+				<span class="re_li_ea_span">{$r.description}</span>
+			</a>
+		</div>
+		</foreach>
+		
+		
+	
+		
+		
+	</div>
+	
+	
+	<div class="re_loading">
+		<a href="javascript:;" onclick="getssajax();" id="fdasfasdfjjj">加载更多</a>
+	</div>
+</div>
+
+<script>
+var pppp=2;
+function getssajax(){
+	$('#fdasfasdfjjj').html('正在获取...');
+	/*location.href = '<?php echo C('DEFAULT_THEME_URLMM');?>/index.php/Home/Trends/index/cid/{$cid}/p/'+p+'.html';
+	return false;*/
+	$.ajax( {
+		url: '/index.php/Home/Recruits/index/ajaxssseee/ok/cid/{$cid}/p/'+pppp+'.html', //这里是静态页的地址
+		type: "GET", //静态页用get方法，否则服务器会抛出405错误
+		//dataType: "json",
+		//cache: false,
+		//async: false,
+		beforeSend: function(){
+		 // Handle the beforeSend event
+		},
+		success: function(data){
+			if(!data){
+				$('#fdasfasdfjjj').html('没有了');
+				return false;
+			}
+			pppp=pppp+1;
+			//var result = $(data).find('#ctneetaasjsxjj').html();
+			//alert(result);
+			$('#ctneetaasjsxjj').append(data);
+			//var result = $(data).find("另一个html页面的指定的一部分").html();
+			$('#fdasfasdfjjj').html('加载更多');
+		}
+	});
+}
+</script>
+<!------------------------内容 结束----------------------------->
+
+

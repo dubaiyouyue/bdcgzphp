@@ -1,0 +1,135 @@
+
+<!-----------------------------------内容 开始-------------------------------------->
+    
+    <div class="evaluation">
+    
+        <p class="ev_title">免费估价</p>
+        
+        <div class="ev_list">
+        
+            <form name="myformggjjj" id="myformggjjj" method="POST" action="">
+                <div class="ev_li_each">
+                    <span>卖车地点</span>
+                    <input type="text" placeholder="请输入" name="mcdd" id="gjmcdd" />
+                </div>
+                
+                <div class="ev_li_each">
+                    <span>车型</span>
+                    <input type="text" placeholder="请输入" name="mccx" id="gjmccx" />
+                </div>
+                
+                <div class="ev_li_each">
+                    <span>上牌时间</span>
+                    <input type="text" placeholder="请输入" name="mcspsj" id="gjmcspsj" /><input name="message" type="hidden" value="5"/>
+                </div>
+                
+                <div class="ev_li_each">
+                    <span>行驶里程（万公里）</span>
+                    <input type="text" placeholder="请输入" name="mcxslc" id="gjmcxslc" />
+                </div>
+                
+                <div class="ev_li_each">
+                    <span>接收手机</span>
+                    <input type="text" placeholder="请输入" name="tel" id="ggjjctel"/>
+                </div>
+            </form>
+            
+            <button class="ev_li_button"  onclick="xxpdgjj();">提交信息</button>
+            
+            
+<script>
+					
+				function  xxpdgjj(){
+						var gjmcdd=$('#gjmcdd').val();
+						var gjmccx=$('#gjmccx').val();
+						var gjmcspsj=$('#gjmcspsj').val();
+						var gjmcxslc=$('#gjmcxslc').val();
+						var telephone=$('#ggjjctel').val();
+						
+						if(!gjmcdd){
+								alert('请填写卖车地点');
+								document.getElementById('gjmcdd').focus();
+								return false;
+						}
+						if(!gjmccx){
+								alert('请填写车型');
+								document.getElementById('gjmccx').focus();
+								return false;
+						}
+						if(!gjmcspsj){
+								alert('请填写上牌时间');
+								document.getElementById('gjmcspsj').focus();
+								return false;
+						}
+						if(!gjmcxslc){
+							alert('请填写行驶里程');
+							document.getElementById('gjmcxslc').focus();
+								return false;
+						}
+						if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+							alert('请填写正确手机号');
+								document.getElementById('ggjjctel').focus();
+								return false;
+						}
+							$('.ev_li_button').removeAttr('onclick');
+							$('.ev_li_button').text('正在提交..');
+							$.ajax({
+								type: "POST",
+								url:'/index.php?g=User&m=Post&a=Message&ajax=ajax',
+								data:$('#myformggjjj').serialize(),
+								error: function(request) {
+									alert('服务器繁忙');
+									location.reload();
+									return false;
+								},
+								success: function(data) {
+									if(data=='addok'){
+										alert('提交成功');
+										location.reload();
+										return false;
+										
+									}else{
+										alert('服务器繁忙');
+										location.reload();
+										return false;
+									}
+									
+								}
+							});
+					}
+			</script>
+            <!---估价后的弹框 开始---->
+            
+            
+    <style>
+        .free_selling_cars{width: 100%; height: 100%; background: url(/m/images/background.png) repeat;position:fixed;top: 0px;left: 0px;z-index: 9999}
+        .sel_ca_box{width:85%; height:190px; margin: auto;top:50%;margin-top:-95px; background: #fff; position: relative; border: 4px #E5E5E5 solid;}
+        .sel_ca_button{width:29px; height:29px; border: none; background: none; position: absolute; top:10px; right: 10px; cursor: pointer;}
+        .sel_ca_button img{max-width: 100%; width: 100%;}
+        .sel_ca_bo_successful{text-align: center; margin-top:59px;}
+        .sel_ca_bo_successful img{margin-left: -25px;vertical-align: top;width:43px;}
+        .sel_ca_span{font-size:24px; color: #3B3B3B; font-weight: bold; margin-top: 10px;vertical-align: top; display: inline-block; margin-left: 15px;}
+        .sel_ca_p{text-align: center; color: #E1E1E1; margin-top:10px;}
+    </style>
+    <div class="free_selling_cars" style=" display: none">
+        <div class="sel_ca_box">
+            <button class="sel_ca_button" onclick="$('.free_selling_cars').toggle();"><img src="/m/images/sign_in_r1_c3.jpg"/></button>
+            <p class="sel_ca_bo_successful">
+                <img src="/m/images/details1_03.png"/>
+                <span class="sel_ca_span">提交成功</span>
+            </p>
+            <p class="sel_ca_p">*工作人员会尽快与您联系，请留意手机</p>
+        </div>
+    </div>
+    
+    
+    
+            <!---估价后的弹框 结束---->
+            
+            
+            
+        </div>
+    </div>
+    
+<!-----------------------------------内容 结束-------------------------------------->
+	

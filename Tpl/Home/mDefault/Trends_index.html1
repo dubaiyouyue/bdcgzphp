@@ -1,0 +1,198 @@
+
+
+<!--------------------------------内容 开始------------------------------->
+
+<div class="ne_content">
+	<div class="title">
+		<div class="title_top">
+			<div class="ti_left"><span></span></div>
+			<div class="ti_word">
+				<p class="ti_c">{$getinfolamu.name}</p>
+			</div>
+			<div class="ti_rigth"><span></span></div>
+		</div>
+		<p class="ti_e">{$getinfolamu.enname}</p>
+	</div>
+	
+	
+	
+	<div class="an_nav">
+		<ul class="an_na_ul">
+			<foreach name="lanmu" item="r" key="k" >
+					<li <?php
+        if($r['id']==$cid) echo 'class="dq"';
+
+      ?>>
+					<a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html">{$r.name}</a>
+					
+					</li>
+				  </foreach>
+		</ul>
+	</div>
+	
+	<div class="ne_hot" <?php
+		if(empty($list)) echo 'style="display:none;"';
+	?>>
+		<div class="ne_ho_imgbox">
+			<div class="ne_ho_img" style="background: url({$list.0.imgurl}) no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;"></div>
+		</div>
+		<div class="ne_ho_word news_lie">
+			<div class="ne_ho_decorate"></div>
+			
+			
+			
+			
+			
+		</div>
+		<div class="ne_ho_frame"></div>
+	</div>
+	
+	
+	
+	
+	<style>
+	
+	/*控制第一条新闻的样式*/
+	.ne_li_li:first-child{position:absolute;margin-top: -210px;color:#fff;left:5%;    width: 95%;}
+	.ne_li_li:first-child .ne_li_title{
+	
+	font-family: "微软雅黑";
+    font-size: 16px;
+    font-weight: bold;
+
+	}
+	
+	
+	.ne_li_li:first-child .ne_li_wore{width:85%;}
+	.ne_li_li:first-child p{color:#fff;}
+	.ne_li_li:first-child div{color:#fff;}
+	.ne_li_li:first-child .ne_da_day,.ne_li_line,.ne_li_month{/*display:none;*/}
+	
+	.ne_li_li:first-child .ne_li_p{width:100%;font-family: "微软雅黑";
+    font-size: 12px;
+    margin-top: 16px;display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;}
+	
+	
+	.ne_li_li:first-child .ne_li_months{
+	
+	margin-top: 5px;
+	border-bottom:1px solid #ffffff;
+	width:80px;
+	}
+	/*控制第一条新闻的样式end*/
+	
+	.ne_li_months{color:#000000;}
+	
+	</style>
+	
+	
+	<div class="ne_list" id="moredssss">
+	
+			<?php
+				$nnnttimm=explode(' ',$list['0']['updatetime']);
+				//$nnnttimm=explode('-',$nnnttimm['0']);
+				//$r['updatetime']=$nnnttimm['0'];
+				//$nnnttimmo=$nnnttimm['0'].'-'.$nnnttimm['1'];
+				if($_GET['ajaxssseee']!='ok'){
+			?>
+	
+	<div class="ne_li_li">
+			<a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/140/id/{$list.0.id}.html">
+	
+				<div class="ne_li_wore">
+					<p class="ne_li_title">{$list.0.title}</p>
+					<p class="ne_li_months">{$nnnttimm.0}</p>
+					
+					<div class="ne_li_p">{$list.0.description}</div>
+				</div>
+			</a>
+		</div>
+	<?php
+	}
+	?>
+	
+	
+	<foreach name="list" item="r" key="k" >
+	<?php
+		if($k || $_GET['ajaxssseee']=='ok'){
+				$nnnttimm=explode(' ',$r['updatetime']);
+				$r['updatetime']=$nnnttimm['0'];
+						$nnnttimm=explode('-',$r['updatetime']);
+				//$r['updatetime']=$nnnttimm['0'];
+				$nnnttimmo=$nnnttimm['0'].'-'.$nnnttimm['1'];
+	?>
+		<div class="ne_li_li news_lie">
+			<a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/140/id/{$r.id}.html">
+				<div class="ne_li_date">
+					<p class="ne_da_day">{$nnnttimm.2}</p>
+					<p class="ne_li_month">{$nnnttimmo}</p>
+				</div>
+				<div class="ne_li_wore">
+					<p class="ne_li_title">{$r.title}</p>
+					
+					<div class="ne_li_line"></div>
+					<div class="ne_li_p">{$r.description}</div>
+				</div>
+			</a>
+		</div>
+		
+		<?php
+			}
+		?>
+		
+		</foreach>
+		
+		
+		
+	
+	</div>
+	
+	
+	
+	<div id="more" onclick="aajjjj();" pages="1" style="width:100px; height: 30px; color: #fff; background:#03614e; margin: auto; margin-top: 30px; margin-bottom: 30px; text-align: center; line-height: 30px; <?php
+		if(empty($list)) echo 'display:none;';
+	?>">加载更多</div>
+	
+	
+	
+	
+</div>
+
+
+<script>
+var p=2;
+function aajjjj(){
+	$.ajax( {
+	url: '/index.php/Home/Trends/index/ajaxssseee/ok/cid/{$cid}/p/'+p+'.html', //这里是静态页的地址
+	type: "GET", //静态页用get方法，否则服务器会抛出405错误
+	//dataType: "json",
+	//cache: false,
+	//async: false,
+	beforeSend: function(){
+	 // Handle the beforeSend event
+	 $('#more').html('加载中...');
+	},
+	success: function(data){
+		if(data){
+			var result = $(data).find('#moredssss').html();
+			$('#moredssss').append(result);
+			p=p+1;
+			$('#more').html('加载更多');
+		}else{
+			$('#more').html('没有了');
+		}
+		
+		//var result = $(data).find("另一个html页面的指定的一部分").html();
+	}
+});
+}
+</script>
+
+<!--------------------------------内容 结束------------------------------->
+
+	

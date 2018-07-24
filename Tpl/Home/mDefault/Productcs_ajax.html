@@ -1,0 +1,19 @@
+{__NOLAYOUT__}<foreach name="list" item="r" key="k" >
+            <div class="buy_li_each">
+                <a href="/index.php/Home/Productcshow/index/cid/{$cid}/c/{$cid}/id/{$r.id}.html">
+                    <div class="buy_li_ea_img" style="background:url({$r.imgurl}) no-repeat center center;background-size: cover;"></div>
+					<div class="buy_li_ea_word">
+						<p class="buy_li_ea_title">{$r.title}</p>
+						<div class="buy_li_ea_deta">
+							<span class="buy_li_ea_span"><?php echo date('Y',$r['sppsjjtime']);?>年</span>
+							<span class="buy_li_ea_span">{$r.licuser}万公里</span>
+						</div>
+                        <div class="buy_li_ea_price">
+                            <span class="buy_li_ea_pr1">{$r.jiageold}万</span>
+                            <span class="buy_li_ea_pr2" style="display:none;">首付1.5万</span>
+                            <span class="buy_li_address">{$r.gz_headeryjhhyy}</span>
+                        </div>
+					</div>
+                </a>
+            </div>
+            </foreach>

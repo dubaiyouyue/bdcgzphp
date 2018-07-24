@@ -1,0 +1,80 @@
+<style>.marquee .mysssss {
+    margin-right: 20px;
+}</style>
+<!-----------------------------------内容 开始-------------------------------------->
+    
+    <div class="member1">
+        <div class="me1_title">
+            <a class="me1_ti_a" href="javascript:history.go(-1);"><img src="/m/images/member_r3_c2.png"/></a>
+            <p class="mi1_ti_p">意见反馈</p>
+            <div class="mi1_ti_line"></div>
+        </div>
+        
+       
+        <form id="myformyjjjkk" onsubmit="return false;">
+           
+            <div class="marquee" style="text-align: center;background: none;">
+			<span class="mysssss"><input name="my" type="radio" value="非常满意" id="male1" /><label for="male1">非常满意</label></span>
+			<span class="mysssss"><input name="my" type="radio" value="满意" id="male2" /><label for="male2">满意</label></span>
+			<span class="mysssss"><input name="my" type="radio" value="一般" id="male3" /><label for="male3">一般</label></span>
+			<span class="mysssss"><input name="my" type="radio" value="良好" id="male4" /><label for="male4">良好</label></span>
+           </div>
+           
+            
+            
+            <div class="text">
+                <textarea data-role="none" class="feedbackcontent" id="feedbackcontent" name="feedbackcontent" placeholder="请输入您的意见和反馈(必填)"></textarea>
+            </div>
+            
+            <div class="me_dd">
+                <input class="me_dd_inout" type="text" name="yijktel" placeholder="请输入手机号"/><input type="hidden" name="company" value="99"/>
+            </div>
+            <button class="me_button" onclick="tjyjjffgkk();" style="font-size: 14px;">提交意见</button>
+        </form>
+            
+        
+    </div>
+    
+<!-----------------------------------内容 结束-------------------------------------->
+	
+
+
+<script>
+
+
+
+
+function tjyjjffgkk(){
+	var feedbackcontent=$('#feedbackcontent').val();
+	if(!feedbackcontent){
+		alert('请填写意见内容');
+		document.getElementById('feedbackcontent').focus();
+		return false;
+	}
+			//$('#tafdasfdsa').removeAttr('onclick');
+			$('.me_button').text('正在提交..');
+			$.ajax({
+				type: "POST",
+				url:'/index.php?g=User&m=Post&a=Message&ajax=ajax&yj=fk',
+				data:$('#myformyjjjkk').serialize(),
+				error: function(request) {
+					alert('服务器繁忙');
+					location.reload();
+					return false;
+				},
+				success: function(data) {
+					if(data=='addok'){
+						alert('留言提交成功');
+						location.reload();
+						return false;
+					}else{
+						alert('服务器繁忙');
+						location.reload();
+						return false;
+					};
+					
+				}
+			});
+}
+
+</script>

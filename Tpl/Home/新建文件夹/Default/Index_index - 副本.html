@@ -1,0 +1,397 @@
+{__NOLAYOUT__}
+<!doctype html>
+<html>
+<head>
+<title>{$seo_title}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+
+
+<meta name="keywords" content="{$seo_title}">
+<meta name="description" content="{$seo_title}">
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<link type="text/css" rel="stylesheet" href="/css/Public1.css?13"/><!--公共样式-->
+<link type="text/css" rel="stylesheet" href="/css/style.css"/>
+
+<link type="text/css" rel="stylesheet" href="/css/swiper.min.css"/><!--bannerCSS-->
+
+
+<script src="/js/nav.js"></script><!--导航的JS-->
+
+
+<script>
+        ;(function(designWidth, maxWidth) {
+	var doc = document,
+	win = window,
+	docEl = doc.documentElement,
+	remStyle = document.createElement("style"),
+	tid;
+
+	function refreshRem() {
+		var width = docEl.getBoundingClientRect().width;
+		maxWidth = maxWidth || 540;
+		width>maxWidth && (width=maxWidth);
+		var rem = width * 100 / designWidth;
+		remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+	}
+
+	if (docEl.firstElementChild) {
+		docEl.firstElementChild.appendChild(remStyle);
+	} else {
+		var wrap = doc.createElement("div");
+		wrap.appendChild(remStyle);
+		doc.write(wrap.innerHTML);
+		wrap = null;
+	}
+	//要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+	refreshRem();
+
+	win.addEventListener("resize", function() {
+		clearTimeout(tid); //防止执行两次
+		tid = setTimeout(refreshRem, 300);
+	}, false);
+
+	win.addEventListener("pageshow", function(e) {
+		if (e.persisted) { // 浏览器后退的时候重新计算
+			clearTimeout(tid);
+			tid = setTimeout(refreshRem, 300);
+		}
+	}, false);
+
+	if (doc.readyState === "complete") {
+		doc.body.style.fontSize = "16px";
+	} else {
+		doc.addEventListener("DOMContentLoaded", function(e) {
+			doc.body.style.fontSize = "16px";
+		}, false);
+	}
+})(640, 750);
+</script>
+	
+	
+	
+</head>
+
+<body>
+<!----------------------------------头部 开始--------------------------------------->
+<!--新头部-->
+<div style="
+    height:  65px;
+    background:#272C3F;
+	font-size:12px; padding-left:10px;
+">
+	<div style=" float:left;" class="newtopleft"><a style=" height: 65px;margin-top: -7px;" href="/"><img style="width:185px; margin-top:15px;" src='{$config_info.gz_logo}'></a></div>
+	<div class="right" style="float: right; margin-top: -3px;"><button class="right"></button></div>
+</div>
+<!--end-->
+
+<div class="bgDiv"></div>
+	<div class="rightNav">
+		
+		<div class="ppptcdiv" id="scroll-1"><!--滚动条div 父级rightNav要加上 overflow:auto;-->
+		<div class="xian"></div>
+		<ul class="menu">
+		 
+		
+<li><a href="/">网站首页</a><div class="xian"></div></li>
+				<foreach name="new_column_list_top" item="r" key="k" >
+               <li><a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html">{$r.name}</a><div class="xian"></div></li>
+			    </foreach></div>
+		  
+		</ul>
+	</div>
+
+
+
+<!--滚动条颜色--><style>
+	#scroll-1{overflow: auto;}
+    #scroll-1::-webkit-scrollbar {
+        width:2px;    }
+    #scroll-1::-webkit-scrollbar-track     {
+        background:#fff;
+    }
+    #scroll-1::-webkit-scrollbar-thumb{
+        background:#fff;
+        border-radius:3px;
+    }
+</style><!--end-->
+
+<!--js--> 
+    <script>
+$(document).ready(function() {
+  
+    $('#open').click(function() {
+		
+		//修改滚动条
+			$('body').css('overflow','hidden');
+		//end
+		
+        $('.ppptcdiv').animate({right:'0px'},800);
+    $('#ppptcdiv-ddd').css('display','block');
+    });
+});
+function cloos(){
+	
+			//修改滚动条
+				$('body').css('overflow','');
+			//end
+	
+  $('.ppptcdiv').animate({right:'-225px'},800);
+  $('#ppptcdiv-ddd').css('display','none');
+}
+</script> 
+
+
+
+<!-------------------------------导航 结束----------------------------------->
+
+<!----------------------------------头部 结束--------------------------------------->
+
+
+
+
+<!-- 轮播 styles -->
+  <style>
+    html, body {
+      position: relative;
+    }
+    body {
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color:#000;
+      margin: 0;
+      padding: 0;
+    }
+    .swiper-container {
+      width: 100%;
+      height:100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #3FDEC7;
+}
+  </style>
+
+<!------------------------------------banner 开始 ----------------------------------------->
+<div id="banner" style=" height:auto; overflow:auto;">
+
+
+
+<!-- Swiper -->
+  <div class="swiper-container">
+        <div class="swiper-wrapper">
+		
+		
+		
+		<foreach name="blist" item="r" key="k" >
+			 
+            	 <div class="swiper-slide" ><img src="{$r.img_path}" style="width: 100%; "></div>
+				
+				</foreach>
+		
+		
+      
+         
+        </div>
+		<div class="swiper-pagination"></div>
+        <!-- Add Pagination
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows 
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>-->
+    </div>
+
+    <!-- Swiper JS -->
+  <script src="js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: 1,
+        paginationClickable: true, autoplay:3000,
+        spaceBetween: 30,
+        loop: true,
+		 pagination: {
+    el: '.swiper-pagination',
+    bulletElement : 'li',
+  },clickable :true,
+    });
+    </script>
+</div>
+
+
+<!------------------------------------banner 结束 ----------------------------------------->
+
+
+<div style="background:url(/images/index1.jpg) repeat top; height:20px; width:100%;"></div>
+
+
+<div class="bj" style="background:url(/images/jg.jpg); width:100%; overflow: hidden;">
+
+<!--------------------------------------内容 开始--------------------------------------->
+	<div class="in_service">
+    	<div class="title">
+        	<img class="tp" src="/images/index2_r5_c2.png"/>
+            <img class="wz" src="/images/index2_r1_c1.png"/>
+        </div>
+        
+ 
+   
+   
+   
+   
+ <!-- <div id="pro" class="pt40">
+ 
+  <div class="">
+    <div class="w50b fl pro_home"><a href="" class=""><img src="images/index_r1_c1.jpg" width="100%" /></a></div>
+    <div class="w50b fl pro_home"><a href="" class=""><img src="images/index_r1_c1.jpg" width="100%" /></a></div>
+    <div class="w50b fl pro_home"><a href="" class=""><img src="images/index_r1_c1.jpg" width="100%" /></a></div>
+    <div class="w50b fl pro_home"><a href="" class=""><img src="images/index_r1_c1.jpg" width="100%" /></a></div>
+  </div>
+  
+	  <div style="overflow: hidden;clear:both"></div>
+ 
+</div>
+
+   -->
+  <div class="fenk">
+  <foreach name="sso" item="r" key="k" >
+  	<div class="meige">
+  		<a href="/index.php/Home/Service/index/pagesss/1/cid/{$r.id}.html">
+  			<div class="hz" style="background:url({$r.columnimg}) no-repeat center; background-size: cover;" >
+  				<h3>{$r.name}</h3>
+  				<p>{$r.description}</p>
+  			</div>
+  		</a>
+  	</div>
+  	
+  	
+  	</foreach>
+  	<div class="meige">
+  		<a href="/index.php/Home/Service/index/cid/445.html">
+  			<div class="more">
+  				<img style="margin-top: 0.53rem;" src="/images/12.fw.png"/>
+  			</div>
+  		</a>
+  	</div>
+	
+	
+  </div>
+</div>
+
+
+<div class="in_caes">
+	
+	<div class="title">
+		<img style="width:23px;" src="/images/index2_r5_c2.png"/>
+		<img style="width: 130px;"src="/images/index2_r3_c1.png"/>
+	</div>
+
+	<div class="ca_hz">
+	<foreach name="newssal" item="r" key="k" >
+		<div class="meige">
+			<a href="/index.php/Home/Newsshow/index/cid/{$r.class1}/id/{$r.id}.html">
+				<div class="bj">
+					<div class="tp"><img src="{$r.imgurl}"/></div>
+					<p>{$r.title}</p>
+					<div class="xian"></div>
+				</div>
+			</a>
+		</div>
+		</foreach>
+		
+		
+		<div class="meige">
+			<a href="/index.php/Home/Product/index/cid/136.html">
+				<div class="more">
+					<h3>MORE</h3>
+					<p>查看更多</p>
+				</div>
+			</a>
+		</div>
+		
+		
+	</div>	
+</div>
+
+
+<div class="in_news">
+	<div class="title">
+		<img style="width:23px;" src="/images/index2_r5_c2.png"/>
+		<img style="width: 120px;"src="/images/index2_r5_c4.png"/>
+	</div>
+	
+	
+	<div class="ne_hz"><foreach name="newssalgg" item="r" key="k" >
+		<div class="femk">
+			<a href="/index.php/Home/Newsshow/index/cid/{$r.class1}/id/{$r.id}.html">
+				<h3>{$r.title}</h3>
+				<p>{$r.description}</p>
+			</a>
+		</div>
+		</foreach>
+
+		
+		
+		
+	</div>
+	
+</div>
+
+
+
+
+
+<!--------------------------------------内容 结束--------------------------------------->
+</div>
+
+
+<!------------------------------------底部 开始 ----------------------------------------->
+<div class="button">
+	<p>{$config_info.gz_footright}</p>
+	<p>ALL Rights Reserved.</p>
+</div>
+<!------------------------------------底部 结束 ----------------------------------------->
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

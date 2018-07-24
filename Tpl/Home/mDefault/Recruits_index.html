@@ -1,0 +1,87 @@
+
+
+<!-----------------------------------内容 开始-------------------------------------->
+    <style>
+        .join{width: 96%; margin: auto;}
+        .jo_title{margin-top: 10px;}
+        .jo_title img{width:60px;display: inline-block; vertical-align: top; margin-top:7px;}
+        .jo_ti_word{display: inline-block; vertical-align: top; margin-left: 10px;}
+        .jo_ti_wo_p{color: #414141; font-size: 16px; font-weight: bold;}
+        .jo_ti_wo_p1{color: #AFAFAF; font-size:12px; line-height: 20px;}
+        .jo_position{margin-top: 20px;}
+        .jo_po_each{margin-bottom: 20px; border: #EDEDED 1px solid;}
+        .jo_po_ea_p{height: 30px; line-height: 30px; color: #4A4A4A; background: #EDEDED; font-weight: bold; padding-left:10px; }
+        .jo_po_ea_span{ margin-top: 10px; color: #8E8E8E; padding-left:10px; display: block; height: 144px; overflow: hidden;-o-text-overflow: ellipsis;
+text-overflow: ellipsis;
+text-align: left;
+word-break: break-all;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp:1;}
+        .jo_button{width:116px; height: 30px; background: url(/m/images/sell2.png) no-repeat center center;background-size: 100%; margin: auto; display: block; margin-bottom: 30px;}
+    </style>
+    
+    <div class="join">
+        <div class="jo_title">
+            <img src="/m/images/join_img1.png"/>
+            <div class="jo_ti_word">
+                <p class="jo_ti_wo_p">{$getinfolamu.name}</p>
+                <p class="jo_ti_wo_p1">{$getinfolamu.enname}</p>
+            </div>
+        </div>
+        <div class="jo_position"><foreach name="list" item="r" key="k" >
+            <div class="jo_po_each">
+                <p class="jo_po_ea_p">{$r.title}</p>
+                <a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/469/id/{$r.id}.html"><span class="jo_po_ea_span"><?php
+					echo nl2br($r['description']);
+				   ?></span></a>
+            </div></foreach>
+            
+            <button class="jo_button" onclick="sslyss();"></button>
+            
+        </div>
+    </div>
+	
+	<style>.fdasfjrajajaxx{    background: url(/5-121204193956-50.gif) no-repeat center center;
+    background-size: unset;}</style>
+<script>
+nyyyyn=2;
+function sslyss(){
+$(".jo_button").addClass('fdasfjrajajaxx');
+$.ajax( {
+        url: '/index.php/Home/Recruits/index/cid/{$cid}/ajax/ajax/p/'+nyyyyn, //这里是静态页的地址
+        type: "GET", //静态页用get方法，否则服务器会抛出405错误
+        success: function(data){
+			if(!data){
+				$(".jo_button").hide();
+				return false;
+			}
+            //var result = $(data).find("另一个html页面的指定的一部分").html();
+            $(".jo_button").before(data);
+			$(".jo_button").removeClass('fdasfjrajajaxx');
+			nyyyyn=nyyyyn+1;
+        }
+});
+//alert(nyyyyn);
+}
+</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!-----------------------------------内容 结束-------------------------------------->
+    
+   

@@ -1,0 +1,335 @@
+
+    <style>
+	.se_banner{height: 304px;}.sel_por_ti_span2{height: 150px;overflow: hidden;
+-o-text-overflow: ellipsis;
+text-overflow: ellipsis;
+text-align: left;
+word-break: break-all;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 5;line-height: 30px;}
+	</style>
+    
+    
+   
+    
+    <!-------------------------------内容 开始-------------------------------------->
+    <div class="sell">
+        <div class="sel_middle">
+            
+            <!------------卖车输入框 开始------------>
+            <div class="sel_frame" style="height: 364px;">
+                <div class="sel_fe_background"></div>
+                <p class="sel_fe_p">成功卖出<span class="sel_fe_span"><?php echo ($config_info['gz_headFaxess']+$cjlistccnum);?></span>辆车</p>
+                <div class="sel_fe_fgfds" style="height: 225px;">
+                    <form name="myform" id="myform" method="POST" class="clearUl sel_fr_form" action="">
+                        <input class="sel_fr_input" name="tel" id="tel" type="text" placeholder="输入您手机号码"/>
+                        <input name="message" type="hidden" value="2"/>
+						<div class="l-captcha" data-site-key="<?php echo LUOSIMAO_SITE_KEY;?>" data-width="290" style="margin-left: 20px;margin-top: 20px;"></div>
+                    </form>
+					
+                    <button class="sel_fr_button" onclick="xxpd();">免费卖车</button>
+                    <div class="sel_fr_tele">
+                        <img class="sel_te_img" src="/images/car_selling_r2_c24.png"/>
+                        <span class="sel_te_word">咨询电话：{$config_info.gz_footteldianhua2}</span>
+                    </div>
+                </div>
+            </div>
+            
+            
+
+<script>
+
+
+
+
+function  xxpd(){
+		var name=$('#name').val();
+		var email=$('#email').val();
+		var telephone=$('#tel').val();
+		//var company=$('#company').val();
+		var message=$('#message').val();
+		
+		/*
+		if(!name){
+			alert('请填写姓名');
+			document.getElementById('name').focus();
+			return false;
+		}
+*/
+		if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+				$.edbox({
+					html:'<div class="example-html">请填写正确手机号</div>',
+					//animateOpen:'animated tada',
+					//animateClose:'animated flipOutX',
+					afterClose:function(){
+						document.getElementById('tel').focus();
+					}
+				});
+				return false;
+		}
+		
+			var luotest_response = $("input[name='luotest_response']").val();
+			if(!luotest_response){
+				$.edbox({
+					html:'<div class="example-html">请点击人机识别验证</div>',
+					//animateOpen:'animated tada',
+					//animateClose:'animated flipOutX'
+					/*,afterClose:function(){
+						document.getElementById('tel').focus();
+					}*/
+				});
+				return false;
+			}
+		
+		/*
+		if(!youxiang('email') || !email){
+			alert('请填写正确邮箱');
+			document.getElementById('email').focus();
+			return false;
+		}
+		*/
+		/*if(!company){
+			alert('请填写公司');
+			document.getElementById('company').focus();
+			return false;
+		}*/
+		/*
+		if(!message){
+			alert('请填写留言');
+			document.getElementById('message').focus();
+			return false;
+		}
+		*/
+			
+			$('.sel_fr_button').removeAttr('onclick');
+			$('.sel_fr_button').text('正在提交..');
+			$.ajax({
+				type: "POST",
+				url:'/index.php?g=User&m=Post&a=Message&ajax=ajax',
+				data:$('#myform').serialize(),
+				error: function(request) {
+					$.edbox({
+						html:'<div class="example-html">服务器繁忙</div>',
+						//animateOpen:'animated tada',
+						//animateClose:'animated flipOutX',
+						afterClose:function(){
+							location.reload();
+						}
+					});
+					return false;
+				},
+				success: function(data) {
+					if(data=='addok'){
+						$('.sel_fr_apply').toggle();//alert('留言提交成功！');
+					}else if(data=='2'){
+						LUOCAPTCHA.reset();
+						$.edbox({
+							html:'<div class="example-html">人机验证错误</div>',
+							//animateOpen:'animated tada',
+							//animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+					}else{
+						$.edbox({
+							html:'<div class="example-html">服务器繁忙</div>',
+							//animateOpen:'animated tada',
+							//animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+					}
+					
+				}
+			});
+	}
+		function  youxiang(n){
+		
+		var email = document.getElementById(n).value;
+		
+		//alert(email);
+		
+		//return false;
+		
+            if (email != "") {
+            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                isok= reg.test(email );
+                if (!isok) {
+                    return false;
+                }
+				else return true;
+            }
+		}</script>
+            
+            
+            <!--------------------------------立即申请按钮弹框 开始---------------------------------------->
+            
+                     
+    <style>
+        .sel_fr_apply{display: none;width: 100%; height: 100%; background: url(/images/background.png) repeat;position:fixed;top: 0px;left: 0px;z-index: 9999}
+        .sel_fr_app_box{width: 500px; height:300px; margin: auto;/*margin-top:300px;*/top:50%;margin-top:-150px;left:50%;margin-left:-250px; background: #fff; position: relative; border: 4px #E5E5E5 solid;}
+        .sel_fr_app_button{width:48px; height:48px; border: none; background: none; position: absolute; top:10px; right: 10px; cursor: pointer;}
+        .sel_fr_app_button img{max-width: 100%; width: 100%;}
+        .sel_fr_app_bo_successful{text-align: center; margin-top:80px;}
+        .sel_fr_app_bo_successful img{margin-left: -25px;vertical-align: top;}
+        .sel_fr_app_span{font-size:30px; color: #3B3B3B; font-weight: bold; margin-top: 10px;vertical-align: top; display: inline-block; margin-left: 15px;}
+        .sel_fr_app_p{text-align: center; color: #E1E1E1; margin-top: 20px;}.sel_de_ea_img{margin:auto;}.sel_por_each{vertical-align:top;}
+    </style>
+            
+            
+    <div class="sel_fr_apply" style="">
+        <div class="sel_fr_app_box">
+            <button class="sel_fr_app_button" onclick="location.reload();$('.sel_fr_apply').toggle();"><img src="/images/sign_in_r1_c3.jpg"/></button>
+            <p class="sel_fr_app_bo_successful">
+                <img src="/images/details1_03.png"/>
+                <span class="sel_fr_app_span">提交成功</span>
+            </p>
+            <p class="sel_fr_app_p">*工作人员会尽快与您联系，请留意手机</p>
+        </div>
+    </div>
+    
+
+    <!--------------------------------立即申请按钮弹框 结束---------------------------------------->
+   
+            <!------------卖车输入框 结束------------>
+            </div>
+			
+			
+			
+           
+		{$lanmu.0.content}
+		
+		
+		
+    </div>
+    
+    
+    
+    <div class="sel_deal">
+        <div class="sel_de_middle">
+            <div class="sel_deal_title">
+                <p class="sel_ti_ch">最新成交</p>
+                <p class="sel_ti_en"><img src="/images/car_selling_r10_c13.png"/><span class="sel_ti_en_span">NEW DEAL</span><img src="/images/car_selling_r10_c18.png"/></p>
+            </div>
+            
+            <div class="sel_de_list">
+			
+			
+
+			
+				<!--选项卡开始--><div class="swiper-container">
+				 
+				  <div class="swiper-wrapper" style="height: 269px;overflow:hidden;">
+
+					
+			
+                <script>
+					/*$(function(){
+						$('.sel_de_ea_img').hover(function() {
+							$(this).css('background-size','150%');
+						}, function() {
+							$(this).css('background-size','cover');
+						});
+					});*/
+				</script>
+                <foreach name="cjlist" item="r" key="k" >
+                
+                <div class="sel_de_li_each swiper-slide">
+                    
+                        <div class="sel_de_ea_img" style="background:url({$r.imgurl}) no-repeat center center; background-size: cover;"></div>
+                        <p class="sel_de_ea_title">{$r.title}</p>
+                        <div class="sel_de_ea_kkkkkkkkkkkkkk">
+                            <span class="sel_de_ea_date"><?php echo date('Y',$r['sppsjjtime']);?></span>
+                            <span class="sel_de_ea_date">{$r.licuser}万公里</span>
+                            <span class="sel_de_ea_date">{$r.gz_headeryjhhyy}</span>
+                        </div>
+                        <div class="sel_de_ea_jjjjjjjjjj">
+                            <span class="sel_de_ea_price">成交价<i class="sel_de_ea_pr">{$r.jiageold}万</i></span>
+                            <span class="sel_de_ea_out">新车指导价<i class="sel_de_ea_out1">{$r.jiages}万</i></span>
+                        </div>
+                    
+                </div>
+                
+                </foreach>	  </div>
+   
+					</div><!--end-->
+                
+            </div>
+            
+            <div class="paging"></div>
+        </div>
+    
+    </div>
+    <style>
+	.swiper-pagination-switch {display:none;width: 52px;
+    height: 5px;
+    background: #FAAA0B;
+    
+    cursor: pointer;
+    margin: 0px 5px;}
+.swiper-active-switch {    width: 52px;
+    height: 5px;
+    background: #1F2D30;
+    cursor: default;
+    /*cursor: pointer;*/
+    margin: 0px 5px;}.sel_de_ea_title{width:90%;margin-left:20px;}
+.sel_de_ea_kkkkkkkkkkkkkk{width:90%;margin-left:20px;}
+.sel_de_ea_jjjjjjjjjj{width:90%;margin-left:20px;}
+
+	.paging .swiper-pagination-switch:nth-child(1)<?php
+		$si=count($cjlist);
+		if($si<5){
+			echo ',.paging .swiper-pagination-switch:nth-child('.$si.')';
+		}else{
+			echo ',.paging .swiper-pagination-switch:nth-child(4),.paging .swiper-pagination-switch:nth-child('.$si.')';
+		}
+	?>{display: inline-block;}
+	
+	</style>
+	<script> 
+		var mySwiper = new Swiper('.swiper-container',{
+		slidesPerView : 3,
+		slidesPerGroup : 3,/*noSwiping : true,*/onlyExternal : true,
+		pagination : '.paging',loop : true,loopedSlides :3,
+		paginationClickable :true,//createPagination :false,
+		})
+	</script>
+    
+    
+    
+    
+ <div class="sel_problem" style="padding-bottom: 128px;">
+        <div class="sel_pro_middle">
+            
+            <div class="sel_pro_title">
+                <p class="sel_por_ti_word">常见问题</p>
+                <div class="sel_por_ti_line"></div>
+            </div>
+            
+            
+			
+			<foreach name="cjlistwtssss" item="r" key="k" >
+            <div class="sel_por_each">
+                <a href="/index.php/Home/Newsshow/index/cid/484/c/484/id/{$r.id}.html"><div class="sel_por_title"><span class="sel_por_ti_span">NO.{$k+1}</span>{$r.title}</div></a>
+                <span class="sel_por_ti_span2">{$r.description}</span>
+            </div>
+            
+            </foreach>
+           
+		   
+        </div>
+    </div>
+    
+    
+    
+    
+    <!-------------------------------内容 结束-------------------------------------->
+    
+    
+    
+    

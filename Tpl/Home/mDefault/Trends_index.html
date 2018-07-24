@@ -1,0 +1,79 @@
+
+<!-----------------------------------内容 开始-------------------------------------->
+    
+    <style>
+        .tre_se{width: 98%;margin: auto;}
+        .tre_hjab{width: 18px; margin-left: 10px; margin-top:28px;}
+        .tre_se_box{width:90%; height:38px; border: 1px solid #FFBE00;margin-top: 20px; box-sizing:border-box; position: relative;margin-left: 2%;display: inline-block; vertical-align: top;}
+        .tre_se_input input{width: 80%; height: 28px; margin-top:5px;width: 74%;margin-left: 5px;}
+        .tre_se_button{background: url(/m/images/treasure_r6_c13.png) center center; background-size: 100%; width: 87px; height:38px;position: absolute; top:-1px; right:-25px;}
+        
+        .qunbu{width:61px; height: 30px; background: #FFA600; color: #fff; text-align: center; line-height: 30px; margin-top:33px; margin-left:8px;}
+        .tre_se_list{margin-top: 10px;}
+        .tre_se_title{height: 30px; background: #F4F4F4; padding-left: 8px; line-height: 30px; font-weight: bold;}
+        .tre_se_each{height: 30px; border-bottom: 1px dashed #F4F4F4; margin-top: 10px; padding-left: 8px; }
+        .tre_se_each a:hover{color:#FFA600 }
+        
+        .tre_li_more{background: url(/m/images/sell2.png) no-repeat center center; background-size: 100%;width:122px; height:29px;text-align: center;  margin: auto;margin-top: 20px; display:block; margin-bottom: 20px;}
+    </style>
+    
+    <div class="tre_se">
+        <!--搜索框 开始-->
+        <div class="tre_se_box">
+            <form>
+                <div class="tre_se_input">
+                    <input type="text" id="kssss" placeholder="填写关键词"/>
+                </div>
+            </form>
+            <button class="tre_se_button" onclick="ksss();"></button>
+        </div>
+        <!--搜索框 结束-->
+
+        <div class="tre_se_list">
+            <p class="tre_se_title">{$lan.name}</p><foreach name="list" item="r" key="k" >
+            <div class="tre_se_each"><a href="/index.php/Home/Newsshow/index/cid/{$r.class2}/c/{$r.class1}/id/{$r.id}.html">{$r.title}</a></div></foreach>
+        </div>
+        
+        <button class="tre_li_more" onclick="sslyss();"></button>
+        
+    </div>
+   <style>.fdasfjrajajaxx{    background: url(/5-121204193956-50.gif) no-repeat center center;
+    background-size: unset;}</style>
+<!-----------------------------------内容 结束-------------------------------------->
+	<script>
+	//搜索
+nyyyyn=2;
+function sslyss(){
+$(".tre_li_more").addClass('fdasfjrajajaxx');
+$.ajax( {
+        url: '/index.php/Home/{$lan.foldername}/index/cid/{$cid}/ajax/ajax/p/'+nyyyyn+'.html',
+        type: "GET", //静态页用get方法，否则服务器会抛出405错误
+        success: function(data){
+			if(!data){
+				$(".tre_li_more").hide();
+				return false;
+			}
+            //var result = $(data).find("另一个html页面的指定的一部分").html();
+            $(".tre_li_more").before(data);
+			$(".tre_li_more").removeClass('fdasfjrajajaxx');
+			nyyyyn=nyyyyn+1;
+        }
+});
+//alert(nyyyyn);
+}
+	
+	
+	
+function ksss(){
+	var k=$('#kssss').val();
+	if(!k){
+		alert('请输入关键词搜索');
+		document.getElementById('kssss').focus();
+		return false;
+	}else{
+		location.href = '/index.php/Home/TrendsSearch/index/k/'+k;
+	}
+}
+
+
+</script>

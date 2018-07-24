@@ -1,0 +1,218 @@
+
+    
+    
+    <!-------------------------------内容 开始-------------------------------------->
+    
+    <style>.me_nav_ul{padding-top: 20px;width: 169px; background:#FFC13C; margin-top:0px; }.se_banner{height: 194px;}   
+        .me_nav_tc{color: #fff; text-align: center; margin-top: 20px;}
+    </style>
+    
+    <div class="member">
+        <div class="me_middle">
+            <div class="me_nav">
+                <div class="me_nav_ba">
+                    <div class="me_nav_line"></div>
+                    <div class="me_nav_information" style="cursor:pointer;">
+                        <div class="me_nav_in_portrait" onclick="$('.me_nav_in_por_upload').toggle();" style="background:url({$user_tx}?<?php echo time();?>) no-repeat center center; background-size:cover"></div>
+                        <div class="me_nav_title">个人中心</div>
+                        <div class="me_nav_tell">手机号：{$user_tel}</div>
+						<div class="me_nav_tc"><a href="/index.php/Home/Memberuser/epass" style="display: inline-block;">【修改密码】</a> <a href="/index.php/Home/Memberuser/out" style="display: inline-block;">【退出】</a></div>
+                    </div>
+                    <ul class="me_nav_ul">
+                        <li class="me_nav_li me_nav_dq"><a href="javascript:;" onclick="$('.me_nav_li').removeClass('me_nav_dq');getubselllcar('sel');$(this).parent().addClass('me_nav_dq')">卖车记录</a></li>
+                        <li class="me_nav_li"><a href="javascript:;" onclick="$('.me_nav_li').removeClass('me_nav_dq');getubselllcar('buy');$(this).parent().addClass('me_nav_dq')">买车记录</a></li>
+                        <li class="me_nav_li"><a href="http://wpa.qq.com/msgrd?v=3&uin={$config_info.gz_headTeless}&site=qq&menu=yes" target="_blank">联系客服</a></li>
+                    </ul>
+                </div>
+                <img class="me_nav_img" src="/images/member_r6_c2.png"/>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            <!--------------------------------免费卖车按钮 开始---------------------------------------->
+    <style>
+        .me_nav_in_por_upload{width: 100%; height: 100%; background: url(/images/background.png) repeat;position:fixed;top: 0px;left: 0px;z-index: 9999}
+        .me_nav_in_por_upload_box{width: 500px; height:300px; margin: auto;top:50%;margin-top:-150px;left:50%;margin-left:-250px; background: #fff; position: relative; border: 4px #E5E5E5 solid;}
+        .me_nav_in_por_upload_button{width:48px; height:48px; border: none; background: none; position: absolute; top:10px; right: 10px; cursor: pointer;}
+        .por_upload_p{font-size:18px; color: #636363; text-align: center; margin-top: 30px;}
+        .por_upload_{width: 100px;  height: 100px; margin: auto;border-radius:50px; margin-top: 20px;}
+        .por_upload_button{width: 250px; height: 38px; background: #FFC13C;; color: #fff;margin-left: 120px;margin-top: 20px; border: none}
+       button{cursor:pointer;}
+    </style>
+<form action="" style="display:none;" method="POST" enctype="multipart/form-data" id="myformup">
+<input type="file" name="file" id="path" style="display:none;" onchange="uptx();" /> 
+</form>
+
+    <div class="me_nav_in_por_upload" style=" display: none">
+        <div class="me_nav_in_por_upload_box">
+            <div class="me_nav_in_por_upload_button" onclick="$('.me_nav_in_por_upload').toggle();"><img src="/images/sign_in_r1_c3.jpg"/></div>
+            <p class="por_upload_p">上传头像</p>
+            <div class="por_upload_" style="background: url({$user_tx}?<?php echo time();?>) no-repeat center center; background-size: cover;"></div>
+            <div class="por_upload_button" onclick="path.click();" style="line-height:  38px;text-align: center;cursor:  pointer;">上传</div>
+        </div>
+    </div>
+    
+    <script>
+	function uptx(){
+			//$('.por_upload_button').removeAttr('onclick');
+			$('.por_upload_button').text('正在上传....');
+			var formData = new FormData($('#myformup')[0]);
+			$.ajax({
+				type: "POST",
+				url:'/index.php/Home/Uptx/index',
+				//data:$('#myformup').serialize(),
+				
+				cache: false,
+				data: new FormData($('#myformup')[0]),
+				processData: false,
+				contentType: false,
+				
+				error: function(request) {
+				
+					$.edbox({
+						html:'<div class="example-html">服务器繁忙</div>',
+						//animateOpen:'animated tada',
+						//animateClose:'animated flipOutX',
+						afterClose:function(){
+							location.reload();
+						}
+					});
+					return false;
+				
+				
+					//alert("提交失败");
+				},
+				success: function(data) {
+					if(data=='upok'){
+						$.edbox({
+							html:'<div class="example-html">上传修改头像成功</div>',
+							//animateOpen:'animated tada',
+							//animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+					}else{
+						$.edbox({
+							html:'<div class="example-html">服务器繁忙</div>',
+							//animateOpen:'animated tada',
+							//animateClose:'animated flipOutX',
+							afterClose:function(){
+								location.reload();
+							}
+						});
+						return false;
+					
+					}//alert("提交失败");
+					
+				}
+			});
+	}
+	</script>
+    <!--------------------------------免费卖车按钮 结束---------------------------------------->
+            
+            
+            <div class="me_rigth" id="fdasfadsmmm">
+
+                
+                
+                <div class="me_ri_title">
+                    <p class="me_ri_p">{$loidlisttoname}</p>
+                    <div class="me_ri_line"></div>
+                </div>
+				<?php
+					if(empty($loidlist)) echo '<div class="me_ri_each">暂无</di>';
+				?>
+<foreach name="loidlist" item="r" key="k" >
+<div class="me_ri_each">
+	<a href="/index.php/Home/Productcshow/index/cid/{$r.class1}/c/{$r.class1}/id/{$r.id}.html">
+		<div class="me_ri_ae_img" style="background: url({$r.imgurl}) no-repeat center center; background-size: cover;"></div>
+		<div class="me_ri_ae_word">
+			<p class="me_ri_ae_title">{$r.title}</p>
+			<div class="me_ri_in">
+				<span class="me_ri_in_each">
+					<div class="me_ri_ea_line"></div>
+					<div class="me_ri_ea_word">
+						<p class="me_ri_ea_deta">{$r.sppsjj}</p>
+						<p class="me_ri_ea_ddd">上牌时间</p>
+					</div>
+				</span>
+				<span class="me_ri_in_each">
+					<div class="me_ri_ea_line"></div>
+					<div class="me_ri_ea_word">
+						<p class="me_ri_ea_deta">{$r.licuser}万公里</p>
+						<p class="me_ri_ea_ddd">表显里程</p>
+					</div>
+				</span>
+				<span class="me_ri_in_each">
+					<div class="me_ri_ea_line"></div>
+					<div class="me_ri_ea_word">
+						<p class="me_ri_ea_deta">{$r.gz_headeryjhhyy}</p>
+						<p class="me_ri_ea_ddd">上牌地</p>
+					</div>
+				</span>
+				<span class="me_ri_in_each">
+					<div class="me_ri_ea_line"></div>
+					<div class="me_ri_ea_word">
+						<p class="me_ri_ea_deta">{$r.displacement}L</p>
+						<p class="me_ri_ea_ddd">排量</p>
+					</div>
+				</span>
+				<span class="me_ri_in_each">
+					<div class="me_ri_ea_line"></div>
+					<div class="me_ri_ea_word">
+						<p class="me_ri_ea_deta">{$r.gz_biansuxiang}</p>
+						<p class="me_ri_ea_ddd">变速箱</p>
+					</div>
+				</span>
+			</div>
+			
+			<div class="me_ri_pri">车主报价<span class="me_ri_span">{$r.jiageold}</span>万</div>
+		</div>
+	</a>
+</div>
+</foreach>
+               
+            
+            </div>
+        </div>
+    </div>
+    
+    
+    <script>
+	function getubselllcar(mm){
+		$('#fdasfadsmmm').html('正在获取...');
+		$.ajax({
+			type: "POST",
+			url:'/index.php/Home/Memberuser/index/mm/'+mm,
+			//data:$('#myformre').serialize(),
+			error: function(request) {
+			
+				$.edbox({
+					html:'<div class="example-html">服务器繁忙</div>',
+					////animateOpen:'animated tada',
+					////animateClose:'animated flipOutX',
+					afterClose:function(){
+						location.reload();
+					}
+				});
+				return false;
+			
+			
+				//alert("提交失败");
+			},
+			success: function(data) {
+				$('#fdasfadsmmm').html(data);
+			}
+		});
+	}
+	</script>
+    <!-------------------------------内容 结束-------------------------------------->
+    
+    
+    

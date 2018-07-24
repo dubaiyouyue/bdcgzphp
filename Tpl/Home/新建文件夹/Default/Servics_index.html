@@ -1,0 +1,30 @@
+{$getinfolamu.content}
+<style>.sel_por_each{vertical-align:top;}.sel_por_ti_span2{height: 150px;overflow: hidden;
+-o-text-overflow: ellipsis;
+text-overflow: ellipsis;
+text-align: left;
+word-break: break-all;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 5;line-height: 30px;}</style>
+ <div class="sel_problem" style="padding-bottom: 128px;">
+        <div class="sel_pro_middle">
+            
+            <div class="sel_pro_title">
+                <p class="sel_por_ti_word">常见问题</p>
+                <div class="sel_por_ti_line"></div>
+            </div>
+            
+            
+			
+			<foreach name="cjlistwtssss" item="r" key="k" >
+            <div class="sel_por_each">
+                <a href="/index.php/Home/Newsshow/index/cid/484/c/484/id/{$r.id}.html"><div class="sel_por_title"><span class="sel_por_ti_span">NO.{$k+1}</span>{$r.title}</div></a>
+                <span class="sel_por_ti_span2">{$r.description}</span>
+            </div>
+            
+            </foreach>
+           
+		   
+        </div>
+    </div>

@@ -1,0 +1,159 @@
+<!--------------------------------------内容 开始--------------------------------------->
+	<div class="con">
+		<div class="title">
+			<div style=" width: 100%;">
+			<p style="width:48%; float:left; text-align: right; margin-right:4%;">{$getinfolamu.enname}</p> 
+			<p style="width: 48%; float: left; font-weight: bold;">{$getinfolamu.name}</p>
+			</div>
+			<div style="width: 100%;padding-top:50px;"><div style="width: 50px; height: 5px; background:#24D3B6; margin: auto; "></div></div>
+		</div>
+		
+		
+		
+		
+		
+		
+		<div class="fas">
+			<div class="dd">
+				<div class="xian"></div>
+				<h3>联系方式</h3>
+				<p>电话：{$config_info.gz_footteldianhua}</p>
+				<p>传真：{$config_info.gz_footteldianhua}</p>
+				<p>邮箱：{$config_info.gz_foottel}</p>
+				<p>QQ：{$config_info.gz_foottelqq}</p>
+			</div>
+			
+			<div class="dd">
+				<div class="xian"></div>
+				<h3>公司地址</h3>
+				<p style="margin-right:-1px;">地址：{$config_info.gz_headeryj}</p>
+				
+			</div>
+			
+		</div>
+		
+		<div id="map" style="width: 90%;height:160px; margin: auto; padding-bottom:52px;" class="map">
+			
+		</div>
+	
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("map");
+	map.centerAndZoom(new BMap.Point(108.330581,22.815518),18);
+
+	
+	var marker1 = new BMap.Marker(new BMap.Point(108.330581,22.815518));  //创建标注
+	map.addOverlay(marker1);                 // 将标注添加到地图中
+	//创建信息窗口
+	var infoWindow1 = new BMap.InfoWindow("{$config_info.gz_headquartersaddress}<br>电话：{$config_info.gz_footteldianhua}<br><p style='word-break:keep-all;white-space:nowrap;'>地址：{$config_info.gz_headeryj}</p>");
+	marker1.addEventListener("click", function(){this.openInfoWindow(infoWindow1);});
+</script>
+		
+		<div class="mss">
+			<div class="title">
+				<div style="width: 32px; height: 5px;background: #24D3B6"></div>
+				<h3 style="color:#fff; font-family:'微软雅黑'; font-size: 16px; font-weight: bold; margin-top: 10px;">在线留言</h3>
+			</div>
+			
+			<form name="myform" id="myform" method="POST" class="clearUl" action="">
+				<div class="xinx">
+					<p>Name</p>
+					<input type="text" name="name" id="name">
+				</div>
+				
+				<div class="xinx">
+					<p>Phone</p>
+					<input type="text" name="tel" id="tel">
+				</div>
+				
+				<div class="xinx">
+					<p>Email *</p>
+					<input type="text" name="email" id="email">
+				</div>
+				
+				<div class="xinx">
+					<p>Company</p>
+					<input type="text" name="company" id="company">
+				</div>
+				
+				<div class="ly">
+					<p>Message</p>
+					<textarea placeholder="{$config_info.gz_footteldianhua2lyy}" name="message" id="message"></textarea>
+				</div></form>
+				<button onclick="xxpd();" style="width: 110px; height: 37px; background:url(/images/contact2.jpg) no-repeat center;margin:auto;text-align: center;justify-content: space-around;display: flex; margin-bottom: 30px;"></button>
+			
+			
+		</div>
+		
+	</div>
+
+<script>
+function  xxpd(){
+		var name=$('#name').val();
+		var email=$('#email').val();
+		var telephone=$('#tel').val();
+		var company=$('#company').val();
+		var message=$('#message').val();
+		
+		if(!name){
+			alert('请填写姓名');
+			document.getElementById('name').focus();
+			return false;
+		}
+		if(!youxiang('email') || !email){
+			alert('请填写正确邮箱');
+			document.getElementById('email').focus();
+			return false;
+		}
+		if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+			alert('请填写正确手机号');
+			document.getElementById('tel').focus();
+			return false;
+		}
+		if(!company){
+			alert('请填写公司');
+			document.getElementById('company').focus();
+			return false;
+		}
+		if(!message){
+			alert('请填写留言');
+			document.getElementById('message').focus();
+			return false;
+		}
+			$.ajax({
+				type: "POST",
+				url:'/index.php?g=User&m=Post&a=Message&ajax=ajax',
+				data:$('#myform').serialize(),
+				error: function(request) {
+					alert("提交失败");
+				},
+				success: function(data) {
+					if(data>0){
+						alert('留言提交成功！');
+						location.reload();
+					}else alert("提交失败");
+					
+				}
+			});
+	}
+		function  youxiang(n){
+		
+		var email = document.getElementById(n).value;
+		
+		//alert(email);
+		
+		//return false;
+		
+            if (email != "") {
+            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                isok= reg.test(email );
+                if (!isok) {
+                    return false;
+                }
+				else return true;
+            }
+		}
+</script>
+
+<!--------------------------------------内容 结束--------------------------------------->

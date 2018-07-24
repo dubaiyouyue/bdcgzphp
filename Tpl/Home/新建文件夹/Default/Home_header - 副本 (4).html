@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$seo_title}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="keywords" content="HTML XHTML" />
+<link rel="stylesheet" href="/css/idangerous.swiper.css"><!--banner CSS-->
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/iscroll.js"></script><!--侧导航-->
+<script type="text/javascript" src="/js/drawer.js"></script><!--侧导航-->
+<link rel="stylesheet" href="/css/nav.css"><!--侧导航-->
+
+<link rel="stylesheet" href="/css/css.css"><!--公共样式-->
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script>
+window.onload = function(){
+    /*320代表设计师给的设计稿的宽度，你的设计稿是多少，就写多少;100代表换算比例，这里写100是
+      为了以后好算,比如，你测量的一个宽度是100px,就可以写为1rem,以及1px=0.01rem等等*/
+    getRem(320,100)
+};
+window.onresize = function(){
+    getRem(320,100)
+};
+function getRem(pwidth,prem){
+    var html = document.getElementsByTagName("html")[0];
+    var oWidth = document.body.clientWidth || document.documentElement.clientWidth;
+    html.style.fontSize = oWidth/pwidth*prem + "px";
+}
+</script><!--100px=1rem-->
+
+</head>
+
+
+
+<body class="drawer drawer-right">
+<!------------------------头部 开始------------------------------->
+<div class="top" style="position:fixed;z-index:1000;">
+	<div class="logo"><a href="/"><img src="{$config_info.gz_logo}"/></a></div>
+	
+	<!-- 侧导航代码 开始 -->
+		<div class="navs">
+			<div class="drawer-toggle drawer-hamberger"><span></span></div>
+
+			<style>
+				.navs{height: 50px; float: right; width:50px;}
+				.drawer-hamberger span,.drawer-hamberger span:before,.drawer-hamberger span:after{position:absolute;width:19px;height:17px;cursor:pointer;background-color:red; background: url(/images/haobaiyuan_06.png) no-repeat; background-size:100%;margin-top: 17px; margin-left: 10px;}
+				.drawer-open .drawer-hamberger span{background-color:transparent; background: none;}
+				.drawer-hamberger{width:50px;height:50px;background-color:transparent;border:0;}
+				.drawer-nav .in_nav_ul .in_nav_li{width:80%; margin: auto;text-align: center;margin-top:13px; padding-bottom:15px; border-bottom: #989898 1px dashed; }
+				.drawer-nav .in_nav_ul .in_nav_li a{color:#FFFFFF}
+				.on{width:10px; height:12px; background:url(/images/nav___03.png) no-repeat center center; margin-top:7px; float: left; display: none}
+				.zzzzz{display: block}
+				.navs_xian{width:100%; height:8px; background:#3aafe1;}
+			</style>
+
+			<div class="drawer-main drawer-default">
+				<nav class="drawer-nav" role="navigation">
+					<div class="navs_xian"></div>
+					<ul class="in_nav_ul">
+						<li class="in_nav_li"><div class="on"></div><a href="/">首  页</a></li>
+						
+						
+<foreach name="new_column_list_top" item="r" key="k" >
+               <li class="in_nav_li"><div class="on <?php
+        if($foldername==$r['foldername']) echo 'zzzzz';
+
+      ?>"></div><a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html"">{$r.name}</a></li>
+			    </foreach>
+						
+						
+						<li class="in_nav_li"><div class="on"></div><a href="http://wpa.qq.com/msgrd?v=3&uin={$config_info.gz_headTeless}&site=qq&menu=yes">在线客服</a></li>
+						
+					</ul>
+				</nav>
+			</div>
+			
+			
+		</div>
+		<!--侧导航代码 结束 -->
+		
+</div>
+	
+
+	<!--侧导航JS 开始-->
+	
+	<script type="text/javascript">
+			$(document).ready(function(){
+
+				$('.drawer').drawer();
+
+				$('.js-trigger').click(function(){
+					$('.drawer').drawer("open");
+				});
+
+			});
+	</script>
+	<!--侧导航JS 结束-->
+<!------------------------头部 结束------------------------------->
+
+<!--banner 开始-->
+<div class="internal_banner">
+	<img src="{$blist.img_path}"/>
+</div>
+<!--banner 结束-->

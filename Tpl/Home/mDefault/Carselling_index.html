@@ -1,0 +1,221 @@
+
+
+<!-----------------------------------内容 开始-------------------------------------->
+    <div class="sell">
+    <!------------卖车输入框 开始------------>
+        <div class="sel_frame" style="height: 355px;z-index:999;">
+            <div class="sel_fe_background"></div>
+            <p class="sel_fe_p">成功卖出<span class="sel_fe_span"><?php echo ($config_info['gz_headFaxess']+$cjlistccnum);?></span>辆车</p>
+            
+            <div class="sel_fe_box">
+                <form name="myform" id="myform" method="POST" class="clearUl sel_fr_form" action="">
+                    <input class="sel_fr_input" type="text" placeholder="输入您手机号码" name="tel" id="tel" />
+					<input name="message" type="hidden" value="2"/>
+					<div class="sel_fr_input" style="border:none;padding: 0px;"><div class="l-captcha" data-site-key="<?php echo LUOSIMAO_SITE_KEY;?>" data-width="100%" style="margin-top: 20px;"></div></div>
+                </form>
+                <button class="sel_fr_button" onclick="xxpd();">免费卖车</button>
+                <div class="sel_fr_tele">
+                    <img class="sel_te_img" src="/m/images/car_selling_r2_c24.png"/>
+                    <span class="sel_te_word">咨询电话：{$config_info.gz_footteldianhua2}</span>
+                </div>
+            </div>
+        </div>
+        <!------------卖车输入框 结束------------>
+        
+
+<script>
+
+
+
+
+function  xxpd(){
+		var name=$('#name').val();
+		var email=$('#email').val();
+		var telephone=$('#tel').val();
+		//var company=$('#company').val();
+		var message=$('#message').val();
+		
+		/*
+		if(!name){
+			alert('请填写姓名');
+			document.getElementById('name').focus();
+			return false;
+		}
+*/
+		if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+				alert('请填写正确手机号');
+				document.getElementById('tel').focus();
+				return false;
+		}
+		
+			var luotest_response = $("input[name='luotest_response']").val();
+			if(!luotest_response){
+				alert('请点击人机识别验证');
+				return false;
+			}
+		
+		
+			
+			$('.sel_fr_button').removeAttr('onclick');
+			$('.sel_fr_button').text('正在提交..');
+			$.ajax({
+				type: "POST",
+				url:'/index.php?g=User&m=Post&a=Message&ajax=ajax',
+				data:$('#myform').serialize(),
+				error: function(request) {
+					alert('服务器繁忙');
+					return false;
+				},
+				success: function(data) {
+					if(data=='addok'){
+						alert('提交成功！');
+						location.reload();
+						return false;
+					}else if(data=='2'){
+						LUOCAPTCHA.reset();
+						alert('人机验证错误');
+						location.reload();
+						return false;
+					}else{
+						alert('服务器繁忙');
+						location.reload();
+						return false;
+					}
+					
+				}
+			});
+	}
+		function  youxiang(n){
+		
+		var email = document.getElementById(n).value;
+		
+		//alert(email);
+		
+		//return false;
+		
+            if (email != "") {
+            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                isok= reg.test(email );
+                if (!isok) {
+                    return false;
+                }
+				else return true;
+            }
+		}</script>
+		
+		
+		
+		
+		
+        <script>
+	//锚点 隐藏已经点开的弹框
+	function hhidemjqsrc(){
+		$('html,body').animate({scrollTop:$('#prodsafdasfdas').offset().top-60},800);//锚点
+		//隐藏
+		$('.hhidemjqsrcsss').hide();
+	}
+	</script>
+        
+        
+        <!--------------------------------预约看车 开始---------------------------------------->
+    <style>
+        .appointmen{width: 100%; height: 100%; background: url(/m/images/background.png) repeat;position:fixed;top: 0px;left: 0px;z-index: 9999}
+        .app_box{width:85%; height:150px; margin: auto;top:50%;margin-top:-75px;background: #fff; position: relative; border: 4px #E5E5E5 solid;}
+        .app_button{width:30px; height:30px; border: none; background: none; position: absolute; top:10px; right: 10px; cursor: pointer;}
+        .app_button img{max-width:30px; width:30px;}
+        .app_bo_successful{text-align: center; margin-top:48px;}
+        .app_bo_successful img{margin-left: -25px;vertical-align: top;width:35px;}
+        .app_span{font-size:24px; color: #3B3B3B; font-weight: bold; margin-top:6px;vertical-align: top; display: inline-block; margin-left: 15px;}
+        .app_p{text-align: center; color: #E1E1E1; margin-top: 20px;}
+    </style>
+    
+    
+    <div class="appointmen" style="display:none">
+        <div class="app_box">
+            <button class="app_button" onclick="hhidemjqsrc(); $('.appointmen').toggle();"><img src="/m/images/sign_in_r1_c3.jpg"/></button>
+            <p class="app_bo_successful">
+                <img src="/m/images/details1_03.png"/>
+                <span class="app_span">提交成功</span>
+            </p>
+            <p class="app_p">*工作人员会尽快与您联系，请留意手机</p>
+        </div>
+    </div>
+    
+    
+    <!--------------------------------预约看车 结束---------------------------------------->
+        
+        
+        <!----------------轻松卖车 开始------------------->
+        {$lanmu.0.contentsj}
+        <!--------------------广告 结束-------------------->
+        
+        
+        
+        
+        <!----------------------成交记录 开始----------------------->
+        <div class="se_deal" style="height: 550px;overflow: hidden;">
+            <div class="se_de_title">
+                <p class="se_de_ti_p">最新成交</p>
+                <div class="se_de_ti_e">
+                    <img src="/m/images/sell1_r1_c1.png"/>
+                    <span class="se_de_ti_span">NEW DEAL</span>
+                    <img src="/m/images/sell1_r1_c3.png"/>
+                </div>
+            </div>
+            
+            <div class="se_de_list"><foreach name="cjlist" item="r" key="k" >
+                <div class="se_de_each">
+                    
+                        <div class="se_li_ea_img" style="background:url({$r.imgurl}) no-repeat center center;background-size: cover;"></div>
+                        <div class="se_li_ea_word">
+                            <p class="se_li_ea_title">{$r.title}</p>
+                            <div class="se_wo_deta">
+                                <span class="se_wo_span">{$r.gz_headeryjhhyy}年</span>
+                                <span class="se_wo_span">{$r.licuser}万公里</span>
+                            </div>
+                            <div class="se_li_ea_price">
+                                <span class="se_li_ea_pr1">成交价<span class="es_zd">{$r.jiageold}万</span></span>
+                            </div>
+                        </div>
+                   
+                </div></foreach>
+                
+                
+                
+            
+                
+            </div>
+            
+            <div class="se_de_li_more"><a href="###"><img src="/m/images/sell2.png"/></a></div>
+            
+        </div>
+        <!----------------------成交记录 结束----------------------->
+        
+        
+        
+        <!-------------------------常见问题 开始---------------------------->
+        <div class="se_problem">
+            
+            <div class="se_titlr">
+                <p class="se_ti_c_c">常见问题</p>
+                <div class="se_ti_line"></div>
+            </div>
+            <foreach name="cjlistwtssss" item="r" key="k" >
+            <div class="se_pr_each">
+                <div class="se_pr_title">
+                    <a href="/index.php/Home/Newsshow/index/cid/484/c/484/id/{$r.id}.html"><div class="se_pr_ti_menber">NO.{$k+1}</div>
+                    <span class="se_pr_ti_span">{$r.title}</span></a>
+                </div>
+                <p class="se_or_p">{$r.description}</p>
+            </div>
+            
+            </foreach>
+        </div>
+        <!-------------------------常见问题 结束---------------------------->
+        
+        
+        
+    </div>
+<!-----------------------------------内容 结束-------------------------------------->
+	
+

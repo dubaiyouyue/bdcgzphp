@@ -1,0 +1,45 @@
+
+<!--------------------------------内容 开始------------------------------->
+
+<div class="por_content">
+	<div class="title">
+		<div class="title_top">
+			<div class="ti_left"><span></span></div>
+			<div class="ti_word">
+				<p class="ti_c">{$getinfolamu.name}</p>
+			</div>
+			<div class="ti_rigth"><span></span></div>
+		</div>
+		<p class="ti_e">{$getinfolamu.enname}</p>
+	</div>
+	
+	<div class="por_list"><foreach name="list" item="r" key="k" >
+		<div class="por_li_each">
+			<a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/461/id/{$r.id}.html">
+				<div class="por_li_img" style="background: url({$r.imgurl}) no-repeat center;
+    background-size: cover;"></div>
+				<div class="por_li_word">
+					<div class="por_k">
+						<p class="por_k_w">{$r.title}</p>
+					</div>
+				</div>
+				<div class="por_li_effect"></div>
+			</a>
+		</div>
+		</foreach>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+</div>
+
+
+
+
+<!--------------------------------内容 结束------------------------------->
+
+	

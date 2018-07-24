@@ -1,0 +1,293 @@
+
+
+<!-----------------------------------内容 开始-------------------------------------->
+    <div class="finance">
+{$config_info.gz_nyjjrotherssjj}
+        
+        
+        <!------------卖车输入框 开始------------>
+            <div class="fi_frame" style="height: 365px;">
+                <div class="fi_fe_background"></div>
+                <div class="fi_fr_title clearUl">
+                    <p class="fi_fe_p">定制金融方案</p>
+                    <span class="fi_fe_span">{$n_get_num}人在申请</span>
+                </div>
+                <div class="fi_fe_box">
+                    <form name="myform" id="myform" method="POST" class="clearUl fi_fr_form" action="" onsubmit="return false;">
+                        <div class="fi_fr_kjkji">
+                            <input class="fi_fr_input" name="tel" id="tel" type="text" placeholder="输入您手机号码"/>
+                            <button class="fi_fr_button" onclick="getdxyzm();">获取验证码</button>
+                        </div>
+						<div class="fi_fr_kjkji" style="border: none;padding: 0px;padding-right: 1px;">
+							<div class="l-captcha" data-width="100%" data-site-key="<?php echo LUOSIMAO_SITE_KEY;?>"></div>
+						</div>
+                        <div class="fi_fr_kjkji">
+                            <input class="fi_fr_input1" name="yzm" id="yzm" type="text" placeholder="输入验证码"/>
+							<input name="message" type="hidden" value="1" />
+                        </div>
+                    </form>
+                     <button class="fi_fr_buttonkksa" onclick="xxpd();" style="margin-left:20px;">立即申请</button>
+                </div>
+            </div>
+        <!------------卖车输入框 结束------------>
+        
+        <!--------------------------------预约看车 开始---------------------------------------->
+    <style>
+        .appointment{width: 100%; height: 100%; background: url(/m/images/background.png) repeat;position:fixed;top: 0px;left: 0px;z-index: 9999}
+        .app_box{width:85%; height:150px; margin: auto;top:50%;margin-top:-75px;background: #fff; position: relative; border: 4px #E5E5E5 solid;}
+        .app_button{width:30px; height:30px; border: none; background: none; position: absolute; top:10px; right: 10px; cursor: pointer;}
+        .app_button img{max-width:30px; width:30px;}
+        .app_bo_successful{text-align: center; margin-top:48px;}
+        .app_bo_successful img{margin-left: -25px;vertical-align: top;width:35px;}
+        .app_span{font-size:24px; color: #3B3B3B; font-weight: bold; margin-top:6px;vertical-align: top; display: inline-block; margin-left: 15px;}
+        .app_p{text-align: center; color: #E1E1E1; margin-top: 20px;}
+    </style>
+    
+    
+    <div class="appointment" style="display:none">
+        <div class="app_box">
+            <button class="app_button" onclick="$('.appointment').toggle();"><img src="/m/images/sign_in_r1_c3.jpg"/></button>
+            <p class="app_bo_successful">
+                <img src="/m/images/details1_03.png"/>
+                <span class="app_span">提交成功</span>
+            </p>
+            <p class="app_p">*工作人员会尽快与您联系，请留意手机</p>
+        </div>
+    </div>
+    
+    
+	
+<script>
+		function getdxyzm(){
+			var telephone=$('#tel').val();
+			if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+				alert('请填写正确手机号');
+				document.getElementById('tel').focus();
+				return false;
+			}
+			var luotest_response = $("input[name='luotest_response']").val();
+			if(!luotest_response){
+				alert('请点击人机识别验证');
+				return false;
+			}
+			
+			$('.fi_fr_button').removeAttr('onclick');
+			$('.fi_fr_button').text('正在发送');
+			
+			
+			//发送短信
+				$.ajax({
+					type: "POST",
+					url:'/index.php?g=User&m=Post&a=Message&ajax=ajax&sms=ok',
+					data:$('#myform').serialize(),
+					error: function(request) {
+						alert('服务器繁忙');
+						location.reload();
+						return false;
+					},
+					success: function(data) {
+						if(data=='1'){
+							alert('信息填写不完整');
+							location.reload();
+							return false;
+						}else if(data=='2'){
+							alert('人机验证错误');
+							location.reload();
+							return false;
+						}
+						if(data=='OK'){
+							//$('.fi_fr_apply').toggle();//alert('留言提交成功！');
+							//$('.fi_fr_button').text('已发送');
+							var samss='秒重新发送';
+							var samss_t=99;
+							var ssstttt=setInterval(function(){
+								$('.fi_fr_button').text(samss_t+samss);
+								samss_t=samss_t-1;
+								if(samss_t<1){
+									LUOCAPTCHA.reset();
+									$('.fi_fr_button').text('获取验证码');
+									$('.fi_fr_button').attr("onclick","getdxyzm();");
+									clearInterval(ssstttt);
+								}
+								//setTimeout(ssstttt, 1000);
+							}, 1000);
+							
+							
+							
+						}else{
+							alert('发送失败<br>'+data);
+							return false;
+						
+						}//alert("提交失败");
+						
+					}
+				});
+			
+			//end
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+
+function  xxpd(){
+		var name=$('#name').val();
+		var email=$('#email').val();
+		var yzm=$('#yzm').val();
+		//var company=$('#company').val();
+		var message=$('#message').val();
+		
+			var telephone=$('#tel').val();
+			if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+				alert('请填写正确手机号');
+				document.getElementById('tel').focus();
+				return false;
+			}
+			var luotest_response = $("input[name='luotest_response']").val();
+			if(!luotest_response){
+				alert('请点击人机识别验证');
+				return false;
+			}
+		if(!yzm){
+				alert('请填写手机验证码');
+				document.getElementById('yzm').focus();
+				return false;
+		}
+		
+			$('.fi_fr_buttonkksa').removeAttr('onclick');
+			$('.fi_fr_buttonkksa').text('正在提交..');
+			$.ajax({
+				type: "POST",
+				url:'/index.php?g=User&m=Post&a=Message&ajax=ajax',
+				data:$('#myform').serialize(),
+				error: function(request) {
+					alert('服务器繁忙');
+					location.reload();
+					return false;
+				},
+				success: function(data) {
+					if(data=='1'){
+						alert('信息填写不完整');
+						location.reload();
+						return false;
+					}else if(data=='2'){
+						LUOCAPTCHA.reset();
+						alert('人机验证错误');
+								$('.fi_fr_buttonkksa').attr("onclick","xxpd();");
+								$('.fi_fr_buttonkksa').text('立即申请');
+						return false;
+					}else if(data=='3'){
+						LUOCAPTCHA.reset();
+						alert('手机验证码错误');
+								$('.fi_fr_buttonkksa').attr("onclick","xxpd();");
+								$('.fi_fr_buttonkksa').text('立即申请');
+						return false;
+					}else if(data=='4'){
+						alert('手机验证码已过期');
+						location.reload();
+						return false;
+					}
+					if(data=='addok'){
+						//$('.fi_fr_apply').toggle();//alert('留言提交成功！');
+						alert('提交成功！');
+						location.reload();
+					}else{
+						alert('服务器繁忙');
+						location.reload();
+						return false;
+					
+					}//alert("提交失败");
+					
+				}
+			});
+	}
+		function  youxiang(n){
+		
+		var email = document.getElementById(n).value;
+		
+		//alert(email);
+		
+		//return false;
+		
+            if (email != "") {
+            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                isok= reg.test(email );
+                if (!isok) {
+                    return false;
+                }
+				else return true;
+            }
+		}
+		
+		
+		
+		
+		
+		
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+    <!--------------------------------预约看车 结束---------------------------------------->
+        
+        
+        
+        <!---------------------分期购车 开始--------------------------->
+        <div class="fi_by">
+{$config_info.gz_nyjjrotherssjjt}
+            
+            <div class="fi_by_b">
+                <a href="{$necliissfqright.0.fctitleflj}">
+                    <div class="fi_by_b_img" style="background:url({$necliissfqright.0.imgurl}) no-repeat center center;background-size: cover;">
+                        <div class="fi_by_b_word">
+                            <div class="fi_by_wo_line"></div>
+                            <div class="fi_by_wo_ri">
+                                <p class="fi_by_wo_title">{$necliissfqright.0.title}</p>
+                                <p class="fi_by_wo_xby">{$necliissfqright.0.fctitleo}</p>
+                                <span class="fi_by_wo_span">{$necliissfqright.0.fctitlef}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            
+            <div class="fi_list"><foreach name="necliissfq" item="r" key="k" >
+                <div class="fi_li_each">
+                    <a href="{$r.fctitleflj}">
+                        <p class="fi_li_ea_p">{$r.title}</p>
+                        <p class="fi_li_ea_p1">{$r.fctitleo}</p>
+                        <div class="fi_li_ea_img" style="background:url({$r.imgurl})no-repeat center center; background-size: cover;"></div>
+                    </a>
+                </div></foreach>
+                
+            </div>
+
+            
+        </div>
+        <!---------------------分期购车 结束--------------------------->
+        
+        
+        <!----------------------------贷款流程 开始----------------------------->
+{$lan.contentsj}
+        <!----------------------------贷款流程 结束----------------------------->
+        
+        
+        
+    </div>
+    
+<!-----------------------------------内容 结束-------------------------------------->
+	

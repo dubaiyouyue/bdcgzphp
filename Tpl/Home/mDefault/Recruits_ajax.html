@@ -1,0 +1,7 @@
+{__NOLAYOUT__}<foreach name="list" item="r" key="k" >
+            <div class="jo_po_each">
+                <p class="jo_po_ea_p">{$r.title}</p>
+                <a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/469/id/{$r.id}.html"><span class="jo_po_ea_span"><?php
+					echo nl2br($r['description']);
+				   ?></span></a>
+            </div></foreach>

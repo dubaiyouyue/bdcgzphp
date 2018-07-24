@@ -1,0 +1,200 @@
+
+<!------------------------内容 开始----------------------------->
+
+<div class="internal_backgrund" style="width:100%; position:relative;"><img style="max-width: 100%; position: absolute; z-index: -1" src="/images/ba.png"/></div>
+
+
+<div class="internal_title">
+	<div class="internal_ti_p">{$getinfolamu.name}</div>
+	<div class="internal_line"></div>
+</div>
+
+
+<div class="contact">
+	<div class="co_title">
+		<div class="co_ti_wrod">联系方式 /<span class="co_ti_span">Contact Information</span></div>
+		<div class="co_ti_img">
+			<img src="/images/ceeee.jpg"/>
+		</div>
+	</div>
+	
+	<div class="co_information">
+		<div class="co_in_img" style="background: url(/images/con-ing_03.png) no-repeat center center; background-size: cover"></div>
+		<span class="co_in_span">电话：{$config_info.gz_footteldianhua}</span>
+	</div>
+	
+	<div class="co_information">
+		<div class="co_in_img" style="background:url(/images/con-ing_06.png) no-repeat center center; background-size: cover"></div>
+		<span class="co_in_span">邮箱：{$config_info.gz_foottel}</span>
+	</div>
+	
+	<div class="co_information">
+		<div class="co_in_img" style="background:url(/images/con-ing_08.jpg) no-repeat center center; background-size: cover"></div>
+		<span class="co_in_span">地址：{$config_info.gz_headeryj}</span>
+	</div>
+	
+	<div style="margin-top: 35px; margin-bottom: 20px;height:160px;width:100%;" class="co_map" id="map"></div>
+	
+</div>
+
+<div class="mss">
+	<div class="co_title">
+		<div class="co_ti_wrod">在线留言 /<span class="co_ti_span">Online Message</span></div>
+		<div class="co_ti_img">
+			<img src="/images/ceeee.jpg"/>
+		</div>
+	</div>
+	
+	<form name="myform" id="myform" method="POST" class="clearUl" action="">
+		<div class="mes_ne">
+			<span class="nes_span" style="float:left;">姓名：</span>
+			<input type="text" name="name" id="name" style="border:none;outline:medium;" />
+		</div>
+		
+		<div class="mes_ne">
+			<span class="nes_span" style="float:left;">电话：<i class="kkk">*</i></span>
+			<input type="text" name="tel" id="tel" style="border:none;outline:medium;" />
+		</div>
+		
+		<div class="mes_ne">
+			<span class="nes_span" style="float:left;">邮箱：</span>
+			<input type="text" name="email" id="email" style="border:none;outline:medium;" />
+		</div>
+		
+		<div class="mes_k_k">
+			<span class="nes_span" style="display:block;">留言：</span>
+			<textarea type="text" name="message" id="message" style="width:100%; height:70px;resize: none; outline: none;overflow-y: hidden;"></textarea>
+		</div>
+		</form>
+		<div class="anniu clearUl" style="margin-top: 20px; text-align: center;">
+			<button class="qc" style="width:103px; height: 29px; background:#3aafe1; color:#fff" onclick="$('#myform')[0].reset();">清除</button>
+			<button class="tj" style="width:103px; height: 29px; background:#93d50a;color:#fff" onclick="xxpd();">提交</button>
+		</div>
+	
+</div>
+
+
+<!------------------------内容 结束----------------------------->
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+
+
+
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("map");
+	map.centerAndZoom(new BMap.Point(109.289085,21.655116),18);
+map.addControl(new BMap.NavigationControl());
+	var myIcon = new BMap.Icon("http://netcnpc.test.resonance.net.cn/images/mapimagse.png", new BMap.Size(52,42));  //定义自己的标注
+	
+	var marker1 = new BMap.Marker(new BMap.Point(109.289085,21.655116),{icon:myIcon});  //创建标注
+    map.addOverlay(marker1);              // 将标注添加到地图中
+	
+		var label = new BMap.Label("{$config_info.gz_headquartersaddress}", {
+offset: new BMap.Size(15, -25)
+});
+
+
+marker1.setLabel(label); //为标注添加一个标签
+	
+	//创建信息窗口
+	var infoWindow1 = new BMap.InfoWindow("{$config_info.gz_headquartersaddress}<p style='word-break:keep-all;white-space:nowrap;'>{$config_info.gz_headeryj}</p>");
+	
+	marker1.addEventListener("click", function(){this.openInfoWindow(infoWindow1);});
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<script>
+
+
+
+
+
+
+
+
+
+function  xxpd(){
+		var name=$('#name').val();
+		var email=$('#email').val();
+		var telephone=$('#tel').val();
+		//var company=$('#company').val();
+		var message=$('#message').val();
+		
+		/*
+		if(!name){
+			alert('请填写姓名');
+			document.getElementById('name').focus();
+			return false;
+		}
+*/
+		if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+			alert('请填写正确手机号');
+			document.getElementById('tel').focus();
+			return false;
+		}
+		/*
+		if(!youxiang('email') || !email){
+			alert('请填写正确邮箱');
+			document.getElementById('email').focus();
+			return false;
+		}
+		*/
+		/*if(!company){
+			alert('请填写公司');
+			document.getElementById('company').focus();
+			return false;
+		}*/
+		/*
+		if(!message){
+			alert('请填写留言');
+			document.getElementById('message').focus();
+			return false;
+		}
+		*/
+			$.ajax({
+				type: "POST",
+				url:'/index.php?g=User&m=Post&a=Message&ajax=ajax',
+				data:$('#myform').serialize(),
+				error: function(request) {
+					alert("提交失败");
+				},
+				success: function(data) {
+					if(data>0){
+						alert('留言提交成功！');
+						location.reload();
+					}else alert("提交失败");
+					
+				}
+			});
+	}
+		function  youxiang(n){
+		
+		var email = document.getElementById(n).value;
+		
+		//alert(email);
+		
+		//return false;
+		
+            if (email != "") {
+            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                isok= reg.test(email );
+                if (!isok) {
+                    return false;
+                }
+				else return true;
+            }
+		}
+</script>

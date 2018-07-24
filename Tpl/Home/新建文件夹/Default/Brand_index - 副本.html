@@ -1,0 +1,128 @@
+
+<div style="width:100%; background:url(/images/ab_beij.jpg) repeat; ">
+
+
+
+	<!----------------------内容 开始-------------------------->
+	<!----------------------当前位置 开始-------------------------->
+	<div class="position">
+		<div class="po_middle">
+			<div class="po">当前位置：</div>
+			<div class="po"><a href="/">首页<span class="symbol">></span></a></div>
+			<div class="po">{$lan.name}</div>
+		</div>
+		<div class="po_line"></div>
+	</div>
+	<!----------------------当前位置 结束-------------------------->
+	
+	
+	
+	
+	<div class="br_content">
+		<div class="br_co_middle">
+		
+			<div class="br_co_title">
+				<p class="br_ti_p">{$lan.name}</p>
+				<div class="br_ti_line1"></div>
+				<div class="br_ti_line2"></div>
+			</div>
+			
+			
+			
+			
+			<div class="br_paging"  <?php
+	if($allpage<2) echo 'style="display:none;"';
+?>>
+				<ul class="br_pa_ul">
+					<li class="br_text" style="background: url(/images/brand3.png) no-repeat center;" onclick="getssajax('{$sp}');"></li>
+				
+					
+					
+					<?php
+						if($p<1) $p=1;
+						for($ip=1;$ip<=$allpage;$ip++){
+							echo '<li class="br_page';
+							if($ip==$p) echo ' dq ';
+							echo '" onclick="getssajax(\''.$ip.'\');"></li>';
+						}
+					?>
+					
+					<li class="br_next" style="background:url(/images/brand6.png) no-repeat center;" onclick="getssajax('{$np}');"></li>
+				</ul>
+			</div>
+			
+			
+			
+			
+			
+			
+		
+			
+			
+			<div class="br_content">
+				<div class="br_co_ban" style="background: url({$config_info.gz_ewmdhzbtp}) no-repeat center;"></div>
+				
+				
+				<div class="br_co_lsti">
+				<foreach name="list" item="r" key="k" >
+				<?php
+					if(!$k){
+				?>
+					<div class="br_ls_left">
+						<a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/462/id/{$r.id}.html">
+						
+							<div class="br_ls_top">
+								<p class="br_top_title">{$r.title}</p>
+								<span class="br_top_x"></span>
+								<p class="br_to_word">{$r.description}</p>
+								<p class="br_more">MORE</p>
+								<span class="br_top_d"></span>
+							</div>
+							<div class="br_ls_bottom" style="background: url({$r.imgurl}) no-repeat center;"></div>
+							
+						</a>
+					</div>
+					<?php
+						}else if($k==1){
+						?>
+					<div class="br_ls_left">
+						<a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/462/id/{$r.id}.html">
+							<div class="br_ls_bottom" style="background: url({$r.imgurl}) no-repeat center;"></div>
+							
+							<div class="br_ls_top">
+								<p class="br_top_title">{$r.title}</p>
+								<span class="br_top_x"></span>
+								<p class="br_to_word">{$r.description}</p>
+								<p class="br_more">MORE</p>
+								<span class="br_top_d"></span>
+							</div>
+							
+						</a>
+					</div>
+						<?php
+						}
+					?>
+					</foreach>
+					
+					
+				</div>
+			</div>
+			
+				
+				
+			
+		</div>
+		
+	</div>
+
+	<!----------------------内容 结束-------------------------->
+
+
+</div>
+
+<script>
+function getssajax(p){
+	location.href = '/index.php/Home/{$getinfolamu.foldername}/index/cid/{$cid}/p/'+p;
+	return false;
+}
+</script>

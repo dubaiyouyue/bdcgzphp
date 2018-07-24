@@ -1,0 +1,1060 @@
+{__NOLAYOUT__}<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$seo_title}</title>
+<script>var ua = navigator.userAgent.toLowerCase();
+var isWeixin = ua.indexOf('micromessenger') != -1;
+var isAndroid = ua.indexOf('android') != -1;
+var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+if (!isWeixin && !isAndroid && !isIos) {
+var ssss='';
+var sssurl='http://<?php echo SHOUJIZHANOKURLPC;?>';
+if(ssss) sssurl=ssss;
+location.href = sssurl;
+}</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="keywords" content="HTML XHTML" />
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script> 
+
+
+<script type="text/javascript" src="m/js/iscroll.js"></script><!--侧导航-->
+<script type="text/javascript" src="m/js/drawer.js"></script><!--侧导航-->
+<link rel="stylesheet" href="m/css/nav.css"><!--侧导航-->
+
+<link rel="stylesheet" href="m/css/css.css"><!--公共样式-->
+<link rel="stylesheet" href="m/css/style.css">
+
+<link type="text/css" rel="stylesheet" href="m/css/swiper.min.css"/><!--bannerCSS-->
+<link rel="stylesheet" href="m/css/idangerous.swiper.css"><!--banner CSS-->
+
+
+
+</head>
+
+
+
+<body class="drawer drawer-right" style="overflow-x: hidden;">
+
+<script>
+document.ready = function(){
+    /*360代表设计师给的设计稿的宽度，你的设计稿是多少，就写多少;100代表换算比例，这里写100是
+      为了以后好算,比如，你测量的一个宽度是100px,就可以写为1rem,以及1px=0.01rem等等*/
+    getRem(360,100)
+};
+window.onresize = function(){
+    getRem(360,100)
+};
+getRem(360,100);
+function getRem(pwidth,prem){
+    var html = document.getElementsByTagName("html")[0];
+    var oWidth = document.body.clientWidth || document.documentElement.clientWidth;
+    html.style.fontSize = oWidth/pwidth*prem + "px";
+}
+</script><!--100px=1rem-->
+
+
+<!------------------------头部 开始------------------------------->
+<div class="top" style="position:fixed;z-index:1000;">
+	<div class="logo"><a href="/"><img src="{$config_info.gz_logoshouji}"/></a></div>
+	
+	
+	
+	<!-- 侧导航代码 开始 -->
+	<div class="navs">
+		<div class="drawer-toggle drawer-hamberger"><span></span></div>
+
+		<style>
+			.navs{height: 50px; float: right; width:50px;}
+			.drawer-hamberger span,.drawer-hamberger span:before,.drawer-hamberger span:after{position:absolute;width:27px;height:27px;cursor:pointer;background-color:red; background: url(/m/images/1111111.jpg) no-repeat; background-size:100%;margin-top: 17px; margin-left: 10px;}
+			.drawer-open .drawer-hamberger span{background-color:transparent; background: none;}
+			.drawer-hamberger{width:50px;height:50px;background-color:transparent;border:0;}
+			.drawer-nav .in_nav_ul .in_nav_li{width:80%; margin: auto;text-align: center;margin-top:13px; padding-bottom:15px; border-bottom:#4a4c4c4f 1px solid; }
+			.drawer-nav .in_nav_ul .in_nav_li a{color:#4A4C4C}
+
+			.navs_xian{width:100%; height:8px; background:#000000;}
+			.zzz a{font-weight: bold;}.device{background:none;}
+		</style>
+
+		<div class="drawer-main drawer-default">
+			<nav class="drawer-nav" role="navigation">
+				<div class="navs_xian"></div>
+				<ul class="in_nav_ul">
+					<li class="in_nav_li zzz"><a href="/">首页</a></li>
+					<foreach name="new_column_list_top" item="r" key="k" >
+               <li class="in_nav_li"><a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html"">{$r.name}</a></li>
+			    </foreach>
+				</ul>
+			</nav>
+		</div>
+
+
+	</div>
+		<!--侧导航代码 结束 -->
+		
+	<!--	
+	<div class="search">
+		<form class="se_form" style="display: inline-block;">
+			<input class="se_fo_input" type="text" style="visibility: hidden;" placeholder="搜索想要的车" onblur="$('.se_fo_input').css('visibility','hidden');" />
+        </form>
+			<button class="se_fo_button" onClick="$('.se_fo_input').css('visibility','visible');$('.se_fo_input').focus();"></button>
+		
+	</div>-->
+    
+    <!--会员中心按钮 开始-->
+    
+    <style>
+        .member_button{width: 29px; height: 24px; background:url(/m/images/top_r2_c5.png) no-repeat center center; background-size: 100%; float: right; display: inline-block; margin-top: 17px;margin-left: 10px;}
+        .member_button a{width: 100%; height: 100%;}
+    </style>
+    
+    <div class="member_button">
+        <a href="<?php
+							if($user_tel){
+								echo '/index.php/Home/Memberuser/index.html';
+							}else{
+								echo '/index.php/Home/Sjrelogin/index/cid/486/lg/lg.html';
+							}?>"></a>
+    </div>
+    <!--会员中心按钮 结束-->
+    
+    
+    
+    
+    <!--搜索按钮 开始-->
+   
+    <style>
+        .search1{width:25px;display: inline-block;margin-top: 20px;float: right;}
+        .se_fo_button1{background: url(/m/images/top_r3_c3.png) no-repeat center center; background-size: 100%; border: none; width:25px; height: 24px;}
+        .se_fo_button1 a{width: 100%; height: 100%;}
+    </style>
+    
+    
+    <div class="search1">
+        <button class="se_fo_button1" ><a href="/index.php/Home/Ssserc/index/cid/485/scid/{$cid+0}.html"></a></button>
+	</div>
+	 <!--搜索按钮 结束-->	
+    
+    
+    
+</div>
+	
+
+	<!--侧导航JS 开始-->
+	
+	<script type="text/javascript">
+			$(document).ready(function(){
+
+				$('.drawer').drawer();
+
+				$('.js-trigger').click(function(){
+					$('.drawer').drawer("open");
+				});
+
+			});
+	</script>
+	<!--侧导航JS 结束-->
+<!------------------------头部 结束------------------------------->
+
+
+<!-----banner 开始------>
+
+
+ <style>
+
+.device {width:100%;/*;background: #111; */position: relative;border: 1px solid transparent;}
+	 /*------------------左右按钮-----------------*/
+.device .arrow-left {background:red;position: absolute;left: 10px;top: 50%;margin-top: -15px;width: 17px; height: 30px;}
+.device .arrow-right {background:#000; position: absolute; right: 10px; top: 50%; margin-top: -15px; width: 17px; height: 30px;}
+.swiper-container {width:100%;height:100%; margin-top:60px;}
+.content-slide {padding: 20px;color: #fff;}
+.title {font-size: 25px;margin-bottom: 10px;}
+.pagination {position: absolute;z-index: 20;bottom:1px;width: 100%;text-align:center;}
+.swiper-pagination-switch {display: inline-block;width:8px;height: 8px; /*background: url(/images/img_12.png) no-repeat center center;*/background-color:#ffd17d;margin: 0 5px;opacity: 0.8;cursor: pointer;display: block;margin-left:8px;display: inline-block;border-radius:25px;-moz-border-radius:25px;}
+.swiper-active-switch {background:transparent;background:#22292C;    opacity: 1;width:10px;height:10px;display: block;display: inline-block;border-radius:25px;-moz-border-radius:25px;margin-bottom:-1px;}
+.bj>.in_news>.neih>.xinw>a>.meige>.ner>p{height:38px;}
+	 .swiper-slide img{display: block;}
+
+
+
+  </style>
+
+<div class="device">
+    <a class="arrow-left" href="#"></a> 
+    <a class="arrow-right" href="#"></a>
+    <div class="swiper-container">
+     
+      <div class="swiper-wrapper"><foreach name="shoujiblist" item="r" key="k" >
+        <div class="swiper-slide"> <img src="{$r.img_path}"> </div>
+        </foreach>
+	  </div>
+   
+    </div>
+    
+    <div class="pagination"></div>
+</div>
+
+
+<script src="js/idangerous.swiper.min.js"></script>
+  <script>
+  $(document).ready(function(){
+		var mySwiper = new Swiper('.swiper-container',{
+		autoplay : 5000,//可选选项，自动滑动
+		loop : true,//可选选项，开启循环
+		calculateHeight : true,
+		pagination : '.pagination',
+		paginationClickable :true,
+		roundLengths : true,slidesPerView : 1,autoResize : false,
+		})
+	$('#sdafasdfdsimgmmm').hide();
+    $(".swiper-slide img").each(function(){
+    $(this).show();
+  });
+});
+  
+</script>
+	
+<!-----banner 结束------>
+
+
+<!----------------------------------内容 开始------------------------------->
+
+<div class="index">
+	<!---------------------首页仨按钮 开始----------------------->
+	<div class="in_button">
+		<a href="/index.php/Home/Productcs/index/cid/461.html" class="in_bu_buy">我要买车</a>
+		<div class="in_bu_right">
+			<a href="/index.php/Home/Carselling/index/cid/475.html" class="in_bu_ri_sell">我要卖车</a>
+			<a href="/index.php/Home/Sjmfgj/index/cid/488.html" class="in_bu_ri_sell">免费估价</a>
+		</div>
+	</div>
+	<div class="in_line"></div>
+	<!---------------------首页仨按钮 结束----------------------->
+	
+	
+	<!---------------------首页价钱车型 开始----------------------->
+	<div class="in_choice">
+		<div class="in_ch_list">
+			
+				<?php
+							$cssjiage=$_GET['maxjiage'];
+							
+					$hhyy=explode("\r\n",$config_info['gz_jgqj']);
+					foreach($hhyy as $hk=>$hv){
+						$nhv=explode('-',$hv);
+
+						if(!$hk){
+							$cminjiage=0;
+							$cmaxjiage=$nhv['0']+0; //第一个一下价格
+						}else if($hk==count($hhyy)){
+							$cminjiage=$nhv['1']+0;
+							$cmaxjiage=0; //最后一个以上价格
+						}else{
+							$cminjiage=$nhv['0']+0;
+							$cmaxjiage=$nhv['1']+0;
+						}
+						
+						
+						echo '<span class="in_ch_li_span"><a href="/index.php/Home/Productcs/index/cid/461/minjiage/'.$cminjiage.'/maxjiage/'.$cmaxjiage.'">'.$hv.'</a></span>';
+					}
+					?>
+		</div>
+		
+		<div class="in_ch_list">
+			
+						<?php
+							$hhyy=explode("\r\n",$config_info['gz_remenppress']);
+							foreach($hhyy as $hk=>$hv){
+								$nhv=explode('|',$hv);
+								echo '<span class="in_ch_li_span"><a style="';
+								if($nhv['1']) echo 'color:'.$nhv['1'].';';
+								echo '" href="/index.php/Home/Productcs/index/cid/461/sckeyword/'.$nhv['0'].'">'.$nhv['0'].'</a></span>';
+							}
+						?>
+		</div>
+		
+		<div class="in_ch_list" id="in_ch_listin_ch_listin_ch_list" style="
+    height: 30px;
+    overflow: hidden;
+    line-height: 30px;position:relative;
+">
+		
+						<?php
+							$hhyy=explode("\r\n",$config_info['gz_remenpp']);
+							foreach($hhyy as $hk=>$hv){
+							
+					$nhv=explode('|',$hv);
+						if(file_exists('carico/300/'.$nhv['1'].'.jpg')) $logosrc='/carico/300/'.$nhv['1'].'.jpg';
+						else if(file_exists('carico/300/'.$nhv['1'].'.png')) $logosrc='/carico/300/'.$nhv['1'].'.png';
+					
+							
+							
+								
+								echo '<span class="in_ch_li_span" style="height: 22px;line-height: 22px;vertical-align: top;"><a href="/index.php/Home/Productcs/index/cid/461/oneid/'.$nhv['1'].'.html" style="height:23px;"><img class="in_ch_li_img" src="'.$logosrc.'"/>'.$nhv['0'].'</a></span>';
+							}
+						?>
+			<span class="in_ch_li_span" style="    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: #fff;border: none;
+    height: 30px;
+    line-height: 21px;"><a href="javascript:;" onclick="$('#in_ch_listin_ch_listin_ch_list').css('height','auto');$(this).parent().hide();">全部<img class="in_ch_li_img" src="/m/images/index1_r2_c7.jpg"/></a></span>
+		</div>
+		
+	</div>
+	<div class="in_line"></div>
+	<!---------------------首页价钱车型 结束----------------------->
+	
+	
+	
+	<!----------------服务保障 开始---------------->
+	<div class="in_service">
+		<div class="in_se_title">
+			<span class="in_se_ti_c">服务保障</span>
+			<span class="in_se_ti_e">SERVICE GUARANTEE</span>
+			<img src="/m/images/index_r13_c15.png"/>
+		</div>
+		
+		<div class="in_se_list clearUl">
+		
+		
+		
+			<!--开始-->
+			<div class="swiper-containerssss" style="width: 100%;overflow: hidden;">
+				 
+				  <div class="swiper-wrapper" style="height: 120px;overflow:hidden;">
+		<foreach name="fwbzlist" item="r" key="k" ><div class="swiper-slide">
+			<div class="in_se_li_each <?php
+				$cssdfsd++;
+				if($cssdfsd<2) $cssdfsdssss=1;
+				else{
+					if(!($cssdfsd%2)) $cssdfsdssss=2;
+					else if(!($cssdfsd%3)) $cssdfsdssss=3;
+				}
+				echo 'blue'.$cssdfsdssss;
+			?>" style="background:url({$r.imgurl}) no-repeat center center;background-size: cover;">
+				<a href="/index.php/Home/Newsshow/index/cid/482/c/482/id/{$r.id}.html">
+					<div class="in_se_li_word"><span class="in_se_li_span">{$r.title}</div>
+				</a>
+			</div></div></foreach></div></div>
+			<!--end-->
+			
+			
+			
+			
+			
+		</div>
+	</div>
+	<div class="in_line"></div>
+	<style>
+	.in_se_li_each{width:1.7rem!important;}
+	</style>
+	<!----------------服务保障 结束---------------->
+	
+	<script> 
+		var mySwfwwwiper = new Swiper('.swiper-containerssss',{
+		slidesPerView : 3,roundLengths : true,
+		slidesPerGroup : 3,
+		//pagination : '.in_li_botton',
+		//paginationClickable :true,//createPagination :false,
+		})
+		/*
+$('.in_se_li_left').click(function(){
+mySwfwwwiper.swipePrev(); 
+})
+  $('.in_se_li_rigth').click(function(){
+mySwfwwwiper.swipeNext(); 
+})
+		*/
+	</script>
+	
+	
+	<!------------------金融服务 开始--------------------->
+	<div class="in_finance">
+		<div class="in_se_title">
+			<span class="in_se_ti_c">金融服务</span>
+			<span class="in_se_ti_e">FINANCE</span>
+			<img src="/m/images/index_r13_c15.png"/>
+		</div>
+		
+		<div class="in_fi_list"><foreach name="necliissfq" item="r" key="k" >
+			<div class="in_fi_each">
+				<a href="{$r.fctitleflj}">
+					<p class="in_fi_ea_title">{$r.title}</p>
+					<p class="in_fi_ea_p">{$r.fctitleo}</p>
+					<div class="in_fi_ea_img" style="background:url({$r.imgurl}) no-repeat center center;background-size: cover;"></div>
+				</a>
+			</div></foreach>  
+		</div>
+	</div>
+	<div class="in_line"></div>
+	<!------------------金融服务 结束--------------------->
+	
+	<script>
+	//锚点 隐藏已经点开的弹框
+	function hhidemjqsrc(){
+		$('html,body').animate({scrollTop:$('#prodsafdasfdas').offset().top-60},800);//锚点
+		//隐藏
+		$('.hhidemjqsrcsss').hide();
+	}
+	</script>
+	
+	<!-------------------买车 开始----------------------->
+	<div class="in_sell">
+		<div class="in_se_nav" id="prodsafdasfdas">
+		
+		<div class="in_se_title" style="padding: 15px 0;">
+			<span class="in_se_ti_c">好车推荐</span>
+			<span class="in_se_ti_e">RECOMMENDATION</span>
+			<img src="/m/images/index_r13_c15.png"/>
+		</div>
+		
+		
+			<!--<div class="in_se_nav_each" onclick="hhidemjqsrc();$('.intelligent_sorting').toggle();"><a>智能排序<img src="/m/images/index1_r.jpg"/></a></div>
+			<div class="in_se_nav_each" onclick="hhidemjqsrc();$('.brand').toggle();"><a>品牌<img src="/m/images/index1_r.jpg"/></a></div>
+			<div class="in_se_nav_each" onclick="hhidemjqsrc();$('.price_box').toggle();"><a>价格<img src="/m/images/index1_r.jpg"/></a></div>
+			<div class="in_se_nav_each" onclick="hhidemjqsrc();$('.in_buy_more').toggle();"><a>更多<img src="/m/images/index1_r.jpg"/></a></div>-->
+		</div>
+        
+        
+        <!----------------智能排序 开始------------>
+        <style>
+            .intelligent_sorting{width: 100%; height: 100%; background: url(/m/images/background.png) repeat;position:fixed;top: 0px;left: 0px; z-index: 120; margin-top:100px;}
+            .in_so_list{width: 100%;background: #fff;}
+            .in_so_each{border-bottom: 1px #F5F5F5 solid; height:45px;}
+            .in_so_span{font-size: 14px; color: #837F7F; line-height:45px; margin-left: 20px;}
+            .in_so_each img{width: 17px; float: right;margin-top:18px; margin-right: 20px; display: none}
+            .in_so_dq .in_so_span{ color: #FF9E00;}
+            .in_so_dq img{display: block;}
+            .in_so_button{width: 100%; height:40px; background: #fff; text-align: center;-moz-box-shadow:0px -1px 2px #D6D6D6; -webkit-box-shadow:0px -1px 2px #D6D6D6; box-shadow:0px -1px 2px #D6D6D6;}
+            .in_so_button img{width: 24px; margin-top:15px;}
+        
+        </style>
+        
+        <div class="intelligent_sorting hhidemjqsrcsss" style="display: none;">
+            <div class="in_so_list">
+                <div class="in_so_each in_so_dq">
+                    <span class="in_so_span">智能排序</span>
+                    <img src="/m/images/details_r17_c5.png"/>
+                </div>
+                
+                <div class="in_so_each">
+                    <span class="in_so_span">价格最低</span>
+                    <img src="/m/images/details_r17_c5.png"/>
+                </div>
+                
+                <div class="in_so_each">
+                    <span class="in_so_span">价格最高</span>
+                    <img src="/m/images/details_r17_c5.png"/>
+                </div>
+                
+                <div class="in_so_each">
+                    <span class="in_so_span">车龄最短</span>
+                    <img src="/m/images/details_r17_c5.png"/>
+                </div>
+                
+                <div class="in_so_each">
+                    <span class="in_so_span">历程最少</span>
+                    <img src="/m/images/details_r17_c5.png"/>
+                </div>
+                
+                <div class="in_so_each">
+                    <span class="in_so_span">最新发布</span>
+                    <img src="/m/images/details_r17_c5.png"/>
+                </div>
+                
+            </div>
+            
+            <div class="in_so_button" onclick="$('.intelligent_sorting').toggle();"><img src="/m/images/member_r3_c211.jpg"/></div>
+            
+        </div>
+        <!----------------智能排序 结束------------>
+        
+        
+        
+        
+        
+        <!----------------价格 开始---------------------->
+        <style>
+            .price_box{width: 100%; height: 100%; background: url(/m/images/background.png) repeat;position:fixed;top: 0px;left: 0px; z-index: 120; margin-top:100px;}
+            .price_list{width: 100%;background: #fff;}
+            .price_each{border-bottom: 1px #F5F5F5 solid; height:45px;}
+            .price_span{font-size: 14px; color: #837F7F; line-height:45px; margin-left: 20px;}
+            .price_each img{width: 17px; float: right;margin-top:18px; margin-right: 20px; display: none}
+            .price_dq .price_span{ color: #FF9E00;}
+            .price_dq img{display: block;}
+            .price_button{width: 100%; height:40px; background: #fff; text-align: center;-moz-box-shadow:0px -1px 2px #D6D6D6; -webkit-box-shadow:0px -1px 2px #D6D6D6; box-shadow:0px -1px 2px #D6D6D6;}
+            .pri_img{width: 24px; margin-top:15px;}
+            
+            .kfdsfn{float: right; margin-right: 10px;}
+            .price_custom form{ display: inline-block; vertical-align: top; margin-top:5px;}
+            .price_cu_fo_low{display: inline-block; vertical-align: top;}
+            .price_cu_fo_line{width: 10px; height: 1px; background:#A6A6A6; display: inline-block; vertical-align: top; margin:14px 5px;}
+            .price_cu_fo_low input{width:50px; height: 30px; border: 1px solid #A6A6A6;border-radius:5px; display: inline-block; vertical-align: top;}
+            .price_cu_fo_span{line-height:30px;}
+            .price_cu_fo_button{width:50px; height: 30px; background: #FF9600; border: none; margin-left: 5px; color: #fff;border-radius:5px; margin-top: 5px;}
+        
+        </style>
+        
+        <div class="price_box hhidemjqsrcsss" style="display: none;">
+            <div class="price_list">
+                <div class="price_each price_dq">
+                    <span class="price_span">全部价格</span>
+                    <img src="/m/images/details_r17_c5.png"/>
+                </div>
+                
+                <div class="price_each">
+                    <span class="price_span">3万以下</span>
+                    <img src="/m/images/details_r17_c5.png"/>
+                </div>
+                
+                <div class="price_each">
+                    <span class="price_span">3万-5万</span>
+                    <img src="/m/images/details_r17_c5.png"/>
+                </div>
+                
+                <div class="price_each">
+                    <span class="price_span">5万-7万</span>
+                    <img src="/m/images/details_r17_c5.png"/>
+                </div>
+                
+                <div class="price_each">
+                    <span class="price_span">7万-10万</span>
+                    <img src="/m/images/details_r17_c5.png"/>
+                </div>
+                
+                <div class="price_each">
+                    <span class="price_span">10万以上</span>
+                    <img src="/m/images/details_r17_c5.png"/>
+                </div>
+                
+                
+                <div class="price_custom">
+                    <span class="price_span">自定义</span>
+                    
+                    
+                    <div class="kfdsfn">
+                        <form>
+
+                            <div class="price_cu_fo_low">
+                                <input type="text"/>
+                                <span class="price_cu_fo_span">万</span>
+                            </div>
+                            <div class="price_cu_fo_line"></div>
+                            <div class="price_cu_fo_low">
+                                <input type="text"/>
+                                <span class="price_cu_fo_span">万</span>
+                            </div>
+
+                        </form>
+
+                        <button class="price_cu_fo_button">确定</button>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="price_button" onclick="$('.price_box').toggle();"><img class="pri_img" src="/m/images/member_r3_c211.jpg"/></div>
+        </div>
+        
+        <!----------------价格 结束---------------------->
+        
+        
+        
+        
+        
+        <!---------------------------------品牌 开始---------------------------------------->
+        <style>
+            .brand{height: 100%; width: 100%;position:fixed;top: 0px;left: 0px; z-index: 120; margin-top:60px; background: #fff;overflow: scroll;}
+            .br_title{margin-top:10px; text-align: center; margin-bottom: 10px;}
+            .br_ti_button{width: 18px; float: left; margin-left: 10px;}
+            .br_ti_button img{width: 100%;}
+            .br_ti_span{font-size: 16px; margin-left: -13px;}
+            
+            /*-侧面字母 开始-*/
+            .br_choice{width:24px; position: fixed; top:80px; right:5px; text-align: center;}
+            .br_ch_li{font-size: 12px; color: #FFA600; line-height:16px;}
+            /*-侧面字母 结束-*/
+            
+            .br_titlr{width: 100%; height: 30px; background:#F0F0F0; line-height: 30px;}
+            .br_ho_each{display: inline-block; margin: 5px 5px}
+            .br_ho_each a{color:#909090}
+            .br_ho_each a:hover{color:#FFAE00}
+            
+            
+            .br_li_jkdsns a{line-height: 30px;color:#909090}
+        </style>
+        
+        
+        
+    <div class="brand hhidemjqsrcsss" style="display: none">
+    
+        <div class="br_title">
+            <button class="br_ti_button" onclick="hhidemjqsrc();$('.brand').hide();"><img src="/m/images/member_r3_c2.png"/></button>
+            <span class="br_ti_span">选择品牌</span>
+        </div>
+        
+        
+        <div class="br_choice">
+            <ul class="br_ch_ul">
+                <li class="br_ch_li">热门</li>
+                <li class="br_ch_li">*</li>
+                <li class="br_ch_li">A</li>
+                <li class="br_ch_li">B</li>
+                <li class="br_ch_li">C</li>
+                <li class="br_ch_li">D</li>
+                <li class="br_ch_li">F</li>
+                <li class="br_ch_li">G</li>
+                <li class="br_ch_li">H</li>
+                <li class="br_ch_li">J</li>
+                <li class="br_ch_li">K</li>
+                <li class="br_ch_li">L</li>
+                <li class="br_ch_li">M</li>
+                <li class="br_ch_li">N</li>
+                <li class="br_ch_li">O</li>
+                <li class="br_ch_li">P</li>
+                <li class="br_ch_li">Q</li>
+                <li class="br_ch_li">R</li>
+                <li class="br_ch_li">S</li>
+                <li class="br_ch_li">T</li>
+                <li class="br_ch_li">W</li>
+                <li class="br_ch_li">X</li>
+                <li class="br_ch_li">Y</li>
+                <li class="br_ch_li">Z</li>
+            </ul>
+        </div>
+        
+        
+        
+        <div class="hjkdsfam">
+            
+            
+            <div class="br_list">
+                <p class="br_titlr">热门</p>
+                <div class="br_ho_each"><a href="###">奥迪</a></div>
+                <div class="br_ho_each"><a href="###">奥迪</a></div>
+                <div class="br_ho_each"><a href="###">奥迪</a></div>
+                <div class="br_ho_each"><a href="###">奥迪</a></div>
+                <div class="br_ho_each"><a href="###">奥迪</a></div>
+                <div class="br_ho_each"><a href="###">奥迪</a></div>
+                <div class="br_ho_each"><a href="###">奥迪</a></div>
+                <div class="br_ho_each"><a href="###">奥迪</a></div>
+            </div>
+            
+            <div class="br_list">
+                <p class="br_titlr">*</p>
+                <div class="br_li_jkdsns"><a href="###">品牌不限</a></div>
+            </div>
+            
+            <div class="br_list">
+                <p class="br_titlr">A</p>
+                <div class="br_li_each">
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                </div>
+            </div>
+            
+            
+            <div class="br_list">
+                <p class="br_titlr">B</p>
+                <div class="br_li_each">
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                </div>
+            </div>
+            
+            <div class="br_list">
+                <p class="br_titlr">C</p>
+                <div class="br_li_each">
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                </div>
+            </div>
+            
+            <div class="br_list">
+                <p class="br_titlr">D</p>
+                <div class="br_li_each">
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                </div>
+            </div>
+            
+            <div class="br_list">
+                <p class="br_titlr">F</p>
+                <div class="br_li_each">
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                    <div class="br_li_jkdsns"><a href="###">奥迪</a></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+    </div>
+<!---------------------------------品牌 结束---------------------------------------->
+        
+        
+        
+        
+        
+        <!------------------------------更多按钮 开始---------------------------------------->
+        
+        <style>
+            .in_buy_more{height: 100%; width: 100%;position:fixed;top: 0px;left: 0px; z-index: 120; background: #fff; margin-top: 60px; overflow: scroll; }
+            .in_buy_title{margin-top: 10px; text-align: center;}
+            .br_ti_button{width: 18px; height: 24px; float: left; margin-left: 10px;}
+            .br_ti_span{font-size: 16px; color:#3A3939; font-weight: bold; margin-left: -9px;}
+            
+            .in_buy_mo_lisi{margin-top:20px;margin-bottom:125px;}
+            .in_buy_mo_each{border-top: 3px solid #F4F4F4;width: 98%; margin: auto;}
+            .in_buy_mo_p{ margin: auto; font-size: 16px; margin-top:10px; margin-bottom: 10px;}
+            .in_buy_mo_span{padding: 2px 10px; border:1px solid #E7E7E7; border-radius: 5px; margin-right:6px;display: inline-block; margin-bottom: 10px;}
+            .bbanbdgg{ border:1px solid  #FCAC00; }
+            .bbanbdgg a{ color: #FCAC00;}
+            
+            .in_buy_mo_button{width: 100%; height: 30px; background:#FCAC00; border: none; color: #fff; position:fixed; bottom:0px; z-index: 130 }
+        </style>
+        
+        
+        <div class="in_buy_more" style="display: none">
+             <div class="in_buy_title">
+                <button class="br_ti_button" onclick="hhidemjqsrc();$('.in_buy_more').hide();"><img src="/m/images/member_r3_c2.png"/></button>
+                <span class="br_ti_span">筛选</span>
+            </div>
+            
+            <div class="in_buy_mo_lisi">
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">车型</p>
+                    <span class="in_buy_mo_span  bbanbdgg"><a href="###">不限</a></span>
+                    <span class="in_buy_mo_span"><a href="###">两箱轿车</a></span>
+                    <span class="in_buy_mo_span"><a href="###">三箱轿车</a></span>
+                    <span class="in_buy_mo_span"><a href="###">跑车</a></span>
+                    <span class="in_buy_mo_span"><a href="###">SUV</a></span>
+                    <span class="in_buy_mo_span"><a href="###">MPV</a></span>
+                    <span class="in_buy_mo_span"><a href="###">面包车</a></span>
+                    <span class="in_buy_mo_span"><a href="###">皮卡</a></span>
+                </div>
+                
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">车系</p>
+                     <span class="in_buy_mo_span  bbanbdgg"><a href="###">不限</a></span>
+                    <span class="in_buy_mo_span"><a href="###">两箱轿车</a></span>
+                    <span class="in_buy_mo_span"><a href="###">三箱轿车</a></span>
+                    <span class="in_buy_mo_span"><a href="###">跑车</a></span>
+                    <span class="in_buy_mo_span"><a href="###">SUV</a></span>
+                    <span class="in_buy_mo_span"><a href="###">MPV</a></span>
+                    <span class="in_buy_mo_span"><a href="###">面包车</a></span>
+                    <span class="in_buy_mo_span"><a href="###">皮卡</a></span>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">地域</p>
+                     <span class="in_buy_mo_span  bbanbdgg"><a href="###">不限</a></span>
+                    <span class="in_buy_mo_span"><a href="###">南宁</a></span>
+                    <span class="in_buy_mo_span"><a href="###">柳州</a></span>
+                    <span class="in_buy_mo_span"><a href="###">桂林</a></span>
+                    <span class="in_buy_mo_span"><a href="###">北海</a></span>
+                    <span class="in_buy_mo_span"><a href="###">玉林</a></span>
+                    <span class="in_buy_mo_span"><a href="###">防城港</a></span>
+                    <span class="in_buy_mo_span"><a href="###">梧州</a></span>
+                    <span class="in_buy_mo_span"><a href="###">贺州</a></span>
+                    <span class="in_buy_mo_span"><a href="###">来宾</a></span>
+                    <span class="in_buy_mo_span"><a href="###">百色</a></span>
+                    <span class="in_buy_mo_span"><a href="###">崇左</a></span>
+                    <span class="in_buy_mo_span"><a href="###">钦州</a></span>
+                    <span class="in_buy_mo_span"><a href="###">河池</a></span>
+                    <span class="in_buy_mo_span"><a href="###">贵港</a></span>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">车龄</p>
+                     <span class="in_buy_mo_span  bbanbdgg"><a href="###">不限</a></span>
+                    <span class="in_buy_mo_span"><a href="###">1-2年</a></span>
+                    <span class="in_buy_mo_span"><a href="###">3-5年</a></span>
+                    <span class="in_buy_mo_span"><a href="###">5-8年</a></span>
+                    <span class="in_buy_mo_span"><a href="###">9-11年</a></span>
+                    <span class="in_buy_mo_span"><a href="###">12年以上</a></span>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">里程</p>
+                     <span class="in_buy_mo_span  bbanbdgg"><a href="###">不限</a></span>
+                    <span class="in_buy_mo_span"><a href="###">1万公里</a></span>
+                    <span class="in_buy_mo_span"><a href="###">3万公里</a></span>
+                    <span class="in_buy_mo_span"><a href="###">5万公里</a></span>
+                    <span class="in_buy_mo_span"><a href="###">8万公里</a></span>
+                    <span class="in_buy_mo_span"><a href="###">10万公里</a></span>
+                    <span class="in_buy_mo_span"><a href="###">10万公里以上</a></span>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">排量</p>
+                     <span class="in_buy_mo_span  bbanbdgg"><a href="###">不限</a></span>
+                    <span class="in_buy_mo_span"><a href="###">1.0以下</a></span>
+                    <span class="in_buy_mo_span"><a href="###">1.0-1.6L</a></span>
+                    <span class="in_buy_mo_span"><a href="###">1.6-2.0L</a></span>
+                    <span class="in_buy_mo_span"><a href="###">2.0-3.0L</a></span>
+                    <span class="in_buy_mo_span"><a href="###">3.0-4.0L</a></span>
+                    <span class="in_buy_mo_span"><a href="###">4.0L以上</a></span>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">排放标准</p>
+                     <span class="in_buy_mo_span  bbanbdgg"><a href="###">不限</a></span>
+                    <span class="in_buy_mo_span"><a href="###">国二级以上</a></span>
+                    <span class="in_buy_mo_span"><a href="###">国三级以上</a></span>
+                    <span class="in_buy_mo_span"><a href="###">国四级以上</a></span>
+                    <span class="in_buy_mo_span"><a href="###">国五</a></span>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">颜色</p>
+                     <span class="in_buy_mo_span  bbanbdgg"><a href="###">不限</a></span>
+                    <span class="in_buy_mo_span"><a href="###">白色</a></span>
+                    <span class="in_buy_mo_span"><a href="###">灰色</a></span>
+                    <span class="in_buy_mo_span"><a href="###">银色</a></span>
+                    <span class="in_buy_mo_span"><a href="###">棕色</a></span>
+                    <span class="in_buy_mo_span"><a href="###">黑色</a></span>
+                    <span class="in_buy_mo_span"><a href="###">蓝色</a></span>
+                    <span class="in_buy_mo_span"><a href="###">黄色</a></span>
+                    <span class="in_buy_mo_span"><a href="###">绿色</a></span>
+                    <span class="in_buy_mo_span"><a href="###">紫色</a></span>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">变速箱</p>
+                     <span class="in_buy_mo_span  bbanbdgg"><a href="###">不限</a></span>
+                    <span class="in_buy_mo_span"><a href="###">手动</a></span>
+                    <span class="in_buy_mo_span"><a href="###">自动</a></span>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">位数</p>
+                     <span class="in_buy_mo_span  bbanbdgg"><a href="###">不限</a></span>
+                    <span class="in_buy_mo_span"><a href="###">2位</a></span>
+                    <span class="in_buy_mo_span"><a href="###">4位</a></span>
+                    <span class="in_buy_mo_span"><a href="###">5位</a></span>
+                    <span class="in_buy_mo_span"><a href="###">6位</a></span>
+                    <span class="in_buy_mo_span"><a href="###">7位</a></span>
+                    <span class="in_buy_mo_span"><a href="###">7位以上</a></span>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">国别</p>
+                     <span class="in_buy_mo_span  bbanbdgg"><a href="###">不限</a></span>
+                    <span class="in_buy_mo_span"><a href="###">德系</a></span>
+                    <span class="in_buy_mo_span"><a href="###">日系</a></span>
+                    <span class="in_buy_mo_span"><a href="###">法系</a></span>
+                    <span class="in_buy_mo_span"><a href="###">美系</a></span>
+                    <span class="in_buy_mo_span"><a href="###">国产</a></span>
+                    <span class="in_buy_mo_span"><a href="###">韩系</a></span>
+                    <span class="in_buy_mo_span"><a href="###">其他</a></span>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">燃料类型</p>
+                     <span class="in_buy_mo_span  bbanbdgg"><a href="###">不限</a></span>
+                    <span class="in_buy_mo_span"><a href="###">汽油</a></span>
+                    <span class="in_buy_mo_span"><a href="###">柴油</a></span>
+                    <span class="in_buy_mo_span"><a href="###">电动</a></span>
+                    <span class="in_buy_mo_span"><a href="###">电油混合</a></span>
+                    <span class="in_buy_mo_span"><a href="###">其他</a></span>
+                </div>
+                
+               
+            </div>
+             
+                <button class="in_buy_mo_button">完成</button>
+            
+        </div>
+        
+        </div>
+        <!------------------------------更多按钮 结束---------------------------------------->
+        
+        
+        
+        
+        
+        
+        
+		
+		<div class="in_se_list1">
+			<foreach name="bmmcccshouji" item="r" key="k" >
+			
+					<?php
+						$sptime=strtotime($r['sppsjj']);
+						$sptimess=time()-$sptime;
+						$spye=floor($sptimess/31536000)+0;
+						$spyem=floor(($sptimess-($spye*31536000))/2592000);
+						if($spyem>11){
+							$spye++;
+							$spyem=0;
+						}
+					?>
+			
+			<div class="in_se_each">
+				<a href="/index.php/Home/Productcshow/index/cid/461/c/461/id/{$r.id}.html">
+					<div class="in_se_ea_img" style="background:url({$r.imgurl}) no-repeat center center;background-size: cover;"></div>
+					<div class="in_se_ea_word">
+						<p class="in_es_wo_title">{$r.title}</p>
+						<div class="in_se_wo_deta">
+							<span class="in_se_wo_span">{$spye}年{$spyem}个月</span>
+							<span class="in_se_wo_span">{$r.licuser}万公里</span>
+						</div>
+                        <div class="in_se_wo_price">
+                            <span class="in_se_pr1">{$r.jiageold}万</span>
+                            <span class="in_se_pr2">{$r.jiages}万</span>
+                        </div>
+					</div>
+				</a>
+			</div></foreach>
+			
+		</div>
+		
+		<div class="in_se_more"><a href="/index.php/Home/Productcs/index/cid/461.html"><img src="/m/images/index_r8_c3.png"/></a></div>
+	</div>
+	
+	<!-------------------买车 结束----------------------->
+		<!-------------------------------------->
+	<div class="in_link">
+		<div class="in_li_box"><span class="in_li_span"><a href="/index.php/Home/Recruits/index/cid/469.html"><img src="/m/images/index_r1_c1.png"/></a></span></div>
+		<div class="in_li_box"><span class="in_li_span"><a href="/index.php/Home/Sjyjfk/index/cid/487.html"><img src="/m/images/index_r1_c4.png"/></a></span></div>
+		<div class="in_li_box"><span class="in_li_span"><a href="/index.php/Home/About/index/cid/318.html"><img src="/m/images/index_r1_c9.png"/></a></span></div>
+	</div>
+	<!-------------------------------------->
+
+
+<script>/*
+window.alert = function(name){
+	 var iframe = document.createElement("IFRAME");
+	iframe.style.display="none";
+	iframe.setAttribute("src", 'data:text/plain,');
+	document.documentElement.appendChild(iframe);
+	window.frames[0].window.alert(name);
+	iframe.parentNode.removeChild(iframe);
+	}
+//重写confirm方法，去掉地址显示
+window.confirm = function(name){
+var iframe = document.createElement("IFRAME");
+iframe.style.display="none";
+iframe.setAttribute("src", 'data:text/plain,');
+document.documentElement.appendChild(iframe);
+var result = window.frames[0].window.confirm(name);
+iframe.parentNode.removeChild(iframe);
+return result;
+}*/
+</script>
+
+<script src="//captcha.luosimao.com/static/dist/api.js"></script>
+
+<!-------------------------------底部 开始---------------------------------->
+<div class="botton">
+	<p class="bu_tele">咨询电话：{$config_info.gz_footteldianhua2}</p>
+	<p class="bu_tele">服务监督热线： {$config_info.gz_footteldianhua2lyy}</p>
+	<p class="bu_copyright">Copyright ©<span class="bu_span"> {$config_info.gz_webname}</span> All Rights Reserved 版权所有</p>
+</div>
+<!-------------------------------底部 结束---------------------------------->
+
+
+
+
+
+
+
+
+
+
+<script>
+	//调用，description为class名
+	//首页
+	wordlimit('in_por_ea_title', 9);
+	
+	//新闻中心
+	wordlimit('ne_co_wo_title', 85)
+//多余显示省略号
+function wordlimit(cname, wordlength) {
+    var cname = document.getElementsByClassName(cname);
+    for (var i = 0; i < cname.length; i++) {　　　　　　
+        var nowLength = cname[i].innerHTML.length;
+        if (nowLength > wordlength) {
+            cname[i].innerHTML = cname[i].innerHTML.substr(0, wordlength) + '...';
+        }　　　　　　
+    }　
+};</script>
+
+
+    
+    
+    
+<script>
+
+$(document).ready(function(){
+/*
+ $(".in_se_list").find(".in_se_li_each").eq(0).addClass("blue1");
+ $(".in_se_list").find(".in_se_li_each").eq(1).addClass("blue2");
+ $(".in_se_list").find(".in_se_li_each").eq(2).addClass("blue3");
+*/
+})
+</script>
+
+<script>  /*异步加载 - 在线交流 - 站长统计 */
+  var gz_weburl='/';
+  var lang='cn';
+  var classnow='{$cid}';
+  var id='<?php echo $_GET['id'];?>';
+  
+  var url=gz_weburl+'include/interface/uidata.php?lang='+lang,h = '<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>';
+  
+  if(h.indexOf("preview=1")!=-1)url = url + '&theme_preview=1';
+  $.ajax({
+    type: "POST",
+    url: url,
+    dataType:"json",
+    success: function(msg){
+      var c = msg.config;
+      
+      if(c.gz_stat==1){       //站长统计
+        var navurl=classnow==10001?'':'../';
+        var stat_d=classnow+'-'+id+'-'+lang;
+        var url = gz_weburl+'include/stat/stat.php?type=para&u='+navurl+'&d='+stat_d;
+        $.getScript(url);
+      }
+    }
+  });
+    //var metClicks = $(".metClicks");//点击次数
+    var ClicksListnow='<?php echo $_GET['id'];?>';
+    var weburl='/';
+    if(ClicksListnow){
+      //var DataClicks = metClicks.data("metclicks");
+      //ClicksStr=DataClicks.split("|"); 
+      var ClicksModule = 'news';//ClicksStr[0],ClicksListnow = ClicksStr[1];
+      var urlw = weburl+'include/hits.php?type='+ClicksModule+'&id='+ClicksListnow;
+      $.ajax({
+        type: "POST",
+        url: urlw,
+        dataType:"text",
+        success: function(msg){
+          //var t = msg.split('"');
+          //metClicks.html(t[1]);
+        }
+      });
+    }
+</script>
+</body>
+</html>

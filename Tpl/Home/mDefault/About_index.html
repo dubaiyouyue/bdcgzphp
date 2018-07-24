@@ -1,0 +1,109 @@
+
+    
+    
+
+  <!----------------------内容 开始----------------------->
+    
+    <style>
+        .about{width: 95%; margin: auto}
+        .ab_title{margin-top:20px; text-align: center;}
+        .ab_ti_p{font-size:18px; color:#22292C; font-weight: bold;margin-bottom: 5px; }
+        .sbjnb{ display:inline-block;}
+        .ab_ti_span{padding: 0px 10px; height:29px; display: inline-block; vertical-align: top;line-height: 29px; color:#22292C;}
+        .sbjnb img{width: 18px; display: inline-block; vertical-align: top;}
+        .ab_nav{text-align: center;}
+        .ab_nav_each{background:#faaa0b;display: inline-block; vertical-align: top;height: 25px;padding: 0px 10px; margin-top:10px;}
+        .ab_nav_each a{ color: #fff;}
+        
+        .ab_centen{margin: 20px auto}
+        .ab_centen img{width: 100%; max-width: 100%;}
+        
+        .ab_nav_dq{background:#22292C;}
+    </style>
+    
+    <div class="about">
+    
+        <div class="ab_title">
+            <p class="ab_ti_p">{$getinfolamu.name}</p>
+            <p class="sbjnb"><span class="ab_ti_span">{$getinfolamu.enname}</span></p>
+        </div>
+        
+        <div class="ab_nav">
+         
+<foreach name="lanmu" item="r" key="k" >
+					<div class="ab_nav_each <?php
+        if($r['id']==$cid) echo 'ab_nav_dq';
+
+      ?>">
+					<a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html">{$r.name}</a>
+					
+					</div>&nbsp;
+				  </foreach>
+        </div>
+        
+        
+        <div class="ab_centen">
+            
+            {$lan.content}
+        
+        </div>
+    
+    </div>
+    
+  <!----------------------内容 结束----------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

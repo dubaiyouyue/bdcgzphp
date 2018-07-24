@@ -1,0 +1,39 @@
+
+
+<!------------------------内容 开始----------------------------->
+
+<div class="internal_backgrund" style="width:100%; position:relative;"><img style="max-width: 100%; position: absolute; z-index: -1" src="/images/ba.png"/></div>
+
+
+<div class="internal_title">
+	<div class="internal_ti_p">{$getinfolamu.name}</div>
+	<div class="internal_line"></div>
+</div>
+
+<div class="nav">
+	<ul  class="nav_ul">
+	
+		<foreach name="lanmu" item="r" key="k" >
+					<li class="nav_ul_li <?php
+        if($r['id']==$cid) echo 'aaaaaa';
+
+      ?>">
+					<a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html">{$r.name}</a>
+					
+					</li>&nbsp;
+				  </foreach>
+		
+	</ul>
+</div>
+
+
+<div class="about">
+	{$lan.content}
+</div>
+
+
+
+<!------------------------内容 结束----------------------------->
+
+
+

@@ -1,0 +1,219 @@
+
+<div style="width:100%; background:url(/images/ab_beij.jpg) repeat; ">
+
+
+
+	<!----------------------内容 开始-------------------------->
+	<!----------------------当前位置 开始-------------------------->
+	<div class="position">
+		<div class="po_middle">
+			<div class="po">当前位置：</div>
+			<div class="po"><a href="/">首页<span class="symbol">></span></a></div>
+			<div class="po">联系我们</div>
+		</div>
+		<div class="po_line"></div>
+	</div>
+	<!----------------------当前位置 结束-------------------------->
+	
+	
+	
+	
+	<div class="ta_content">
+		<div class="ta_co_middle">
+		
+			<div class="ta_co_title">
+				<p class="ta_ti_p">联系我们</p>
+				<div class="ta_ti_line1"></div>
+				<div class="ta_ti_line2"></div>
+			</div>
+			
+			
+			
+			<div class="ta_list">
+				
+				<div class="ta_li_each">
+					<div class="ta_ea_effect"></div>
+					<div class="ta_ea_content">
+						<p class="ta_co_e">PHONE</p>
+						<p class="ta_co_c">电话：</p>
+						<p class="ta_co_p">{$config_info.gz_footteldianhua}</p>
+					</div>
+					<div class="ta_ea_ic">
+						<img class="ta_ca_x" src="/images/contact_ian1_10.png"/>
+						<img class="ta_ca_y" src="/images/contact_icn_10.png"/>
+					</div>
+				</div>
+				
+				<div class="ta_li_each">
+					<div class="ta_ea_effect"></div>
+					<div class="ta_ea_content">
+						<p class="ta_co_e">EMAIL</p>
+						<p class="ta_co_c">邮箱：</p>
+						<p class="ta_co_p">{$config_info.gz_foottel}</p>
+					</div>
+					<div class="ta_ea_ic">
+						<img class="ta_ca_x" src="/images/contact_ian1_03.png"/>
+						<img class="ta_ca_y" src="/images/contact_icn_03.png"/>
+					</div>
+				</div>
+				
+				<div class="ta_li_each">
+					<div class="ta_ea_effect"></div>
+					<div class="ta_ea_content">
+						<p class="ta_co_e">FAX</p>
+						<p class="ta_co_c">传真：</p>
+						<p class="ta_co_p">{$config_info.gz_foottelqq}</p>
+					</div>
+					<div class="ta_ea_ic">
+						<img class="ta_ca_x" src="/images/contact_ian1_05.png"/>
+						<img class="ta_ca_y" src="/images/contact_icn_05.png"/>
+					</div>
+				</div>
+				
+				<div class="ta_li_each">
+					<div class="ta_ea_effect"></div>
+					<div class="ta_ea_content">
+						<p class="ta_co_e">ADDRESS</p>
+						<p class="ta_co_c">地址：</p>
+						<p class="ta_co_p">{$config_info.gz_headeryj}</p>
+					</div>
+					<div class="ta_ea_ic">
+						<img class="ta_ca_x" src="/images/contact_ian1_07.png"/>
+						<img class="ta_ca_y" src="/images/contact_icn_07.png"/>
+					</div>
+				</div>
+				
+			</div>
+			
+		
+			<div class="ta_bottom">
+				<div class="ta_bo_map">
+					<div class="ta_map_1" id="map"></div>
+					<div class="ta_map_background"></div>
+				</div>
+				
+				<div class="ta_bo_form">
+					<form name="myform" id="myform" method="POST" class="clearUl" action="">
+						<div class="ta_fo_left">
+							<div class="ta_fo_name">
+								姓名：<input type="text"  name="name" id="name" style=" display: inline-block; height:31px; width:150px;padding: 0 5px;background:none; border:none;margin-top:7px;">
+							</div>
+							<div class="ta_fo_name">
+								电话：<input type="text" name="tel" id="tel" style=" display: inline-block;height:31px; width:150px;padding: 0 5px;background:none; border:none; margin-top:7px; ">
+							</div>
+							<div class="ta_fo_name">
+								邮箱：<input type="text" name="email" id="email" style=" display: inline-block;height:31px; width:150px;padding: 0 5px;background:none; border:none; margin-top:7px;">
+							</div>
+						</div>
+						
+						
+						<div class="ta_fo_rigth">
+							<div class="ta_fo_mss">
+								<p style="float:left; margin-top:10px;">留言：</p><textarea name="message" id="message" style=" display: inline-block;height:160px; width:150px;padding: 0 5px;background:none; border:none; margin-top:10px;resize: none;"></textarea>
+							</div>
+						</div>
+						</form>
+						
+						<div class="ta_fo_submission">
+							<button class="fo_button" onclick="xxpd();">提交</button>
+						</div>
+					
+				</div>
+			</div>
+			
+				
+				
+			
+		</div>
+		<div style="width: 100%; height: 482px; background:url(/images/ab_bbb_03.png) no-repeat center;margin-top: -273px;"></div>
+	</div>
+
+	<!----------------------内容 结束-------------------------->
+
+
+</div>
+
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("map");
+	map.centerAndZoom(new BMap.Point(110.312687,25.350848),17);
+
+	
+	var marker1 = new BMap.Marker(new BMap.Point(110.312687,25.350848));  //创建标注
+	map.addOverlay(marker1);                 // 将标注添加到地图中
+	//创建信息窗口
+	var infoWindow1 = new BMap.InfoWindow("{$config_info.gz_headquartersaddress}<br/>{$config_info.gz_headeryj}");
+	marker1.addEventListener("click", function(){this.openInfoWindow(infoWindow1);});
+	</script>
+<script>
+function  xxpd(){
+		var name=$('#name').val();
+		var email=$('#email').val();
+		var telephone=$('#tel').val();
+		//var company=$('#company').val();
+		var message=$('#message').val();
+		
+		if(!name){
+			alert('请填写姓名');
+			document.getElementById('name').focus();
+			return false;
+		}
+
+		if(!telephone || (telephone.length!=7 && telephone.length!=11) || isNaN(telephone)){
+			alert('请填写正确手机号');
+			document.getElementById('tel').focus();
+			return false;
+		}
+		
+		if(!youxiang('email') || !email){
+			alert('请填写正确邮箱');
+			document.getElementById('email').focus();
+			return false;
+		}
+		
+		/*if(!company){
+			alert('请填写公司');
+			document.getElementById('company').focus();
+			return false;
+		}*/
+		if(!message){
+			alert('请填写留言');
+			document.getElementById('message').focus();
+			return false;
+		}
+			$.ajax({
+				type: "POST",
+				url:'/index.php?g=User&m=Post&a=Message&ajax=ajax',
+				data:$('#myform').serialize(),
+				error: function(request) {
+					alert("提交失败");
+				},
+				success: function(data) {
+					if(data>0){
+						alert('留言提交成功！');
+						location.reload();
+					}else alert("提交失败");
+					
+				}
+			});
+	}
+		function  youxiang(n){
+		
+		var email = document.getElementById(n).value;
+		
+		//alert(email);
+		
+		//return false;
+		
+            if (email != "") {
+            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                isok= reg.test(email );
+                if (!isok) {
+                    return false;
+                }
+				else return true;
+            }
+		}
+</script>

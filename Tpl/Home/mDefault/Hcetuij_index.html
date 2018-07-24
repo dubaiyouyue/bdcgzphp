@@ -1,0 +1,70 @@
+{__NOLAYOUT__}
+<style>
+/*.in_re_each a .in_er_wo_price span{display: none;}*/
+.in_re_each:hover a .in_er_wo_price span{display: inline-block;}
+</style>
+
+<div class="in_re_list">
+			
+			
+			
+						<!--开始-->
+				<div class="swiper-containtt" style="width: 1158px;overflow: hidden;">
+					 
+					  <div class="swiper-wrapper" style="height: 368px;overflow:hidden;">
+				<foreach name="haochetuij" item="r" key="k" ><div class="swiper-slide">
+				<div class="in_re_each">
+					<a href="/index.php/Home/Productcshow/index/cid/461/c/461/id/{$r.id}.html">
+						<div class="in_re_ea_img" style=" background:url({$r.imgurl}) no-repeat center center; background-size: cover;"></div>
+						<div class="in_er_ea_word">
+							<p class="in_er_wo_title">{$r.title}</p>
+							<div class="in_er_wo_tttt clearUl">
+								<span class="in_er_wo_day"><?php echo date('Y',$r['sppsjjtime']);?>年</span>
+								<div class="in_er_wo_line">|</div>  
+								<span class="in_er_wo_kilometre">{$r.licuser}万公里</span>
+							</div>
+							<p class="in_er_wo_price"><span>{$r.jiages}万</span><span class="in_er_wo_out" style="position: relative;margin-left: 0px;margin-top: 0px;padding-left: 3px;"><span style="visibility: hidden;">{$r.jiageold}万</span><span style="position:absolute;position: absolute;text-align: left;right: 0px;  top: -28px;margin-left: 0px;" class="in_er_wo_out">{$r.jiageold}万</span></span></p>
+							
+						</div>
+					</a>
+				</div></div>
+				</foreach></div></div>
+				
+
+				
+				
+					<!--end-->
+			   
+				
+			
+			</div>
+        
+			<div class="paging haohhccttt"></div>
+				
+				<style>
+				.haohhccttt .swiper-pagination-switch{width: 52px;display:none;
+			height: 5px;
+			background: #FAAA0B;
+			
+			cursor: pointer;
+			margin: 0px 5px;}.haohhccttt .swiper-active-switch{background: #1F2D30;}	.haohhccttt .swiper-pagination-switch:nth-child(1)<?php
+		$si=count($haochetuij);
+		if($si<5){
+			echo ',.haohhccttt .swiper-pagination-switch:nth-child('.$si.')';
+		}else{
+			echo ',.haohhccttt .swiper-pagination-switch:nth-child(4),.haohhccttt .swiper-pagination-switch:nth-child('.$si.')';
+		}
+	?>{display: inline-block;}
+				</style>
+			<script> 
+				var mySwiper = new Swiper('.swiper-containtt',{
+				slidesPerView : 3,
+				slidesPerGroup : 3,/*noSwiping : true,*/onlyExternal : true,
+				pagination : '.haohhccttt',<?php if((count($haochetuij)>3)) echo 'loop : true,loopedSlides :3,';?>
+				/*paginationVisibleClass : 'pa_esch',
+				paginationActiveClass : 'pa_eschpa_dq',*/
+				paginationClickable :true,//createPagination :false,
+				})
+				
+				
+			</script>

@@ -1,0 +1,45 @@
+<?php
+	$nwetimtwww=explode(' ',$list['updatetime']);
+	$list['updatetime']=$nwetimtwww['0'];
+ ?>
+<div class="background">
+    
+   <div class="details">
+	<div class="de_title">
+		<p class="ti_c">{$list.title}</p>
+		<p class="ti_e">{$list.updatetime}</p>
+	</div>
+	<div class="de_wrod">
+		{$list.content}
+	</div>
+</div>
+
+<style>
+	.details{width:95%; margin: auto; margin-top:40px;}
+	.de_title{margin-bottom:10px;text-align: center;}
+	.ti_c{ color:#2f3f1b; font-weight: bold; font-size:15px;}
+	.ti_e{font-size;12px; color: #D1D1D1}
+	.de_wrod img{ max-width:100%;margin: 5px auto;}
+</style>
+    
+</div>
+    
+    
+    
+    
+
+<script>
+	//调用，description为class名
+	//首页
+	wordlimit('in_por_ea_title', 9);
+	
+//多余显示省略号
+function wordlimit(cname, wordlength) {
+    var cname = document.getElementsByClassName(cname);
+    for (var i = 0; i < cname.length; i++) {　　　　　　
+        var nowLength = cname[i].innerHTML.length;
+        if (nowLength > wordlength) {
+            cname[i].innerHTML = cname[i].innerHTML.substr(0, wordlength) + '...';
+        }　　　　　　
+    }　
+};</script>

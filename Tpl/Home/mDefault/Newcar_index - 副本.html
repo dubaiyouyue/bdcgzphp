@@ -1,0 +1,316 @@
+<style>
+.se_banner{height: 234px;}.bu_po_spot{float: left;}.new_po_spot {
+    float: left;
+}
+</style>
+<?php
+	function urlnget($url){
+		$newssurl='/index.php/Home/Newcar/index/cid/'.$_GET['cid'];
+		foreach($url as $k=>$v){
+			if($v) $newssurl.='/'.$k.'/'.$v;
+		}
+		echo $newssurl;
+		//$this->assign('newssurl',$newssurl);
+	}
+?>
+    
+    
+    <!-----------------------------内容 开始---------------------------->
+    <div class="new">
+        <div class="new_middle">
+            
+            
+            <div class="new_p1 clearUl">
+                <div class="new_position">
+                    <div class="new_po_spot"></div>
+                    <ul class="new_po_ul">
+                        <li class="new_po_li"><a href="/"><span class="bu_po_li_span">></span>首页</a></li>
+                        <li class="new_po_li"><a href="/index.php/Home/Newcar/index/cid/481.html"><span class="bu_po_li_span">></span>{$getinfolamu.name}</a></li>
+                    </ul>
+                </div>
+                <form onsubmit="return false;">
+                    <div class="bu_search">
+                        <input class="bu_se_input" type="text" id="sckeyword" value="{$sckeyword}" placeholder="搜索你想要的车"/>
+                        <button class="bu_sea_button" onclick="secars();"></button>
+                    </div>
+                </form>
+            </div>
+            <script>
+				function secars(){
+					var sckeyword=$('#sckeyword').val();
+					if(!sckeyword){
+						$.edbox({
+							html:'<div class="example-html">请填写搜索关键词</div>',
+							////animateOpen:'animated tada',
+							//animateClose:'animated flipOutX',
+							afterClose:function(){
+								document.getElementById('sckeyword').focus();
+							}
+						});
+						return false;
+					}
+					var url='<?php urlnget(array('gz_deffcddyy'=>$gz_deffcddyy,'minjiage'=>$minjiage,'maxjiage'=>$minjiage,'sfminjiage'=>$sfminjiage,'sfmaxjiage'=>$sfmaxjiage));?>';
+					url=url+'/sckeyword/'+sckeyword;
+					location.href = url;
+				}
+			</script>
+            
+			
+			
+            <div class="new_lookup">
+                
+                <!--品牌 开始-->
+                <div class="new_lo_brand buy_ceach">
+                    <div class="new_br_title">品牌：</div>
+                    <div class="new_iiiiiiiiiiiiiiiiii">
+                        <div class="buy_br_letter">
+                            <span class="buy_br_le_each <?php
+								if(!$pplist['initial']) echo ' buy_br_le_dq ';
+							?>" onclick="getzmpp('',this);"><a href="javascript:;">热门</a></span>
+							
+							<?php
+								for($i=65;$i<91;$i++){  
+									//echo strtolower(chr($i)).' ';//输出小写字母  
+									//echo strtoupper(chr($i)).' ';//输出大写字母  
+									echo '<span class="buy_br_le_each';
+									if($pplist['initial']==strtoupper(chr($i))) echo ' buy_br_le_dq ';
+									echo '" onclick="getzmpp(\''.strtoupper(chr($i)).'\',this);"><a href="javascript:;">'.strtoupper(chr($i)).'</a></span>';
+								}  
+							?>
+                        </div>
+                        <div class="buy_br_c" id="getzmpp">
+						
+						<?php
+						if(!$pplist['logo']){
+							$hhyy=explode("\r\n",$config_info['gz_remenpp']);
+							foreach($hhyy as $hk=>$hv){
+								$nhv=explode('|',$hv);
+								echo '<span class="buy_br_c_each"><a href="/index.php/Home/Newcar/index/cid/'.$cid.'/oneid/'.$nhv['1'].'.html">'.$nhv['0'].'</a></span>';
+							}
+						}else{
+							foreach($hotpplist as $hk=>$hv){
+								echo '<span class="buy_br_c_each ';
+								if($hv['logo']==$pplist['logo']) echo ' buy_br_le_dq ';
+								echo '"><a href="/index.php/Home/Newcar/index/cid/'.$cid.'/oneid/'.$hv['logo'].'.html">'.$hv['name'].'</a></span>';
+							}
+						}
+				?>
+                        </div>
+                    </div>
+                </div>
+                <!--品牌 结束-->
+                
+                <!--月供 开始-->
+                <div class="new_lo_system  buy_ceach">
+                    <div class="new_sy_title">月供：</div>
+                    <div class="new_iiiiiiiiiiiiiiiiii">
+
+						
+						
+						
+                            <span class="new_sy_each <?php if(empty($_GET['maxjiage']) && empty($_GET['minjiage'])) echo ' new_br_le_dq ';?>"><a href="<?php urlnget(array('oneid'=>$oneid,'freid'=>$freid,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword,'sfminjiage'=>$_GET['sfminjiage'],'sfmaxjiage'=>$_GET['sfmaxjiage']));?>">不限</a></span>
+							<?php
+							$cssjiage=$_GET['maxjiage'];
+							
+					$hhyy=explode("\r\n",$config_info['gz_jgqjyg']);
+					foreach($hhyy as $hk=>$hv){
+						$nhv=explode('-',$hv);
+
+						if(!$hk){
+							$cminjiage=0;
+							$cmaxjiage=$nhv['0']+0; //第一个一下价格
+						}else if($hk==count($hhyy)){
+							$cminjiage=$nhv['1']+0;
+							$cmaxjiage=0; //最后一个以上价格
+						}else{
+							$cminjiage=$nhv['0']+0;
+							$cmaxjiage=$nhv['1']+0;
+						}
+						
+						
+						echo '<span class="new_sy_each';
+						if(($cmaxjiage==$cssjiage && $cssjiage) || (!$cmaxjiage && $cminjiage==$_GET['minjiage'])) echo ' new_br_le_dq ';
+						echo'"><a href="';
+						echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$cminjiage,'maxjiage'=>$cmaxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword,'sfminjiage'=>$_GET['sfminjiage'],'sfmaxjiage'=>$_GET['sfmaxjiage']));
+						echo '">'.$hv.'</a></span>';
+					}
+					?>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+                    </div>
+                </div>
+                <!--月供 结束-->
+                
+                <!--首付 开始-->
+                <div class="new_lo_price  buy_ceach">
+                        <div class="new_pr_title">首付：</div>
+                        <div class="new_iiiiiiiiiiiiiiiiii">
+          
+	
+                            <span class="new_pr_each <?php if(empty($_GET['sfmaxjiage']) && empty($_GET['sfminjiage'])) echo ' new_br_le_dq ';?>"><a href="<?php urlnget(array('oneid'=>$oneid,'freid'=>$freid,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword,'minjiage'=>$_GET['minjiage'],'maxjiage'=>$_GET['maxjiage']));?>">不限</a></span>
+							<?php
+							$cssjiage=$_GET['sfmaxjiage'];
+							
+					$hhyy=explode("\r\n",$config_info['gz_jgqjfsf']);
+					foreach($hhyy as $hk=>$hv){
+						$nhv=explode('-',$hv);
+
+						if(!$hk){
+							$cminjiage=0;
+							$cmaxjiage=$nhv['0']+0; //第一个一下价格
+						}else if($hk==count($hhyy)){
+							$cminjiage=$nhv['1']+0;
+							$cmaxjiage=0; //最后一个以上价格
+						}else{
+							$cminjiage=$nhv['0']+0;
+							$cmaxjiage=$nhv['1']+0;
+						}
+						
+						
+						echo '<span class="new_pr_each';
+						if(($cmaxjiage==$cssjiage && $cssjiage) || (!$cmaxjiage && $cminjiage==$_GET['sfminjiage'])) echo ' new_br_le_dq ';
+						echo'"><a href="';
+						echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'sfminjiage'=>$cminjiage,'sfmaxjiage'=>$cmaxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword,'minjiage'=>$_GET['minjiage'],'maxjiage'=>$_GET['maxjiage']));
+						echo '">'.$hv.'</a></span>';
+					}
+					?>
+							
+							
+							
+							
+							
+							
+							
+                    </div>
+                </div>
+                <!--首付 结束-->
+                
+                
+                
+                
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            <div class="new_list">
+                <div class="new_li_nav">
+                    
+                    <ul class="new_li_right">
+                        <li class="new_li_ri <?php if(!$pxorder) echo 'new_li_ri_dq';?>"><a href="javascript:;" onclick="ssddcoooorrr('newcarpxorder','');">默认</a></li>
+                        <li class="new_li_ri <?php if($pxorder=='jiages') echo 'new_li_ri_dq';?>"><a href="javascript:;" onclick="ssddcoooorrr('newcarpxorder','jiages');">价格<img class="new_li_img" src="/images/new1.jpg"/></a></li>
+                        <li class="new_li_ri <?php if($pxorder=='shangsyear') echo 'new_li_ri_dq';?>"><a href="javascript:;" onclick="ssddcoooorrr('newcarpxorder','shangsyear');">上市<img class="new_li_img" src="/images/new1.jpg"/></a></li>
+                    </ul>
+                </div>
+                
+                
+                <div class="new_list_l">
+				
+				
+				
+				<foreach name="list" item="r" key="k" >
+                    <div class="new_li_each">
+                        <a href="/index.php/Home/Productcshow/index/cid/{$cid}/c/{$cid}/id/{$r.id}.html">
+                            <div class="new_li_ea_img" style="background:url({$r.imgurl}) no-repeat center center; background-size: cover;"></div>
+                            <p class="new_li_ea_title">{$r.title}</p>
+                                <span class="new_li_ea_date">产商指导价{$r.jiages}万</span>
+                        <div class="new_li_ea_jjjjjjjjjj">
+                            <div class="new_li_ea_j_left">
+                                <span class="new_li_ea_price">首付{$r.jiagessf}万</span>
+                                <span class="new_li_ea_out">月供{$r.jiagesyg}元</span>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                </foreach>   
+                    
+                    
+                    
+                </div>
+                
+                <!--分页-->
+                <div class="paga" id="pagapaga"></div>
+            
+            </div>
+            
+            
+            
+        </div>
+    </div>
+    <!-----------------------------内容 结束---------------------------->
+    
+    
+    
+    <script>
+	
+        laypage({
+            cont: 'pagapaga', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
+            pages: '{$allpage}', //通过后台拿到的总页数
+            curr: {$p}, //当前页
+			groups:15,
+            jump: function(obj, first){ //触发分页后的回调
+                if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
+                    var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword,'sfminjiage'=>$sfminjiage,'sfmaxjiage'=>$sfmaxjiage));?>';
+					url=url+'/p/'+obj.curr;
+					location.href = url;
+                }
+            }
+        });
+	
+	
+	
+	
+		var cid='<?php echo $cid;?>';
+		var pp_initial='<?php echo $pplist['initial'];?>';
+		var pp_oneid='<?php echo $pplist['logo'];?>';
+		
+		//xlmsetCookie('GZ_cexing','dfasfads');
+		$(".sscprcar").bind("change",function(){
+			var logoid=$(this).val();
+			var cn=$(this).attr('c');
+				xlmsetCookie(cn,logoid);
+				//location.reload();
+				
+                    var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword));?>';
+				location.href = url;
+				
+		});
+		
+		function ssddcoooorrr(cn,logoid){
+			xlmsetCookie('GZ_'+cn,logoid);
+			//location.reload();
+                    var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword));?>';
+				location.href = url;
+		}
+		
+	</script>
+    <script type="text/javascript" src="/js/Newcar.js?15"></script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

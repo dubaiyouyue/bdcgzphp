@@ -1,0 +1,131 @@
+<!--<script src="/laypage/laypage.js"></script>-->
+
+    
+    <!-----------------------------内容 开始---------------------------->
+    <style>
+        .tre_li{width:1000px; margin: auto;}
+        .tre_p1{ margin-top: 10px;}
+        .tre_position{float: left;margin-top: 10px;}/*当前位置*/
+        .tre_po_spot{width:5px; height:5px; background: #FAAA0B; display: inline-block; vertical-align: top; margin-top: 8px;}
+        .tre_po_ul{vertical-align: top; margin-left: 10px; display: inline-block;}
+        .tre_po_li{font-size: 12px; color: #555555; display: inline-block;}
+        .tre_po_li_span{ padding: 0 5px; display: inline-block;}
+        .tre_po_li:first-child .bu_po_li_span{display: none}
+        
+        .hjsjdfsb{text-align: right;}
+        .tre_input{width:450px; height:40px; border: #FFBE00 1px solid; margin-top: 40px; display: inline-block; vertical-align: top; box-sizing: border-box;}
+        .tre_input input{width: 400px; height: 35px; margin-top:1px;margin-right: 33px;}
+        .ter_button{width:107px; background: none; border: none; margin-top:39px;margin-left: -45px; cursor: pointer}
+        .ter_button img{width: 100%;}
+        
+        .tre_centen{margin-top: 20px;}
+        .tre_li_title{width: 100%; height: 38px; line-height: 38px; background:#F7F7F7; padding-left: 20px; box-sizing: border-box; font-size: 16px; font-weight: bold; }
+        .tre_hdjsfb{width: 100%; height: 38px; border-bottom: 1px #F3F3F3 dashed; line-height: 38px; margin-top: 10px; padding-left: 20px; box-sizing: border-box;}
+        .tre_hdjsfb a:hover{ color: #FFB600}
+		
+		
+		
+.hjsjdfsb form{display: inline-block;}
+.ter_button{width: 107px;background: none;border: none;/* margin-top: 39px; */margin-left: -45px;cursor: pointer;position: relative;top: 65px;}
+		
+		.se_banner{height: 196px;}.hjsjdfsb form{display: inline-block;}
+.ter_button{width: 107px;background: none;border: none; margin-top:0px;margin-left: -45px;cursor: pointer;position: relative;top: 65px;}
+
+.tre_po_spot{float:left;}
+    </style>
+    
+    
+    <div class="tre_li">
+        
+        <div class="tre_p1 clearUl">
+            <div class="tre_position">
+                <div class="tre_po_spot"></div>
+                <ul class="tre_po_ul">
+                    <li class="tre_po_li"><a href="/"><span class="bu_po_li_span">></span>首页</a></li>
+                    <li class="tre_po_li"><a href="/index.php/Home/{$getinfolamu.foldername}/index/cid/{$getinfolamu.id}.html"><span class="bu_po_li_span">></span>{$getinfolamu.name}</a></li>
+                    <li class="tre_po_li"><a href="/index.php/Home/{$lan.foldername}/index/cid/{$cid}.html"><span class="bu_po_li_span">></span>{$lan.name}</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+               
+        
+        <div class="hjsjdfsb">
+            <form>
+
+                <div class="tre_input">
+                    <input type="text" id="kssss" placeholder="填写关键词搜索"/>
+                </div>
+
+            </form>
+             <button class="ter_button" onclick="ksss();"><img src="/images/treasure_r12_c9.png"/></button>
+        </div>
+        
+        <div class="tre_centen">
+            <p class="tre_li_title">{$lan.name}</p><foreach name="list" item="r" key="k" >
+            <div class="tre_hdjsfb"><a href="/index.php/Home/Newsshow/index/cid/{$r.class2}/c/{$r.class1}/id/{$r.id}.html">{$r.title}</a></div>
+       </foreach>
+            
+        </div>
+        
+        <!--分页-->
+		
+		   <div class="paga" id="paga">
+                  
+                </div>
+		
+<script>//好像很实用的样子，后端的同学再也不用写分页逻辑了。
+laypage({
+  cont: 'paga',
+  pages: '{$allpage}', //可以叫服务端把总页数放在某一个隐藏域，再获取。假设我们获取到的是18
+  curr:'{$p}',
+  jump: function(e, first){ //触发分页后的回调
+    if(!first){ //一定要加此判断，否则初始时会无限刷新
+      
+         var ulrsss='/index.php/Home/{$lan.foldername}/index/cid/{$cid}/p/'+e.curr+'.html';
+          location.href = ulrsss;
+
+
+    }
+  }
+});
+
+//搜索
+function ksss(){
+	var k=$('#kssss').val();
+	if(!k){
+		$.edbox({
+			html:'<div class="example-html">请输入关键词搜索</div>',
+			//animateOpen:'animated tada',
+			//animateClose:'animated flipOutX'/*,
+			afterClose:function(){
+				document.getElementById('kssss').focus();
+			}
+		});
+		return false;
+	}else{
+		location.href = '/index.php/Home/TrendsSearch/index/k/'+k;
+	}
+}
+
+
+</script>
+
+		
+		
+		
+		
+		
+		
+		
+             
+            
+    </div>
+    <!-----------------------------内容 结束---------------------------->
+    
+    
+    
+    
+    
+    

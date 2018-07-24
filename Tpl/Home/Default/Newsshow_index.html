@@ -1,0 +1,90 @@
+<?php
+	$nwetimtwww=explode(' ',$list['updatetime']);
+	$list['updatetime']=$nwetimtwww['0'];
+ ?>
+    <!-----------------------------内容 开始---------------------------->
+    <style>
+    .tre_de_middle{width:1000px; margin: auto;}
+    .tre_de_p1{ margin-top: 10px;}
+    .tre_de_position{float: left;margin-top: 10px;}/*当前位置*/
+    .tre_de_po_spot{width:5px; height:5px; background: #FAAA0B; display: inline-block; vertical-align: top; margin-top: 8px;}
+    .tre_de_po_ul{vertical-align: top; margin-left: 10px; display: inline-block;}
+    .tre_de_po_li{font-size: 12px; color: #555555; display: inline-block;}
+    .tre_de_po_li_span{ padding: 0 5px; display: inline-block;}
+    .tre_de_po_li:first-child .tre_de_po_li_span{display: none}
+        
+        
+        .tre_de_box{margin-top:40px;}
+        .tre_de_title{}
+        .tre_de_p{font-size: 18px; font-weight: bold;}
+        .dre_de_date{font-size: 14px; color:#ECE4E4}
+        
+        .tre_de_lfjakb{margin-top:20px;}.tre_de_po_spot{float: left;}
+    .se_banner{height: 196px;}
+    </style>
+    
+    
+    
+    <div class="tre_de_middle">
+     <div class="tre_de_p1 clearUl">
+            <div class="tre_de_position" style="<?php
+						if($getinfolamu['id']==$cid) echo 'display:none;';
+					?>">
+                <div class="tre_de_po_spot"></div>
+                <ul class="tre_de_po_ul">
+                    <li class="tre_de_po_li"><a href="/"><span class="tre_de_po_li_span">></span>首页</a></li>
+                    <li class="tre_de_po_li"><a href="/index.php/Home/{$getinfolamu.foldername}/index/cid/{$getinfolamu.id}.html"><span class="tre_de_po_li_span">></span>{$getinfolamu.name}</a></li>
+                    <li class="tre_de_po_li"><a href="/index.php/Home/{$lan.foldername}/index/cid/{$cid}.html"><span class="tre_de_po_li_span">></span>{$lan.name}</a></li>
+                </ul>
+            </div>
+        </div>
+        
+		
+		
+		
+		
+		
+        
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+        
+        <div class="tre_de_box">
+        
+            <div class="tre_de_title">
+                <p class="tre_de_p">{$list.title}</p>
+                <p class="dre_de_date">{$list.updatetime}</p>
+            </div>
+            
+            
+            <div class="tre_de_lfjakb">
+            {$list.content}
+            
+            </div>
+        
+        </div>
+    
+    </div>
+    
+    <!-----------------------------内容 结束---------------------------->
+    
+    
+    
+    
+    

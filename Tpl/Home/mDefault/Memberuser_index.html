@@ -1,0 +1,100 @@
+<style>.fdasfjrajajaxx{background: url(/5-121204193956-50.gif) no-repeat center center!important;
+    background-size: unset!important;}</style>
+<!-----------------------------------内容 开始-------------------------------------->
+    
+    <div class="member">
+        <div class="me_title">
+           <!-- <a class="me_ti_a" href="###"><img src="/m/images/member_r3_c2.png"/></a>-->
+            <p class="mi_ti_p">会员中心</p>
+        </div>
+<form action="" style="display:none;" method="POST" enctype="multipart/form-data" id="myformup">
+<input type="file" name="file" id="path" style="display:none;" onchange="uptx();" /> 
+</form>
+        <div class="me_information">
+            <div class="me_in_portrait" style="background:url({$user_tx}) no-repeat center center; background-size: cover;" onclick="path.click();"></div>
+            <div class="me_in_word" style="margin-top: 35px;">
+                <p class="me_in_o" style="display:none;">账号：<span>WS4552eS</span></p>
+                <p class="me_in_o">电话：<span>{$user_tel}</span></p>
+            </div>
+			<a href="/index.php/Home/Memberuser/epass" style="display: inline-block;"><button class="me_in_button" style="right: 60px;">[修改密码]</button></a>
+            <a href="/index.php/Home/Memberuser/out" style="display: inline-block;"><button class="me_in_button">[退出]</button></a>
+        </div>
+        
+        <div class="me_list">
+            <div class="me_li_each">
+                <a href="/index.php/Home/Memberuser/maiche">
+                    <img class="me_li_img" src="/m/images/iphone_r1_c1.jpg"/>
+                    <p class="me_li_wa_p">买车记录</p>
+                    <img class="me_li_buttom" src="/m/images/iphone_r.jpg"/>
+                </a>
+            </div>
+            
+            <div class="me_li_each">
+                <a href="/index.php/Home/Memberuser/maiche/mm/selcar">
+                    <img class="me_li_img" src="/m/images/iphone_r3_c1.jpg"/>
+                    <p class="me_li_wa_p">卖车记录</p>
+                    <img class="me_li_buttom" src="/m/images/iphone_r.jpg"/>
+                </a>
+            </div>
+            
+            <div class="me_li_each">
+                <a href="/index.php/Home/Sjyjfk/index/cid/487.html">
+                    <img class="me_li_img" src="/m/images/iphone_r5_c1.jpg"/>
+                    <p class="me_li_wa_p">意见反馈</p>
+                    <img class="me_li_buttom" src="/m/images/iphone_r.jpg"/>
+                </a>
+            </div>
+            
+            <div class="me_li_each">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin={$config_info.gz_headTeless}&site=qq&menu=yes" target="_blank">
+                    <img class="me_li_img" src="/m/images/iphone_r7_c1.jpg"/>
+                    <p class="me_li_wa_p">联系客服</p>
+                    <img class="me_li_buttom" src="/m/images/iphone_r.jpg"/>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+    
+<!-----------------------------------内容 结束-------------------------------------->
+    
+<script>
+	function uptx(){
+			//$('.por_upload_button').removeAttr('onclick');
+			
+			$(".me_in_portrait").addClass('fdasfjrajajaxx');
+			var formData = new FormData($('#myformup')[0]);
+			$.ajax({
+				type: "POST",
+				url:'/index.php/Home/Uptx/index',
+				//data:$('#myformup').serialize(),
+				
+				cache: false,
+				data: new FormData($('#myformup')[0]),
+				processData: false,
+				contentType: false,
+				
+				error: function(request) {
+					alert('服务器繁忙');
+					location.reload();
+					return false;
+				
+				
+					//alert("提交失败");
+				},
+				success: function(data) {
+					if(data=='upok'){
+						alert('上传修改头像成功');
+						location.reload();
+						return false;
+					}else{
+						alert('服务器繁忙');
+						location.reload();
+						return false;
+					
+					}//alert("提交失败");
+					
+				}
+			});
+	}
+	</script>

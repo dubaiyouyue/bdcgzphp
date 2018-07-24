@@ -1,0 +1,135 @@
+
+    
+    <div class="register">
+        <div class="re_buttom">
+            <span class="re_bu_span re_budq"><a href="/index.php/Home/Sjrelogin/index/cid/486/lg/lg.html">登 录</a></span>
+            <span class="re_bu_span"><a href="/index.php/Home/Sjrelogin/index/cid/486.html">注 册</a></span>
+        </div>
+        <form onsubmit="passlogin();return false;" id="myformrelogin">
+       
+        
+			<div class="re_input" style="margin-bottom:0px;">
+				<div class="re_list">
+					<span class="re_li_nena">手机：</span>
+					<input class="kk" type="text" name="passtel" id="passtel" />
+				</div>
+				<div class="re_list">
+					<span class="re_li_nena">密码：</span>
+					<input class="kk" type="password" name="lpass" id="lpass" />
+					<input id="recodeluopasslogin" type="hidden" name="recodeluopasslogin">
+				</div>
+				<div style="width: 90%;margin: auto;margin-top: 20px;">
+				<div class="l-captcha" data-callback="getResponserepasslogin" data-width="100%" data-site-key="<?php echo LUOSIMAO_SITE_KEY;?>"></div></div>
+				</div>
+				
+				<div class="re_list" style="border: none;margin-bottom: 80px;">
+					<button class="reg_immediate_entry" style="cursor: pointer;">立即登入</button>
+					<div style="text-align:right;"><a href="/index.php/Home/Sjrelogin/index/cid/486/lg/codes.html" style="margin-top: 12px;color: #aaa;padding-right: 15px;">短信随机码登录</a></div>
+				</div>
+				
+				
+				
+			</div>
+        </form>
+        
+       <!--------------------------登入 开始----------------------> 
+       
+
+        
+        <style>.reg_immediate_entry{font-size:18px;}
+        .si_hhhhh{color:#fff; text-align: center; margin-top:8px; background: #FFC03B }
+    .si_tt_message{display: inline-block; padding:5px 10px;margin: 0px 10px;cursor:pointer; border-bottom: 2px transparent solid; }
+    .si_tt_message:hover{ box-sizing: border-box; background:#e09800}.reg_immediate_entry {
+    width: 100%;
+    height: 48px;
+    border-radius: 5px;
+    background: #FFC03B;
+    border: none;
+    margin: auto;
+    margin-top: 20px;
+    display: inherit;
+    color: #fff;
+}
+        
+        </style>
+        
+      
+        
+        
+      
+       <!--------------------------登入 结束----------------------> 
+        
+        
+        
+        
+        
+       
+    </div>
+    
+	
+	
+<script>function getResponserepasslogin(resp){
+     //密码登录
+	 $('#recodeluopasslogin').val(resp);
+}
+function passlogin(){
+	//密码登录
+	var mimadenglu=$('#mmmmsssddllmm').css('display');
+
+			var passtel=$('#passtel').val();
+			if(!passtel || (passtel.length!=7 && passtel.length!=11) || isNaN(passtel)){
+				alert('请填写正确手机号');
+				document.getElementById('passtel').focus();
+				return false;
+			}
+			var lpass=$('#lpass').val();
+			if(!lpass){
+				alert('请输入密码');
+				document.getElementById('lpass').focus();
+				return false;
+			}
+			var luotest_response = $('#recodeluopasslogin').val();
+			if(!luotest_response){
+				alert('请点击人机识别验证');
+				return false;
+			}
+			
+			$('.reg_immediate_entry').text('正在登录..');
+			$.ajax({
+				type: "POST",
+				url:'/index.php/Home/Usermember/loginc/lm/pass.html',
+				data:$('#myformrelogin').serialize(),
+				error: function(request) {
+					alert('服务器繁忙');
+					return false;
+				},
+				success: function(data) {
+					if(data=='addok'){
+						alert('登录成功');
+						location.href = '/index.php/Home/Memberuser/index';
+						return false;
+						
+					}else{
+						alert(data);
+						location.reload();
+						return false;
+					
+					}//alert("提交失败");
+					
+				}
+			});
+			
+	
+}
+</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!-----------------------------------内容 结束-------------------------------------->
+	

@@ -1,0 +1,32 @@
+<?php
+	$nwetimtwww=explode(' ',$list['updatetime']);
+	$list['updatetime']=$nwetimtwww['0'];
+ ?>
+<!------------------------内容 开始----------------------------->
+
+<div class="internal_backgrund" style="width:100%; position:relative;"><img style="max-width: 100%; position: absolute; z-index: -1" src="/images/ba.png"/></div>
+
+<div class="details">
+	<div class="de_title">
+		<p class="ti_c">{$list.title}</p>
+		<p class="ti_e">{$list.updatetime}</p>
+	</div>
+	<div class="de_wrod">
+		{$list.content}
+	</div>
+</div>
+
+<style>
+	.details{width:95%; margin: auto; margin-top:40px;}
+	.de_title{margin-bottom:10px;text-align: center;}
+	.ti_c{ color:#2f3f1b; font-weight: bold; font-size:15px;}
+	.ti_e{font-size;12px; color: #D1D1D1}
+	.de_wrod img{ max-width:100%;margin: 5px auto;}
+</style>
+
+
+
+<!------------------------内容 结束----------------------------->
+
+
+

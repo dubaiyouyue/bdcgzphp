@@ -1,0 +1,588 @@
+<style>
+.se_banner{height: 234px;}.bu_po_spot{float: left;}
+</style>
+<?php
+	function urlnget($url){
+		$newssurl='/index.php/Home/Productcs/index/cid/'.$_GET['cid'];
+		foreach($url as $k=>$v){
+			if($v) $newssurl.='/'.$k.'/'.$v;
+		}
+		echo $newssurl;
+		//$this->assign('newssurl',$newssurl);
+	}
+?>
+    <!-----------------------------内容 开始---------------------------->
+    <div class="buy">
+        <div class="buy_middle">
+            
+            
+            <div class="buy_p1 clearUl">
+                <div class="bu_position">
+                    <div class="bu_po_spot"></div>
+                    <ul class="bu_po_ul">
+                        <li class="bu_po_li"><a href="/"><span class="bu_po_li_span">></span>首页</a></li>
+                        <li class="bu_po_li"><a href="/index.php/Home/Productcs/index/cid/461.html"><span class="bu_po_li_span">></span>{$getinfolamu.name}</a></li>
+                    </ul>
+                </div>
+                <form onsubmit="return false;">
+                    <div class="bu_search">
+                        <input class="bu_se_input" type="text" id="sckeyword" value="{$sckeyword}" placeholder="搜索你想要的车"/>
+                        <button class="bu_sea_button" onclick="secars();"></button>
+                    </div>
+                </form>
+            </div>
+            <script>
+				function secars(){
+					var sckeyword=$('#sckeyword').val();
+					if(!sckeyword){
+						$.edbox({
+							html:'<div class="example-html">请填写搜索关键词</div>',
+							////animateOpen:'animated tada',
+							//animateClose:'animated flipOutX',
+							afterClose:function(){
+								document.getElementById('sckeyword').focus();
+							}
+						});
+						return false;
+					}
+					var url='<?php urlnget(array('gz_deffcddyy'=>$gz_deffcddyy,'minjiage'=>$minjiage,'maxjiage'=>$minjiage));?>';
+					url=url+'/sckeyword/'+sckeyword;
+					location.href = url;
+				}
+			</script>
+            
+            <div class="buy_lookup">
+                
+                <!--品牌 开始-->
+                <div class="buy_lo_brand buy_ceach">
+                    <div class="buy_br_title">品牌：</div>
+                    <div class="buy_iiiiiiiiiiiiiiiiii">
+                        <div class="buy_br_letter">
+                            <span class="buy_br_le_each <?php
+								if(!$pplist['initial']) echo ' buy_br_le_dq ';
+							?>" onclick="getzmpp('',this);"><a href="javascript:;">热门</a></span>
+							
+							<?php
+								for($i=65;$i<91;$i++){  
+									//echo strtolower(chr($i)).' ';//输出小写字母  
+									//echo strtoupper(chr($i)).' ';//输出大写字母  
+									echo '<span class="buy_br_le_each';
+									if($pplist['initial']==strtoupper(chr($i))) echo ' buy_br_le_dq ';
+									echo '" onclick="getzmpp(\''.strtoupper(chr($i)).'\',this);"><a href="javascript:;">'.strtoupper(chr($i)).'</a></span>';
+								}  
+							?>
+                        </div>
+                        <div class="buy_br_c" id="getzmpp">
+						
+						<?php
+						if(!$pplist['logo']){
+							$hhyy=explode("\r\n",$config_info['gz_remenpp']);
+							foreach($hhyy as $hk=>$hv){
+								$nhv=explode('|',$hv);
+								echo '<span class="buy_br_c_each"><a href="/index.php/Home/Productcs/index/cid/'.$cid.'/oneid/'.$nhv['1'].'.html">'.$nhv['0'].'</a></span>';
+							}
+						}else{
+							foreach($hotpplist as $hk=>$hv){
+								echo '<span class="buy_br_c_each ';
+								if($hv['logo']==$pplist['logo']) echo ' buy_br_le_dq ';
+								echo '"><a href="/index.php/Home/Productcs/index/cid/'.$cid.'/oneid/'.$hv['logo'].'.html">'.$hv['name'].'</a></span>';
+							}
+						}
+				?>
+                        </div>
+                    </div>
+                </div>
+                <!--品牌 结束-->
+                
+                <!--车系 开始-->
+                <div class="buy_lo_system  buy_ceach">
+                    <div class="buy_sy_title">车系：</div>
+                    <div class="buy_iiiiiiiiiiiiiiiiii">
+                        <span class="buy_sy_each <?php
+							if(!$freid) echo 'buy_br_le_dq';?>"><a href="<?php urlnget(array('oneid'=>$oneid));?>">不限</a></span>
+						
+						
+						
+				<?php
+				if(!$pplist['logo']){
+					$hhyy=explode("\r\n",$config_info['gz_deffcx']);
+					foreach($hhyy as $hk=>$hv){
+						$nhv=explode('|',$hv);
+						echo '<span class="buy_sy_each ';
+						if($freid==$nhv['1']) echo ' buy_br_le_dq ';
+						echo '"><a href="';
+						echo urlnget(array('freid'=>$nhv['1']));
+						echo '">'.$nhv['0'].'</a></span>';
+					}
+					}else{
+					foreach($cartlist as $hk=>$hv){
+						echo '<span class="buy_sy_each ';
+						if($freid==$hv['logo']) echo ' buy_br_le_dq ';
+						echo '"><a href="';
+						echo urlnget(array('freid'=>$hv['logo']));
+						echo '">'.$hv['name'].'</a></span>';
+					}
+					
+					}
+				?>
+                    </div>
+                </div>
+                <!--车系 结束-->
+                
+                <!--价格 开始-->
+                <div class="buy_lo_price  buy_ceach">
+                        <div class="buy_pr_title">价格：</div>
+                        <div class="buy_iiiiiiiiiiiiiiiiii">
+                            <span class="buy_pr_each <?php if(empty($_GET['maxjiage']) && empty($_GET['minjiage'])) echo ' buy_br_le_dq ';?>"><a href="<?php urlnget(array('oneid'=>$oneid,'freid'=>$freid,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword));?>">不限</a></span>
+							<?php
+							$cssjiage=$_GET['maxjiage'];
+							
+					$hhyy=explode("\r\n",$config_info['gz_jgqj']);
+					foreach($hhyy as $hk=>$hv){
+						$nhv=explode('-',$hv);
+
+						if(!$hk){
+							$cminjiage=0;
+							$cmaxjiage=$nhv['0']+0; //第一个一下价格
+						}else if($hk==count($hhyy)){
+							$cminjiage=$nhv['1']+0;
+							$cmaxjiage=0; //最后一个以上价格
+						}else{
+							$cminjiage=$nhv['0']+0;
+							$cmaxjiage=$nhv['1']+0;
+						}
+						
+						
+						echo '<span class="buy_pr_each';
+						if(($cmaxjiage==$cssjiage && $cssjiage) || (!$cmaxjiage && $cminjiage==$_GET['minjiage'])) echo ' buy_br_le_dq ';
+						echo'"><a href="';
+						echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$cminjiage,'maxjiage'=>$cmaxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword));
+						echo '">'.$hv.'</a></span>';
+					}
+					?>
+							
+							
+							<style>.buy_pr_sc_input{margin-left:2px;margin-top:2px;}</style>
+                          
+                            <form class="buy_pr_screen" onsubmit="return false;">
+                                <div class="buy_pr_sc_kkkkk"><input class="buy_pr_sc_input" value="<?php echo $_GET['minjiage'];?>" type="text" id="minnnjiagess" />万</div>
+                                <div class="buy_pr_sc_line">-</div>
+                                <div class="buy_pr_sc_kkkkk"><input class="buy_pr_sc_input" value="<?php echo $_GET['maxjiage'];?>" type="text" id="maxnnjiagess" />万</div>
+                                <button class="buy_pr_sc_button" onclick="getssjiage();">确定</button>
+                            </form>
+                    </div>
+                </div>
+                <!--价格 结束-->
+                <script>
+				function getssjiage(){
+					var minnnjiagess=parseInt($('#minnnjiagess').val());
+					var maxnnjiagess=parseInt($('#maxnnjiagess').val());
+					if(!maxnnjiagess || !minnnjiagess || (minnnjiagess>maxnnjiagess)){
+						$.edbox({
+							html:'<div class="example-html">请正确填写数字价格区间</div>',
+							////animateOpen:'animated tada',
+							//animateClose:'animated flipOutX',
+							afterClose:function(){
+								document.getElementById('feedbackcontent').focus();
+							}
+						});
+						return false;
+					}
+					var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'gz_deffcddyy'=>$_GET['gz_deffcddyy'],'sckeyword'=>$sckeyword));?>'
+					url=url+'/minjiage/'+minnnjiagess+'/maxjiage/'+maxnnjiagess;
+					location.href = url;
+				}
+				</script>
+                <!--地域 开始-->
+                <div class="buy_lo_region buy_ceach">
+                    <div class="buy_re_title">地域：</div>
+                    <div class="buy_iiiiiiiiiiiiiiiiii">
+                        <span class="buy_re_each <?php if(!$gz_deffcddyy) echo ' buy_br_le_dq ';?> "><a href="<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'sckeyword'=>$sckeyword));?>">不限</a></span>
+						
+						
+						
+				<?php
+					$hhyy=explode("\r\n",$config_info['gz_deffcddyy']);
+					foreach($hhyy as $hk=>$hv){
+						$nhv=explode('|',$hv);
+						echo '<span class="buy_re_each';
+						if($gz_deffcddyy==$nhv['0']) echo ' buy_br_le_dq ';
+						echo '"><a href="';
+						echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'gz_deffcddyy'=>$nhv['0'],'sckeyword'=>$sckeyword));
+						echo '">'.$nhv['0'].'</a></span>';
+					}
+				?>
+						
+                    </div>
+                </div>
+				<script>
+				/*function gz_deffcddyy(sc){
+					$.cookie('gz_deffcddyy', sc);
+				}*/
+				</script>
+				
+				
+                <!--地域 结束-->
+                <style>
+				.buy_ot_each{border:none;}
+				.buy_ot_each select{width:100%;height:100%;border:1px solid #E6E6E6;}
+				
+				/*.gradientduocai{
+					background:url('/images/dccssss.jpg');
+				}*/
+				
+				.buy_ot_each{margin-top:-6px;}
+				</style>
+                <!--其他 开始-->
+                <div class="buy_lo_other  buy_ceach">
+                    <div class="buy_ot_title">其它：</div>
+                    <div class="buy_ot_list">
+                        <div class="buy_ot_each">
+						
+							<select class="sscprcar" c="GZ_deffcddyycx">
+							  
+							  <?php
+								if($gz_deffcddyycx) echo '<option value="'.$gz_deffcddyycx.'">'.$gz_deffcddyycx.'</option><option value="">不限</option>';
+								else echo '<option value="">车型</option>';
+
+									$hhyy=explode("\r\n",$config_info['gz_deffcddyycx']);
+									foreach($hhyy as $hk=>$hv){
+										if($hv!=$gz_deffcddyycx) echo '<option value="'.$hv.'">'.$hv.'</option>';
+									}
+								?>
+							</select>
+						
+
+
+
+                        </div>
+                        <div class="buy_ot_each">
+							<select class="sscprcar" c="GZ_deffcddyycl">
+							  <?php
+								if($gz_deffcddyycl) echo '<option value="'.$gz_deffcddyycl.'">'.$gz_deffcddyycl.'</option><option value="">不限</option>';
+								else echo '<option value="">车龄</option>';
+
+									$hhyy=explode("\r\n",$config_info['gz_deffcddyycl']);
+									$cccuullnum=count($hhyy)-1;
+									foreach($hhyy as $hk=>$hv){
+										if($hv!=$gz_deffcddyycl){
+											echo '<option value="';
+											if($hk<$cccuullnum) echo '0-'.$hv;
+											else echo $hv.'-0';
+											echo '">'.$hv.'</option>';
+										}
+									}
+								?>
+							</select>
+                        </div>
+                        <div class="buy_ot_each">
+
+							<select class="sscprcar" c="GZ_deffcddyyllcc">
+							  
+							  
+							  <?php
+								if($gz_deffcddyyllcc) echo '<option value="'.$gz_deffcddyyllcc.'">'.$gz_deffcddyyllcc.'</option><option value="">不限</option>';
+								else echo '<option value="">里程</option>';
+								
+								
+									$hhyy=explode("\r\n",$config_info['gz_deffcddyyllcc']);
+									$cccuullnum=count($hhyy)-1;
+									foreach($hhyy as $hk=>$hv){
+										if($hv!=$gz_deffcddyyllcc){
+											echo '<option value="';
+											if($hk<$cccuullnum) echo '0-'.$hv;
+											else echo $hv.'-0';
+											echo '">'.$hv.'</option>';
+										}
+									}
+								?>
+							</select>
+                        </div>
+                        <div class="buy_ot_each">
+                            
+							<select class="sscprcar" c="GZ_deffcddyylpl">
+							 
+							  
+								<?php
+								if($gz_deffcddyylpl) echo '<option value="'.$gz_deffcddyylpl.'">'.$gz_deffcddyylpl.'</option><option value="">不限</option>';
+								else echo '<option value="">排量</option>';
+								
+								
+									$hhyy=explode("\r\n",$config_info['gz_deffcddyylpl']);
+									$cccuullnum=count($hhyy)-1;
+									foreach($hhyy as $hk=>$hv){
+										if($hv!=$gz_deffcddyylpl){
+											echo '<option value="';
+											if(!$hk) echo '0-'.$hv;
+											else if($hk==$cccuullnum) echo $hv.'-0';
+											else echo $hv;
+											echo '">'.$hv.'</option>';
+										}
+									}
+								?>
+							</select>
+                        </div>
+                        <div class="buy_ot_each">
+							<select class="sscprcar" c="GZ_deffcddyylplbz">
+							  
+							  
+								<?php
+								if($gz_deffcddyylplbz) echo '<option value="'.$gz_deffcddyylplbz.'">'.$gz_deffcddyylplbz.'</option><option value="">不限</option>';
+								else echo '<option value="">排放标准</option>';
+								
+									$hhyy=explode("\r\n",$config_info['gz_deffcddyylplbz']);
+									foreach($hhyy as $hk=>$hv){
+										if($hv!=$gz_deffcddyylplbz) echo '<option value="'.$hv.'">'.$hv.'</option>';
+									}
+									
+								
+									
+								?>
+							</select>
+                        </div>
+                        <div class="buy_ot_each">
+                            
+							<select class="sscprcar" c="GZ_yansecar">
+							  
+							  
+								<?php
+								if($gz_yansecar) echo '<option value="'.$gz_yansecar.'">'.$gz_yansecar.'</option><option value="">不限</option>';
+								else echo '<option value="">颜色</option>';
+								
+									$hhyy=explode("\r\n",$config_info['gz_yansecar']);
+									foreach($hhyy as $hk=>$hv){
+										$nhv=explode('#',$hv);
+										if($nhv['0']!=$gz_yansecar){
+											echo '<option value="'.$nhv['0'].'" style="';
+											if($nhv['1']){
+												if($nhv['1']=='fff' || $nhv['1']=='ffffff'){
+													echo 'background:#000;';
+												}
+												if($nhv['1']!='duo' && $nhv['1']!='other') echo 'color:#'.$nhv['1'].';';
+											}
+											echo '">'.$nhv['0'].'</option>';
+										}
+									}
+								?>
+							</select>
+                        </div>
+                        <div class="buy_ot_each">
+                          
+							<select class="sscprcar" c="GZ_biansuxiang">
+							 
+							  
+								<?php
+								if($gz_biansuxiang) echo '<option value="'.$gz_biansuxiang.'">'.$gz_biansuxiang.'</option><option value="">不限</option>';
+								else echo '<option value="">变速箱</option>';
+								
+									$hhyy=explode("\r\n",$config_info['gz_biansuxiang']);
+									foreach($hhyy as $hk=>$hv){
+										if($hv!=$gz_biansuxiang) echo '<option value="'.$hv.'">'.$hv.'</option>';
+									}
+								?>
+							</select>
+                        </div>
+                        <div class="buy_ot_each">
+                            <p class="buy_ot_word"></p>
+							<select class="sscprcar" c="GZ_weisucar">
+							  
+							  
+								<?php
+								if($gz_weisucar) echo '<option value="'.$gz_weisucar.'">'.$gz_weisucar.'</option><option value="">不限</option>';
+								else echo '<option value="">座位数</option>';
+								
+									$hhyy=explode("\r\n",$config_info['gz_weisucar']);
+									foreach($hhyy as $hk=>$hv){
+										if($hv!=$gz_weisucar) echo '<option value="'.$hv.'">'.$hv.'</option>';
+									}
+								?>
+							</select>
+                        </div>
+                        <div class="buy_ot_each">
+                            
+							<select class="sscprcar" c="GZ_guobiecar">
+							
+							  
+								<?php
+								if($gz_guobiecar) echo '<option value="'.$gz_guobiecar.'">'.$gz_guobiecar.'</option><option value="">不限</option>';
+								else echo '<option value="">国别</option>';
+								
+									$hhyy=explode("\r\n",$config_info['gz_guobiecar']);
+									foreach($hhyy as $hk=>$hv){
+										if($hv!=$gz_guobiecar) echo '<option value="'.$hv.'">'.$hv.'</option>';
+									}
+								?>
+							</select>
+                        </div>
+                        <div class="buy_ot_each">
+              
+							<select class="sscprcar" c="GZ_ranlcar">
+
+							  
+								<?php
+								if($gz_ranlcar) echo '<option value="'.$gz_ranlcar.'">'.$gz_ranlcar.'</option><option value="">不限</option>';
+								else echo '<option value="">燃料类型</option>';
+								
+									$hhyy=explode("\r\n",$config_info['gz_ranlcar']);
+									foreach($hhyy as $hk=>$hv){
+										if($hv!=$gz_ranlcar) echo '<option value="'.$hv.'">'.$hv.'</option>';
+									}
+								?>
+							</select>
+                        </div>
+                    </div>
+                </div>
+                <!--其他 结束-->
+                
+                
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            <div class="buy_list">
+                <div class="buy_li_nav clearUl">
+                    <ul class="buy_li_left">
+                        <li class="but_li_li <?php if(!$deffcddyycxlsfykj) echo ' but_li_li_dq ';?>"><span class="buy_li_le_line"></span><a href="javascript:;" onclick="ssddcoooorrr('deffcddyycxlsfykj','');">全部</a></li>
+                        <li class="but_li_li <?php if($deffcddyycxlsfykj=='0首付') echo ' but_li_li_dq ';?>"><span class="buy_li_le_line"></span><a href="javascript:;" onclick="ssddcoooorrr('deffcddyycxlsfykj','0首付');">0首付</a></li>
+                        <li class="but_li_li <?php if($deffcddyycxlsfykj=='一口价') echo ' but_li_li_dq ';?>"><span class="buy_li_le_line"></span><a href="javascript:;" onclick="ssddcoooorrr('deffcddyycxlsfykj','一口价');">一口价</a></li>
+                    </ul>
+                    
+                    <ul class="buy_li_right">
+                        <li class="but_li_ri"><a href="javascript:;" style="<?php if(!$pxorder) echo 'color:#FAAA0B;';?>" onclick="ssddcoooorrr('pxorder','');">默认</a></li>
+                        <li class="but_li_ri"><a href="javascript:;" style="<?php if($pxorder=='id') echo 'color:#FAAA0B;';?>" onclick="ssddcoooorrr('pxorder','id');">最新发布</a></li>
+                        <li class="but_li_ri"><a href="javascript:;" style="<?php if($pxorder=='jiageold') echo 'color:#FAAA0B;';?>" onclick="ssddcoooorrr('pxorder','jiageold');">价格<img src="/images/buy_r5_c10.png"/></a></li>
+                        <li class="but_li_ri"><a href="javascript:;" style="<?php if($pxorder=='sppsjjtime') echo 'color:#FAAA0B;';?>" onclick="ssddcoooorrr('pxorder','sppsjjtime');">车龄<img src="/images/buy_r5_c10.png"/></a></li>
+                        <li class="but_li_ri"><a href="javascript:;" style="<?php if($pxorder=='licuser') echo 'color:#FAAA0B;';?>" onclick="ssddcoooorrr('pxorder','licuser');">里程<img src="/images/buy_r5_c10.png"/></a></li>
+                    </ul>
+                </div>
+                <style> .buy_li_eachsdfsdfsdfsd:hover .buy_li_each{position:relative; top:-30px;transition:0.5s;}
+				</style>
+                <script>
+					/*$(function(){
+						$('.buy_li_ea_img').hover(function() {
+							$(this).css('background-size','150%');
+						}, function() {
+							$(this).css('background-size','cover');
+						});
+					});*/
+				</script>
+                <div class="buy_list_l" style="margin-top: 10px;">
+				<?php
+					if(empty($list)) echo '暂无车辆';
+				?>
+				<foreach name="list" item="r" key="k" >
+				<div class="buy_li_eachsdfsdfsdfsd" style="padding-top:50px;display: inline-block;">
+            <div class="buy_li_each" style="margin-bottom:0px;">
+                   
+                        <a href="/index.php/Home/Productcshow/index/cid/{$cid}/c/{$cid}/id/{$r.id}.html">
+                            <div class="buy_li_ea_img" style="background:url({$r.imgurl}) no-repeat center center; background-size: cover;"></div>
+                            <p class="buy_li_ea_title">{$r.title}</p>
+                            <div class="buy_li_ea_kkkkkkkkkkkkkk">
+                            <span class="buy_li_ea_date"><?php echo date('Y',$r['sppsjjtime']);?>年</span>
+                            <span class="buy_li_ea_date">{$r.licuser}万公里</span>
+                        </div>
+                        <div class="buy_li_ea_jjjjjjjjjj">
+                            <div class="buy_li_ea_j_left">
+                                <span class="buy_li_ea_price">{$r.jiageold}<i class="buy_li_ea_pr">万</i></span>
+                                <span class="buy_li_ea_out">{$r.jiages}万</span>
+                            </div>
+                            <div class="buy_li_ea_j_rigth">
+                                
+								<?php
+									$lismmmm=explode('@#@',$r['gz_deffcdzbmm']);
+									foreach($lismmmm as $mmk=>$mmv){
+										$hhyy=explode("|",$mmv);
+										if($hhyy['1']) echo '<img src="'.$hhyy['1'].'" style="vertical-align: bottom;" />';
+										else echo ' '.$hhyy['0'].' ';
+									}
+								?>
+								
+								
+								
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    </div>
+                    
+                    </foreach>
+                </div>
+                
+                <!--分页-->
+                <div class="paga" id="pagapaga">
+
+                </div>
+            
+            </div>
+            
+            
+            
+        </div>
+    </div>
+    <!-----------------------------内容 结束---------------------------->
+    <script>
+	
+        laypage({
+            cont: 'pagapaga', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
+            pages: '{$allpage}', //通过后台拿到的总页数
+            curr: {$p}, //当前页
+			groups:15,
+            jump: function(obj, first){ //触发分页后的回调
+                if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
+                    var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword));?>';
+					url=url+'/p/'+obj.curr;
+					location.href = url;
+                }
+            }
+        });
+	
+	
+	
+	
+		var cid='<?php echo $cid;?>';
+		var pp_initial='<?php echo $pplist['initial'];?>';
+		var pp_oneid='<?php echo $pplist['logo'];?>';
+		
+		//xlmsetCookie('GZ_cexing','dfasfads');
+		$(".sscprcar").bind("change",function(){
+			var logoid=$(this).val();
+			var cn=$(this).attr('c');
+				xlmsetCookie(cn,logoid);
+				//location.reload();
+				
+                    var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword));?>';
+				location.href = url;
+				
+		});
+		
+		function ssddcoooorrr(cn,logoid){
+			xlmsetCookie('GZ_'+cn,logoid);
+			//location.reload();
+                    var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword));?>';
+				location.href = url;
+		}
+		
+	</script>
+    <script type="text/javascript" src="/js/Productcs.js?14"></script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

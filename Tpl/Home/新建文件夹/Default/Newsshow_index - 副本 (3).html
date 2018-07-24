@@ -1,0 +1,48 @@
+
+
+
+<!--------------------------详情页 开始------------------------------>
+<div class="details">
+	<div class="de_box">
+	
+	<h3 style="
+	    font-size: 16px;
+    font-weight: bold;
+    text-align:  center;
+    margin: 30px;    margin-bottom: 3px;<?php
+		if($_GET['c']==136) echo 'display:none;';
+	?>
+">{$list.title}</h3>
+
+
+
+
+<?php if($list['class1']==140) { 
+	$nwetimtwww=explode(' ',$list['updatetime']);
+	$list['updatetime']=$nwetimtwww['0'];
+ ?>
+
+
+<p style="text-align: center; margin-top:10px;padding: 0px 10px;">{$list.updatetime}</p>
+
+
+
+<?php }  ?>
+
+
+
+	
+		{$list.content}
+	</div>
+</div>
+
+<style>
+	.details{width:100%; background:url(images/ab_beij.jpg) repeat; padding-bottom: 70px;}
+	.de_box{width:95%; margin: auto;}
+	.de_box p{padding: 15px 0px;color:#022123; font-family: "微软雅黑"; font-size:14px;}
+	.de_box img{max-width: 100%; width: 100%;}
+</style>
+<!--------------------------详情页 开始------------------------------>
+
+	
+	

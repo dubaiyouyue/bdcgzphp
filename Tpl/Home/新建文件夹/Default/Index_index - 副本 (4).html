@@ -1,0 +1,561 @@
+{__NOLAYOUT__}
+<!doctype html>
+<html>
+<head>
+<title>{$seo_title}</title><meta name="keywords" content="{$seo_title}">
+<meta name="description" content="{$seo_title}">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<link type="text/css" rel="stylesheet" href="css/public.css?113"/><!--公共样式-->
+<link type="text/css" rel="stylesheet" href="css/style.css?113"/>
+
+<link type="text/css" rel="stylesheet" href="css/swiper.min.css"/><!--bannerCSS-->
+<style>
+*{font-size:14px;}
+</style>
+<script src="js/nav.js"></script><!--导航的JS-->
+
+
+<!--<script>
+        ;(function(designWidth, maxWidth) {
+	var doc = document,
+	win = window,
+	docEl = doc.documentElement,
+	remStyle = document.createElement("style"),
+	tid;
+
+	function refreshRem() {
+		var width = docEl.getBoundingClientRect().width;
+		maxWidth = maxWidth || 320;
+		width>maxWidth && (width=maxWidth);
+		var rem = width * 100 / designWidth;
+		remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+	}
+
+	if (docEl.firstElementChild) {
+		docEl.firstElementChild.appendChild(remStyle);
+	} else {
+		var wrap = doc.createElement("div");
+		wrap.appendChild(remStyle);
+		doc.write(wrap.innerHTML);
+		wrap = null;
+	}
+	//要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+	refreshRem();
+
+	win.addEventListener("resize", function() {
+		clearTimeout(tid); //防止执行两次
+		tid = setTimeout(refreshRem, 300);
+	}, false);
+
+	win.addEventListener("pageshow", function(e) {
+		if (e.persisted) { // 浏览器后退的时候重新计算
+			clearTimeout(tid);
+			tid = setTimeout(refreshRem, 300);
+		}
+	}, false);
+
+	if (doc.readyState === "complete") {
+		doc.body.style.fontSize = "16px";
+	} else {
+		doc.addEventListener("DOMContentLoaded", function(e) {
+			doc.body.style.fontSize = "16px";
+		}, false);
+	}
+})(640, 750);
+</script>-->
+
+<script>
+//- 设置html标签font-size
+(function (doc, win) {
+    var _root = doc.documentElement,
+        resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        resizeCallback = function () {
+            var clientWidth = _root.clientWidth,
+                fontSize = 20;
+            if (!clientWidth) return;
+            //if(clientWidth < 640) {
+                fontSize = 20 * (clientWidth / 320);
+            /*} else {
+                fontSize = 20 * (640 / 320);
+            }*/
+            _root.style.fontSize = fontSize + 'px';
+        };
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvent, resizeCallback, false);
+    doc.addEventListener('DOMContentLoaded', resizeCallback, false);
+})(document, window);
+</script>
+	
+	<script>
+window.alert = function(name){
+	 var iframe = document.createElement("IFRAME");
+	iframe.style.display="none";
+	iframe.setAttribute("src", 'data:text/plain,');
+	document.documentElement.appendChild(iframe);
+	window.frames[0].window.alert(name);
+	iframe.parentNode.removeChild(iframe);
+	}
+//重写confirm方法，去掉地址显示
+window.confirm = function(name){
+var iframe = document.createElement("IFRAME");
+iframe.style.display="none";
+iframe.setAttribute("src", 'data:text/plain,');
+document.documentElement.appendChild(iframe);
+var result = window.frames[0].window.confirm(name);
+iframe.parentNode.removeChild(iframe);
+return result;
+}
+</script>
+	
+</head>
+
+<body>
+<!----------------------------------头部 开始--------------------------------------->
+<!--新头部-->
+<div style="
+    height:58px;
+    background:#fff;
+	font-size:12px; padding-left:10px;
+">
+	<div style=" float:left;" class="newtopleft"><a style=" height:58px;margin-top: -7px;" href="/"><img style="width:111px; margin-top:25px;" src="{$config_info.gz_logo}"></a></div>
+	<div class="right" style="float: right; margin-top: -3px;"><button class="right"></button></div>
+</div>
+<!--end-->
+
+<div class="bgDiv"></div>
+	<div class="rightNav">
+		
+		<div class="ppptcdiv" id="scroll-1"><!--滚动条div 父级rightNav要加上 overflow:auto;-->
+		<div class="xian" style="background: url(images/index_nav_background_06.jpg?1) no-repeat; background-size: 100%; width:100%; height:78px;"></div>
+		<ul class="menu">
+		  <li><div class="current"></div><a href="/">网站首页</a></li>
+
+
+		  
+<foreach name="new_column_list_top" item="r" key="k" >
+               <li><?php
+        if($foldername==$r['foldername']) echo '<div class="current"></div>';
+
+      ?><a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html"">{$r.name}</a></li>
+			    </foreach>
+		  
+		</ul>
+		</div>
+	</div>
+
+
+
+<!--滚动条颜色--><style>
+	#scroll-1{overflow: auto;}
+    #scroll-1::-webkit-scrollbar {
+        width:2px;    }
+    #scroll-1::-webkit-scrollbar-track     {
+        background:#fff;
+    }
+    #scroll-1::-webkit-scrollbar-thumb{
+        background:#fff;
+        border-radius:3px;
+    }
+</style><!--end-->
+
+<!--js--> 
+    <script>
+$(document).ready(function() {
+  
+    $('#open').click(function() {
+		
+		//修改滚动条
+			$('body').css('overflow','hidden');
+		//end
+		
+        $('.ppptcdiv').animate({right:'0px'},800);
+    $('#ppptcdiv-ddd').css('display','block');
+    });
+});
+function cloos(){
+	
+			//修改滚动条
+				$('body').css('overflow','');
+			//end
+	
+  $('.ppptcdiv').animate({right:'-225px'},800);
+  $('#ppptcdiv-ddd').css('display','none');
+}
+</script> 
+
+
+
+<!-------------------------------导航 结束----------------------------------->
+
+<!----------------------------------头部 结束--------------------------------------->
+
+
+
+
+<!-- 轮播 styles -->
+  <style>
+   
+    .swiper-container {
+      width: 100%;
+      height:100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+  </style>
+<style>
+.swiper-pagination-bullet{
+    background: #555;
+    width: 24px;
+    border: none;
+    border-radius: 0px;
+    opacity: 1;
+    height: 6px;
+}
+.swiper-pagination-bullet-active{
+	background: #03614e;
+    width: 24px;
+    border: none;
+    border-radius: 0px;
+    opacity: 1;
+    height: 6px;
+}.in_a_ab{z-index:0;}.in_ab_more{background-size: 100%;}.in_ne_more{background-size: 100%;}
+</style>
+
+<!------------------------------------banner 开始 ----------------------------------------->
+<div id="banner" style=" height:auto; overflow:auto;">
+
+
+
+<!-- Swiper -->
+  <div class="swiper-container">
+        <div class="swiper-wrapper">
+   		<foreach name="blist" item="r" key="k" >
+			 
+            	 <div class="swiper-slide" ><img src="{$r.img_path}" style="width: 100%; "></div>
+				
+				</foreach>
+         
+        </div>
+		<div class="swiper-pagination"></div>
+        <!-- Add Pagination
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows 
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>-->
+    </div>
+
+    <!-- Swiper JS -->
+  <script src="js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: 1,
+        paginationClickable: true, autoplay:3000,
+        spaceBetween: 30,
+        loop: true,
+    
+  
+
+
+    });
+    </script>
+</div>
+
+<div class="banner_line" style="width:100%; height: 5px; background: #0b7660;"></div>
+<!------------------------------------banner 结束 ----------------------------------------->
+
+
+
+<div class="in_contact">
+	
+	
+	<!-----首页关于我们 开始------->
+	<div class="in_a_ab">
+		<div class="in_about">
+			<div class="in_ab_background"></div>
+			
+			<div class="in_ab_decorate"></div>
+			<div class="in_ab_contact">
+				<p class="in_ac_etitle">ABOUT US</p>
+				<p class="in_ac_ctitle">关于我们</p>
+				<p class="in_ac_p">{$whlmmmm.0.description}</p>
+			</div>
+			<a href="/index.php/Home/About/index/cid/314.html"><div class="in_ab_more"></div></a>
+			
+			
+		</div>
+	</div>
+	<!-----首页关于我们 结束------->
+	
+	
+	
+	
+	<div class="in_ab_img">
+	<?php
+			$wzzzz=array(
+				'旗','下','品','牌'
+			);
+	
+	?>
+	
+	
+			<foreach name="whlmmmmccc" item="r" key="k" >
+		<a href="/index.php/Home/Newsshow/index/cid/461/c/461/id/{$r.id}.html"><div class="in_ab_img1" style="background:url({$r.imgurl}) no-repeat center; background-size:cover;"><div class="in_img<?php echo $k+1;?>_decorate" style="background: url(<?php echo $k+1;?>.png) no-repeat center; background-size: 100%;display: flex;
+ 
+    align-items: center; 
+    justify-content: center; "><p style="text-align: center;color: #ffffff;">{$wzzzz.$k}</p></div></div></a>	</foreach>
+		
+
+	</div>
+	
+	
+	
+	
+	
+	<!-------- 首页新闻 开始-------->
+	<div class="in_news">
+	
+		<div class="in_ne_background"></div>
+		
+		<div class="in_ne_title">
+			<div class="in_ti_word">
+				<div class="in_ti_c">
+					<div class="in_ti_line"></div>
+					<p class="in_ti_p">新闻动态</p>
+				</div>
+				<div class="in_ti_e">NEWS</div>
+			</div>
+			<div class="in_ne_decorate"></div>
+		</div>
+		
+		<ul class="in_list">
+		<foreach name="newssalgg" item="r" key="k" >
+			<?php
+				$nnnttimm=explode(' ',$r['updatetime']);
+				$r['updatetime']=$nnnttimm['0'];
+				$nnnsssds=explode('-',$r['updatetime']);
+			?>
+		
+			<li class="in_li_li">
+				<a href="/index.php/Home/Newsshow/index/cid/459/c/140/id/{$r.id}.html">
+					<div class="in_li_date">
+						<p class="in_da_day">{$nnnsssds.2}</p>
+						<div class="in_da_separate"></div>
+						<p class="in_da_month">{$nnnsssds.1}</p>
+					</div>
+					<div class="in_li_content">
+						<p class="in_li_title">{$r.title}</p>
+						<p class="in_li_p">{$r.description}</p>
+					</div>
+				</a>
+				<div class="in_li_underline"></div>
+			</li>
+			
+			</foreach>
+			
+			
+		</ul>
+		
+		<a href="/index.php/Home/Trends/index/cid/140.html"><div  class="in_ne_more"></div></a>
+		
+	</div>
+	<!-------- 首页新闻 结束-------->
+	
+	
+	<!-------- 首页产品 开始-------->
+	<div class="in_porduct">
+	
+	
+	<div class="jqthumb" style="width: 100%; height: 132px; opacity:1;">
+		<div style="width: 100%; height: 100%; background-image: url(images/index_45.jpg); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;"></div>
+	</div>
+		
+		
+		
+		<div class="in_por_list">
+		<foreach name="whlmmmmcccaaa" item="r" key="k" >
+			<div class="in_por_each" style="background: url({$r.imgurl}) no-repeat center; background-size: cover;">
+				<a href="/index.php/Home/Newsshow/index/cid/183/c/136/id/{$r.id}.html">
+					<div class="in_ea_line">
+						<div class="in_ea_background"></div>
+						<p class="in_ea_e">{$r.ctitle}</p>
+						<p class="in_ea_c">{$r.title}</p>
+						
+					</div>
+				</a>
+			</div>
+			</foreach>
+			
+		</div>
+		
+		
+		
+	</div>
+	<!-------- 首页产品 结束-------->
+	
+	<style>
+	.BMapLabel{
+	
+	border: 1px solid #ffffff!important;
+	}
+	
+	
+	
+	</style>
+	
+	<!------------首页联系我们 开始------------------>
+	<div class="in_contact">
+		<a href="#">
+			<div class="in_co_background"></div>
+			<div class="in_co_title">
+				<div class="in_co_e">CONTACT US</div>
+				<div class="in_co_c">
+					<p class="in_co_word">联系我们</p>
+					<div class="in_co_line"></div>
+				</div>
+			</div>
+			<p class="in_co_information">联系电话：{$config_info.gz_footteldianhua}</p>
+			<p class="in_co_information">联系传真；{$config_info.gz_foottelqq}</p>
+			<p class="in_co_information">企业邮箱：{$config_info.gz_foottel}</p>
+			<p class="in_co_information">企业地址：{$config_info.gz_headeryj}</p>
+			<div class="jqthumb" style="width: 100%; height:276px; opacity:1; margin-top:20px" id="map">
+		
+	</div>
+		</a>
+	</div>
+	<!------------首页联系我们 结束------------------>
+	
+	
+	
+</div>	
+	
+	
+	
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("map");
+	map.centerAndZoom(new BMap.Point(110.312687,25.350848),18);
+map.addControl(new BMap.NavigationControl());
+	var myIcon = new BMap.Icon("http://netcnpc.test.resonance.net.cn/images/mapimagse.png", new BMap.Size(52,42));  //定义自己的标注
+	
+	var marker1 = new BMap.Marker(new BMap.Point(110.312687,25.350848),{icon:myIcon});  //创建标注
+    map.addOverlay(marker1);              // 将标注添加到地图中
+	
+		var label = new BMap.Label("桂湖木业", {
+offset: new BMap.Size(15, -25)
+});
+
+
+marker1.setLabel(label); //为标注添加一个标签
+	
+	//创建信息窗口
+	var infoWindow1 = new BMap.InfoWindow("桂湖木业<p style='word-break:keep-all;white-space:nowrap;'>广西桂林灵川县八里街工业区</p>");
+	
+	marker1.addEventListener("click", function(){this.openInfoWindow(infoWindow1);});
+	</script>
+
+	
+	
+
+
+
+
+
+<!------------------------------------底部 开始 ----------------------------------------->
+<div class="button">
+	<p>{$config_info.gz_footright}</p>
+	<p>技术支持：<a href="http://www.resonance.com.cn" target="_blank" style="display: inline-block;color: #fff;color:#D6D6D6; font-family:'微软雅黑'; font-size:12px;text-decoration:underline;">共振创意</a></p>
+</div>
+<!------------------------------------底部 结束 ----------------------------------------->
+
+
+
+
+<script>  /*异步加载 - 在线交流 - 站长统计 */
+  var gz_weburl='/';
+  var lang='cn';
+  var classnow='{$cid}';
+  var id='<?php echo $_GET['id'];?>';
+  
+  var url=gz_weburl+'include/interface/uidata.php?lang='+lang,h = '<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>';
+  
+  if(h.indexOf("preview=1")!=-1)url = url + '&theme_preview=1';
+  $.ajax({
+    type: "POST",
+    url: url,
+    dataType:"json",
+    success: function(msg){
+      var c = msg.config;
+      
+      if(c.gz_stat==1){       //站长统计
+        var navurl=classnow==10001?'':'../';
+        var stat_d=classnow+'-'+id+'-'+lang;
+        var url = gz_weburl+'include/stat/stat.php?type=para&u='+navurl+'&d='+stat_d;
+        $.getScript(url);
+      }
+    }
+  });
+    //var metClicks = $(".metClicks");//点击次数
+    var ClicksListnow='<?php echo $_GET['id'];?>';
+    var weburl='/';
+    if(ClicksListnow){
+      //var DataClicks = metClicks.data("metclicks");
+      //ClicksStr=DataClicks.split("|"); 
+      var ClicksModule = 'news';//ClicksStr[0],ClicksListnow = ClicksStr[1];
+      var urlw = weburl+'include/hits.php?type='+ClicksModule+'&id='+ClicksListnow;
+      $.ajax({
+        type: "POST",
+        url: urlw,
+        dataType:"text",
+        success: function(msg){
+          //var t = msg.split('"');
+          //metClicks.html(t[1]);
+        }
+      });
+    }
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

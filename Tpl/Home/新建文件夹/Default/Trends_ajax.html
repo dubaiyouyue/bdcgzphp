@@ -1,0 +1,14 @@
+{__NOLAYOUT__}<foreach name="list" item="r" key="k" ><?php
+	$nnnttimm=explode(' ',$r['updatetime']);
+?>
+        <div class="ne_each">
+            <a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/140/id/{$r.id}.html">
+                <div class="ne_ea_line"></div>
+                <div class="ne_ea_word">
+                    <p class="ne_ea_title">{$r.title}</p>
+                    <p class="ne_ea_date">{$nnnttimm.2}</p>
+                    <p class="ne_ea_p">{$r.description}</p>
+                </div>
+            </a>
+        </div>
+        </foreach>

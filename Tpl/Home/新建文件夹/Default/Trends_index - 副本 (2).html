@@ -1,0 +1,187 @@
+
+<div style="width:100%; background:url(/images/ab_beij.jpg) repeat; ">
+
+
+
+	<!----------------------内容 开始-------------------------->
+	<!----------------------当前位置 开始-------------------------->
+	<div class="position">
+		<div class="po_middle">
+			<div class="po">当前位置：</div>
+			<div class="po"><a href="/">首页<span class="symbol">></span></a></div>
+			<div class="po"><a href="/index.php/Home/Trends/index/cid/{$getinfolamu.id}.html">{$getinfolamu.name}<span class="symbol">></span></a></div>
+			<div class="po">{$lan.name}</div>
+		</div>
+		<div class="po_line"></div>
+	</div>
+	<!----------------------当前位置 结束-------------------------->
+	
+	
+	
+	
+	<div class="ne_content" style="min-height: 500px;">
+		<div class="ne_co_middle">
+		
+			<div class="ne_co_title">
+				<p class="ne_ti_p">{$getinfolamu.name}</p>
+				<div class="ne_ti_line1"></div>
+				<div class="ne_ti_line2"></div>
+			</div>
+			
+			<div class="ne_co_nav">
+				<div style="width:24px; height: 73px; display: inline-block" class="ab_nav_left"><img src="/images/ab_zhu_03.png"/></div>
+				<ul class="ne_nav_ul">
+					<foreach name="lanmu" item="r" key="k" >
+					<li <?php
+        if($r['id']==$cid) echo 'class="dq"';
+
+      ?>>
+					<a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html">{$r.name}<img class="ab_nav_img" src="/images/ab_sanjiao_03.png"></a>
+					
+					</li>
+				  </foreach>
+				</ul>
+				<div style="width:24px; height: 73px; display: inline-block" class="ab_nav_right"><img src="/images/ab_zhu_05.png"/></div>
+			</div>
+			
+			
+			<foreach name="list" item="r" key="k" >
+			<?php
+				$nnnttimm=explode(' ',$r['updatetime']);
+				$r['updatetime']=$nnnttimm['0'];
+				if(!$k){
+			?>
+			<div class="ne_hot">
+				<a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/140/id/{$r.id}.html">
+					<div class="ne_hot_left" style=" background: url({$r.imgurl}) no-repeat center; background-size: cover;"></div>
+					
+					<div class="ne_hot_right">
+						<img class="ne_ri_img" src="/images/news1.png"/>
+						<div class="ne_n_contant">
+							<p class="ne_n_title">{$r.title}</p>
+							<p class="ne_n_r">{$r.updatetime}</p>
+							<div class="ne_co_x"></div>
+							<p class="ne_hot_p">{$r.description}</p>
+							<div class="ne_hot_more">MORE</div>
+						</div>
+						
+					</div>
+					
+					<div class="ne_hot_k" ></div>
+				</a>
+			</div>
+			<div style="background: url(/images/news3.png) no-repeat center;width: 1200px; height: 43px; margin: auto;"></div>
+			<?php
+				}else{
+				$nnnttimm=explode('-',$r['updatetime']);
+				//$r['updatetime']=$nnnttimm['0'];
+				$nnnttimmo=$nnnttimm['0'].'-'.$nnnttimm['1'];
+				if($k==1){
+				
+			?>
+			
+			
+			
+				<div class="ne_lsti">
+				<div class="ne_ls_d">
+					<a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/140/id/{$r.id}.html">
+						<div class="ne_ls_left">
+							<p class="ne_ls_number">{$nnnttimm.2}</p>
+							<p class="ne_ls_r">{$nnnttimmo}</p>
+						</div>
+						<div class="ne_ls_right">
+							<p class="ne_ls_title">{$r.title}</p>
+							<span class="ne_ls_x"></span>
+							<p class="ne_ls_content">{$r.description}</p>
+							<div class="ne_co_more">MORE</div>
+						</div>
+						
+					</a>
+				</div>
+				<?php
+					}if($k==2){
+				?>
+				<div class="ne_ls_d">
+					<a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/140/id/{$r.id}.html">
+						<div class="ne_ls_left">
+							<p class="ne_ls_number">{$nnnttimm.2}</p>
+							<p class="ne_ls_r">{$nnnttimmo}</p>
+						</div>
+						<div class="ne_ls_right">
+							<p class="ne_ls_title">{$r.title}</p>
+							<span class="ne_ls_x"></span>
+							<p class="ne_ls_content">{$r.description}</p>
+							<div class="ne_co_more">MORE</div>
+						</div>
+						
+					</a>
+				</div>
+				
+				<?php
+					}if($k==3){
+				?>
+				<div class="ne_ls_d">
+					<a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/140/id/{$r.id}.html">
+						<div class="ne_ls_left">
+							<p class="ne_ls_number">{$nnnttimm.2}</p>
+							<p class="ne_ls_r">{$nnnttimmo}</p>
+						</div>
+						<div class="ne_ls_right">
+							<p class="ne_ls_title">{$r.title}</p>
+							<span class="ne_ls_x"></span>
+							<p class="ne_ls_content">{$r.description}</p>
+							<div class="ne_co_more">MORE</div>
+						</div>
+						
+					</a>
+				</div>
+				
+				<?php
+					
+						echo '</div>';
+					}
+					}
+				?>
+				
+			
+			</foreach>
+			
+			
+			<div class="ca_paging"  <?php
+	if($allpage<2) echo 'style="display:none;"';
+?>>
+				<ul class="ca_pa_ul">
+					<li class="ca_text" style="background: url(/images/brand3.png) no-repeat center;" onclick="getssajax('{$sp}');"></li>
+				
+					
+					
+					<?php
+						if($p<1) $p=1;
+						for($ip=1;$ip<=$allpage;$ip++){
+							echo '<li class="ca_page';
+							if($ip==$p) echo ' dq ';
+							echo '" onclick="getssajax(\''.$ip.'\');"></li>';
+						}
+					?>
+					
+					<li class="ca_next" style="background:url(/images/brand6.png) no-repeat center;" onclick="getssajax('{$np}');"></li>
+				</ul>
+			</div>
+			
+			
+		</div>
+		
+	</div>
+
+	<!----------------------内容 结束-------------------------->
+
+
+</div>
+
+<script>
+function getssajax(p){
+	location.href = '/index.php/Home/{$getinfolamu.foldername}/index/cid/{$cid}/p/'+p;
+	return false;
+}
+</script>
+

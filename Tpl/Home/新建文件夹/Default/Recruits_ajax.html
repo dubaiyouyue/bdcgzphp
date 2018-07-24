@@ -1,0 +1,11 @@
+{__NOLAYOUT__}<foreach name="list" item="r" key="k" >
+        <div class="re_each">
+            <a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/469/id/{$r.id}.html" style="display: block;">
+                <div class="re_ea_portrait" style="background: url({$r.imgurl}) no-repeat center center; background-size:cover;"></div>
+                <div class="re_ea_word">
+                    <div class="re_ea_position">{$r.title}</div>
+                    <p class="re_ea_requirement">{$r.description}</p>
+                </div>
+            </a>
+        </div>
+        </foreach>

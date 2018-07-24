@@ -1,0 +1,235 @@
+<style>
+.surlaget{    width: 100%;
+    background: none;
+   border: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 12px;
+    padding: 3px;
+    box-sizing: border-box;
+	appearance:none;    border-radius: 0px;
+	 -moz-appearance:none; /* Firefox */
+	 -webkit-appearance:none; /* Safari 和 Chrome */
+ }.new_nav_each{    padding: 6px;
+    box-sizing: border-box;}.surlagetmoren{    width: 100%;
+    background: none;
+   border: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 12px;
+    padding: 3px;
+    box-sizing: border-box;
+	appearance:none;    border-radius: 0px;
+	 -moz-appearance:none; /* Firefox */
+	 -webkit-appearance:none; /* Safari 和 Chrome */
+ }
+</style>
+<?php
+	function urlnget($url){
+		$newssurl='/index.php/Home/Newcar/index/cid/'.$_GET['cid'];
+		foreach($url as $k=>$v){
+			if($v) $newssurl.='/'.$k.'/'.$v;
+		}
+		return $newssurl;
+		//$this->assign('newssurl',$newssurl);
+	}
+?>
+<!-----------------------------------内容 开始-------------------------------------->
+    <div class="new">
+        <div class="new_nav">
+			<div class="new_nav_each">
+				<select class="surlagetmoren" c="newcarpxorder">
+					<?php
+						switch ($pxorder){
+							case 'jiages':
+							  echo '<option value="jiages">价格↑</option><option value="">智能排序</option><option value="shangsyear">上市↑</option>';
+							  break;  
+							case 'shangsyear':
+							  echo '<option value="shangsyear">上市↑</option><option value="">智能排序</option><option value="jiages">价格↑</option>';
+							  break;
+							default:
+							  echo '<option value="">智能排序</option><option value="jiages">价格↑</option><option value="shangsyear">上市↑</option>';
+						}
+					?>
+					
+					
+					
+				</select>
+			</div>
+			<div class="new_nav_each">
+				<select class="surlaget">
+					<?php
+						foreach($allcartlist as $k=>$v){
+							if($oneid!=$v['logo']) $pinpppone.= '<option value ="/index.php/Home/Newcar/index/cid/'.$cid.'/oneid/'.$v['logo'].'">'.$v['name'].'</option>';
+							else $Pintttt='<option value ="/index.php/Home/Newcar/index/cid/'.$cid.'/oneid/'.$oneid.'">[品牌]'.$v['name'].'</option>';
+						}
+						$sssrtrr='品牌';
+						if($oneid) $sssrtrr='不限';
+						echo $Pintttt.'<option value ="/index.php/Home/Newcar/index/cid/'.$cid.'">'.$sssrtrr.'</option>'.$pinpppone;
+					?>
+				</select>
+			</div>
+			<div class="new_nav_each"  onclick="hhidemjqsrc();$('.price_box').toggle();">
+							<select class="surlaget">
+							<?php
+								
+								$hhyy=explode("\r\n",$config_info['gz_jgqjfsf']);
+								foreach($hhyy as $hk=>$hv){
+									$nhv=explode('-',$hv);
+									if(!$hk){
+										$cminjiage=0;
+										$cmaxjiage=$nhv['0']+0; //第一个一下价格
+									}else if($hk==count($hhyy)){
+										$cminjiage=$nhv['1']+0;
+										$cmaxjiage=0; //最后一个以上价格
+									}else{
+										$cminjiage=$nhv['0']+0;
+										$cmaxjiage=$nhv['1']+0;
+									}
+									
+									if ( ($_GET['sfminjiage'] || $_GET['sfmaxjiage']) && ($_GET['sfminjiage']+0)==$cminjiage && $cmaxjiage==($_GET['sfmaxjiage']+0)){
+										$seropp='<option value ="'.urlnget(array('oneid'=>$oneid,'freid'=>$freid,'sfminjiage'=>$cminjiage,'sfmaxjiage'=>$cmaxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword,'minjiage'=>$_GET['minjiage'],'maxjiage'=>$_GET['maxjiage'])).'">[首付]'.$hv.'</option>';
+									}else $seropptt.='<option value ="'.urlnget(array('oneid'=>$oneid,'freid'=>$freid,'sfminjiage'=>$cminjiage,'sfmaxjiage'=>$cmaxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword,'minjiage'=>$_GET['minjiage'],'maxjiage'=>$_GET['maxjiage'])).'">'.$hv.'</option>';
+								}
+								$sssrtrr='首付';
+								if($_GET['sfminjiage'] || $_GET['sfmaxjiage']) $sssrtrr='不限';
+								echo $seropp.'<option value ="';
+								echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword,'minjiage'=>$_GET['minjiage'],'maxjiage'=>$_GET['maxjiage']));
+								echo '">'.$sssrtrr.'</option>'.$seropptt;
+							?>
+							</select>
+			
+			
+			
+			
+			</div>
+			<div class="new_nav_each"  onclick="hhidemjqsrc();$('.supply_box').toggle();">
+							<select class="surlaget">
+							<?php
+								$seropp='';$seropptt='';
+								$hhyy=explode("\r\n",$config_info['gz_jgqjyg']);
+								foreach($hhyy as $hk=>$hv){
+									$nhv=explode('-',$hv);
+									if(!$hk){
+										$cminjiage=0;
+										$cmaxjiage=$nhv['0']+0; //第一个一下价格
+									}else if($hk==count($hhyy)){
+										$cminjiage=$nhv['1']+0;
+										$cmaxjiage=0; //最后一个以上价格
+									}else{
+										$cminjiage=$nhv['0']+0;
+										$cmaxjiage=$nhv['1']+0;
+									}
+									
+									if ( ($_GET['minjiage'] || $_GET['maxjiage']) && ($_GET['minjiage']+0)==$cminjiage && $cmaxjiage==($_GET['maxjiage']+0)){
+										$hv=($cminjiage/1000).'千-'.($cmaxjiage/1000).'千';
+										$seropp='<option value ="'.urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$cminjiage,'maxjiage'=>$cmaxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword,'sfminjiage'=>$_GET['sfminjiage'],'sfmaxjiage'=>$_GET['sfmaxjiage'])).'">[月供]'.$hv.'</option>';
+									}else $seropptt.='<option value ="'.urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$cminjiage,'maxjiage'=>$cmaxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword,'sfminjiage'=>$_GET['sfminjiage'],'sfmaxjiage'=>$_GET['sfmaxjiage'])).'">'.$hv.'</option>';
+								}
+								$sssrtrr='月供';
+								if($_GET['minjiage'] || $_GET['maxjiage']) $sssrtrr='不限';
+								echo $seropp.'<option value ="';
+								echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword,'sfminjiage'=>$_GET['sfminjiage'],'sfmaxjiage'=>$_GET['sfmaxjiage']));
+								echo '">'.$sssrtrr.'</option>'.$seropptt;
+							?>
+							</select>
+			
+			</div>
+        </div>
+        
+        
+        
+        
+         <script>
+	//锚点 隐藏已经点开的弹框
+	function hhidemjqsrc(){
+		$('html,body').animate({scrollTop:$('#prodsafdasfdas').offset().top-60},800);//锚点
+		//隐藏
+		$('.hhidemjqsrcsss').hide();
+	}
+	
+	//下拉跳转
+		$(".surlaget").bind("change",function(){
+			var logoid=$(this).val();
+			location.href = logoid;
+				
+		});
+		$(".surlagetmoren").bind("change",function(){
+			var logoid=$(this).val();
+			var cn=$(this).attr('c');
+			ssddcoooorrr(cn,logoid)
+				
+		});
+		function ssddcoooorrr(cn,logoid){
+			xlmsetCookie('GZ_'+cn,logoid);
+			//location.reload();
+                    var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword));?>';
+				location.href = url;
+		}
+	</script>
+
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        <div class="new_list ">
+				<?php
+					if(empty($list)) echo '<span style="font-size: 14px;line-height: 60px;color: #aaa;margin-left: 5%;">暂无车辆</span>';
+				?>
+		<foreach name="list" item="r" key="k" >
+            <div class="new_li_each">
+                <a href="/index.php/Home/Productcshow/index/cid/{$cid}/c/{$cid}/id/{$r.id}.html">
+                    <div class="new_li_ea_img" style="background:url({$r.imgurl}) no-repeat center center;background-size: cover;"></div>
+					<div class="new_li_ea_word">
+						<p class="new_li_ea_title">{$r.title}</p>
+                        <div class="new_li_ea_price">
+                            <span class="new_li_ea_pr1">首付<span class="zd">{$r.jiagessf}</span>万</span>
+                            <span class="new_li_ea_pr2">月供{$r.jiagesyg}元</span>
+                        </div>
+					</div>
+                </a>
+            </div></foreach>
+            
+        </div>
+        <?php
+			if(!empty($list)) echo '<div class="new_se_more" onclick="sslyss();"></div>';
+		?>
+        
+    </div>
+<!-----------------------------------内容 结束-------------------------------------->
+	
+
+	<style>
+	.new_se_more{background: url(/m/images/index_r8_c3.png) no-repeat center center;cursor: pointer;}
+	
+	.fdasfjrajajaxx{    background: url(/5-121204193956-50.gif) no-repeat center center;
+    background-size: unset;}</style>
+<script>
+nyyyyn=2;
+function sslyss(){
+$(".new_se_more").addClass('fdasfjrajajaxx');
+	var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword,'sfminjiage'=>$sfminjiage,'sfmaxjiage'=>$sfmaxjiage));?>';
+	url=url+'/ajax/ajax/p/'+nyyyyn;
+	
+$.ajax( {
+	url: url, //这里是静态页的地址
+	type: "GET", //静态页用get方法，否则服务器会抛出405错误
+	success: function(data){
+		if(!data){
+			$(".new_se_more").hide();
+			return false;
+		}
+		//var result = $(data).find("另一个html页面的指定的一部分").html();
+		$(".new_list").append(data);
+		$(".new_se_more").removeClass('fdasfjrajajaxx');
+		nyyyyn=nyyyyn+1;
+	}
+});
+//alert(nyyyyn);
+}
+</script>

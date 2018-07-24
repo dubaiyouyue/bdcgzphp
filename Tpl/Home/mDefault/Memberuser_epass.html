@@ -1,0 +1,79 @@
+
+
+<!-----------------------------------修改密码 开始-------------------------------------->
+         <style>
+            .member_pa{width: 98%; margin: auto;}
+            .mi_pa_ti_p{font-size: 18px; color: #1F2C31; margin-top: 3px; display:block;font-weight: bold;text-align: center; margin-top: 20px; margin-bottom: 30px;}
+            
+             .modify{width:95%; margin: auto;}
+             .modify form input{width: 100%; height:40px; border: #CCCCCC 1px solid; border-radius:5px; margin-bottom: 20px; padding:0px 10px; box-sizing: border-box;}
+             .buttom{width:150px; height: 30px; background: #FF9E00; color: #fff; margin: auto; border-radius:5px; margin-bottom: 30px; text-align: center;line-height: 30px;}
+        </style>
+    
+    
+    <div class="member_pa">
+        <div class="me_pa_title">
+           
+            <p class="mi_pa_ti_p">修改密码</p>
+        </div>
+        
+        <div class="modify">
+            <form id="myformreepass">
+                <input type="password" placeholder="请输入密码" name="opass" id="opass" />
+                <input type="password" placeholder="请确认密码" name="npass" id="npass" />
+                <div class="buttom insdeessgg" onclick="eppassss();">提交密码</div>
+            </form>
+        </div>
+    </div>
+<!-----------------------------------修改密码 结束-------------------------------------->
+    
+    
+<script>
+function eppassss(){
+	var opass=$('#opass').val();
+	if(!opass){
+		alert('请输入密码');
+		document.getElementById('opass').focus();
+		return false;
+	}
+	var npass=$('#npass').val();
+	if(!npass){
+		alert('请输入确认密码');
+		document.getElementById('npass').focus();
+		return false;
+	}
+	if(opass!=npass){
+		alert('两次密码不一致');
+		document.getElementById('npass').focus();
+		return false;
+	}
+			$('.insdeessgg').text('正在修改..');
+			$.ajax({
+				type: "POST",
+				url:'/index.php/Home/Usermember/epass',
+				data:$('#myformreepass').serialize(),
+				error: function(request) {
+					alert('服务器繁忙');
+					location.reload();
+					return false;
+				
+				
+					//alert("提交失败");
+				},
+				success: function(data) {
+					if(data=='addok'){
+						alert('修改成功，请重新登录');
+						location.reload();
+						return false;
+						
+					}else{
+						alert('服务器繁忙');
+						location.reload();
+						return false;
+					
+					}//alert("提交失败");
+					
+				}
+			});
+}
+</script>

@@ -1,0 +1,67 @@
+<style>.ab_bottom{margin-top: -30px;}</style>
+
+
+<!--------------------------------内容 开始------------------------------->
+
+<div class="ab_content">
+	<div class="title">
+		<div class="title_top">
+			<div class="ti_left"><span></span></div>
+			<div class="ti_word">
+				<p class="ti_c">{$getinfolamu.name}</p>
+			</div>
+			<div class="ti_rigth"><span></span></div>
+		</div>
+		<p class="ti_e">{$getinfolamu.enname}</p>
+	</div>
+	
+	
+	<div class="an_nav">
+		<ul class="an_na_ul" id="menuullidemoli">
+	
+					<foreach name="lanmu" item="r" key="k" >
+					<li <?php
+        if($r['id']==$cid) echo 'class="dq"';
+
+      ?>>
+					<a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html">{$r.name}</a>
+					
+					</li>
+				  </foreach>
+		</ul>
+	</div>
+	<script>
+(function (d){
+	$(d).css('clear','both');
+	var nw;
+	var t=0;
+	$(d+' li').each(function(){
+		//$(this).css('display','inline-block');
+		nw=$(this).width();
+		t=t+nw;
+	});
+	var pw=$(d).width();
+	//console.log(pw);
+	if(pw<t){
+		$(d+' li').each(function(){
+			$(this).css('float','left');
+		});
+	}else{
+		$(d).css('textAlign','center');
+	}
+})("#menuullidemoli"); //ul id
+</script>
+
+	
+	<div class="ab_con_contact">
+		{$lan.content}
+	</div>
+	
+	<div class="ab_bottom"><img src="/images/aobut2.jpg"/></div>
+	
+</div>
+
+<!--------------------------------内容 结束------------------------------->
+
+	
+	

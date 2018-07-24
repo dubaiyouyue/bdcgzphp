@@ -1,0 +1,35 @@
+<style>
+.se_banner{height: 243px;}
+</style>
+    <!-----------------------------内容 开始---------------------------->
+    <div class="about">
+
+      <div class="es_middle">
+        <p class="ab_title">{$getinfolamu.name}</p>
+        <div class="ab_nav clearUl">
+          <img src="/images/about_nav.png">
+          <p>{$getinfolamu.enname}</p>
+          <ul>
+         
+<foreach name="lanmu" item="r" key="k" >
+					<li class="<?php
+        if($r['id']==$cid) echo 'on';
+
+      ?>">
+					<a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html">{$r.name}</a>
+					
+					</li>&nbsp;
+				  </foreach>
+
+          </ul>
+        </div>
+
+        <div class="ab_main">
+          {$lan.content}
+
+      </div>
+     
+        </div>
+    <!-----------------------------内容 结束---------------------------->
+    
+    

@@ -1,0 +1,31 @@
+
+    
+<!-----------------------------------内容 开始-------------------------------------->    
+    <div class="service">
+    	{$getinfolamu.contentsj}
+    	
+    	<!-------------------------常见问题 开始---------------------------->
+        <div class="se_problem">
+            
+            <div class="se_titlr">
+                <p class="se_ti_c_c">常见问题</p>
+                <div class="se_ti_line"></div>
+            </div>
+            <foreach name="cjlistwtssss" item="r" key="k" >
+            <div class="se_pr_each">
+                <div class="se_pr_title">
+                    <div class="se_pr_ti_menber">NO.{$k+1}</div>
+                    <span class="se_pr_ti_span">{$r.title}</span>
+                </div>
+                <a href="/index.php/Home/Newsshow/index/cid/484/c/484/id/{$r.id}.html"><p class="se_or_p">{$r.description}</p></a>
+            </div>
+            
+            </foreach>
+        </div>
+        <!-------------------------常见问题 结束---------------------------->
+    	
+    	
+    </div>
+<!-----------------------------------内容 结束-------------------------------------->
+	
+

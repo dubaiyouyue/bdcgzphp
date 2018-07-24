@@ -1,0 +1,364 @@
+{__NOLAYOUT__}<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$seo_title}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="keywords" content="HTML XHTML" />
+
+
+
+
+<link rel="stylesheet" href="css/idangerous.swiper.css"><!--banner CSS-->
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script><!--侧导航-->
+<script type="text/javascript" src="js/drawer.js"></script><!--侧导航-->
+<link rel="stylesheet" href="css/nav.css"><!--侧导航-->
+
+<link rel="stylesheet" href="css/css.css"><!--公共样式-->
+<link rel="stylesheet" href="css/style.css">
+
+
+<script>
+    !function(n){
+    var  e=n.document,
+         t=e.documentElement,
+         i=360,
+         d=i/100,
+         o="orientationchange"in n?"orientationchange":"resize",
+         a=function(){
+             var n=t.clientWidth||320;n>720&&(n=720);
+             t.style.fontSize=n/d+"px"
+         };
+         e.addEventListener&&(n.addEventListener(o,a,!1),e.addEventListener("DOMContentLoaded",a,!1))
+}(window);
+</script><!--100px=1rem-->
+
+</head>
+
+
+
+<body class="drawer drawer-right">
+<!------------------------头部 开始------------------------------->
+<div class="top" style="position:fixed;z-index:1000;">
+    <div class="top_line"></div>
+	<div class="logo"><a href="/"><img src="{$config_info.gz_logo}"/></a></div>
+	
+	<!-- 侧导航代码 开始 -->
+		<div class="navs">
+			<div class="drawer-toggle drawer-hamberger"><span></span></div>
+
+			<style>
+                .top_line{width: 100%; height:4px; background: #36bc05;}
+				.navs{height: 50px; float: right; width:50px;}
+				.drawer-hamberger span,.drawer-hamberger span:before,.drawer-hamberger span:after{position:absolute;width:28px;height:29px;cursor:pointer;background-color:red; background: url(/images/index_09.png) no-repeat; background-size:100%;margin-top:15px; margin-left: 10px;}
+				.drawer-open .drawer-hamberger span{background-color:transparent; background: none;}
+				.drawer-hamberger{width:50px;height:50px;background-color:transparent;border:0;}
+				.drawer-nav .in_nav_ul .in_nav_li{width:80%; margin: auto;text-align: center;margin-top:13px; padding-bottom:15px; border-bottom: #fff 1px dashed; }
+				.drawer-nav .in_nav_ul .in_nav_li a{color:#FFFFFF}
+				.on{width:10px; height:12px; background:url(/images/nav___03.png) no-repeat center center; margin-top:7px; float: left; display: none}
+				.zzzzz{display: block}
+				.navs_xian{width:100%; height:8px; background:#3aafe1;}
+			</style>
+
+			<div class="drawer-main drawer-default">
+				<nav class="drawer-nav" role="navigation">
+					<div class="navs_xian"></div>
+					<ul class="in_nav_ul">
+					<ul class="in_nav_ul">
+						<li class="in_nav_li"><div class="on zzzzz"></div><a href="/">首  页</a></li>						
+<foreach name="new_column_list_top" item="r" key="k" >
+               <li class="in_nav_li"><div class="on <?php
+        if($foldername==$r['foldername']) echo 'zzzzz';
+
+      ?>"></div><a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html"">{$r.name}</a></li>
+			    </foreach>
+				<li class="in_nav_li"><div class="on"></div><a href="http://wpa.qq.com/msgrd?v=3&uin={$config_info.gz_headTeless}&site=qq&menu=yes">在线客服</a></li>
+					</ul>
+					</ul>
+				</nav>
+			</div>
+			
+			
+		</div>
+		<!--侧导航代码 结束 -->
+		
+</div>
+	
+
+	<!--侧导航JS 开始-->
+	
+	<script type="text/javascript">
+			$(document).ready(function(){
+
+				$('.drawer').drawer();
+
+				$('.js-trigger').click(function(){
+					$('.drawer').drawer("open");
+				});
+
+			});
+	</script>
+	<!--侧导航JS 结束-->
+<!------------------------头部 结束------------------------------->
+
+
+<!-----banner 开始------>
+
+
+ <style>
+
+.device {width:100%;;background: #111; position: relative;}
+	 /*------------------左右按钮-----------------*/
+/*.device .arrow-left {background: url(img/arrows.png) no-repeat left top;position: absolute;left: 10px;top: 50%;margin-top: -15px;width: 17px; height: 30px;}
+.device .arrow-right {background: url(img/arrows.png) no-repeat left bottom; position: absolute; right: 10px; top: 50%; margin-top: -15px; width: 17px; height: 30px;}*/
+.swiper-container {width:100%;height:100%;margin-top: 40px;}
+.content-slide {padding: 20px;color: #fff;}
+.title {font-size: 25px;margin-bottom: 10px;}
+.pagination {position: absolute;z-index: 20;bottom:17px;width: 100%;text-align:center;}
+.swiper-pagination-switch {display: inline-block;width:22px;height:4px;background-color:#fea500;margin: 0 5px;opacity: 0.8;cursor: pointer;display: block;margin-left:8px;display: inline-block;-moz-border-radius:25px;}
+.swiper-active-switch {background:transparent;background:#fff;    opacity: 1;width:22px;height:4px;display: block;display: inline-block;-moz-border-radius:25px;}
+.bj>.in_news>.neih>.xinw>a>.meige>.ner>p{height:38px;}
+
+
+
+
+  </style>
+
+<div class="device">
+    <a class="arrow-left" href="#"></a> 
+    <a class="arrow-right" href="#"></a>
+    <div class="swiper-container">
+     
+      <div class="swiper-wrapper">
+        <foreach name="blist" item="r" key="k" >
+			 
+            	 <div class="swiper-slide" ><img src="{$r.img_path}" style="width: 100%; "></div>
+				
+				</foreach>
+	  </div>
+   
+    </div>
+    
+    <div class="pagination"></div>
+</div>
+
+
+<script src="js/idangerous.swiper.min.js"></script>
+  <script>
+  $(document).ready(function(){
+		var mySwiper = new Swiper('.swiper-container',{
+		autoplay : 5000,//可选选项，自动滑动
+		loop : true,//可选选项，开启循环
+		calculateHeight : true,
+		pagination : '.pagination',
+		paginationClickable :true,
+		roundLengths : true,slidesPerView : 1,autoResize : false,
+		})
+	$('#sdafasdfdsimgmmm').hide();
+    $(".swiper-slide img").each(function(){
+    $(this).show();
+  });
+});
+  
+</script>
+	
+<!-----banner 结束------>
+
+
+<div class="background">
+    
+    <div class="index">
+        <!--关于我们 开始-->
+        <div class="in_about">
+            <div class="in_title">
+                <p class="in_ti_p">关于我们</p>
+                <p class="in_ti_e">
+                    <img src="images/index_30.png"/>
+                    <span class="in_ti_span">AROUT BAHUITIAN</span>
+                    <img src="images/index_33.png"/>
+                </p>
+            </div>
+            
+            <div class="in_ab_word"> 
+                <div class="in_ab_wo_img" style="background:url(images/in1_07.png) no-repeat center center; background-size: cover;"></div>
+                <p class="in_ab_wo_p">{$whlmmmm.0.description}</p>
+            </div>
+            
+            <div class="in_ab_more"><a href="/index.php/Home/About/index/cid/314.html">查看更多</a></div>
+        </div>
+        <!--关于我们 结束-->
+        
+        
+        
+        <!-----------产品中心 开始---------->
+        <div class="in_product">
+            <div class="in_title">
+                <p class="in_ti_p">产品中心</p>
+                <p class="in_ti_e">
+                    <img src="images/index_30.png"/>
+                    <span class="in_ti_span">PRODUCT CENTER</span>
+                    <img src="images/index_33.png"/>
+                </p>
+            </div>
+            
+            <div class="in_por_list"><foreach name="whlmmmmcccaaa" item="r" key="k" >
+                <div class="in_por_each">
+                    <a href="/index.php/Home/Newsshow/index/cid/461/c/461/id/{$r.id}.html">
+                        <div class="in_por_ea_img" style="background:url({$r.imgurl}) no-repeat center center; background-size:cover;">
+                            <p class="in_por_ea_title">{$r.title}</p>
+                        </div>
+                    </a>
+                </div>
+                
+                </foreach>
+            </div>
+            
+        </div>
+        <!-----------产品中心 结束---------->
+        
+        
+        <!----------新闻中心 开始--------->
+        <div class="in_news">
+            <div class="in_title">
+                <p class="in_ti_p">新闻中心</p>
+                <p class="in_ti_e">
+                    <img src="images/index_30.png"/>
+                    <span class="in_ti_span">PRODUCT CENTER</span>
+                    <img src="images/index_33.png"/>
+                </p>
+            </div>
+            
+            <div class="in_list"><foreach name="newssalgg" item="r" key="k" ><?php
+	$nnnttimm=explode(' ',$r['updatetime']);
+?>
+                <div class="in_li_each">
+                    <a href="/index.php/Home/Newsshow/index/cid/459/c/140/id/{$r.id}.html">
+                        <img src="images/index1_03.png"/>
+                        <div class="in_ne_word">
+                            <p class="in_ne_wo_title">{$r.title}</p>
+                            <p class="in_ne_wo_date">{$nnnttimm.0}</p>
+                            <span class="in_ne_span">{$r.description}</span>
+                        </div>
+                    </a>
+                </div>
+                </foreach>
+                
+            </div>
+            
+            <div class="in_ne_more"><a href="/index.php/Home/Trends/index/cid/140.html">查看更多</a></div>
+            
+            
+        </div>
+        <!----------新闻中心 结束--------->
+        
+    </div>
+    
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	
+	
+<!-------------底部 开始---------------->
+
+<div class="in_bottom">
+    <div class="buttom_img">
+        <img src="images/index_38.png"/>
+    </div>
+	<p>{$config_info.gz_footright}</p>
+	<a class="in_bo_a" href="http://www.resonance.com.cn" target="_blank">技术支持：<span>共振创意</span></a>
+	
+</div>
+<!-------------底部 结束---------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+	//调用，description为class名
+	//首页
+	wordlimit('in_por_ea_title', 9);
+	
+//多余显示省略号
+function wordlimit(cname, wordlength) {
+    var cname = document.getElementsByClassName(cname);
+    for (var i = 0; i < cname.length; i++) {　　　　　　
+        var nowLength = cname[i].innerHTML.length;
+        if (nowLength > wordlength) {
+            cname[i].innerHTML = cname[i].innerHTML.substr(0, wordlength) + '...';
+        }　　　　　　
+    }　
+};</script>
+
+
+<script>  /*异步加载 - 在线交流 - 站长统计 */
+  var gz_weburl='/';
+  var lang='cn';
+  var classnow='{$cid}';
+  var id='<?php echo $_GET['id'];?>';
+  
+  var url=gz_weburl+'include/interface/uidata.php?lang='+lang,h = '<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>';
+  
+  if(h.indexOf("preview=1")!=-1)url = url + '&theme_preview=1';
+  $.ajax({
+    type: "POST",
+    url: url,
+    dataType:"json",
+    success: function(msg){
+      var c = msg.config;
+      
+      if(c.gz_stat==1){       //站长统计
+        var navurl=classnow==10001?'':'../';
+        var stat_d=classnow+'-'+id+'-'+lang;
+        var url = gz_weburl+'include/stat/stat.php?type=para&u='+navurl+'&d='+stat_d;
+        $.getScript(url);
+      }
+    }
+  });
+    //var metClicks = $(".metClicks");//点击次数
+    var ClicksListnow='<?php echo $_GET['id'];?>';
+    var weburl='/';
+    if(ClicksListnow){
+      //var DataClicks = metClicks.data("metclicks");
+      //ClicksStr=DataClicks.split("|"); 
+      var ClicksModule = 'news';//ClicksStr[0],ClicksListnow = ClicksStr[1];
+      var urlw = weburl+'include/hits.php?type='+ClicksModule+'&id='+ClicksListnow;
+      $.ajax({
+        type: "POST",
+        url: urlw,
+        dataType:"text",
+        success: function(msg){
+          //var t = msg.split('"');
+          //metClicks.html(t[1]);
+        }
+      });
+    }
+</script>
+
+</body>
+</html>

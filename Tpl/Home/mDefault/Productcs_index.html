@@ -1,0 +1,515 @@
+<?php
+	function urlnget($url){
+		$newssurl='/index.php/Home/Productcs/index/cid/'.$_GET['cid'];
+		foreach($url as $k=>$v){
+			if($v) $newssurl.='/'.$k.'/'.$v;
+		}
+		return $newssurl;
+		//$this->assign('newssurl',$newssurl);
+	}
+?>
+<style>
+.surlaget{    width: 100%;
+    background: none;
+   border: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 12px;
+    padding: 3px;
+    box-sizing: border-box;
+	appearance:none;    border-radius: 0px;
+	 -moz-appearance:none; /* Firefox */
+	 -webkit-appearance:none; /* Safari 和 Chrome */
+ }.buy_nav_each{    padding: 6px;
+    box-sizing: border-box;}.surlagetmoren{    width: 100%;
+    background: none;
+   border: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 12px;
+    padding: 3px;
+    box-sizing: border-box;
+	appearance:none;    border-radius: 0px;
+	 -moz-appearance:none; /* Firefox */
+	 -webkit-appearance:none; /* Safari 和 Chrome */
+ }
+</style>
+<!-----------------------------------内容 开始-------------------------------------->
+    <div class="buy">
+        <div class="buy_nav" id="prodsafdasfdas">
+            <div class="buy_nav_each">
+				<select class="surlagetmoren" c="pxorder">
+					<?php
+						$nasdfarr=array(
+							'id'=>'最新发布',
+							'jiageold'=>'价格↑',
+							'sppsjjtime'=>'车龄↑',
+							'licuser'=>'里程↑'
+						);
+						foreach($nasdfarr as $k=>$v){
+							if($pxorder!=$k){
+								$ssmmmppptt.= '<option value="'.$k.'">'.$v.'</option>';
+							}
+							else $ssmonttpx='<option value="'.$k.'">'.$v.'</option>';
+						}
+						echo $ssmonttpx.'<option value ="">智能排序</option>'.$ssmmmppptt;
+					?>
+				</select>
+			</div>
+			<div class="buy_nav_each">
+				<select class="surlaget">
+					<?php
+						foreach($allcartlist as $k=>$v){
+							if($oneid!=$v['logo']) $pinpppone.= '<option value ="/index.php/Home/Productcs/index/cid/'.$cid.'/oneid/'.$v['logo'].'">'.$v['name'].'</option>';
+							else $Pintttt='<option value ="/index.php/Home/Productcs/index/cid/'.$cid.'/oneid/'.$oneid.'">[品牌]'.$v['name'].'</option>';
+						}
+						$sssrtrr='品牌';
+						if($oneid) $sssrtrr='不限';
+						echo $Pintttt.'<option value ="/index.php/Home/Productcs/index/cid/'.$cid.'">'.$sssrtrr.'</option>'.$pinpppone;
+					?>
+				</select>
+			</div>
+			<div class="buy_nav_each"  onclick="$('.price_box').toggle();"><?php
+		if($_GET['minjiage'] || $_GET['maxjiage']){
+			if($_GET['minjiage'] && $_GET['maxjiage']) echo $_GET['minjiage'].'万-'.$_GET['maxjiage'].'万';
+			else if($_GET['minjiage']) echo $_GET['minjiage'].'万以上';
+			else if($_GET['maxjiage']) echo $_GET['maxjiage'].'万以下';
+		}
+		else echo '价格';
+	 ?></div>
+			<div class="buy_nav_each" onclick="$('.in_buy_more').toggle();">更多<img src="/m/images/buy_r3_c4.png"/></a></div>
+        </div>
+        
+
+        
+        
+        
+        
+        
+        <!----------------价格 开始---------------------->
+        <style>
+            .price_box{width: 100%; height: 100%; background: url(/m/images/background.png) repeat;position:fixed;top: 0px;left: 0px; z-index: 120; margin-top:100px;}
+            .price_list{width: 100%;background: #fff;}
+            .price_each{border-bottom: 1px #F5F5F5 solid; height:45px;}
+            .price_span{font-size: 14px; color: #837F7F; line-height:45px; margin-left: 20px;}
+            .price_each img{width: 17px; float: right;margin-top:18px; margin-right: 20px; display: none}
+            .price_dq .price_span{ color: #FF9E00;}
+            .price_dq img{display: block;}
+            .price_button{width: 100%; height:40px; background: #fff; text-align: center;-moz-box-shadow:0px -1px 2px #D6D6D6; -webkit-box-shadow:0px -1px 2px #D6D6D6; box-shadow:0px -1px 2px #D6D6D6;}
+            .pri_img{width: 24px; margin-top:15px;}
+            
+            .kfdsfn{float: right; margin-right: 10px;}
+            .price_custom form{ display: inline-block; vertical-align: top; margin-top:5px;}
+            .price_cu_fo_low{display: inline-block; vertical-align: top;}
+            .price_cu_fo_line{width: 10px; height: 1px; background:#A6A6A6; display: inline-block; vertical-align: top; margin:14px 5px;}
+            .price_cu_fo_low input{width:50px; height: 30px; border: 1px solid #A6A6A6;border-radius:5px; display: inline-block; vertical-align: top;}
+            .price_cu_fo_span{line-height:30px;}
+            .price_cu_fo_button{width:50px; height: 30px; background: #FF9600; border: none; margin-left: 5px; color: #fff;border-radius:5px; margin-top: 5px;}
+        
+        </style>
+        
+        
+        
+        <!----------------价格 结束---------------------->
+        
+        
+        
+        
+        
+        
+        
+        
+        <!------------------------------更多按钮 开始---------------------------------------->
+        
+        <style>
+            .in_buy_more{height: 100%; width: 100%;position:fixed;top: 0px;left: 0px; z-index: 120; background: #fff; margin-top: 60px; overflow: scroll; }
+            .in_buy_title{margin-top: 10px; text-align: center;}
+            .br_ti_button{width: 18px; height: 24px; float: left; margin-left: 10px;}
+            .br_ti_span{font-size: 16px; color:#3A3939; font-weight: bold; margin-left: -9px;}
+            
+            .in_buy_mo_lisi{margin-top:20px;margin-bottom:125px;}
+            .in_buy_mo_each{border-top: 3px solid #F4F4F4;width: 98%; margin: auto;}
+            .in_buy_mo_p{ margin: auto; font-size: 16px; margin-top:10px; margin-bottom: 10px;}
+            .in_buy_mo_span{padding: 2px 10px; border:1px solid #E7E7E7; border-radius: 5px; margin-right:6px;display: inline-block; margin-bottom: 10px;}
+            .bbanbdgg{ border:1px solid  #FCAC00; }
+            .bbanbdgg a{ color: #FCAC00;}
+            
+            .in_buy_mo_button{width: 100%; height: 40px; background:#FCAC00; border: none; color: #fff; position:fixed; bottom:0px; z-index: 130;line-height: 40px;font-size: 14px; }
+        </style>
+        
+        
+        <div class="in_buy_more" style="display: none;">
+             <div class="in_buy_title">
+                <button class="br_ti_button" onclick="hhidemjqsrc();$('.in_buy_more').hide();"><img src="/m/images/member_r3_c2.png"/></button>
+                <span class="br_ti_span">筛选</span>
+            </div>
+            
+<script>
+function geotrrsurl(that){
+	var cn=$(that).attr('c');
+	var logoid=$(that).attr('logoid');
+		xlmsetCookie(cn,logoid);
+		//location.reload();
+		$(that).parent().siblings().removeClass('bbanbdgg');
+		$(that).parent().addClass('bbanbdgg');
+			var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword));?>';
+		//location.href = url;
+}
+</script>
+			
+            <div class="in_buy_mo_lisi">
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">车型</p>
+                    <span class="in_buy_mo_span <?php if(!$gz_deffcddyycx) echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="" c="GZ_deffcddyycx">不限</a></span>
+							  <?php
+									$hhyy=explode("\r\n",$config_info['gz_deffcddyycx']);
+									foreach($hhyy as $hk=>$hv){
+										echo '<span class="in_buy_mo_span ';
+										if($hv==$gz_deffcddyycx) echo ' bbanbdgg ';
+										echo '"><a href="javascript:;" onclick="geotrrsurl(this);" logoid="'.$hv.'" c="GZ_deffcddyycx">'.$hv.'</a></span>';
+									}
+								?>
+                </div>
+                
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">首付</p>
+                     <span class="in_buy_mo_span <?php if(!$deffcddyycxlsfykj) echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="" c="GZ_deffcddyycxlsfykj">全部</a></span>
+                    <span class="in_buy_mo_span <?php if($deffcddyycxlsfykj=='0首付') echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="0首付" c="GZ_deffcddyycxlsfykj">0首付</a></span>
+                    <span class="in_buy_mo_span <?php if($deffcddyycxlsfykj=='一口价') echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="一口价" c="GZ_deffcddyycxlsfykj">一口价</a></span>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">地域</p>
+                    <span class="in_buy_mo_span <?php if(!$gz_deffcddyy) echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="" c="GZ_deffcddyy">不限</a></span>
+							  <?php
+									$hhyy=explode("\r\n",$config_info['gz_deffcddyy']);
+									foreach($hhyy as $hk=>$hv){
+										echo '<span class="in_buy_mo_span ';
+										if($hv==$gz_deffcddyy) echo ' bbanbdgg ';
+										echo '"><a href="javascript:;" onclick="geotrrsurl(this);" logoid="'.$hv.'" c="GZ_deffcddyy">'.$hv.'</a></span>';
+									}
+								?>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">车龄</p>
+                    <span class="in_buy_mo_span <?php if(!$gz_deffcddyycl) echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="" c="GZ_deffcddyycl">不限</a></span>
+							  <?php
+									$hhyy=explode("\r\n",$config_info['gz_deffcddyycl']);
+									foreach($hhyy as $hk=>$hv){
+										echo '<span class="in_buy_mo_span ';
+										if($hv==$gz_deffcddyycl) echo ' bbanbdgg ';
+										echo '"><a href="javascript:;" onclick="geotrrsurl(this);" logoid="'.$hv.'" c="GZ_deffcddyycl">'.$hv.'</a></span>';
+									}
+								?>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">里程</p>
+                    <span class="in_buy_mo_span <?php if(!$gz_deffcddyyllcc) echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="" c="GZ_deffcddyyllcc">不限</a></span>
+							  <?php
+									$hhyy=explode("\r\n",$config_info['gz_deffcddyyllcc']);
+									foreach($hhyy as $hk=>$hv){
+										echo '<span class="in_buy_mo_span ';
+										if($hv==$gz_deffcddyyllcc) echo ' bbanbdgg ';
+										echo '"><a href="javascript:;" onclick="geotrrsurl(this);" logoid="'.$hv.'" c="GZ_deffcddyyllcc">'.$hv.'</a></span>';
+									}
+								?>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">排量</p>
+                    <span class="in_buy_mo_span <?php if(!$gz_deffcddyylpl) echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="" c="GZ_deffcddyylpl">不限</a></span>
+							  <?php
+									$hhyy=explode("\r\n",$config_info['gz_deffcddyylpl']);
+									foreach($hhyy as $hk=>$hv){
+										echo '<span class="in_buy_mo_span ';
+										if($hv==$gz_deffcddyylpl) echo ' bbanbdgg ';
+										echo '"><a href="javascript:;" onclick="geotrrsurl(this);" logoid="'.$hv.'" c="GZ_deffcddyylpl">'.$hv.'</a></span>';
+									}
+								?>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">排放标准</p>
+                    <span class="in_buy_mo_span <?php if(!$gz_deffcddyylplbz) echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="" c="GZ_deffcddyylplbz">不限</a></span>
+							  <?php
+									$hhyy=explode("\r\n",$config_info['gz_deffcddyylplbz']);
+									foreach($hhyy as $hk=>$hv){
+										echo '<span class="in_buy_mo_span ';
+										if($hv==$gz_deffcddyylplbz) echo ' bbanbdgg ';
+										echo '"><a href="javascript:;" onclick="geotrrsurl(this);" logoid="'.$hv.'" c="GZ_deffcddyylplbz">'.$hv.'</a></span>';
+									}
+								?>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">颜色</p>
+                    <span class="in_buy_mo_span <?php if(!$gz_yansecar) echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="" c="GZ_yansecar">不限</a></span>
+							  <?php
+									$hhyy=explode("\r\n",$config_info['gz_yansecar']);
+									foreach($hhyy as $hk=>$hv){
+										$nhv=explode('#',$hv);
+										echo '<span class="in_buy_mo_span ';
+										if($nhv['0']==$gz_yansecar) echo ' bbanbdgg ';
+										echo '"><a href="javascript:;" onclick="geotrrsurl(this);" logoid="'.$nhv['0'].'" c="GZ_yansecar">'.$nhv['0'].'</a></span>';
+									}
+								?>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">变速箱</p>
+                    <span class="in_buy_mo_span <?php if(!$gz_biansuxiang) echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="" c="GZ_biansuxiang">不限</a></span>
+							  <?php
+									$hhyy=explode("\r\n",$config_info['gz_biansuxiang']);
+									foreach($hhyy as $hk=>$hv){
+										echo '<span class="in_buy_mo_span ';
+										if($hv==$gz_biansuxiang) echo ' bbanbdgg ';
+										echo '"><a href="javascript:;" onclick="geotrrsurl(this);" logoid="'.$hv.'" c="GZ_biansuxiang">'.$hv.'</a></span>';
+									}
+								?>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">座位数</p>
+                    <span class="in_buy_mo_span <?php if(!$gz_weisucar) echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="" c="GZ_weisucar">不限</a></span>
+							  <?php
+									$hhyy=explode("\r\n",$config_info['gz_weisucar']);
+									foreach($hhyy as $hk=>$hv){
+										echo '<span class="in_buy_mo_span ';
+										if($hv==$gz_weisucar) echo ' bbanbdgg ';
+										echo '"><a href="javascript:;" onclick="geotrrsurl(this);" logoid="'.$hv.'" c="GZ_weisucar">'.$hv.'</a></span>';
+									}
+								?>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">国别</p>
+                    <span class="in_buy_mo_span <?php if(!$gz_guobiecar) echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="" c="GZ_guobiecar">不限</a></span>
+							  <?php
+									$hhyy=explode("\r\n",$config_info['gz_guobiecar']);
+									foreach($hhyy as $hk=>$hv){
+										echo '<span class="in_buy_mo_span ';
+										if($hv==$gz_guobiecar) echo ' bbanbdgg ';
+										echo '"><a href="javascript:;" onclick="geotrrsurl(this);" logoid="'.$hv.'" c="GZ_guobiecar">'.$hv.'</a></span>';
+									}
+								?>
+                </div>
+                
+                <div class="in_buy_mo_each">
+                    <p class="in_buy_mo_p">燃料类型</p>
+                    <span class="in_buy_mo_span <?php if(!$gz_ranlcar) echo ' bbanbdgg ';?> "><a href="javascript:;" onclick="geotrrsurl(this);" logoid="" c="GZ_ranlcar">不限</a></span>
+							  <?php
+									$hhyy=explode("\r\n",$config_info['gz_ranlcar']);
+									foreach($hhyy as $hk=>$hv){
+										echo '<span class="in_buy_mo_span ';
+										if($hv==$gz_ranlcar) echo ' bbanbdgg ';
+										echo '"><a href="javascript:;" onclick="geotrrsurl(this);" logoid="'.$hv.'" c="GZ_ranlcar">'.$hv.'</a></span>';
+									}
+								?>
+                </div>
+                
+               
+            </div>
+             
+                <button class="in_buy_mo_button" onclick="gtersuuur('<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'sckeyword'=>$sckeyword));?>');">完成</button>
+            
+        </div>
+        
+        </div>
+        <!------------------------------更多按钮 结束---------------------------------------->
+        
+        
+        
+        <div class="buy_list">				<?php
+					if(empty($list)) echo '<span style="font-size: 14px;line-height: 60px;color: #aaa;margin-left: 5%;">暂无车辆</span>';
+				?>
+				<foreach name="list" item="r" key="k" >
+            <div class="buy_li_each">
+                <a href="/index.php/Home/Productcshow/index/cid/{$cid}/c/{$cid}/id/{$r.id}.html">
+                    <div class="buy_li_ea_img" style="background:url({$r.imgurl}) no-repeat center center;background-size: cover;"></div>
+					<div class="buy_li_ea_word">
+						<p class="buy_li_ea_title">{$r.title}</p>
+						<div class="buy_li_ea_deta">
+							<span class="buy_li_ea_span"><?php echo date('Y',$r['sppsjjtime']);?>年</span>
+							<span class="buy_li_ea_span">{$r.licuser}万公里</span>
+						</div>
+                        <div class="buy_li_ea_price">
+                            <span class="buy_li_ea_pr1">{$r.jiageold}万</span>
+                            <span class="buy_li_ea_pr2" style="display:none;">首付1.5万</span>
+                            <span class="buy_li_address">{$r.gz_headeryjhhyy}</span>
+                        </div>
+					</div>
+                </a>
+            </div>
+            </foreach>
+            
+        </div>
+        <?php
+					if(!empty($list)) echo '<div class="buy_se_more" onclick="sslyss();"></div>';
+				?>
+        
+    </div>
+<!-----------------------------------内容 结束-------------------------------------->
+	
+	<style>
+	.buy_se_more{background: url(/m/images/index_r8_c3.png) no-repeat center center;cursor: pointer;}
+	
+	.fdasfjrajajaxx{    background: url(/5-121204193956-50.gif) no-repeat center center;
+    background-size: unset;}</style>
+<script>
+nyyyyn=2;
+function sslyss(){
+$(".buy_se_more").addClass('fdasfjrajajaxx');
+	var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword,'sfminjiage'=>$sfminjiage,'sfmaxjiage'=>$sfmaxjiage));?>';
+	url=url+'/ajax/ajax/p/'+nyyyyn;
+	
+$.ajax( {
+	url: url, //这里是静态页的地址
+	type: "GET", //静态页用get方法，否则服务器会抛出405错误
+	success: function(data){
+		if(!data){
+			$(".buy_se_more").hide();
+			return false;
+		}
+		//var result = $(data).find("另一个html页面的指定的一部分").html();
+		$(".buy_list").append(data);
+		$(".buy_se_more").removeClass('fdasfjrajajaxx');
+		nyyyyn=nyyyyn+1;
+	}
+});
+//alert(nyyyyn);
+}
+
+
+
+
+	//锚点 隐藏已经点开的弹框
+	function hhidemjqsrc(){
+		$('html,body').animate({scrollTop:$('#prodsafdasfdas').offset().top-60},800);//锚点
+		//隐藏
+		$('.hhidemjqsrcsss').hide();
+	}
+	
+	//下拉跳转
+		$(".surlaget").bind("change",function(){
+			var logoid=$(this).val();
+			location.href = logoid;
+				
+		});
+		$(".surlagetmoren").bind("change",function(){
+			var logoid=$(this).val();
+			var cn=$(this).attr('c');
+			ssddcoooorrrsss(cn,logoid)
+				
+		});
+		
+		function ssddcoooorrr(cn,logoid){
+			xlmsetCookie('GZ_'+cn,logoid);
+			//location.reload();
+                    var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword));?>';
+				location.href = url;
+		}
+		
+		
+		function ssddcoooorrrsss(cn,logoid){
+			xlmsetCookie('GZ_'+cn,logoid);
+			//location.reload();
+                    var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$minjiage,'maxjiage'=>$maxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword));?>';
+				location.href = url;
+		}
+		function gtersuuur(url){
+			location.href = url;
+		}
+		
+		
+				function getssjiage(){
+					var minnnjiagess=parseInt($('#minnnjiagess').val());
+					var maxnnjiagess=parseInt($('#maxnnjiagess').val());
+					if(!maxnnjiagess || !minnnjiagess || (minnnjiagess>maxnnjiagess)){
+						alert('请正确填写数字价格区间');
+						return false;
+					}
+					var url='<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'gz_deffcddyy'=>$_GET['gz_deffcddyy'],'sckeyword'=>$sckeyword));?>'
+					url=url+'/minjiage/'+minnnjiagess+'/maxjiage/'+maxnnjiagess;
+					location.href = url;
+				}
+		
+	</script>
+
+
+	
+<div class="price_box hhidemjqsrcsss" style="display: none;overflow: auto;top: 0px;margin-top: 0px;padding-top: 60px;">
+            <div class="price_list">
+			
+			
+                <div onclick="gtersuuur('<?php echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword));?>');" class="price_each <?php if(empty($_GET['maxjiage']) && empty($_GET['minjiage'])) echo ' price_dq ';?>"><span class="price_span">不限</span><img src="/m/images/details_r17_c5.png"/></div>
+                
+                
+                
+				
+				
+
+							<?php
+							$cssjiage=$_GET['maxjiage'];
+							
+					$hhyy=explode("\r\n",$config_info['gz_jgqj']);
+					foreach($hhyy as $hk=>$hv){
+						$nhv=explode('-',$hv);
+
+						if(!$hk){
+							$cminjiage=0;
+							$cmaxjiage=$nhv['0']+0; //第一个一下价格
+						}else if($hk==count($hhyy)){
+							$cminjiage=$nhv['1']+0;
+							$cmaxjiage=0; //最后一个以上价格
+						}else{
+							$cminjiage=$nhv['0']+0;
+							$cmaxjiage=$nhv['1']+0;
+						}
+						
+						
+						echo '<div onclick="gtersuuur(\'';
+						echo urlnget(array('oneid'=>$oneid,'freid'=>$freid,'minjiage'=>$cminjiage,'maxjiage'=>$cmaxjiage,'gz_deffcddyy'=>$gz_deffcddyy,'sckeyword'=>$sckeyword)); 
+						echo '\')" class="price_each';
+						if(($cmaxjiage==$cssjiage && $cssjiage) || (!$cmaxjiage && $cminjiage==$_GET['minjiage'])) echo ' price_dq ';
+						echo'"><span class="price_span">'.$hv.'</span><img src="/m/images/details_r17_c5.png"/></div>';
+					}
+					?>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+                
+                <div class="price_custom">
+                    <span class="price_span">自定义</span>
+                    
+                    
+                    <div class="kfdsfn">
+                        <form>
+
+                            <div class="price_cu_fo_low">
+                                <input type="text" value="<?php echo $_GET['minjiage'];?>" id="minnnjiagess" />
+                                <span class="price_cu_fo_span">万</span>
+                            </div>
+                            <div class="price_cu_fo_line"></div>
+                            <div class="price_cu_fo_low">
+                                <input type="text" value="<?php echo $_GET['maxjiage'];?>" id="maxnnjiagess" />
+                                <span class="price_cu_fo_span">万</span>
+                            </div>
+
+                        </form>
+
+                        <button class="price_cu_fo_button" onclick="getssjiage();">确定</button>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="price_button" onclick="$('.price_box').toggle();" style="padding-bottom: 60px;"><img class="pri_img" src="/m/images/member_r3_c211.jpg"/></div>
+        </div>
+	
+	

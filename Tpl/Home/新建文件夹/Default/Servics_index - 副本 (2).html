@@ -1,0 +1,53 @@
+
+<div class="background">
+    
+   <!--标题 开始--> 
+    <div class="title">
+        <p class="ti_p">{$getinfolamu.name}</p>
+        <div class="ti_english">
+            <div class="ti_en_line"></div>
+            <span class="ti_en_span">{$getinfolamu.enname}</span>
+        </div>
+    </div>
+   <!--标题 结束-->
+    
+
+    
+    
+    <!--服务中心内容 开始-->
+    <div class="service">
+        
+		
+		
+<foreach name="lanmu" item="r" key="k" >
+					<div class="es_each">
+            <a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}/show/show.html">
+                <div class="se_ea_img" style="background:url({$r.columnimg}) no-repeat center center; background-size: cover;"></div>
+                <p class="se_ea_title">{$r.name}</p>
+            </a>
+        </div>&nbsp;
+				  </foreach>
+		
+		
+        
+    </div>
+    <!--服务中心内容 结束-->
+    
+</div>
+    
+
+<script>
+	//调用，description为class名
+	//首页
+	wordlimit('in_por_ea_title', 9);
+	
+//多余显示省略号
+function wordlimit(cname, wordlength) {
+    var cname = document.getElementsByClassName(cname);
+    for (var i = 0; i < cname.length; i++) {　　　　　　
+        var nowLength = cname[i].innerHTML.length;
+        if (nowLength > wordlength) {
+            cname[i].innerHTML = cname[i].innerHTML.substr(0, wordlength) + '...';
+        }　　　　　　
+    }　
+};</script>

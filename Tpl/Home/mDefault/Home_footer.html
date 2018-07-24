@@ -1,0 +1,127 @@
+	<!-------------------------------------->
+	<div class="in_link">
+		<div class="in_li_box"><span class="in_li_span"><a href="/index.php/Home/Recruits/index/cid/469.html"><img src="/m/images/index_r1_c1.png"/></a></span></div>
+		<div class="in_li_box"><span class="in_li_span"><a href="/index.php/Home/Sjyjfk/index/cid/487.html"><img src="/m/images/index_r1_c4.png"/></a></span></div>
+		<div class="in_li_box"><span class="in_li_span"><a href="/index.php/Home/About/index/cid/318.html"><img src="/m/images/index_r1_c9.png"/></a></span></div>
+	</div>
+	<!-------------------------------------->
+
+
+<script>/*
+window.alert = function(name){
+	 var iframe = document.createElement("IFRAME");
+	iframe.style.display="none";
+	iframe.setAttribute("src", 'data:text/plain,');
+	document.documentElement.appendChild(iframe);
+	window.frames[0].window.alert(name);
+	iframe.parentNode.removeChild(iframe);
+	}
+//重写confirm方法，去掉地址显示
+window.confirm = function(name){
+var iframe = document.createElement("IFRAME");
+iframe.style.display="none";
+iframe.setAttribute("src", 'data:text/plain,');
+document.documentElement.appendChild(iframe);
+var result = window.frames[0].window.confirm(name);
+iframe.parentNode.removeChild(iframe);
+return result;
+}*/
+</script>
+
+<script src="//captcha.luosimao.com/static/dist/api.js"></script>
+
+<!-------------------------------底部 开始---------------------------------->
+<div class="botton">
+	<p class="bu_tele">咨询电话：{$config_info.gz_footteldianhua2}</p>
+	<p class="bu_tele">服务监督热线： {$config_info.gz_footteldianhua2lyy}</p>
+	<p class="bu_copyright">Copyright ©<span class="bu_span"> {$config_info.gz_webname}</span> All Rights Reserved 版权所有</p>
+</div>
+<!-------------------------------底部 结束---------------------------------->
+
+
+
+
+
+
+
+
+
+
+<script>
+	//调用，description为class名
+	//首页
+	wordlimit('in_por_ea_title', 9);
+	
+	//新闻中心
+	wordlimit('ne_co_wo_title', 85)
+//多余显示省略号
+function wordlimit(cname, wordlength) {
+    var cname = document.getElementsByClassName(cname);
+    for (var i = 0; i < cname.length; i++) {　　　　　　
+        var nowLength = cname[i].innerHTML.length;
+        if (nowLength > wordlength) {
+            cname[i].innerHTML = cname[i].innerHTML.substr(0, wordlength) + '...';
+        }　　　　　　
+    }　
+};</script>
+
+
+    
+    
+    
+<script>
+
+$(document).ready(function(){
+/*
+ $(".in_se_list").find(".in_se_li_each").eq(0).addClass("blue1");
+ $(".in_se_list").find(".in_se_li_each").eq(1).addClass("blue2");
+ $(".in_se_list").find(".in_se_li_each").eq(2).addClass("blue3");
+*/
+})
+</script>
+
+<script>  /*异步加载 - 在线交流 - 站长统计 */
+  var gz_weburl='/';
+  var lang='cn';
+  var classnow='{$cid}';
+  var id='<?php echo $_GET['id'];?>';
+  
+  var url=gz_weburl+'include/interface/uidata.php?lang='+lang,h = '<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>';
+  
+  if(h.indexOf("preview=1")!=-1)url = url + '&theme_preview=1';
+  $.ajax({
+    type: "POST",
+    url: url,
+    dataType:"json",
+    success: function(msg){
+      var c = msg.config;
+      
+      if(c.gz_stat==1){       //站长统计
+        var navurl=classnow==10001?'':'../';
+        var stat_d=classnow+'-'+id+'-'+lang;
+        var url = gz_weburl+'include/stat/stat.php?type=para&u='+navurl+'&d='+stat_d;
+        $.getScript(url);
+      }
+    }
+  });
+    //var metClicks = $(".metClicks");//点击次数
+    var ClicksListnow='<?php echo $_GET['id'];?>';
+    var weburl='/';
+    if(ClicksListnow){
+      //var DataClicks = metClicks.data("metclicks");
+      //ClicksStr=DataClicks.split("|"); 
+      var ClicksModule = 'news';//ClicksStr[0],ClicksListnow = ClicksStr[1];
+      var urlw = weburl+'include/hits.php?type='+ClicksModule+'&id='+ClicksListnow;
+      $.ajax({
+        type: "POST",
+        url: urlw,
+        dataType:"text",
+        success: function(msg){
+          //var t = msg.split('"');
+          //metClicks.html(t[1]);
+        }
+      });
+    }
+</script>
+</body>
+</html>

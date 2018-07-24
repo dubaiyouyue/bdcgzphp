@@ -1,0 +1,63 @@
+{__NOLAYOUT__}
+                <div class="me_ri_title">
+                    <p class="me_ri_p">{$loidlisttoname}</p>
+                    <div class="me_ri_line"></div>
+                </div>
+				<?php
+					if(empty($loidlist)) echo '<div class="me_ri_each">暂无</di>';
+				?>
+<foreach name="loidlist" item="r" key="k" >
+<div class="me_ri_each">
+	<a href="/index.php/Home/Productcshow/index/cid/{$r.class1}/c/{$r.class1}/id/{$r.id}.html">
+		<div class="me_ri_ae_img" style="background: url({$r.imgurl}) no-repeat center center; background-size: cover;"></div>
+		<div class="me_ri_ae_word">
+			<p class="me_ri_ae_title">{$r.title}</p>
+			<div class="me_ri_in">
+				<span class="me_ri_in_each">
+					<div class="me_ri_ea_line"></div>
+					<div class="me_ri_ea_word">
+						<p class="me_ri_ea_deta"><?php 
+							if($r['jiagessf']) echo $r['shangsyear'];
+							else echo $r['sppsjj'];
+							?></p>
+						<p class="me_ri_ea_ddd">上牌时间</p>
+					</div>
+				</span>
+				<span class="me_ri_in_each">
+					<div class="me_ri_ea_line"></div>
+					<div class="me_ri_ea_word">
+						<p class="me_ri_ea_deta">{$r.licuser}万公里</p>
+						<p class="me_ri_ea_ddd">表显里程</p>
+					</div>
+				</span>
+				<span class="me_ri_in_each">
+					<div class="me_ri_ea_line"></div>
+					<div class="me_ri_ea_word">
+						<p class="me_ri_ea_deta">{$r.gz_headeryjhhyy}</p>
+						<p class="me_ri_ea_ddd">上牌地</p>
+					</div>
+				</span>
+				<span class="me_ri_in_each">
+					<div class="me_ri_ea_line"></div>
+					<div class="me_ri_ea_word">
+						<p class="me_ri_ea_deta">{$r.displacement}L</p>
+						<p class="me_ri_ea_ddd">排量</p>
+					</div>
+				</span>
+				<span class="me_ri_in_each">
+					<div class="me_ri_ea_line"></div>
+					<div class="me_ri_ea_word">
+						<p class="me_ri_ea_deta">{$r.gz_biansuxiang}</p>
+						<p class="me_ri_ea_ddd">变速箱</p>
+					</div>
+				</span>
+			</div>
+			
+			<div class="me_ri_pri">车主报价<span class="me_ri_span"><?php 
+							if($r['jiagessf']) echo $r['jiages'];
+							else echo $r['jiageold'];
+							?></span>万</div>
+		</div>
+	</a>
+</div>
+</foreach>

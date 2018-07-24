@@ -1,0 +1,118 @@
+
+
+
+<div class="background">
+    
+   <!--标题 开始--> 
+    <div class="title">
+        <p class="ti_p">{$lan.name}</p>
+        <div class="ti_english">
+            <div class="ti_en_line"></div>
+            <span class="ti_en_span">{$lan.enname}</span>
+        </div>
+    </div>
+   <!--标题 结束-->
+    
+    
+    <!---二级导航 开始---->
+    <div class="nav" style="display:none;">
+        <ul class="nav_ul">
+            		<foreach name="lanmu" item="r" key="k" >
+					<li class="nav_ul_li <?php
+        if($r['id']==$cid) echo 'aaaaaa';
+
+      ?>">
+					<a href="/index.php/Home/{$r.foldername}/index/cid/{$r.id}.html">{$r.name}</a>
+					
+					</li>&nbsp;
+				  </foreach>
+        </ul>
+    </div>
+    <!---二级导航 结束---->
+    
+    
+    <!--关于我们内容 开始-->
+    <div class="about">
+        {$lan.content}
+    </div>
+    <!--关于我们内容 结束-->
+    
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	
+<script>
+	//调用，description为class名
+	//首页
+	wordlimit('in_por_ea_title', 9);
+	
+//多余显示省略号
+function wordlimit(cname, wordlength) {
+    var cname = document.getElementsByClassName(cname);
+    for (var i = 0; i < cname.length; i++) {　　　　　　
+        var nowLength = cname[i].innerHTML.length;
+        if (nowLength > wordlength) {
+            cname[i].innerHTML = cname[i].innerHTML.substr(0, wordlength) + '...';
+        }　　　　　　
+    }　
+};</script>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

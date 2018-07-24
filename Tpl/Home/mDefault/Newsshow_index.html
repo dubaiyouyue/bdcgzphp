@@ -1,0 +1,27 @@
+<?php
+	$nwetimtwww=explode(' ',$list['updatetime']);
+	$list['updatetime']=$nwetimtwww['0'];
+ ?>
+<!-----------------------------------内容 开始-------------------------------------->
+    <style>
+        .tre_de{width:95%; margin: auto;}
+        .tre_de_title{margin-top: 20px; margin-bottom: 10px;}
+        .tre_de_p{font-size: 16px; font-weight: bold; color: #4F4F4F}
+        .tre_de_deta{font-size: 12px; color: #C7C7C7}
+        .centen{margin-top: 5px;}
+    </style>
+    
+    
+    
+   <div class="tre_de">
+        <div class="tre_de_title">
+           <p class="tre_de_p">{$list.title}</p>
+           <p class="tre_de_deta">{$list.updatetime}</p>
+       </div>
+       
+       <div class="centen">{$list.content}</div>
+    
+    </div>
+   
+<!-----------------------------------内容 结束-------------------------------------->
+	

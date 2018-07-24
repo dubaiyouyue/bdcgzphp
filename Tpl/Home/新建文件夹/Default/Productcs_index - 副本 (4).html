@@ -1,0 +1,83 @@
+
+<div class="background">
+    
+   <!--标题 开始--> 
+    <div class="title">
+        <p class="ti_p">{$getinfolamu.name}</p>
+        <div class="ti_english">
+            <div class="ti_en_line"></div>
+            <span class="ti_en_span">{$getinfolamu.enname}</span>
+        </div>
+    </div>
+   <!--标题 结束-->
+    
+
+    
+    
+    <!--服务中心内容 开始-->
+    <div class="product">
+        <foreach name="list" item="r" key="k" >
+        <div class="pr_each">
+            <a href="/index.php/Home/Newsshow/index/cid/{$cid}/c/461/id/{$r.id}.html">
+                <div class="pr_ea_img" style="background:url({$r.imgurl})no-repeat center center; background-size: cover;"></div>
+                <p class="pr_ea_title">{$r.title}</p>
+            </a>
+        </div>
+        </foreach>
+        
+        
+        <div class="pr_more" id="ctneetaasjsxjj"><a href="javascript:;" onclick="getssajax();" id="ctneetaasjsxjjaaa">加载更多</a></div>
+        
+    </div>
+    <!--服务中心内容 结束-->
+    
+</div>
+    
+    
+    
+
+
+
+<script>
+
+
+var newp=2;
+function getssajax(){
+	$('#ctneetaasjsxjjaaa').text('正在获取...');
+	$.ajax( {
+		url: '/index.php/Home/Productcs/index/ajax/ajax/cid/{$cid}/p/'+newp+'.html', //这里是静态页的地址
+		type: "GET", //静态页用get方法，否则服务器会抛出405错误
+		//dataType: "json",
+		//cache: false,
+		//async: false,
+		beforeSend: function(){
+		 // Handle the beforeSend event
+		},
+		success: function(data){
+			if(!data){
+				$('#ctneetaasjsxjjaaa').text('没有了');
+				return false;
+			}
+			$('#ctneetaasjsxjj').before(data);
+			newp=newp+1;
+			$('#ctneetaasjsxjjaaa').text('加载更多');
+			//var result = $(data).find("另一个html页面的指定的一部分").html();
+		}
+	});
+}
+
+
+	//调用，description为class名
+	//首页
+	wordlimit('in_por_ea_title', 9);
+	
+//多余显示省略号
+function wordlimit(cname, wordlength) {
+    var cname = document.getElementsByClassName(cname);
+    for (var i = 0; i < cname.length; i++) {　　　　　　
+        var nowLength = cname[i].innerHTML.length;
+        if (nowLength > wordlength) {
+            cname[i].innerHTML = cname[i].innerHTML.substr(0, wordlength) + '...';
+        }　　　　　　
+    }　
+};</script>
